@@ -14,6 +14,7 @@ const daFontSizePattern = /^(dsp|std|dns|oln|mono)-\S+$/
 
 const twMerge = extendTailwindMerge((config) => {
   // Wrap existing text-color validators so they reject our font-size tokens
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const textColorGroup = config.classGroups["text-color"][0] as { text: any[] }
   const origValidators = textColorGroup.text
   config.classGroups["text-color"] = [
@@ -31,6 +32,7 @@ const twMerge = extendTailwindMerge((config) => {
   ]
 
   // Register DA font-size tokens in the font-size group
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fontSizeGroup = config.classGroups["font-size"][0] as { text: any[] }
   fontSizeGroup.text.push(daFontSizePattern)
 
