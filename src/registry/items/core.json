@@ -6,19 +6,19 @@
   "description": "Unofficial lightweight set of basic Digital Agency Design System UI (theme + basic elements). Not an official デジタル庁 product.",
   "dependencies": [],
   "registryDependencies": [
-    "theme",
-    "button",
-    "input",
-    "textarea",
-    "label",
-    "divider",
-    "link",
-    "utility-link",
-    "heading",
-    "list",
-    "blockquote",
-    "dl",
-    "image"
+    "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/button",
+    "yukiharada1228/shadcn-digital-agency-jp/input",
+    "yukiharada1228/shadcn-digital-agency-jp/textarea",
+    "yukiharada1228/shadcn-digital-agency-jp/label",
+    "yukiharada1228/shadcn-digital-agency-jp/divider",
+    "yukiharada1228/shadcn-digital-agency-jp/link",
+    "yukiharada1228/shadcn-digital-agency-jp/utility-link",
+    "yukiharada1228/shadcn-digital-agency-jp/heading",
+    "yukiharada1228/shadcn-digital-agency-jp/list",
+    "yukiharada1228/shadcn-digital-agency-jp/blockquote",
+    "yukiharada1228/shadcn-digital-agency-jp/dl",
+    "yukiharada1228/shadcn-digital-agency-jp/image"
   ],
   "files": [
     {
