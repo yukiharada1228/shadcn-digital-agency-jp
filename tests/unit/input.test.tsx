@@ -52,4 +52,10 @@ describe("Input", () => {
     const input = screen.getByPlaceholderText("dis") as HTMLInputElement
     expect(input.readOnly).toBe(true)
   })
+
+  it("does not force readOnly when aria-disabled is false", () => {
+    render(<Input placeholder="enabled" aria-disabled="false" />)
+    const input = screen.getByPlaceholderText("enabled") as HTMLInputElement
+    expect(input.readOnly).toBe(false)
+  })
 })

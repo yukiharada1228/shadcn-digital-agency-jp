@@ -47,4 +47,21 @@ describe("Button accessibility", () => {
     expect(onClick).not.toHaveBeenCalled()
     expect(event.defaultPrevented).toBe(true)
   })
+
+  it("does not suppress click when aria-disabled is false", () => {
+    const onClick = vi.fn()
+    render(
+      <Button aria-disabled="false" onClick={onClick}>
+        送信
+      </Button>
+    )
+    const button = screen.getByRole("button", { name: "送信" })
+    const event = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+    })
+    fireEvent(button, event)
+    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(event.defaultPrevented).toBe(false)
+  })
 })
