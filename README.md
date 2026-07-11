@@ -34,6 +34,14 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 ```
 
+テーマを有効にするため、グローバル CSS（例: `src/index.css` / `app/globals.css`）で
+`digital-agency.css` を一度だけ import してください。
+
+```css
+@import "tailwindcss";
+@import "@/styles/digital-agency.css";
+```
+
 `core` は軽量な基本 UI の最小セットです（Dialog / DatePicker などの重い component は含みません）。
 
 ## 使い方 / Usage
