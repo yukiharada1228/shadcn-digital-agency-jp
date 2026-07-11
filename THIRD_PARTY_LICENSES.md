@@ -46,17 +46,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
----
-
-## shadcn-ui/ui
-
-This project follows the shadcn/ui registry format and design conventions
-(registry compatibility, `components/ui` file placement, `cn()`, `cva`,
-`@radix-ui/react-slot` for `asChild`, `data-slot`, compound component APIs).
-
-Per the project's license policy, `shadcn-ui/ui` is **not** listed as a required
-third-party attribution target because no `shadcn-ui/ui` component code, registry
-item, or documentation text has been copied or modified. If such code is copied
-or modified in the future, its copyright notice and MIT License text will be
-added here.

@@ -35,6 +35,7 @@
     "registry:generate": "tsx scripts/generate-registry.ts",
     "registry:build": "tsx scripts/generate-registry.ts",
     "registry:test": "tsx scripts/generate-registry.ts --check",
+    "license:sync": "tsx scripts/sync-license.ts",
     "license:check": "tsx scripts/check-license.ts"
   },
   "dependencies": {

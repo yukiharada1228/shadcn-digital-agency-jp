@@ -25,19 +25,13 @@ for (const f of ["LICENSE", "NOTICE", "THIRD_PARTY_LICENSES.md"]) {
 }
 
 // 2. THIRD_PARTY_LICENSES.md content
+import { buildLicense } from "./sync-license.js"
 if (existsSync(join(ROOT, "THIRD_PARTY_LICENSES.md"))) {
   const tpl = readFileSync(join(ROOT, "THIRD_PARTY_LICENSES.md"), "utf8")
+  const expectedTpl = buildLicense()
   req(
-    tpl.includes("digital-go-jp/design-system-example-components-react"),
-    "THIRD_PARTY_LICENSES.md must reference digital-go-jp/design-system-example-components-react"
-  )
-  req(
-    tpl.includes("デジタル庁"),
-    "THIRD_PARTY_LICENSES.md must contain the upstream copyright (デジタル庁)"
-  )
-  req(
-    tpl.includes("MIT License"),
-    "THIRD_PARTY_LICENSES.md must contain the MIT License text"
+    tpl === expectedTpl,
+    "THIRD_PARTY_LICENSES.md is out of date. Run `pnpm license:sync`."
   )
 }
 
