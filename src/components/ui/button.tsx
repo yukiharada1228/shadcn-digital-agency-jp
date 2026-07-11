@@ -11,7 +11,7 @@ const solidStyle =
   "border-4 border-double border-transparent bg-key-900 text-white hover:bg-key-1000 hover:underline active:bg-key-1200 active:underline aria-disabled:bg-solid-gray-300 aria-disabled:text-solid-gray-50"
 
 const buttonVariants = cva(
-  "underline-offset-[calc(3/16*1rem)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-[calc(2/16*1rem)] focus-visible:ring-[calc(2/16*1rem)] focus-visible:ring-yellow-300 aria-disabled:pointer-events-none aria-disabled:forced-colors:border-[GrayText] aria-disabled:forced-colors:text-[GrayText]",
+  "inline-flex items-center justify-center whitespace-nowrap underline-offset-[calc(3/16*1rem)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-[calc(2/16*1rem)] focus-visible:ring-[calc(2/16*1rem)] focus-visible:ring-yellow-300 aria-disabled:pointer-events-none aria-disabled:forced-colors:border-[GrayText] aria-disabled:forced-colors:text-[GrayText]",
   {
     variants: {
       variant: {

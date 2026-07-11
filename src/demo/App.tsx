@@ -13,6 +13,8 @@ import {
 } from "lucide-react"
 import { useMemo, useState } from "react"
 
+import { Example } from "./Example"
+
 import { Blockquote } from "@/components/ui/blockquote"
 import { Button } from "@/components/ui/button"
 import { Divider } from "@/components/ui/divider"
@@ -131,6 +133,7 @@ export function App() {
       </header>
 
       <main className="mx-auto w-[calc(100%_-_2rem)] max-w-[1180px] py-7 max-[560px]:w-[calc(100%_-_20px)] max-[560px]:py-5">
+        <Example />
         <section
           className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-6 pb-6 pt-2 max-[900px]:grid-cols-1"
           aria-labelledby="page-heading"
