@@ -29,6 +29,8 @@ export type InputProps = React.ComponentProps<"input"> &
     isError?: boolean
   }
 
+const isAriaDisabled = (value: unknown) => value === true || value === "true"
+
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { className, readOnly, isError, blockSize = "lg", ...rest } = props
 
@@ -38,7 +40,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       className={cn(inputVariants({ blockSize }), className)}
       aria-invalid={isError || undefined}
       data-size={blockSize}
-      readOnly={props["aria-disabled"] ? true : readOnly}
+      readOnly={isAriaDisabled(props["aria-disabled"]) ? true : readOnly}
       ref={ref}
       {...rest}
     />

@@ -46,4 +46,10 @@ describe("Textarea", () => {
     const textarea = container.querySelector("textarea")
     expect(textarea).toHaveAttribute("readonly")
   })
+
+  it("does not force readOnly when aria-disabled is false", () => {
+    const { container } = render(<Textarea aria-disabled="false" />)
+    const textarea = container.querySelector("textarea")
+    expect(textarea).not.toHaveAttribute("readonly")
+  })
 })

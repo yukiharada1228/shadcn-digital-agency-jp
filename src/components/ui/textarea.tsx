@@ -9,6 +9,8 @@ export type TextareaProps = React.ComponentProps<"textarea"> & {
   isError?: boolean
 }
 
+const isAriaDisabled = (value: unknown) => value === true || value === "true"
+
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, isError, readOnly, ...props }, ref) => {
     return (
@@ -24,7 +26,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           className
         )}
         aria-invalid={isError || undefined}
-        readOnly={props["aria-disabled"] ? true : readOnly}
+        readOnly={isAriaDisabled(props["aria-disabled"]) ? true : readOnly}
         ref={ref}
         {...props}
       />
