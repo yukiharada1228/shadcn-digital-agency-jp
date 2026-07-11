@@ -8,7 +8,8 @@
     "registryItem": "button",
     "parityTests": [
       "tests/parity/button.api.spec.tsx",
-      "tests/a11y/button.a11y.spec.tsx"
+      "tests/a11y/button.a11y.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
     ],
     "status": "ported"
   },
@@ -19,7 +20,11 @@
       "src/registry/items/input.json"
     ],
     "registryItem": "input",
-    "parityTests": ["tests/unit/input.test.tsx"],
+    "parityTests": [
+      "tests/unit/input.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
+    ],
     "status": "ported"
   },
   "Textarea": {
@@ -29,7 +34,11 @@
       "src/registry/items/textarea.json"
     ],
     "registryItem": "textarea",
-    "parityTests": ["tests/unit/textarea.test.tsx"],
+    "parityTests": [
+      "tests/unit/textarea.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
+    ],
     "status": "ported"
   },
   "Label": {
@@ -39,7 +48,10 @@
       "src/registry/items/label.json"
     ],
     "registryItem": "label",
-    "parityTests": ["tests/unit/label.test.tsx"],
+    "parityTests": [
+      "tests/unit/label.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Divider": {
@@ -49,7 +61,10 @@
       "src/registry/items/divider.json"
     ],
     "registryItem": "divider",
-    "parityTests": ["tests/unit/divider.test.tsx"],
+    "parityTests": [
+      "tests/unit/divider.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Link": {
@@ -59,7 +74,10 @@
       "src/registry/items/link.json"
     ],
     "registryItem": "link",
-    "parityTests": ["tests/unit/link.test.tsx"],
+    "parityTests": [
+      "tests/unit/link.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "UtilityLink": {
@@ -69,7 +87,10 @@
       "src/registry/items/utility-link.json"
     ],
     "registryItem": "utility-link",
-    "parityTests": ["tests/unit/utility-link.test.tsx"],
+    "parityTests": [
+      "tests/unit/utility-link.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Heading": {
@@ -79,7 +100,10 @@
       "src/registry/items/heading.json"
     ],
     "registryItem": "heading",
-    "parityTests": ["tests/unit/heading.test.tsx"],
+    "parityTests": [
+      "tests/unit/heading.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "List": {
@@ -89,7 +113,10 @@
       "src/registry/items/list.json"
     ],
     "registryItem": "list",
-    "parityTests": ["tests/unit/list.test.tsx"],
+    "parityTests": [
+      "tests/unit/list.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Blockquote": {
@@ -99,14 +126,20 @@
       "src/registry/items/blockquote.json"
     ],
     "registryItem": "blockquote",
-    "parityTests": ["tests/unit/blockquote.test.tsx"],
+    "parityTests": [
+      "tests/unit/blockquote.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Dl": {
     "upstreamPath": "src/components/Dl",
     "localFiles": ["src/components/ui/dl.tsx", "src/registry/items/dl.json"],
     "registryItem": "dl",
-    "parityTests": ["tests/unit/dl.test.tsx"],
+    "parityTests": [
+      "tests/unit/dl.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Image": {
@@ -116,7 +149,10 @@
       "src/registry/items/image.json"
     ],
     "registryItem": "image",
-    "parityTests": ["tests/unit/image.test.tsx"],
+    "parityTests": [
+      "tests/unit/image.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "Checkbox": {
@@ -128,7 +164,9 @@
     "registryItem": "checkbox",
     "parityTests": [
       "tests/unit/checkbox.test.tsx",
-      "tests/a11y/checkbox.a11y.spec.tsx"
+      "tests/a11y/checkbox.a11y.spec.tsx",
+      "tests/parity/radix.api-dom.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
     ],
     "status": "ported"
   },
@@ -141,7 +179,9 @@
     "registryItem": "radio-group",
     "parityTests": [
       "tests/unit/radio-group.test.tsx",
-      "tests/a11y/radio-group.a11y.spec.tsx"
+      "tests/a11y/radio-group.a11y.spec.tsx",
+      "tests/parity/radix.api-dom.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
     ],
     "status": "ported"
   },
@@ -154,7 +194,9 @@
     "registryItem": "select",
     "parityTests": [
       "tests/unit/select.test.tsx",
-      "tests/a11y/select.a11y.spec.tsx"
+      "tests/a11y/select.a11y.spec.tsx",
+      "tests/parity/radix.api-dom.spec.tsx",
+      "tests/visual/storybook-parity.visual.spec.ts"
     ],
     "status": "ported"
   },
@@ -165,7 +207,10 @@
       "src/registry/items/error-text.json"
     ],
     "registryItem": "error-text",
-    "parityTests": ["tests/unit/error-text.test.tsx"],
+    "parityTests": [
+      "tests/unit/error-text.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "SupportText": {
@@ -175,7 +220,10 @@
       "src/registry/items/support-text.json"
     ],
     "registryItem": "support-text",
-    "parityTests": ["tests/unit/support-text.test.tsx"],
+    "parityTests": [
+      "tests/unit/support-text.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "RequirementBadge": {
@@ -185,7 +233,10 @@
       "src/registry/items/requirement-badge.json"
     ],
     "registryItem": "requirement-badge",
-    "parityTests": ["tests/unit/requirement-badge.test.tsx"],
+    "parityTests": [
+      "tests/unit/requirement-badge.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "StatusBadge": {
@@ -195,7 +246,10 @@
       "src/registry/items/status-badge.json"
     ],
     "registryItem": "status-badge",
-    "parityTests": ["tests/unit/status-badge.test.tsx"],
+    "parityTests": [
+      "tests/unit/status-badge.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   },
   "ChipLabel": {
@@ -205,7 +259,10 @@
       "src/registry/items/chip-label.json"
     ],
     "registryItem": "chip-label",
-    "parityTests": ["tests/unit/chip-label.test.tsx"],
+    "parityTests": [
+      "tests/unit/chip-label.test.tsx",
+      "tests/parity/native.api-dom.spec.tsx"
+    ],
     "status": "ported"
   }
 }

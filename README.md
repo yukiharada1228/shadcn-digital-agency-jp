@@ -20,6 +20,8 @@
 - デジタル庁デザインシステム由来の Tailwind token を `digital-agency.css` として配布します。
 - upstream を Git submodule として read-only 参照し、`components-map.json` と parity test で
   追随します。
+- Radix 化や shadcn/ui 化による API / DOM 差分は
+  [`docs/compatibility.md`](./docs/compatibility.md) に明文化します。
 
 ## インストール / Install
 
@@ -88,6 +90,7 @@ pnpm generate:theme     # トークンから digital-agency.css を生成
 pnpm registry:generate  # registry.json を生成
 pnpm typecheck
 pnpm test
+pnpm test:visual        # Playwright visual regression
 pnpm license:check
 ```
 
