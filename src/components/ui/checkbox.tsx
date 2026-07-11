@@ -41,6 +41,8 @@ const checkboxBoxClass = cn(
   "group-hover/checkbox:group-data-[state=checked]/checkbox:border-key-1100 group-hover/checkbox:group-data-[state=checked]/checkbox:bg-key-1100",
   "group-hover/checkbox:group-data-[state=indeterminate]/checkbox:border-key-1100 group-hover/checkbox:group-data-[state=indeterminate]/checkbox:bg-key-1100",
   "group-data-[error]/checkbox:border-error-1",
+  // checked/indeterminate + error must keep the red border (override the blue checked border)
+  "group-data-[state=checked]/checkbox:group-data-[error]/checkbox:border-error-1 group-data-[state=indeterminate]/checkbox:group-data-[error]/checkbox:border-error-1",
   "group-hover/checkbox:group-data-[error]/checkbox:border-red-1000",
   "group-data-[state=checked]/checkbox:group-data-[error]/checkbox:bg-error-1 group-data-[state=indeterminate]/checkbox:group-data-[error]/checkbox:bg-error-1",
   "group-hover/checkbox:group-data-[state=checked]/checkbox:group-data-[error]/checkbox:bg-red-1000 group-hover/checkbox:group-data-[state=indeterminate]/checkbox:group-data-[error]/checkbox:bg-red-1000",
