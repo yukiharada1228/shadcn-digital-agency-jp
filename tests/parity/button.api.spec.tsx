@@ -15,6 +15,8 @@ describe("Button API parity", () => {
     const button = screen.getByRole("button", { name: "送信" })
     expect(button.className).toContain("bg-key-900")
     expect(button.className).toContain("border-double")
+    expect(button.className).toContain("[color:white]")
+    expect(button.className).toContain("text-oln-16B-100")
   })
 
   it("renders variant=solid-fill size=lg", () => {

@@ -34,6 +34,9 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Demo build
+        run: pnpm demo:build
+
       - name: Unit + a11y tests
         run: pnpm test
 

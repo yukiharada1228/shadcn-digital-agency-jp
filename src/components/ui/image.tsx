@@ -94,7 +94,7 @@ const ImageCaption = React.forwardRef<
       data-slot="image-caption"
       data-style={captionStyle}
       className={cn(
-        "mt-2 [contain:inline-size] py-2 px-6 text-solid-gray-900 text-std-16N-170 data-[style=dashed]:border data-[style=dashed]:border-dashed data-[style=dashed]:border-solid-gray-700 data-[style=solid]:border data-[style=solid]:border-solid-gray-420",
+        "mt-2 [contain:inline-size] py-2 px-6 [color:var(--color-solid-gray-900)] text-std-16N-170 data-[style=dashed]:border data-[style=dashed]:border-dashed data-[style=dashed]:border-solid-gray-700 data-[style=solid]:border data-[style=solid]:border-solid-gray-420",
         className
       )}
       {...props}

@@ -83,6 +83,16 @@ pnpm license:check
 
 `upstream/` 配下は read-only です。本プロジェクトの実装は常に `src/components/ui/` に配置します。
 
+### Demo
+
+ローカルの demo は registry item の生成物ではなく、作業ツリー上の `src/components/ui/*` を直接確認するための画面です。
+
+```bash
+pnpm demo
+```
+
+Vite が起動したら `http://127.0.0.1:5173/` を開いてください。demo 用 CSS は Tailwind とテーマだけを読み込みます。
+
 ## ライセンス / License
 
 本プロジェクトは [MIT License](./LICENSE) です。
