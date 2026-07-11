@@ -10,6 +10,8 @@ export default tseslint.config(
       "upstream",
       "dist",
       "coverage",
+      "playwright-report",
+      "test-results",
       "registry.json",
       "src/styles/digital-agency.css",
       "src/styles/digital-agency.tokens.json",

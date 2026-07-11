@@ -1,6 +1,6 @@
 import * as React from "react"
 import { render, screen } from "@testing-library/react"
-import { axe } from "vitest-axe"
+import { axe } from "../axe"
 
 import { SupportText } from "@/components/ui/support-text"
 

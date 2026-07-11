@@ -22,6 +22,7 @@
     "registryItem": "input",
     "parityTests": [
       "tests/unit/input.test.tsx",
+      "tests/a11y/input.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx",
       "tests/visual/storybook-parity.visual.spec.ts"
     ],
@@ -36,6 +37,7 @@
     "registryItem": "textarea",
     "parityTests": [
       "tests/unit/textarea.test.tsx",
+      "tests/a11y/textarea.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx",
       "tests/visual/storybook-parity.visual.spec.ts"
     ],
@@ -50,6 +52,7 @@
     "registryItem": "label",
     "parityTests": [
       "tests/unit/label.test.tsx",
+      "tests/a11y/label.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -63,6 +66,7 @@
     "registryItem": "divider",
     "parityTests": [
       "tests/unit/divider.test.tsx",
+      "tests/a11y/divider.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -76,6 +80,7 @@
     "registryItem": "link",
     "parityTests": [
       "tests/unit/link.test.tsx",
+      "tests/a11y/link.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -89,6 +94,7 @@
     "registryItem": "utility-link",
     "parityTests": [
       "tests/unit/utility-link.test.tsx",
+      "tests/a11y/utility-link.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -102,6 +108,7 @@
     "registryItem": "heading",
     "parityTests": [
       "tests/unit/heading.test.tsx",
+      "tests/a11y/heading.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -115,6 +122,7 @@
     "registryItem": "list",
     "parityTests": [
       "tests/unit/list.test.tsx",
+      "tests/a11y/list.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -128,6 +136,7 @@
     "registryItem": "blockquote",
     "parityTests": [
       "tests/unit/blockquote.test.tsx",
+      "tests/a11y/blockquote.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -138,6 +147,7 @@
     "registryItem": "dl",
     "parityTests": [
       "tests/unit/dl.test.tsx",
+      "tests/a11y/dl.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -151,6 +161,7 @@
     "registryItem": "image",
     "parityTests": [
       "tests/unit/image.test.tsx",
+      "tests/a11y/image.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -209,6 +220,7 @@
     "registryItem": "error-text",
     "parityTests": [
       "tests/unit/error-text.test.tsx",
+      "tests/a11y/error-text.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -222,6 +234,7 @@
     "registryItem": "support-text",
     "parityTests": [
       "tests/unit/support-text.test.tsx",
+      "tests/a11y/support-text.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -235,6 +248,7 @@
     "registryItem": "requirement-badge",
     "parityTests": [
       "tests/unit/requirement-badge.test.tsx",
+      "tests/a11y/requirement-badge.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -248,6 +262,7 @@
     "registryItem": "status-badge",
     "parityTests": [
       "tests/unit/status-badge.test.tsx",
+      "tests/a11y/status-badge.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -261,6 +276,7 @@
     "registryItem": "chip-label",
     "parityTests": [
       "tests/unit/chip-label.test.tsx",
+      "tests/a11y/chip-label.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"

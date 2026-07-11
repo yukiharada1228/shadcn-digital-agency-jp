@@ -1,11 +1,25 @@
 import { createRoot } from "react-dom/client"
-import type { ReactNode } from "react"
+import { useState, type ReactNode } from "react"
 
+import { Blockquote } from "@/components/ui/blockquote"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ChipLabel } from "@/components/ui/chip-label"
+import { Divider } from "@/components/ui/divider"
+import { Dd, Dl, Dt } from "@/components/ui/dl"
 import { ErrorText } from "@/components/ui/error-text"
+import { Heading, HeadingShoulder, HeadingTitle } from "@/components/ui/heading"
+import {
+  Image,
+  ImageArea,
+  ImageAreaLink,
+  ImageCaption,
+  ImageFigure,
+} from "@/components/ui/image"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Link } from "@/components/ui/link"
+import { List } from "@/components/ui/list"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { RequirementBadge } from "@/components/ui/requirement-badge"
 import {
@@ -15,8 +29,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { StatusBadge } from "@/components/ui/status-badge"
 import { SupportText } from "@/components/ui/support-text"
 import { Textarea } from "@/components/ui/textarea"
+import { UtilityLink } from "@/components/ui/utility-link"
 
 import "./visual.css"
 
@@ -27,6 +43,8 @@ type VisualStory = {
 
 const fieldClass = "flex flex-col items-start gap-2"
 const storyFrameClass = "min-h-screen bg-white p-8"
+const sampleImage =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23e8f1fe'/%3E%3Cpath d='M32 132h256' stroke='%230017c1' stroke-width='8'/%3E%3Ccircle cx='94' cy='78' r='34' fill='%2300118f'/%3E%3Crect x='156' y='52' width='92' height='52' rx='8' fill='%23ffffff' stroke='%230017c1' stroke-width='4'/%3E%3C/svg%3E"
 
 function ButtonAllButtons() {
   return (
@@ -192,6 +210,215 @@ function FormErrorStack() {
   )
 }
 
+function BrowserA11yShowcase() {
+  return (
+    <div className="grid max-w-4xl gap-8">
+      <Heading size="32" hasChip rule="4">
+        <HeadingShoulder data-a11y-contrast>手続き情報</HeadingShoulder>
+        <HeadingTitle data-a11y-contrast level="h1">
+          アクセシビリティ検証
+        </HeadingTitle>
+      </Heading>
+
+      <div className={fieldClass}>
+        <Label data-a11y-contrast htmlFor="a11y-input">
+          氏名<RequirementBadge data-a11y-contrast>※必須</RequirementBadge>
+        </Label>
+        <SupportText data-a11y-contrast id="a11y-input-help">
+          住民票に記載されている氏名を入力してください。
+        </SupportText>
+        <Input
+          aria-describedby="a11y-input-help"
+          className="w-80"
+          data-a11y-contrast
+          defaultValue="デジタル 太郎"
+          id="a11y-input"
+        />
+      </div>
+
+      <div className={fieldClass}>
+        <Label data-a11y-contrast htmlFor="a11y-textarea">
+          補足事項
+        </Label>
+        <Textarea
+          className="h-28 w-[28rem]"
+          data-a11y-contrast
+          defaultValue="申請に関する補足事項を入力します。"
+          id="a11y-textarea"
+        />
+      </div>
+
+      <div className={fieldClass}>
+        <Label data-a11y-contrast htmlFor="a11y-select-trigger">
+          都道府県
+        </Label>
+        <div className="w-80">
+          <Select defaultValue="tokyo">
+            <SelectTrigger data-a11y-contrast id="a11y-select-trigger">
+              <SelectValue placeholder="選択してください" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="tokyo">東京都</SelectItem>
+              <SelectItem value="osaka">大阪府</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend className="text-std-17B-170 text-solid-gray-800">
+          <span data-a11y-contrast>通知設定</span>
+        </legend>
+        <div className="mt-2 flex flex-col gap-2">
+          <div className="flex w-fit items-start gap-1 py-2">
+            <Checkbox aria-label="メールで通知する" defaultChecked />
+            <span
+              className="pt-px text-dns-16N-130 text-solid-gray-800"
+              data-a11y-contrast
+            >
+              メールで通知する
+            </span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend className="text-std-17B-170 text-solid-gray-800">
+          <span data-a11y-contrast>連絡方法</span>
+        </legend>
+        <RadioGroup className="mt-1 gap-0" defaultValue="mail">
+          <div className="flex w-fit items-start gap-1 py-2">
+            <RadioGroupItem aria-label="メール" value="mail" />
+            <span
+              className="pt-px text-dns-16N-130 text-solid-gray-800"
+              data-a11y-contrast
+            >
+              メール
+            </span>
+          </div>
+          <div className="flex w-fit items-start gap-1 py-2">
+            <RadioGroupItem aria-label="郵送" value="post" />
+            <span
+              className="pt-px text-dns-16N-130 text-solid-gray-800"
+              data-a11y-contrast
+            >
+              郵送
+            </span>
+          </div>
+        </RadioGroup>
+      </fieldset>
+
+      <div className="flex flex-wrap items-center gap-4">
+        <Button data-a11y-contrast>申請する</Button>
+        <Link data-a11y-contrast href="/help">
+          ヘルプ
+        </Link>
+        <UtilityLink data-a11y-contrast href="/related">
+          関連情報
+        </UtilityLink>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-4">
+        <StatusBadge data-a11y-contrast>受付済み</StatusBadge>
+        <ChipLabel data-a11y-contrast color="blue" variant="filled-1">
+          ラベル
+        </ChipLabel>
+        <ChipLabel data-a11y-contrast color="green" variant="filled-2">
+          完了
+        </ChipLabel>
+      </div>
+
+      <Divider />
+
+      <List spacing="8">
+        <li data-a11y-contrast>本人確認書類</li>
+        <li data-a11y-contrast>申請書</li>
+      </List>
+
+      <Dl marker="bullet">
+        <Dt data-a11y-contrast>申請期限</Dt>
+        <Dd data-a11y-contrast>2026年7月31日</Dd>
+        <Dt data-a11y-contrast>対象者</Dt>
+        <Dd data-a11y-contrast>日本国内に居住する申請者</Dd>
+      </Dl>
+
+      <Blockquote>
+        <p data-a11y-contrast>
+          すべての人がデジタルサービスを利用できるように設計します。
+        </p>
+      </Blockquote>
+
+      <ImageFigure>
+        <ImageArea bordered>
+          <ImageAreaLink aria-label="サンプル画像の詳細" href="/image">
+            <Image alt="行政手続きのサンプル画像" src={sampleImage} />
+          </ImageAreaLink>
+        </ImageArea>
+        <ImageCaption data-a11y-contrast captionStyle="solid">
+          画像の説明
+        </ImageCaption>
+      </ImageFigure>
+
+      <div className={fieldClass}>
+        <Label data-a11y-contrast htmlFor="a11y-error-input">
+          メールアドレス
+        </Label>
+        <Input
+          aria-describedby="a11y-error"
+          className="w-80"
+          data-a11y-contrast
+          defaultValue="invalid"
+          id="a11y-error-input"
+          isError
+        />
+        <ErrorText data-a11y-contrast id="a11y-error">
+          メールアドレスの形式で入力してください。
+        </ErrorText>
+      </div>
+    </div>
+  )
+}
+
+function BrowserA11yInteractive() {
+  const [status, setStatus] = useState("未実行")
+
+  return (
+    <div className="grid max-w-xl gap-6">
+      <Button
+        data-testid="keyboard-button"
+        onClick={() => setStatus("ボタンを実行しました")}
+      >
+        実行
+      </Button>
+
+      <Checkbox aria-label="メールで通知する" data-testid="keyboard-checkbox" />
+
+      <RadioGroup aria-label="連絡方法" defaultValue="mail">
+        <RadioGroupItem aria-label="メール" value="mail" />
+        <RadioGroupItem aria-label="郵送" value="post" />
+      </RadioGroup>
+
+      <Label htmlFor="keyboard-select-trigger">都道府県</Label>
+      <Select>
+        <SelectTrigger
+          data-testid="keyboard-select"
+          id="keyboard-select-trigger"
+        >
+          <SelectValue placeholder="選択してください" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="tokyo">東京都</SelectItem>
+          <SelectItem value="osaka">大阪府</SelectItem>
+        </SelectContent>
+      </Select>
+
+      <p data-testid="keyboard-status" role="status">
+        {status}
+      </p>
+    </div>
+  )
+}
+
 const visualStories: Record<string, VisualStory> = {
   "component-dads-v2-button--all-buttons": {
     title: "Component/ボタン/AllButtons",
@@ -220,6 +447,14 @@ const visualStories: Record<string, VisualStory> = {
   "component-dads-v2-input--errored": {
     title: "Component/インプットテキスト/Errored",
     node: <FormErrorStack />,
+  },
+  "component-dads-v2-a11y--showcase": {
+    title: "Component/A11y/Showcase",
+    node: <BrowserA11yShowcase />,
+  },
+  "component-dads-v2-a11y--interactive": {
+    title: "Component/A11y/Interactive",
+    node: <BrowserA11yInteractive />,
   },
 }
 

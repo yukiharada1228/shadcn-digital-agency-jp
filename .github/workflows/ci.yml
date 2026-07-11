@@ -40,6 +40,12 @@ jobs:
       - name: Unit + a11y tests
         run: pnpm test
 
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Browser a11y tests
+        run: pnpm test:browser-a11y
+
       - name: Theme is up to date
         run: pnpm check:theme
 

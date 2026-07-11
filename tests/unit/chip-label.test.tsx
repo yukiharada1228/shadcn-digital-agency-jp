@@ -1,6 +1,6 @@
 import * as React from "react"
 import { render } from "@testing-library/react"
-import { axe } from "vitest-axe"
+import { axe } from "../axe"
 
 import { ChipLabel } from "@/components/ui/chip-label"
 
