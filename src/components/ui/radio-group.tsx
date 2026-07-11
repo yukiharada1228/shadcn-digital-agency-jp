@@ -27,7 +27,7 @@ export const radioGroupItemVariants = cva(
 
 const radioGroupItemCircleClass = cn(
   "flex items-center justify-center rounded-full border border-solid-gray-600 bg-white",
-  "size-[calc(5/6*100%)]",
+  "size-[83.333%]",
   "group-hover/radio:border-black",
   "group-focus-visible/radio:outline group-focus-visible/radio:outline-4 group-focus-visible/radio:outline-black group-focus-visible/radio:outline-offset-[calc(2/16*1rem)] group-focus-visible/radio:ring-[calc(2/16*1rem)] group-focus-visible/radio:ring-yellow-300",
   "group-data-[state=checked]/radio:border-key-900 group-hover/radio:group-data-[state=checked]/radio:border-key-1100",
@@ -76,9 +76,9 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <span className={radioGroupItemCircleClass}>
-        <RadioGroupPrimitive.Indicator className="flex size-full items-center justify-center">
-          <span className="size-[calc(5/8*100%)] rounded-full bg-key-900 group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight]" />
-        </RadioGroupPrimitive.Indicator>
+        <RadioGroupPrimitive.Indicator 
+          className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight]" 
+        />
       </span>
     </RadioGroupPrimitive.Item>
   )

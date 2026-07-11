@@ -13,7 +13,6 @@ import {
 } from "lucide-react"
 import { useMemo, useState } from "react"
 
-import { Example } from "./Example"
 
 import { Blockquote } from "@/components/ui/blockquote"
 import { Button } from "@/components/ui/button"
@@ -151,9 +150,8 @@ export function App() {
       </header>
 
       <main className="mx-auto w-[calc(100%_-_2rem)] max-w-[1180px] py-7 max-[560px]:w-[calc(100%_-_20px)] max-[560px]:py-5">
-        <Example />
         <section
-          className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-6 pb-6 pt-2 max-[900px]:grid-cols-1"
+          className="pb-6 pt-2"
           aria-labelledby="page-heading"
         >
           <div className="min-w-0">
@@ -164,23 +162,6 @@ export function App() {
             <p className="mt-5 max-w-[720px] text-base leading-[1.7] text-solid-gray-600">
               申請者情報、必要書類、確認事項を一つの画面で管理します。
             </p>
-          </div>
-          <div className="flex flex-wrap justify-end gap-3 max-[900px]:justify-start">
-            <Button
-              variant="outline"
-              className={iconButtonClass}
-              onClick={saveDraft}
-            >
-              <Save aria-hidden="true" size={18} />
-              下書き保存
-            </Button>
-            <Button
-              className={iconButtonClass}
-              onClick={() => setSubmitted(true)}
-            >
-              <Send aria-hidden="true" size={18} />
-              申請を送信
-            </Button>
           </div>
         </section>
 
@@ -492,6 +473,26 @@ export function App() {
                 「申請を送信」する前に同意のチェックが必要です。
               </SupportText>
             )}
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="lg"
+              className={iconButtonClass}
+              onClick={saveDraft}
+            >
+              <Save aria-hidden="true" size={18} />
+              下書き保存
+            </Button>
+            <Button
+              size="lg"
+              className={iconButtonClass}
+              onClick={() => setSubmitted(true)}
+            >
+              <Send aria-hidden="true" size={18} />
+              申請を送信
+            </Button>
           </div>
         </section>
       </main>

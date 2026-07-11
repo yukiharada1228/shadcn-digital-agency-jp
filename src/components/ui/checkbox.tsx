@@ -33,6 +33,8 @@ const checkboxBoxClass = cn(
   // upstream anchors the check mark top-left (origin-top-left scale for md/lg),
   // so the inner box is not flex-centered.
   "flex size-3/4 rounded-[calc(2/18*100%)] border border-solid-gray-600 bg-white bg-clip-padding",
+  "group-data-[size=sm]/checkbox:border-[calc(2/16*1rem)]",
+  "group-data-[size=md]/checkbox:border-[calc(2/16*1rem)]",
   "group-data-[size=lg]/checkbox:border-[calc(3/16*1rem)]",
   "group-hover/checkbox:border-black",
   "group-focus-visible/checkbox:outline group-focus-visible/checkbox:outline-4 group-focus-visible/checkbox:outline-black group-focus-visible/checkbox:outline-offset-[calc(2/16*1rem)] group-focus-visible/checkbox:ring-[calc(2/16*1rem)] group-focus-visible/checkbox:ring-yellow-300",
