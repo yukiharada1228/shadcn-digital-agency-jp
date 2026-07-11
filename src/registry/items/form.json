@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "type": "registry:block",
+  "title": "Form (Unofficial)",
+  "description": "Unofficial form + status set from the Digital Agency Design System (checkbox, radio-group, select, and form/status helpers). Not an official デジタル庁 product.",
+  "dependencies": [],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/checkbox",
+    "yukiharada1228/shadcn-digital-agency-jp/radio-group",
+    "yukiharada1228/shadcn-digital-agency-jp/select",
+    "yukiharada1228/shadcn-digital-agency-jp/error-text",
+    "yukiharada1228/shadcn-digital-agency-jp/support-text",
+    "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
+    "yukiharada1228/shadcn-digital-agency-jp/status-badge",
+    "yukiharada1228/shadcn-digital-agency-jp/chip-label"
+  ],
+  "files": [
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

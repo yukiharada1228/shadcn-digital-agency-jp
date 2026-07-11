@@ -54,6 +54,57 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox (Unofficial)",
+      "description": "Unofficial Checkbox inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "chip-label",
+      "type": "registry:ui",
+      "title": "ChipLabel (Unofficial)",
+      "description": "Unofficial ChipLabel inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/chip-label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chip-label.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "core",
       "type": "registry:block",
       "title": "Core (Unofficial)",
@@ -123,6 +174,55 @@
           "type": "registry:ui",
           "target": "components/ui/dl.tsx"
         },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "error-text",
+      "type": "registry:ui",
+      "title": "ErrorText (Unofficial)",
+      "description": "Unofficial ErrorText inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/error-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/error-text.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "form",
+      "type": "registry:block",
+      "title": "Form (Unofficial)",
+      "description": "Unofficial form + status set from the Digital Agency Design System (checkbox, radio-group, select, and form/status helpers). Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme",
+        "yukiharada1228/shadcn-digital-agency-jp/checkbox",
+        "yukiharada1228/shadcn-digital-agency-jp/radio-group",
+        "yukiharada1228/shadcn-digital-agency-jp/select",
+        "yukiharada1228/shadcn-digital-agency-jp/error-text",
+        "yukiharada1228/shadcn-digital-agency-jp/support-text",
+        "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
+        "yukiharada1228/shadcn-digital-agency-jp/status-badge",
+        "yukiharada1228/shadcn-digital-agency-jp/chip-label"
+      ],
+      "files": [
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
@@ -271,6 +371,132 @@
           "path": "src/components/ui/list.tsx",
           "type": "registry:ui",
           "target": "components/ui/list.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup (Unofficial)",
+      "description": "Unofficial RadioGroup inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "@radix-ui/react-radio-group",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radio-group.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "requirement-badge",
+      "type": "registry:ui",
+      "title": "RequirementBadge (Unofficial)",
+      "description": "Unofficial RequirementBadge inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/requirement-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/requirement-badge.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select (Unofficial)",
+      "description": "Unofficial Select inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "@radix-ui/react-select",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "status-badge",
+      "type": "registry:ui",
+      "title": "StatusBadge (Unofficial)",
+      "description": "Unofficial StatusBadge inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/status-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/status-badge.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "support-text",
+      "type": "registry:ui",
+      "title": "SupportText (Unofficial)",
+      "description": "Unofficial SupportText inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/support-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/support-text.tsx"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",

@@ -23,6 +23,13 @@
 
 ## インストール / Install
 
+まだ shadcn/ui を初期化していない場合は、先に `shadcn init` を実行してください
+（`components.json` と `lib/utils.ts` の `cn()` が用意され、各コンポーネントが依存します）。
+
+```bash
+pnpm dlx shadcn@latest init
+```
+
 ```bash
 # テーマ（トークン）
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/theme
@@ -32,6 +39,9 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 
 # 基本 UI セット
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
+
+# フォーム系セット（checkbox / radio-group / select / 各種バッジ）
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
 ```
 
 テーマを有効にするため、グローバル CSS（例: `src/index.css` / `app/globals.css`）で

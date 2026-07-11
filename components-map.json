@@ -118,5 +118,94 @@
     "registryItem": "image",
     "parityTests": ["tests/unit/image.test.tsx"],
     "status": "ported"
+  },
+  "Checkbox": {
+    "upstreamPath": "src/components/Checkbox",
+    "localFiles": [
+      "src/components/ui/checkbox.tsx",
+      "src/registry/items/checkbox.json"
+    ],
+    "registryItem": "checkbox",
+    "parityTests": [
+      "tests/unit/checkbox.test.tsx",
+      "tests/a11y/checkbox.a11y.spec.tsx"
+    ],
+    "status": "ported"
+  },
+  "RadioGroup": {
+    "upstreamPath": "src/components/Radio",
+    "localFiles": [
+      "src/components/ui/radio-group.tsx",
+      "src/registry/items/radio-group.json"
+    ],
+    "registryItem": "radio-group",
+    "parityTests": [
+      "tests/unit/radio-group.test.tsx",
+      "tests/a11y/radio-group.a11y.spec.tsx"
+    ],
+    "status": "ported"
+  },
+  "Select": {
+    "upstreamPath": "src/components/Select",
+    "localFiles": [
+      "src/components/ui/select.tsx",
+      "src/registry/items/select.json"
+    ],
+    "registryItem": "select",
+    "parityTests": [
+      "tests/unit/select.test.tsx",
+      "tests/a11y/select.a11y.spec.tsx"
+    ],
+    "status": "ported"
+  },
+  "ErrorText": {
+    "upstreamPath": "src/components/ErrorText",
+    "localFiles": [
+      "src/components/ui/error-text.tsx",
+      "src/registry/items/error-text.json"
+    ],
+    "registryItem": "error-text",
+    "parityTests": ["tests/unit/error-text.test.tsx"],
+    "status": "ported"
+  },
+  "SupportText": {
+    "upstreamPath": "src/components/SupportText",
+    "localFiles": [
+      "src/components/ui/support-text.tsx",
+      "src/registry/items/support-text.json"
+    ],
+    "registryItem": "support-text",
+    "parityTests": ["tests/unit/support-text.test.tsx"],
+    "status": "ported"
+  },
+  "RequirementBadge": {
+    "upstreamPath": "src/components/RequirementBadge",
+    "localFiles": [
+      "src/components/ui/requirement-badge.tsx",
+      "src/registry/items/requirement-badge.json"
+    ],
+    "registryItem": "requirement-badge",
+    "parityTests": ["tests/unit/requirement-badge.test.tsx"],
+    "status": "ported"
+  },
+  "StatusBadge": {
+    "upstreamPath": "src/components/StatusBadge",
+    "localFiles": [
+      "src/components/ui/status-badge.tsx",
+      "src/registry/items/status-badge.json"
+    ],
+    "registryItem": "status-badge",
+    "parityTests": ["tests/unit/status-badge.test.tsx"],
+    "status": "ported"
+  },
+  "ChipLabel": {
+    "upstreamPath": "src/components/ChipLabel",
+    "localFiles": [
+      "src/components/ui/chip-label.tsx",
+      "src/registry/items/chip-label.json"
+    ],
+    "registryItem": "chip-label",
+    "parityTests": ["tests/unit/chip-label.test.tsx"],
+    "status": "ported"
   }
 }
