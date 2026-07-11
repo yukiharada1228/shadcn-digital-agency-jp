@@ -14,10 +14,11 @@ const daFontSizePattern = /^(dsp|std|dns|oln|mono)-\S+$/
 
 const twMerge = extendTailwindMerge((config) => {
   // Wrap existing text-color validators so they reject our font-size tokens
-  const origValidators = config.classGroups["text-color"][0].text
+  const textColorGroup = config.classGroups["text-color"][0] as { text: any[] }
+  const origValidators = textColorGroup.text
   config.classGroups["text-color"] = [
     {
-      text: origValidators.map((v: unknown) => {
+      text: origValidators.map((v) => {
         if (typeof v === "function") {
           return (value: string) => {
             if (daFontSizePattern.test(value)) return false
@@ -30,7 +31,8 @@ const twMerge = extendTailwindMerge((config) => {
   ]
 
   // Register DA font-size tokens in the font-size group
-  config.classGroups["font-size"][0].text.push(daFontSizePattern)
+  const fontSizeGroup = config.classGroups["font-size"][0] as { text: any[] }
+  fontSizeGroup.text.push(daFontSizePattern)
 
   return config
 })
