@@ -13,9 +13,13 @@ import { extendTailwindMerge } from "tailwind-merge"
 const daFontSizePattern = /^(dsp|std|dns|oln|mono)-\S+$/
 
 const twMerge = extendTailwindMerge((config) => {
+  // Extract types directly from the config object to avoid using 'any'
+  type ClassGroup = typeof config.classGroups["text-color"]
+  type ClassDef = ClassGroup[number]
+  type ClassObj = { text: ClassDef[] }
+
   // Wrap existing text-color validators so they reject our font-size tokens
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const textColorGroup = config.classGroups["text-color"][0] as { text: any[] }
+  const textColorGroup = config.classGroups["text-color"][0] as ClassObj
   const origValidators = textColorGroup.text
   config.classGroups["text-color"] = [
     {
@@ -28,13 +32,12 @@ const twMerge = extendTailwindMerge((config) => {
         }
         return v
       }),
-    },
+    } as ClassObj as ClassDef,
   ]
 
   // Register DA font-size tokens in the font-size group
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const fontSizeGroup = config.classGroups["font-size"][0] as { text: any[] }
-  fontSizeGroup.text.push(daFontSizePattern)
+  const fontSizeGroup = config.classGroups["font-size"][0] as ClassObj
+  fontSizeGroup.text.push(((value: string) => daFontSizePattern.test(value)) as ClassDef)
 
   return config
 })
