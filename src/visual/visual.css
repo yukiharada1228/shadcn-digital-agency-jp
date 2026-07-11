@@ -1,0 +1,15 @@
+@import "../demo/demo.css";
+
+:root {
+  background: white;
+  color: #1a1a1c;
+}
+
+body {
+  margin: 0;
+  background: white;
+}
+
+#root {
+  min-height: 100vh;
+}

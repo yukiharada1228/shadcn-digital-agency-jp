@@ -27,6 +27,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:a11y": "vitest run tests/a11y",
+    "test:visual": "playwright test -c playwright.visual.config.ts",
+    "test:visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
     "build": "tsc --noEmit",
     "generate:theme": "tsx scripts/generate-theme.ts",
     "check:theme": "tsx scripts/generate-theme.ts --check",
