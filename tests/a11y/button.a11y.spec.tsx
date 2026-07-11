@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react"
-import { axe } from "vitest-axe"
+import { axe } from "../axe"
 
 import { Button } from "@/components/ui/button"
 

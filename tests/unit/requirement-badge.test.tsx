@@ -1,6 +1,6 @@
 import { createRef } from "react"
 import { render, screen } from "@testing-library/react"
-import { axe } from "vitest-axe"
+import { axe } from "../axe"
 
 import { RequirementBadge } from "@/components/ui/requirement-badge"
 
