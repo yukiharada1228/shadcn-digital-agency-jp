@@ -13,7 +13,6 @@ import {
 } from "lucide-react"
 import { useMemo, useState } from "react"
 
-
 import { Blockquote } from "@/components/ui/blockquote"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -150,10 +149,7 @@ export function App() {
       </header>
 
       <main className="mx-auto w-[calc(100%_-_2rem)] max-w-[1180px] py-7 max-[560px]:w-[calc(100%_-_20px)] max-[560px]:py-5">
-        <section
-          className="pb-6 pt-2"
-          aria-labelledby="page-heading"
-        >
+        <section className="pb-6 pt-2" aria-labelledby="page-heading">
           <div className="min-w-0">
             <Heading size="36" hasChip rule="4" id="page-heading">
               <HeadingShoulder>転入手続き</HeadingShoulder>

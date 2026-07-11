@@ -76,9 +76,7 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <span className={radioGroupItemCircleClass}>
-        <RadioGroupPrimitive.Indicator 
-          className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight]" 
-        />
+        <RadioGroupPrimitive.Indicator className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight]" />
       </span>
     </RadioGroupPrimitive.Item>
   )
