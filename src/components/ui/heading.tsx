@@ -11,7 +11,7 @@ export type HeadingSize =
 export type RuleSize = "8" | "6" | "4" | "2"
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
-export const headingVariants = cva("[color:var(--color-solid-gray-800)]", {
+export const headingVariants = cva("text-solid-gray-800", {
   variants: {
     size: {
       "64": "text-dsp-64B-140 [--shoulder-size:calc(28/16*1rem)] [--shoulder-line-height:1.5] [--shoulder-letter-spacing:0.01em]",
