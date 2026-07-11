@@ -1,0 +1,122 @@
+{
+  "Button": {
+    "upstreamPath": "src/components/Button",
+    "localFiles": [
+      "src/components/ui/button.tsx",
+      "src/registry/items/button.json"
+    ],
+    "registryItem": "button",
+    "parityTests": [
+      "tests/parity/button.api.spec.tsx",
+      "tests/a11y/button.a11y.spec.tsx"
+    ],
+    "status": "ported"
+  },
+  "Input": {
+    "upstreamPath": "src/components/Input",
+    "localFiles": [
+      "src/components/ui/input.tsx",
+      "src/registry/items/input.json"
+    ],
+    "registryItem": "input",
+    "parityTests": ["tests/unit/input.test.tsx"],
+    "status": "ported"
+  },
+  "Textarea": {
+    "upstreamPath": "src/components/Textarea",
+    "localFiles": [
+      "src/components/ui/textarea.tsx",
+      "src/registry/items/textarea.json"
+    ],
+    "registryItem": "textarea",
+    "parityTests": ["tests/unit/textarea.test.tsx"],
+    "status": "ported"
+  },
+  "Label": {
+    "upstreamPath": "src/components/Label",
+    "localFiles": [
+      "src/components/ui/label.tsx",
+      "src/registry/items/label.json"
+    ],
+    "registryItem": "label",
+    "parityTests": ["tests/unit/label.test.tsx"],
+    "status": "ported"
+  },
+  "Divider": {
+    "upstreamPath": "src/components/Divider",
+    "localFiles": [
+      "src/components/ui/divider.tsx",
+      "src/registry/items/divider.json"
+    ],
+    "registryItem": "divider",
+    "parityTests": ["tests/unit/divider.test.tsx"],
+    "status": "ported"
+  },
+  "Link": {
+    "upstreamPath": "src/components/Link",
+    "localFiles": [
+      "src/components/ui/link.tsx",
+      "src/registry/items/link.json"
+    ],
+    "registryItem": "link",
+    "parityTests": ["tests/unit/link.test.tsx"],
+    "status": "ported"
+  },
+  "UtilityLink": {
+    "upstreamPath": "src/components/UtilityLink",
+    "localFiles": [
+      "src/components/ui/utility-link.tsx",
+      "src/registry/items/utility-link.json"
+    ],
+    "registryItem": "utility-link",
+    "parityTests": ["tests/unit/utility-link.test.tsx"],
+    "status": "ported"
+  },
+  "Heading": {
+    "upstreamPath": "src/components/Heading",
+    "localFiles": [
+      "src/components/ui/heading.tsx",
+      "src/registry/items/heading.json"
+    ],
+    "registryItem": "heading",
+    "parityTests": ["tests/unit/heading.test.tsx"],
+    "status": "ported"
+  },
+  "List": {
+    "upstreamPath": "src/components/List",
+    "localFiles": [
+      "src/components/ui/list.tsx",
+      "src/registry/items/list.json"
+    ],
+    "registryItem": "list",
+    "parityTests": ["tests/unit/list.test.tsx"],
+    "status": "ported"
+  },
+  "Blockquote": {
+    "upstreamPath": "src/components/Blockquote",
+    "localFiles": [
+      "src/components/ui/blockquote.tsx",
+      "src/registry/items/blockquote.json"
+    ],
+    "registryItem": "blockquote",
+    "parityTests": ["tests/unit/blockquote.test.tsx"],
+    "status": "ported"
+  },
+  "Dl": {
+    "upstreamPath": "src/components/Dl",
+    "localFiles": ["src/components/ui/dl.tsx", "src/registry/items/dl.json"],
+    "registryItem": "dl",
+    "parityTests": ["tests/unit/dl.test.tsx"],
+    "status": "ported"
+  },
+  "Image": {
+    "upstreamPath": "src/components/Image",
+    "localFiles": [
+      "src/components/ui/image.tsx",
+      "src/registry/items/image.json"
+    ],
+    "registryItem": "image",
+    "parityTests": ["tests/unit/image.test.tsx"],
+    "status": "ported"
+  }
+}

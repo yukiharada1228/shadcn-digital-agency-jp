@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utility-link",
+  "type": "registry:ui",
+  "title": "UtilityLink (Unofficial)",
+  "description": "Unofficial UtilityLink inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["@radix-ui/react-slot"],
+  "registryDependencies": ["theme"],
+  "files": [
+    {
+      "path": "src/components/ui/utility-link.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/utility-link.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

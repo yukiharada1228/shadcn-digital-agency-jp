@@ -1,0 +1,3 @@
+[submodule "upstream/design-system-example-components-react"]
+	path = upstream/design-system-example-components-react
+	url = https://github.com/digital-go-jp/design-system-example-components-react.git

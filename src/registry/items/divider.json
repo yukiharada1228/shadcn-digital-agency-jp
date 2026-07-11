@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "divider",
+  "type": "registry:ui",
+  "title": "Divider (Unofficial)",
+  "description": "Unofficial Divider inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["theme"],
+  "files": [
+    {
+      "path": "src/components/ui/divider.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/divider.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

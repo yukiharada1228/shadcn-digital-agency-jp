@@ -1,0 +1,35 @@
+name: Registry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/registry/**"
+      - "src/components/**"
+      - "src/styles/**"
+      - "scripts/generate-registry.ts"
+
+jobs:
+  build-registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Generate registry.json
+        run: pnpm registry:generate
+
+      - name: Fail if registry.json changed
+        run: git diff --exit-code registry.json

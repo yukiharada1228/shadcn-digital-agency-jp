@@ -1,0 +1,72 @@
+{
+  "name": "shadcn-digital-agency-jp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Unofficial shadcn/ui native components inspired by the Digital Agency Design System.",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "registry",
+    "digital-agency",
+    "design-system",
+    "unofficial",
+    "react",
+    "tailwindcss"
+  ],
+  "license": "MIT",
+  "author": "yukiharada1228",
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:a11y": "vitest run tests/a11y",
+    "build": "tsc --noEmit",
+    "generate:theme": "tsx scripts/generate-theme.ts",
+    "check:theme": "tsx scripts/generate-theme.ts --check",
+    "check:upstream": "tsx scripts/check-upstream.ts",
+    "diff:upstream": "tsx scripts/diff-upstream.ts",
+    "registry:generate": "tsx scripts/generate-registry.ts",
+    "registry:build": "tsx scripts/generate-registry.ts",
+    "registry:test": "tsx scripts/generate-registry.ts --check",
+    "license:check": "tsx scripts/check-license.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@digital-go-jp/design-tokens": "^2.0.1",
+    "@digital-go-jp/tailwind-theme-plugin": "^1.0.0",
+    "@eslint/js": "^9.17.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0",
+    "vitest": "^2.1.8",
+    "vitest-axe": "^0.1.0"
+  }
+}

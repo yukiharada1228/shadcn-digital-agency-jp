@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blockquote",
+  "type": "registry:ui",
+  "title": "Blockquote (Unofficial)",
+  "description": "Unofficial Blockquote inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": [],
+  "registryDependencies": ["theme"],
+  "files": [
+    {
+      "path": "src/components/ui/blockquote.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/blockquote.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

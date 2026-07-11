@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "core",
+  "type": "registry:block",
+  "title": "Core (Unofficial)",
+  "description": "Unofficial lightweight set of basic Digital Agency Design System UI (theme + basic elements). Not an official デジタル庁 product.",
+  "dependencies": [],
+  "registryDependencies": [
+    "theme",
+    "button",
+    "input",
+    "textarea",
+    "label",
+    "divider",
+    "link",
+    "utility-link",
+    "heading",
+    "list",
+    "blockquote",
+    "dl",
+    "image"
+  ],
+  "files": [
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

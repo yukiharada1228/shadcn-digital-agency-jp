@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "type": "registry:theme",
+  "title": "Digital Agency Theme (Unofficial)",
+  "description": "Unofficial theme exposing Digital Agency Design System tokens as Tailwind + shadcn/ui semantic tokens. Not an official デジタル庁 product.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/styles/digital-agency.css",
+      "type": "registry:file",
+      "target": "styles/digital-agency.css"
+    },
+    {
+      "path": "src/styles/digital-agency.tokens.json",
+      "type": "registry:file",
+      "target": "styles/digital-agency.tokens.json"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

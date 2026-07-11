@@ -1,0 +1,357 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "shadcn-digital-agency-jp",
+  "homepage": "https://github.com/yukiharada1228/shadcn-digital-agency-jp",
+  "items": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "blockquote",
+      "type": "registry:ui",
+      "title": "Blockquote (Unofficial)",
+      "description": "Unofficial Blockquote inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/blockquote.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blockquote.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button (Unofficial)",
+      "description": "Unofficial Button inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "core",
+      "type": "registry:block",
+      "title": "Core (Unofficial)",
+      "description": "Unofficial lightweight set of basic Digital Agency Design System UI (theme + basic elements). Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "theme",
+        "button",
+        "input",
+        "textarea",
+        "label",
+        "divider",
+        "link",
+        "utility-link",
+        "heading",
+        "list",
+        "blockquote",
+        "dl",
+        "image"
+      ],
+      "files": [
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Divider (Unofficial)",
+      "description": "Unofficial Divider inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/divider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/divider.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dl",
+      "type": "registry:ui",
+      "title": "Dl (Unofficial)",
+      "description": "Unofficial Dl inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dl.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dl.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "heading",
+      "type": "registry:ui",
+      "title": "Heading (Unofficial)",
+      "description": "Unofficial Heading inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/heading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/heading.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "image",
+      "type": "registry:ui",
+      "title": "Image (Unofficial)",
+      "description": "Unofficial Image inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/image.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input (Unofficial)",
+      "description": "Unofficial Input inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label (Unofficial)",
+      "description": "Unofficial Label inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link (Unofficial)",
+      "description": "Unofficial Link inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/link.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/link.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "list",
+      "type": "registry:ui",
+      "title": "List (Unofficial)",
+      "description": "Unofficial List inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/list.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea (Unofficial)",
+      "description": "Unofficial Textarea inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Digital Agency Theme (Unofficial)",
+      "description": "Unofficial theme exposing Digital Agency Design System tokens as Tailwind + shadcn/ui semantic tokens. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/styles/digital-agency.css",
+          "type": "registry:file",
+          "target": "styles/digital-agency.css"
+        },
+        {
+          "path": "src/styles/digital-agency.tokens.json",
+          "type": "registry:file",
+          "target": "styles/digital-agency.tokens.json"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "utility-link",
+      "type": "registry:ui",
+      "title": "UtilityLink (Unofficial)",
+      "description": "Unofficial UtilityLink inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/utility-link.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/utility-link.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    }
+  ]
+}
