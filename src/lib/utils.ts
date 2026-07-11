@@ -14,7 +14,7 @@ const daFontSizePattern = /^(dsp|std|dns|oln|mono)-\S+$/
 
 const twMerge = extendTailwindMerge((config) => {
   // Extract types directly from the config object to avoid using 'any'
-  type ClassGroup = typeof config.classGroups["text-color"]
+  type ClassGroup = (typeof config.classGroups)["text-color"]
   type ClassDef = ClassGroup[number]
   type ClassObj = { text: ClassDef[] }
 
@@ -37,7 +37,8 @@ const twMerge = extendTailwindMerge((config) => {
 
   // Register DA font-size tokens in the font-size group
   const fontSizeGroup = config.classGroups["font-size"][0] as ClassObj
-  fontSizeGroup.text.push(((value: string) => daFontSizePattern.test(value)) as ClassDef)
+  fontSizeGroup.text.push(((value: string) =>
+    daFontSizePattern.test(value)) as ClassDef)
 
   return config
 })
