@@ -13,12 +13,13 @@ import {
 } from "lucide-react"
 import { useMemo, useState } from "react"
 
-import { Example } from "./Example"
-
 import { Blockquote } from "@/components/ui/blockquote"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import { ChipLabel } from "@/components/ui/chip-label"
 import { Divider } from "@/components/ui/divider"
 import { Dl, Dd, Dt } from "@/components/ui/dl"
+import { ErrorText } from "@/components/ui/error-text"
 import { Heading, HeadingShoulder, HeadingTitle } from "@/components/ui/heading"
 import {
   Image,
@@ -31,6 +32,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link } from "@/components/ui/link"
 import { List } from "@/components/ui/list"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { RequirementBadge } from "@/components/ui/requirement-badge"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { StatusBadge } from "@/components/ui/status-badge"
+import { SupportText } from "@/components/ui/support-text"
 import { Textarea } from "@/components/ui/textarea"
 import { UtilityLink } from "@/components/ui/utility-link"
 
@@ -93,8 +105,12 @@ export function App() {
   const [form, setForm] = useState<FormState>(initialForm)
   const [submitted, setSubmitted] = useState(false)
   const [lastSaved, setLastSaved] = useState("09:42")
+  const [contactMethod, setContactMethod] = useState("email")
+  const [preferredTime, setPreferredTime] = useState("morning")
+  const [agreed, setAgreed] = useState(false)
 
   const completion = useMemo(() => completionFor(form), [form])
+  const agreeError = submitted && !agreed
 
   const handleChange =
     (field: keyof FormState) =>
@@ -133,11 +149,7 @@ export function App() {
       </header>
 
       <main className="mx-auto w-[calc(100%_-_2rem)] max-w-[1180px] py-7 max-[560px]:w-[calc(100%_-_20px)] max-[560px]:py-5">
-        <Example />
-        <section
-          className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-6 pb-6 pt-2 max-[900px]:grid-cols-1"
-          aria-labelledby="page-heading"
-        >
+        <section className="pb-6 pt-2" aria-labelledby="page-heading">
           <div className="min-w-0">
             <Heading size="36" hasChip rule="4" id="page-heading">
               <HeadingShoulder>転入手続き</HeadingShoulder>
@@ -146,23 +158,6 @@ export function App() {
             <p className="mt-5 max-w-[720px] text-base leading-[1.7] text-solid-gray-600">
               申請者情報、必要書類、確認事項を一つの画面で管理します。
             </p>
-          </div>
-          <div className="flex flex-wrap justify-end gap-3 max-[900px]:justify-start">
-            <Button
-              variant="outline"
-              className={iconButtonClass}
-              onClick={saveDraft}
-            >
-              <Save aria-hidden="true" size={18} />
-              下書き保存
-            </Button>
-            <Button
-              className={iconButtonClass}
-              onClick={() => setSubmitted(true)}
-            >
-              <Send aria-hidden="true" size={18} />
-              申請を送信
-            </Button>
           </div>
         </section>
 
@@ -381,6 +376,121 @@ export function App() {
             </Button>
           </section>
         </div>
+
+        <section
+          className={`${panelClass} mt-4`}
+          aria-labelledby="notify-heading"
+        >
+          <div className="mb-5 flex flex-wrap items-center gap-3">
+            <Heading size="24" hasChip id="notify-heading">
+              <HeadingTitle level="h2">通知と確認事項</HeadingTitle>
+            </Heading>
+            <StatusBadge>審査待ち</StatusBadge>
+            <ChipLabel variant="filled-1" color="blue">
+              転入届
+            </ChipLabel>
+            <ChipLabel variant="outlined" color="green">
+              本人確認済み
+            </ChipLabel>
+            <ChipLabel variant="filled-2" color="magenta">
+              優先
+            </ChipLabel>
+          </div>
+
+          <div className="grid grid-cols-2 gap-[18px] max-[900px]:grid-cols-1">
+            <fieldset className="grid gap-2 border-0 p-0">
+              <legend className="mb-1 font-bold">
+                連絡方法
+                <RequirementBadge>必須</RequirementBadge>
+              </legend>
+              <RadioGroup
+                value={contactMethod}
+                onValueChange={setContactMethod}
+                aria-label="連絡方法"
+              >
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="email" id="cm-email" />
+                  <Label htmlFor="cm-email">メール</Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="phone" id="cm-phone" />
+                  <Label htmlFor="cm-phone">電話</Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="post" id="cm-post" />
+                  <Label htmlFor="cm-post">郵送</Label>
+                </div>
+              </RadioGroup>
+              <SupportText>
+                選択した方法で受付結果をお知らせします。
+              </SupportText>
+            </fieldset>
+
+            <div className="grid content-start gap-2">
+              <Label htmlFor="time-slot">
+                希望時間帯
+                <RequirementBadge isOptional>任意</RequirementBadge>
+              </Label>
+              <Select value={preferredTime} onValueChange={setPreferredTime}>
+                <SelectTrigger id="time-slot" className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="morning">午前（9:00-12:00）</SelectItem>
+                  <SelectItem value="afternoon">午後（13:00-17:00）</SelectItem>
+                  <SelectItem value="evening">夕方（17:00-19:00）</SelectItem>
+                </SelectContent>
+              </Select>
+              <SupportText>
+                窓口の混雑状況により前後する場合があります。
+              </SupportText>
+            </div>
+          </div>
+
+          <Divider className="my-6" />
+
+          <div className="grid gap-2">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="agree"
+                checked={agreed}
+                onCheckedChange={(value) => setAgreed(value === true)}
+                isError={agreeError}
+              />
+              <Label htmlFor="agree">
+                入力内容と確認事項に同意します
+                <RequirementBadge>必須</RequirementBadge>
+              </Label>
+            </div>
+            {agreeError ? (
+              <ErrorText>確認事項への同意が必要です。</ErrorText>
+            ) : (
+              <SupportText>
+                「申請を送信」する前に同意のチェックが必要です。
+              </SupportText>
+            )}
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="lg"
+              className={iconButtonClass}
+              onClick={saveDraft}
+            >
+              <Save aria-hidden="true" size={18} />
+              下書き保存
+            </Button>
+            <Button
+              size="lg"
+              className={iconButtonClass}
+              onClick={() => setSubmitted(true)}
+            >
+              <Send aria-hidden="true" size={18} />
+              申請を送信
+            </Button>
+          </div>
+        </section>
       </main>
     </div>
   )
