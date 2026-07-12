@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/checkbox.tsx",
       "type": "registry:ui",
-      "target": "components/ui/checkbox.tsx"
+      "target": "@ui/checkbox.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

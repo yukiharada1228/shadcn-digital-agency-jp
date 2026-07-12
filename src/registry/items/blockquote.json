@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/blockquote.tsx",
       "type": "registry:ui",
-      "target": "components/ui/blockquote.tsx"
+      "target": "@ui/blockquote.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

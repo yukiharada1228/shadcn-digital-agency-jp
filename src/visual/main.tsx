@@ -34,6 +34,7 @@ import { SupportText } from "@/components/ui/support-text"
 import { Textarea } from "@/components/ui/textarea"
 import { UtilityLink } from "@/components/ui/utility-link"
 
+import { sourceParityStories } from "./source-parity"
 import "./visual.css"
 
 type VisualStory = {
@@ -459,9 +460,26 @@ const visualStories: Record<string, VisualStory> = {
 }
 
 function VisualApp() {
-  const id =
-    new URLSearchParams(window.location.search).get("id") ??
-    "component-dads-v2-button--all-buttons"
+  const params = new URLSearchParams(window.location.search)
+  const id = params.get("id") ?? "component-dads-v2-button--all-buttons"
+  const source = params.get("source")
+  const sourceParityStory = sourceParityStories[id]
+
+  if (sourceParityStory && (source === "upstream" || source === "ours")) {
+    return (
+      <main className={storyFrameClass}>
+        <section
+          aria-label={sourceParityStory.title}
+          data-source={source}
+          data-story-id={id}
+          data-testid="visual-story"
+        >
+          {sourceParityStory[source]}
+        </section>
+      </main>
+    )
+  }
+
   const story = visualStories[id]
 
   if (!story) {

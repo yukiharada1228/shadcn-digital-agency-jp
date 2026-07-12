@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/utility-link.tsx",
       "type": "registry:ui",
-      "target": "components/ui/utility-link.tsx"
+      "target": "@ui/utility-link.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

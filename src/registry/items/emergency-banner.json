@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "emergency-banner",
+  "type": "registry:ui",
+  "title": "EmergencyBanner (Unofficial)",
+  "description": "Unofficial EmergencyBanner inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "files": [
+    {
+      "path": "src/components/ui/emergency-banner.tsx",
+      "type": "registry:ui",
+      "target": "@ui/emergency-banner.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

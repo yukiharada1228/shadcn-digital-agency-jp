@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/radio-group.tsx",
       "type": "registry:ui",
-      "target": "components/ui/radio-group.tsx"
+      "target": "@ui/radio-group.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

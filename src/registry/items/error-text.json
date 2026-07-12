@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/error-text.tsx",
       "type": "registry:ui",
-      "target": "components/ui/error-text.tsx"
+      "target": "@ui/error-text.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

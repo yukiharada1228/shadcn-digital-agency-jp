@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/heading.tsx",
       "type": "registry:ui",
-      "target": "components/ui/heading.tsx"
+      "target": "@ui/heading.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

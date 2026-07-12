@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/requirement-badge.tsx",
       "type": "registry:ui",
-      "target": "components/ui/requirement-badge.tsx"
+      "target": "@ui/requirement-badge.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

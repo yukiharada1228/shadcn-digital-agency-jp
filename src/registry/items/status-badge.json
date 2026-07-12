@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/status-badge.tsx",
       "type": "registry:ui",
-      "target": "components/ui/status-badge.tsx"
+      "target": "@ui/status-badge.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

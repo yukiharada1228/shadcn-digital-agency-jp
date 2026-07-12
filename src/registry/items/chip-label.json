@@ -10,12 +10,12 @@
     {
       "path": "src/components/ui/chip-label.tsx",
       "type": "registry:ui",
-      "target": "components/ui/chip-label.tsx"
+      "target": "@ui/chip-label.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
       "type": "registry:file",
-      "target": "THIRD_PARTY_LICENSES.md"
+      "target": "~/THIRD_PARTY_LICENSES.md"
     }
   ]
 }

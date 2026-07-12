@@ -318,7 +318,7 @@ test.describe("Browser accessibility checks", () => {
     await expectVisibleFocusIndicator(select)
     await page.keyboard.press("Enter")
     await expect(page.getByRole("option", { name: "東京都" })).toBeVisible()
-    await page.keyboard.press("ArrowDown")
+    await page.keyboard.press("Home")
     await page.keyboard.press("Enter")
     await expect(select).toContainText("東京都")
   })

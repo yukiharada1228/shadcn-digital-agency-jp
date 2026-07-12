@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumbs",
+  "type": "registry:ui",
+  "title": "Breadcrumbs (Unofficial)",
+  "description": "Unofficial Breadcrumbs inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "files": [
+    {
+      "path": "src/components/ui/breadcrumbs.tsx",
+      "type": "registry:ui",
+      "target": "@ui/breadcrumbs.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}
