@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar (Unofficial)",
+  "description": "Unofficial Calendar inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["react-aria-components", "@internationalized/date"],
+  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "files": [
+    {
+      "path": "src/components/ui/calendar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/calendar.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}
