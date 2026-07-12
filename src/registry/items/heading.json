@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Heading (Unofficial)",
   "description": "Unofficial Heading inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "yukiharada1228/shadcn-digital-agency-jp/theme"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
   "files": [
     {
       "path": "src/components/ui/heading.tsx",

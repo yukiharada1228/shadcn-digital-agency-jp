@@ -9,9 +9,7 @@
     "class-variance-authority",
     "lucide-react"
   ],
-  "registryDependencies": [
-    "yukiharada1228/shadcn-digital-agency-jp/theme"
-  ],
+  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
   "files": [
     {
       "path": "src/components/ui/select.tsx",

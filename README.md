@@ -31,14 +31,38 @@
 
 ## クイックスタート / Quick start
 
-### 1. shadcn/ui を初期化（未実施なら）
+### 1. shadcn/ui を Vite に導入（未実施なら）
+
+まず [shadcn/ui の Vite 公式手順](https://ui.shadcn.com/docs/installation/vite) に沿って、
+Vite project に shadcn/ui を入れてください。pnpm の場合は公式 docs の **Existing Project** 手順が確実です。
 
 ```bash
-# 例: Vite + React の新規プロジェクト
 pnpm create vite@latest my-app --template react-ts
-cd my-app && pnpm install
+cd my-app
+pnpm install
+pnpm add tailwindcss @tailwindcss/vite
+pnpm add -D @types/node
+```
+
+`src/index.css` を Tailwind v4 の import にします。`tsconfig.json` と `tsconfig.app.json` には
+`@/*` alias を追加し、`vite.config.ts` には Tailwind plugin と `@` alias を追加してください。
+設定内容は shadcn/ui 公式 Vite docs の **Add Tailwind CSS** / **Edit tsconfig** /
+**Update vite.config.ts** と同じです。
+
+```css
+@import "tailwindcss";
+```
+
+ここまで設定してから `shadcn init` を実行してください。
+
+```bash
 pnpm dlx shadcn@latest init
 ```
+
+> [!NOTE]
+> 公式 docs には `pnpm dlx shadcn@latest init -t vite` で新規 Vite project を作る手順もあります。
+> ただし pnpm では `ERR_PNPM_ADDING_TO_ROOT` で止まる場合があるため、この README では公式の
+> **Existing Project** 手順を推奨しています。`ignore-workspace-root-check=true` は不要です。
 
 ### 2. コンポーネントを追加
 
