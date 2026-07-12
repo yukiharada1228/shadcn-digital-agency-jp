@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "RequirementBadge (Unofficial)",
   "description": "Unofficial RequirementBadge inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
-  "dependencies": ["class-variance-authority"],
-  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme"
+  ],
   "files": [
     {
       "path": "src/components/ui/requirement-badge.tsx",
       "type": "registry:ui",
-      "target": "components/ui/requirement-badge.tsx"
+      "target": "@ui/requirement-badge.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",

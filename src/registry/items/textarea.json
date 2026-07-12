@@ -5,12 +5,14 @@
   "title": "Textarea (Unofficial)",
   "description": "Unofficial Textarea inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
   "dependencies": [],
-  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme"
+  ],
   "files": [
     {
       "path": "src/components/ui/textarea.tsx",
       "type": "registry:ui",
-      "target": "components/ui/textarea.tsx"
+      "target": "@ui/textarea.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",

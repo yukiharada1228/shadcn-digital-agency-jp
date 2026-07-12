@@ -50,4 +50,20 @@ describe("registry install payload", () => {
       }
     }
   })
+
+  it("uses shadcn target placeholders for ui components", () => {
+    for (const file of readdirSync(itemDir).filter((name) =>
+      name.endsWith(".json")
+    )) {
+      const item = readItem(file.replace(/\.json$/, ""))
+
+      for (const registryFile of item.files ?? []) {
+        expect(registryFile.target).not.toMatch(/^components\/ui\//)
+
+        if (registryFile.type === "registry:ui") {
+          expect(registryFile.target).toMatch(/^@ui\//)
+        }
+      }
+    }
+  })
 })

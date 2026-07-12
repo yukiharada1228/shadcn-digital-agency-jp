@@ -13,7 +13,7 @@
     {
       "path": "src/components/ui/carousel.tsx",
       "type": "registry:ui",
-      "target": "components/ui/carousel.tsx"
+      "target": "@ui/carousel.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",

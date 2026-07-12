@@ -4,13 +4,18 @@
   "type": "registry:ui",
   "title": "Checkbox (Unofficial)",
   "description": "Unofficial Checkbox inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
-  "dependencies": ["@radix-ui/react-checkbox", "class-variance-authority"],
-  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "dependencies": [
+    "@radix-ui/react-checkbox",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme"
+  ],
   "files": [
     {
       "path": "src/components/ui/checkbox.tsx",
       "type": "registry:ui",
-      "target": "components/ui/checkbox.tsx"
+      "target": "@ui/checkbox.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",
