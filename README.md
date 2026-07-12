@@ -14,7 +14,8 @@
 ## 特徴 / What it is
 
 - shadcn registry として `shadcn add` で導入でき、コンポーネントは利用者プロジェクトの
-  `components/ui` に **ソースコードとして** 配置されます（npm package の wrapper ではありません）。
+  `components.json` の `aliases.ui`（既定では `components/ui`）に **ソースコードとして**
+  配置されます（npm package の wrapper ではありません）。
 - `cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` / compound component
   など shadcn/ui の慣習に従います。
 - デジタル庁デザインシステム由来の Tailwind token を `digital-agency.css` として配布します。
@@ -26,8 +27,8 @@
 ## インストール / Install
 
 まだ shadcn/ui を初期化していない場合は、先に `shadcn init` を実行してください
-（`components.json` と alias 設定が用意されます）。`theme` は各コンポーネントが依存する
-`lib/utils.ts` の `cn()` も一緒に追加します。
+（`components.json` と alias 設定が用意されます）。追加の `.npmrc` や workspace root check
+回避設定は不要です。
 
 ```bash
 pnpm dlx shadcn@latest init
@@ -47,6 +48,10 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
 ```
 
+`theme` は `digital-agency.css` / token JSON / `lib/utils.ts` の `cn()` / ライセンス表示を追加し、
+`clsx` と `tailwind-merge` を依存関係としてインストールします。各コンポーネントは `theme` に
+依存しているため、通常は個別コンポーネントを追加するだけでも必要な theme payload が入ります。
+
 テーマを有効にするため、グローバル CSS（例: `src/index.css` / `app/globals.css`）で
 `digital-agency.css` を一度だけ import してください。
 
@@ -57,7 +62,14 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
 
 `core` は軽量な基本 UI の最小セットです（Dialog / DatePicker などの重い component は含みません）。
 
+> [!NOTE]
+> GitHub registry の `#branch` / `#tag` / `#commit` ref は `registryDependencies` へ継承されません。
+> 通常利用では ref なしのコマンドを使ってください。未 merge の branch を検証する場合、依存 item が
+> default branch から解決されることがあります。
+
 ## 使い方 / Usage
+
+以下は shadcn/ui の既定 alias（`@/components/ui`）を使う場合の例です。
 
 ```tsx
 import { Button } from "@/components/ui/button"
