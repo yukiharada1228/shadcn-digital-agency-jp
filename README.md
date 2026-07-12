@@ -26,7 +26,8 @@
 ## インストール / Install
 
 まだ shadcn/ui を初期化していない場合は、先に `shadcn init` を実行してください
-（`components.json` と `lib/utils.ts` の `cn()` が用意され、各コンポーネントが依存します）。
+（`components.json` と alias 設定が用意されます）。`theme` は各コンポーネントが依存する
+`lib/utils.ts` の `cn()` も一緒に追加します。
 
 ```bash
 pnpm dlx shadcn@latest init

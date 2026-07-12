@@ -22,7 +22,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -48,7 +48,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -74,7 +74,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -99,7 +99,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -129,7 +129,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -154,7 +154,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -177,7 +177,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -200,7 +200,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -226,7 +226,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -251,7 +251,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -274,7 +274,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -299,7 +299,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -324,7 +324,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -350,7 +350,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -375,7 +375,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -401,7 +401,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -426,7 +426,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -453,7 +453,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -478,7 +478,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -501,7 +501,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -524,7 +524,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -534,7 +534,10 @@
       "type": "registry:theme",
       "title": "Digital Agency Theme (Unofficial)",
       "description": "Unofficial theme exposing Digital Agency Design System tokens as Tailwind + shadcn/ui semantic tokens. Not an official デジタル庁 product.",
-      "dependencies": [],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -548,9 +551,14 @@
           "target": "styles/digital-agency.tokens.json"
         },
         {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        },
+        {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     },
@@ -575,7 +583,7 @@
         {
           "path": "THIRD_PARTY_LICENSES.md",
           "type": "registry:file",
-          "target": "THIRD_PARTY_LICENSES.md"
+          "target": "~/THIRD_PARTY_LICENSES.md"
         }
       ]
     }
