@@ -1,9 +1,9 @@
 import * as React from "react"
 import { render } from "@testing-library/react"
 
-import { Dl, Dt, Dd } from "@/components/ui/dl"
+import { Dl, Dt, Dd } from "@/components/ui/description-list"
 
-describe("Dl", () => {
+describe("Description list", () => {
   it("renders a dl/dt/dd structure", () => {
     const { container } = render(
       <Dl>

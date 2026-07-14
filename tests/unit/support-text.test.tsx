@@ -17,7 +17,7 @@ describe("SupportText", () => {
     expect(text).toHaveAttribute("data-slot", "support-text")
   })
 
-  it("applies DADS token classes", () => {
+  it("applies Digital Agency token classes", () => {
     render(<SupportText>Tokens</SupportText>)
     const text = screen.getByText("Tokens")
     expect(text).toHaveClass("text-std-16N-170")

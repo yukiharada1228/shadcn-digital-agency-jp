@@ -1,6 +1,6 @@
 # shadcn-digital-agency-jp
 
-デジタル庁デザインシステム（DADS）を参考にした、**非公式**の shadcn/ui ネイティブコンポーネント集です。
+デジタル庁デザインシステムを参考にした、**非公式**の shadcn/ui ネイティブコンポーネント集です。
 `shadcn add` でソースコードごとプロジェクトに取り込めます。
 
 > Unofficial shadcn/ui native components inspired by the Digital Agency Design System.
@@ -16,7 +16,7 @@
 - **shadcn registry** です。`shadcn add <name>` で、コンポーネントが**ソースコードとして**
   あなたのプロジェクト（`components.json` の `aliases.ui`、既定 `components/ui`）に配置されます。
   npm package の wrapper ではないので、コードを自由に読んで・直せます。
-- **DADS のデザイントークン**（色・タイポグラフィ・角丸・影など）を Tailwind CSS v4 用の
+- **デジタル庁デザインシステムのデザイントークン**（色・タイポグラフィ・角丸・影など）を Tailwind CSS v4 用の
   `digital-agency.css` として同梱。`bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
 - shadcn/ui の慣習に準拠：`cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` /
   compound component。
@@ -75,6 +75,9 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 
 # まとめて追加（セットは後述）
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
+
+# 全コンポーネントをまとめて追加
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 ### 3. テーマ CSS を読み込む
@@ -94,7 +97,7 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 
 ### 基本 / Basics
 
-`button` · `link` · `utility-link` · `heading` · `divider` · `list` · `dl` · `blockquote` · `image` · `legend`
+`button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`
 
 ### フォーム / Form
 
@@ -122,14 +125,16 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 
 よく使う組み合わせをまとめて入れられます。
 
-| セット  | 内容                                                                                                                                                              |
-| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `theme` | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                      |
-| `core`  | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。 |
-| `form`  | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                     |
+| セット           | 内容                                                                                                                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                         |
+| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。      |
+| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                        |
+| `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
 
 ```bash
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 > [!NOTE]
@@ -184,7 +189,8 @@ pnpm license:check      # 著作権表示 / attribution の検証
 
 ### Demo
 
-作業ツリー上の `src/components/ui/*` をブラウザで確認する画面です。
+作業ツリー上の `src/components/ui/*` をブラウザで確認する画面です。内容は registry block の
+`all-components` と同じで、`shadcn add` 後の消費者プロジェクトと同じ `@/components/ui/*` import で動きます。
 
 ```bash
 pnpm demo   # http://127.0.0.1:5173/

@@ -214,7 +214,7 @@ import {
   DialogScrollArea,
   useDialog,
 } from "@/components/ui/dialog"
-import { Dd, Dl, Dt } from "@/components/ui/dl"
+import { Dd, Dl, Dt } from "@/components/ui/description-list"
 import {
   Drawer,
   DrawerBody,
@@ -2361,7 +2361,7 @@ export const sourceParityStories = {
     ours: <OursDividerFixture />,
   },
   "source-parity-dl": {
-    title: "Source parity/Dl",
+    title: "Source parity/Description list",
     upstream: <UpstreamDlFixture />,
     ours: <OursDlFixture />,
   },

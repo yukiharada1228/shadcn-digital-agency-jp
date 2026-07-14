@@ -1,0 +1,3 @@
+/* Global styles for local app and test entrypoints. */
+@import "tailwindcss";
+@import "@/styles/digital-agency.css";

@@ -28,6 +28,72 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "all-components",
+      "type": "registry:block",
+      "title": "All Components (Unofficial)",
+      "description": "Unofficial registry block that installs every component and a full-page usage demo. Not an official デジタル庁 product.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme",
+        "yukiharada1228/shadcn-digital-agency-jp/accordion",
+        "yukiharada1228/shadcn-digital-agency-jp/blockquote",
+        "yukiharada1228/shadcn-digital-agency-jp/breadcrumbs",
+        "yukiharada1228/shadcn-digital-agency-jp/button",
+        "yukiharada1228/shadcn-digital-agency-jp/calendar",
+        "yukiharada1228/shadcn-digital-agency-jp/carousel",
+        "yukiharada1228/shadcn-digital-agency-jp/checkbox",
+        "yukiharada1228/shadcn-digital-agency-jp/chip-label",
+        "yukiharada1228/shadcn-digital-agency-jp/date-picker",
+        "yukiharada1228/shadcn-digital-agency-jp/dialog",
+        "yukiharada1228/shadcn-digital-agency-jp/disclosure",
+        "yukiharada1228/shadcn-digital-agency-jp/divider",
+        "yukiharada1228/shadcn-digital-agency-jp/description-list",
+        "yukiharada1228/shadcn-digital-agency-jp/drawer",
+        "yukiharada1228/shadcn-digital-agency-jp/emergency-banner",
+        "yukiharada1228/shadcn-digital-agency-jp/error-text",
+        "yukiharada1228/shadcn-digital-agency-jp/file-upload",
+        "yukiharada1228/shadcn-digital-agency-jp/hamburger-menu-button",
+        "yukiharada1228/shadcn-digital-agency-jp/heading",
+        "yukiharada1228/shadcn-digital-agency-jp/horizontal-menu",
+        "yukiharada1228/shadcn-digital-agency-jp/image",
+        "yukiharada1228/shadcn-digital-agency-jp/input",
+        "yukiharada1228/shadcn-digital-agency-jp/label",
+        "yukiharada1228/shadcn-digital-agency-jp/language-selector",
+        "yukiharada1228/shadcn-digital-agency-jp/legend",
+        "yukiharada1228/shadcn-digital-agency-jp/link",
+        "yukiharada1228/shadcn-digital-agency-jp/list",
+        "yukiharada1228/shadcn-digital-agency-jp/menu-list",
+        "yukiharada1228/shadcn-digital-agency-jp/menu-list-box",
+        "yukiharada1228/shadcn-digital-agency-jp/notification-banner",
+        "yukiharada1228/shadcn-digital-agency-jp/progress-indicator",
+        "yukiharada1228/shadcn-digital-agency-jp/radio-group",
+        "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
+        "yukiharada1228/shadcn-digital-agency-jp/select",
+        "yukiharada1228/shadcn-digital-agency-jp/separated-date-picker",
+        "yukiharada1228/shadcn-digital-agency-jp/status-badge",
+        "yukiharada1228/shadcn-digital-agency-jp/support-text",
+        "yukiharada1228/shadcn-digital-agency-jp/table",
+        "yukiharada1228/shadcn-digital-agency-jp/tabs",
+        "yukiharada1228/shadcn-digital-agency-jp/textarea",
+        "yukiharada1228/shadcn-digital-agency-jp/utility-link"
+      ],
+      "files": [
+        {
+          "path": "src/demo/App.tsx",
+          "type": "registry:component",
+          "target": "@/components/digital-agency-all-components.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "~/THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "blockquote",
       "type": "registry:ui",
       "title": "Blockquote (Unofficial)",
@@ -221,7 +287,7 @@
         "yukiharada1228/shadcn-digital-agency-jp/heading",
         "yukiharada1228/shadcn-digital-agency-jp/list",
         "yukiharada1228/shadcn-digital-agency-jp/blockquote",
-        "yukiharada1228/shadcn-digital-agency-jp/dl",
+        "yukiharada1228/shadcn-digital-agency-jp/description-list",
         "yukiharada1228/shadcn-digital-agency-jp/image"
       ],
       "files": [
@@ -247,6 +313,29 @@
           "path": "src/components/ui/date-picker.tsx",
           "type": "registry:ui",
           "target": "@ui/date-picker.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "~/THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "Description List (Unofficial)",
+      "description": "Unofficial description list inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/description-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/description-list.tsx"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",
@@ -322,29 +411,6 @@
           "path": "src/components/ui/divider.tsx",
           "type": "registry:ui",
           "target": "@ui/divider.tsx"
-        },
-        {
-          "path": "THIRD_PARTY_LICENSES.md",
-          "type": "registry:file",
-          "target": "~/THIRD_PARTY_LICENSES.md"
-        }
-      ]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "dl",
-      "type": "registry:ui",
-      "title": "Dl (Unofficial)",
-      "description": "Unofficial Dl inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
-      "dependencies": [],
-      "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme"
-      ],
-      "files": [
-        {
-          "path": "src/components/ui/dl.tsx",
-          "type": "registry:ui",
-          "target": "@ui/dl.tsx"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",

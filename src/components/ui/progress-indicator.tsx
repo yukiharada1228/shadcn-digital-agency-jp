@@ -9,18 +9,18 @@ export type ProgressIndicatorType = "stacked" | "inlined" | "stacked-underlay"
 export type ProgressIndicatorSize = "lg" | "sm"
 
 const progressIndicatorKeyframes = `
-@keyframes dads-spinner-rotate {
+@keyframes digital-agency-spinner-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-@keyframes dads-spinner-group-rotate {
+@keyframes digital-agency-spinner-group-rotate {
   0% { transform: rotate(0deg); }
   30% { transform: rotate(135deg); }
   100% { transform: rotate(180deg); }
 }
 
-@keyframes dads-spinner-bar-rotate {
+@keyframes digital-agency-spinner-bar-rotate {
   0% { transform: rotate(0deg); }
   4% { transform: rotate(0deg); }
   30% {
@@ -30,13 +30,13 @@ const progressIndicatorKeyframes = `
   100% { transform: rotate(540deg); }
 }
 
-@keyframes dads-spinner-bar-dash {
+@keyframes digital-agency-spinner-bar-dash {
   0% { stroke-dasharray: 8 92; stroke-dashoffset: 4; }
   30% { stroke-dasharray: 80 20; stroke-dashoffset: 40; }
   100% { stroke-dasharray: 8 92; stroke-dashoffset: 4; }
 }
 
-@keyframes dads-linear-rotate {
+@keyframes digital-agency-linear-rotate {
   0% { stroke-dashoffset: 100; }
   100% { stroke-dashoffset: -100; }
 }
@@ -111,17 +111,17 @@ ProgressIndicator.displayName = "ProgressIndicator"
 // --- Spinner ---
 
 const spinnerBarAnimationClass = `
-  group-data-[indeterminate]/progress-indicator:[animation:dads-spinner-bar-rotate_2.5s_cubic-bezier(0.4,0,0.3,1)_infinite,dads-spinner-bar-dash_2.5s_cubic-bezier(0.4,0,0.3,1)_infinite]
+  group-data-[indeterminate]/progress-indicator:[animation:digital-agency-spinner-bar-rotate_2.5s_cubic-bezier(0.4,0,0.3,1)_infinite,digital-agency-spinner-bar-dash_2.5s_cubic-bezier(0.4,0,0.3,1)_infinite]
   motion-reduce:![animation:none]
 `
 
 const spinnerOuterGroupAnimationClass = `
-  group-data-[indeterminate]/progress-indicator:[animation:dads-spinner-rotate_13s_linear_infinite]
+  group-data-[indeterminate]/progress-indicator:[animation:digital-agency-spinner-rotate_13s_linear_infinite]
   motion-reduce:![animation:none]
 `
 
 const spinnerInnerGroupAnimationClass = `
-  group-data-[indeterminate]/progress-indicator:[animation:dads-spinner-group-rotate_2.5s_linear_infinite]
+  group-data-[indeterminate]/progress-indicator:[animation:digital-agency-spinner-group-rotate_2.5s_linear_infinite]
   motion-reduce:![animation:none]
 `
 
@@ -202,7 +202,7 @@ ProgressIndicatorSpinner.displayName = "ProgressIndicatorSpinner"
 const linearBarClass = `
   [stroke-dasharray:100]
   group-data-[indeterminate]/progress-indicator:[stroke-dasharray:35_65]
-  group-data-[indeterminate]/progress-indicator:[animation:dads-linear-rotate_4s_linear_infinite]
+  group-data-[indeterminate]/progress-indicator:[animation:digital-agency-linear-rotate_4s_linear_infinite]
   motion-reduce:![animation:none]
 `
 

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 
 import { Blockquote } from "@/components/ui/blockquote"
 import { ChipLabel } from "@/components/ui/chip-label"
-import { Dd, Dl, Dt } from "@/components/ui/dl"
+import { Dd, Dl, Dt } from "@/components/ui/description-list"
 import { Divider } from "@/components/ui/divider"
 import { ErrorText } from "@/components/ui/error-text"
 import { Heading, HeadingShoulder, HeadingTitle } from "@/components/ui/heading"
@@ -104,7 +104,7 @@ describe("Native component API/DOM parity", () => {
     ).toHaveLength(2)
   })
 
-  it("Heading, List, Dl, Divider, and Blockquote keep semantic wrappers", () => {
+  it("Heading, List, Description list, Divider, and Blockquote keep semantic wrappers", () => {
     const { container } = render(
       <>
         <Heading hasChip rule="4" size="24">

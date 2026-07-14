@@ -141,13 +141,16 @@
     ],
     "status": "ported"
   },
-  "Dl": {
+  "DescriptionList": {
     "upstreamPath": "src/components/Dl",
-    "localFiles": ["src/components/ui/dl.tsx", "src/registry/items/dl.json"],
-    "registryItem": "dl",
+    "localFiles": [
+      "src/components/ui/description-list.tsx",
+      "src/registry/items/description-list.json"
+    ],
+    "registryItem": "description-list",
     "parityTests": [
-      "tests/unit/dl.test.tsx",
-      "tests/a11y/dl.a11y.spec.tsx",
+      "tests/unit/description-list.test.tsx",
+      "tests/a11y/description-list.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
@@ -208,6 +211,21 @@
       "tests/a11y/select.a11y.spec.tsx",
       "tests/parity/radix.api-dom.spec.tsx",
       "tests/visual/storybook-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Calendar": {
+    "upstreamPath": "src/components/Calendar",
+    "localFiles": [
+      "src/components/ui/calendar.tsx",
+      "src/registry/items/calendar.json"
+    ],
+    "registryItem": "calendar",
+    "parityTests": [
+      "tests/unit/calendar.test.tsx",
+      "tests/a11y/calendar.a11y.spec.tsx",
+      "tests/parity/calendar.api-dom.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"
   },
