@@ -52,6 +52,14 @@ visual props `size`, `isError`, and `aria-disabled`, but the upstream direct
 `ImageFigure`, `ImageArea`, `ImageAreaLink`, and `ImageCaption` for the upstream
 figure structure.
 
+`Calendar` is based on the upstream Storybook composition rather than an
+upstream exported component. Upstream composes React Aria calendar primitives
+directly inside `Calendar.stories.tsx`; this project exposes shadcn-style
+wrappers for those primitives. `CalendarButton` and `CalendarHeading` are local
+wrapper exports so registry demos can compose calendar navigation without
+importing `react-aria-components` directly. The visual contract remains the
+upstream grid, header, and cell token classes.
+
 ## Test Requirements
 
 For every ported component, `components-map.json` must point to at least one

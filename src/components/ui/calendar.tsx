@@ -5,12 +5,14 @@
 
 import * as React from "react"
 import {
+  Button as AriaButton,
   Calendar as AriaCalendar,
   CalendarCell as AriaCalendarCell,
   CalendarGrid as AriaCalendarGrid,
   CalendarGridBody as AriaCalendarGridBody,
   CalendarGridHeader as AriaCalendarGridHeader,
   CalendarHeaderCell as AriaCalendarHeaderCell,
+  Heading as AriaHeading,
 } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
@@ -27,6 +29,32 @@ const Calendar = React.forwardRef<
   />
 ))
 Calendar.displayName = "Calendar"
+
+const CalendarButton = React.forwardRef<
+  React.ElementRef<typeof AriaButton>,
+  React.ComponentPropsWithoutRef<typeof AriaButton>
+>(({ className, ...props }, ref) => (
+  <AriaButton
+    ref={ref}
+    data-slot="calendar-button"
+    className={cn("rounded-4 px-2 py-1 hover:bg-solid-gray-50", className)}
+    {...props}
+  />
+))
+CalendarButton.displayName = "CalendarButton"
+
+const CalendarHeading = React.forwardRef<
+  React.ElementRef<typeof AriaHeading>,
+  React.ComponentPropsWithoutRef<typeof AriaHeading>
+>(({ className, ...props }, ref) => (
+  <AriaHeading
+    ref={ref}
+    data-slot="calendar-heading"
+    className={cn("font-bold", className)}
+    {...props}
+  />
+))
+CalendarHeading.displayName = "CalendarHeading"
 
 const CalendarGrid = React.forwardRef<
   React.ElementRef<typeof AriaCalendarGrid>,
@@ -98,6 +126,8 @@ CalendarCell.displayName = "CalendarCell"
 
 export {
   Calendar,
+  CalendarButton,
+  CalendarHeading,
   CalendarGrid,
   CalendarGridHeader,
   CalendarHeaderCell,

@@ -211,6 +211,21 @@
     ],
     "status": "ported"
   },
+  "Calendar": {
+    "upstreamPath": "src/components/Calendar",
+    "localFiles": [
+      "src/components/ui/calendar.tsx",
+      "src/registry/items/calendar.json"
+    ],
+    "registryItem": "calendar",
+    "parityTests": [
+      "tests/unit/calendar.test.tsx",
+      "tests/a11y/calendar.a11y.spec.tsx",
+      "tests/parity/calendar.api-dom.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
   "ErrorText": {
     "upstreamPath": "src/components/ErrorText",
     "localFiles": [

@@ -1,20 +1,21 @@
 import * as React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { parseDate } from "@internationalized/date"
-import type { DateValue } from "react-aria-components"
 
 import {
   Calendar,
+  CalendarButton,
   CalendarCell,
   CalendarGrid,
   CalendarGridBody,
   CalendarGridHeader,
+  CalendarHeading,
   CalendarHeaderCell,
 } from "@/components/ui/calendar"
 
 function renderCalendar(
   props: React.ComponentProps<typeof Calendar> = {},
-  onChange?: (value: DateValue | readonly DateValue[]) => void
+  onChange?: NonNullable<React.ComponentProps<typeof Calendar>["onChange"]>
 ) {
   return render(
     <Calendar
@@ -93,6 +94,30 @@ describe("Calendar", () => {
     ).toBeInTheDocument()
     expect(
       container.querySelector('[data-slot="calendar-cell"]')
+    ).toBeInTheDocument()
+  })
+
+  it("renders navigation button and heading parts with data-slot", () => {
+    const { container } = render(
+      <Calendar aria-label="カレンダー" value={parseDate("2025-02-18")}>
+        <header>
+          <CalendarButton slot="previous">前へ</CalendarButton>
+          <CalendarHeading />
+          <CalendarButton slot="next">次へ</CalendarButton>
+        </header>
+        <CalendarGrid>
+          <CalendarGridBody>
+            {(date) => <CalendarCell date={date} />}
+          </CalendarGridBody>
+        </CalendarGrid>
+      </Calendar>
+    )
+
+    expect(
+      container.querySelectorAll('[data-slot="calendar-button"]')
+    ).toHaveLength(2)
+    expect(
+      container.querySelector('[data-slot="calendar-heading"]')
     ).toBeInTheDocument()
   })
 
