@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { ChipLabel } from "@/components/ui/chip-label"
 import { Divider } from "@/components/ui/divider"
-import { Dd, Dl, Dt } from "@/components/ui/dl"
+import { Dd, Dl, Dt } from "@/components/ui/description-list"
 import { ErrorText } from "@/components/ui/error-text"
 import { Heading, HeadingShoulder, HeadingTitle } from "@/components/ui/heading"
 import {

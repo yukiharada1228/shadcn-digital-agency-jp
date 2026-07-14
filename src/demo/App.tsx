@@ -58,7 +58,7 @@ import {
   DisclosureSummary,
 } from "@/components/ui/disclosure"
 import { Divider } from "@/components/ui/divider"
-import { Dd, Dl, Dt } from "@/components/ui/dl"
+import { Dd, Dl, Dt } from "@/components/ui/description-list"
 import {
   Drawer,
   DrawerBody,
@@ -710,7 +710,7 @@ export default function App() {
               </Heading>
             </div>
 
-            {/* List / Dl / Blockquote */}
+            {/* List / Description list / Blockquote */}
             <div className="grid gap-6 md:grid-cols-3">
               <div>
                 <p className="mb-2 font-bold">List</p>
@@ -721,7 +721,7 @@ export default function App() {
                 </List>
               </div>
               <div>
-                <p className="mb-2 font-bold">Dl</p>
+                <p className="mb-2 font-bold">Description list</p>
                 <Dl marker="bullet">
                   <Dt>受付窓口</Dt>
                   <Dd className="text-solid-gray-600">住民記録係</Dd>

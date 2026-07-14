@@ -49,7 +49,7 @@
         "yukiharada1228/shadcn-digital-agency-jp/dialog",
         "yukiharada1228/shadcn-digital-agency-jp/disclosure",
         "yukiharada1228/shadcn-digital-agency-jp/divider",
-        "yukiharada1228/shadcn-digital-agency-jp/dl",
+        "yukiharada1228/shadcn-digital-agency-jp/description-list",
         "yukiharada1228/shadcn-digital-agency-jp/drawer",
         "yukiharada1228/shadcn-digital-agency-jp/emergency-banner",
         "yukiharada1228/shadcn-digital-agency-jp/error-text",
@@ -287,7 +287,7 @@
         "yukiharada1228/shadcn-digital-agency-jp/heading",
         "yukiharada1228/shadcn-digital-agency-jp/list",
         "yukiharada1228/shadcn-digital-agency-jp/blockquote",
-        "yukiharada1228/shadcn-digital-agency-jp/dl",
+        "yukiharada1228/shadcn-digital-agency-jp/description-list",
         "yukiharada1228/shadcn-digital-agency-jp/image"
       ],
       "files": [
@@ -313,6 +313,29 @@
           "path": "src/components/ui/date-picker.tsx",
           "type": "registry:ui",
           "target": "@ui/date-picker.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "~/THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "Description List (Unofficial)",
+      "description": "Unofficial description list inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/description-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/description-list.tsx"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",
@@ -388,29 +411,6 @@
           "path": "src/components/ui/divider.tsx",
           "type": "registry:ui",
           "target": "@ui/divider.tsx"
-        },
-        {
-          "path": "THIRD_PARTY_LICENSES.md",
-          "type": "registry:file",
-          "target": "~/THIRD_PARTY_LICENSES.md"
-        }
-      ]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "dl",
-      "type": "registry:ui",
-      "title": "Dl (Unofficial)",
-      "description": "Unofficial Dl inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
-      "dependencies": [],
-      "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme"
-      ],
-      "files": [
-        {
-          "path": "src/components/ui/dl.tsx",
-          "type": "registry:ui",
-          "target": "@ui/dl.tsx"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",

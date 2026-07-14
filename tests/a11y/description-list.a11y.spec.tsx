@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react"
 import { axe } from "../axe"
 
-import { Dd, Dl, Dt } from "@/components/ui/dl"
+import { Dd, Dl, Dt } from "@/components/ui/description-list"
 
-describe("Dl accessibility", () => {
+describe("Description list accessibility", () => {
   it("has no axe violations", async () => {
     const { container } = render(
       <Dl marker="bullet">

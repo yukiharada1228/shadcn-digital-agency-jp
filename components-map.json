@@ -141,13 +141,16 @@
     ],
     "status": "ported"
   },
-  "Dl": {
+  "DescriptionList": {
     "upstreamPath": "src/components/Dl",
-    "localFiles": ["src/components/ui/dl.tsx", "src/registry/items/dl.json"],
-    "registryItem": "dl",
+    "localFiles": [
+      "src/components/ui/description-list.tsx",
+      "src/registry/items/description-list.json"
+    ],
+    "registryItem": "description-list",
     "parityTests": [
-      "tests/unit/dl.test.tsx",
-      "tests/a11y/dl.a11y.spec.tsx",
+      "tests/unit/description-list.test.tsx",
+      "tests/a11y/description-list.a11y.spec.tsx",
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"

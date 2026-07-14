@@ -97,7 +97,7 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-component
 
 ### 基本 / Basics
 
-`button` · `link` · `utility-link` · `heading` · `divider` · `list` · `dl` · `blockquote` · `image` · `legend`
+`button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`
 
 ### フォーム / Form
 
@@ -128,7 +128,7 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-component
 | セット           | 内容                                                                                                                                                                                 |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                         |
-| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。                    |
+| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。      |
 | `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                        |
 | `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
 
