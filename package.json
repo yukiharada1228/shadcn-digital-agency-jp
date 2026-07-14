@@ -1,6 +1,6 @@
 {
   "name": "shadcn-digital-agency-jp",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Unofficial shadcn/ui native components inspired by the Digital Agency Design System.",
   "keywords": [
@@ -84,7 +84,7 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.19.0",
     "vite": "^7.3.6",
-    "vitest": "^2.1.8",
+    "vitest": "^3.2.7",
     "vitest-axe": "^0.1.0"
   }
 }
