@@ -53,7 +53,7 @@
     {
       "path": "src/demo/App.tsx",
       "type": "registry:component",
-      "target": "@/components/dads-all-components.tsx"
+      "target": "@/components/digital-agency-all-components.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",

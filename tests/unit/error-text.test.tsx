@@ -17,7 +17,7 @@ describe("ErrorText", () => {
     expect(el).toHaveAttribute("data-slot", "error-text")
   })
 
-  it("applies the DADS token classes", () => {
+  it("applies the Digital Agency token classes", () => {
     render(<ErrorText>Error</ErrorText>)
     expect(screen.getByText("Error")).toHaveClass(
       "text-dns-16N-130",

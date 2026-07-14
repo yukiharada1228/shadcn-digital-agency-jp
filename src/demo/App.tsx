@@ -644,7 +644,9 @@ export default function App() {
         <div>
           <Heading size="36" hasChip rule="4">
             <HeadingShoulder>全 41 コンポーネント</HeadingShoulder>
-            <HeadingTitle level="h1">DADS コンポーネント サンプル</HeadingTitle>
+            <HeadingTitle level="h1">
+              デジタル庁デザインシステム風コンポーネント サンプル
+            </HeadingTitle>
           </Heading>
           <p className="mt-4 max-w-[720px] leading-[1.8] text-solid-gray-600">
             <code>shadcn-digital-agency-jp</code> で提供される全コンポーネントを

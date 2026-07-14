@@ -1,6 +1,6 @@
 # shadcn-digital-agency-jp
 
-デジタル庁デザインシステム（DADS）を参考にした、**非公式**の shadcn/ui ネイティブコンポーネント集です。
+デジタル庁デザインシステムを参考にした、**非公式**の shadcn/ui ネイティブコンポーネント集です。
 `shadcn add` でソースコードごとプロジェクトに取り込めます。
 
 > Unofficial shadcn/ui native components inspired by the Digital Agency Design System.
@@ -16,7 +16,7 @@
 - **shadcn registry** です。`shadcn add <name>` で、コンポーネントが**ソースコードとして**
   あなたのプロジェクト（`components.json` の `aliases.ui`、既定 `components/ui`）に配置されます。
   npm package の wrapper ではないので、コードを自由に読んで・直せます。
-- **DADS のデザイントークン**（色・タイポグラフィ・角丸・影など）を Tailwind CSS v4 用の
+- **デジタル庁デザインシステムのデザイントークン**（色・タイポグラフィ・角丸・影など）を Tailwind CSS v4 用の
   `digital-agency.css` として同梱。`bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
 - shadcn/ui の慣習に準拠：`cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` /
   compound component。
@@ -125,12 +125,12 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-component
 
 よく使う組み合わせをまとめて入れられます。
 
-| セット           | 内容                                                                                                                                                                       |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                               |
-| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。          |
-| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                              |
-| `all-components` | 全コンポーネントと確認用画面（`components/dads-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
+| セット           | 内容                                                                                                                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                         |
+| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。                    |
+| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                        |
+| `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
 
 ```bash
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
