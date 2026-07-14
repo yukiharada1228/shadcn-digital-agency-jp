@@ -1,9 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "showcase",
+  "name": "all-components",
   "type": "registry:block",
-  "title": "Component Showcase (Unofficial)",
-  "description": "Unofficial full-page showcase using the registry components as they are installed by shadcn add. Not an official デジタル庁 product.",
+  "title": "All Components (Unofficial)",
+  "description": "Unofficial registry block that installs every component and a full-page usage demo. Not an official デジタル庁 product.",
   "dependencies": ["lucide-react"],
   "registryDependencies": [
     "yukiharada1228/shadcn-digital-agency-jp/theme",
@@ -53,7 +53,7 @@
     {
       "path": "src/demo/App.tsx",
       "type": "registry:component",
-      "target": "@/components/dads-showcase.tsx"
+      "target": "@/components/dads-all-components.tsx"
     },
     {
       "path": "THIRD_PARTY_LICENSES.md",

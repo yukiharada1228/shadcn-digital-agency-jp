@@ -76,8 +76,8 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 # まとめて追加（セットは後述）
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 
-# 全コンポーネントを使うショーケースを追加
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/showcase
+# 全コンポーネントをまとめて追加
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 ### 3. テーマ CSS を読み込む
@@ -125,16 +125,16 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/showcase
 
 よく使う組み合わせをまとめて入れられます。
 
-| セット     | 内容                                                                                                                                                              |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `theme`    | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                      |
-| `core`     | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。 |
-| `form`     | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                     |
-| `showcase` | 全コンポーネントとショーケース画面（`components/dads-showcase.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提のデモです。           |
+| セット           | 内容                                                                                                                                                                       |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                               |
+| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `dl` `image`）。重いオーバーレイ等は含みません。          |
+| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                              |
+| `all-components` | 全コンポーネントと確認用画面（`components/dads-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
 
 ```bash
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/showcase
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 > [!NOTE]
@@ -190,7 +190,7 @@ pnpm license:check      # 著作権表示 / attribution の検証
 ### Demo
 
 作業ツリー上の `src/components/ui/*` をブラウザで確認する画面です。内容は registry block の
-`showcase` と同じで、`shadcn add` 後の消費者プロジェクトと同じ `@/components/ui/*` import で動きます。
+`all-components` と同じで、`shadcn add` 後の消費者プロジェクトと同じ `@/components/ui/*` import で動きます。
 
 ```bash
 pnpm demo   # http://127.0.0.1:5173/
