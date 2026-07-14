@@ -6,54 +6,114 @@
 > Unofficial shadcn/ui native components inspired by the Digital Agency Design System.
 
 > [!IMPORTANT]
-> 本プロジェクトはデジタル庁公式ではありません。**Unofficial — not** an official
-> Digital Agency (デジタル庁) product. デザイン仕様は
-> [digital-go-jp/design-system-example-components-react](https://github.com/digital-go-jp/design-system-example-components-react)
+> 本プロジェクトはデジタル庁公式ではありません（**Unofficial — not** an official Digital Agency product）。
+> デザイン仕様は [digital-go-jp/design-system-example-components-react](https://github.com/digital-go-jp/design-system-example-components-react)
 > を参照し、shadcn/ui ネイティブ（ソース配布）な形で再実装しています。
 
-## これは何？ / What is this
+---
 
-- **shadcn registry** です。`shadcn add <name>` で、コンポーネントが**ソースコードとして**
-  あなたのプロジェクト（`components.json` の `aliases.ui`、既定 `components/ui`）に配置されます。
-  npm package の wrapper ではないので、コードを自由に読んで・直せます。
-- **デジタル庁デザインシステムのデザイントークン**（色・タイポグラフィ・角丸・影など）を Tailwind CSS v4 用の
-  `digital-agency.css` として同梱。`bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
-- shadcn/ui の慣習に準拠：`cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` /
-  compound component。
-- **upstream の全 41 コンポーネントを実装済み**（下記カタログ参照）。upstream は Git submodule として
-  read-only 参照し、parity テストで追随します。
+## 目次 / Contents
+
+1. [特徴](#特徴--features)
+2. [動作要件](#動作要件--requirements)
+3. [使いはじめる（3ステップ）](#使いはじめる3ステップ--getting-started)
+4. [使い方](#使い方--usage)
+5. [コンポーネント一覧](#コンポーネント一覧--components)
+6. [セット（Bundles）](#セットbundles)
+7. [開発](#開発--development)
+8. [ライセンス](#ライセンス--license)
+
+---
+
+## 特徴 / Features
+
+- **ソースコードとして配布**
+  `shadcn add <name>` でコンポーネントを直接コピー（既定 `components/ui`）。
+  npm wrapper ではないので、コードを自由に読み・直せます。
+- **デジタル庁のデザイントークンを同梱**
+  色・タイポグラフィ・角丸・影などを Tailwind CSS v4 用の `digital-agency.css` として提供。
+  `bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
+- **shadcn/ui の慣習に準拠**
+  `cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` / compound component。
+- **upstream の全 41 コンポーネントを実装済み**
+  upstream は Git submodule として read-only 参照し、parity テストで追随します。
+
+---
 
 ## 動作要件 / Requirements
 
-- **React 18 または 19**
-- **Tailwind CSS v4**
-- `shadcn` CLI で `init` 済み（`components.json` があること）
+| 項目            | 要件                                          |
+| --------------- | --------------------------------------------- |
+| React           | **18 または 19**                              |
+| Tailwind CSS    | **v4**                                         |
+| shadcn CLI      | `init` 済み（`components.json` があること）    |
 
-## クイックスタート / Quick start
+---
 
-### 1. shadcn/ui を Vite に導入（未実施なら）
+## 使いはじめる（3ステップ） / Getting started
 
-まず [shadcn/ui の Vite 公式手順](https://ui.shadcn.com/docs/installation/vite) に沿って、
-Vite project に shadcn/ui を入れてください。pnpm の場合は公式 docs の **Existing Project** 手順が確実です。
+### ステップ 1. shadcn/ui を導入する（未実施の場合）
+
+まだ shadcn/ui を入れていない場合は、
+[shadcn/ui の Vite 公式手順](https://ui.shadcn.com/docs/installation/vite) に沿って導入します。
+以下は公式手順そのままです（既存プロジェクトがある場合はプロジェクト作成を飛ばしてください）。
+
+**1) Vite プロジェクトを作成**（React + TypeScript テンプレートを選択）
 
 ```bash
-pnpm create vite@latest my-app --template react-ts
-cd my-app
-pnpm install
-pnpm add tailwindcss @tailwindcss/vite
-pnpm add -D @types/node
+pnpm create vite@latest
 ```
 
-`src/index.css` を Tailwind v4 の import にします。`tsconfig.json` と `tsconfig.app.json` には
-`@/*` alias を追加し、`vite.config.ts` には Tailwind plugin と `@` alias を追加してください。
-設定内容は shadcn/ui 公式 Vite docs の **Add Tailwind CSS** / **Edit tsconfig** /
-**Update vite.config.ts** と同じです。
+**2) Tailwind CSS を導入**
+
+```bash
+pnpm add tailwindcss @tailwindcss/vite
+```
+
+`src/index.css` の中身を次の 1 行に置き換えます。
 
 ```css
 @import "tailwindcss";
 ```
 
-ここまで設定してから `shadcn init` を実行してください。
+**3) TypeScript のパスを設定**
+
+`tsconfig.json` の `compilerOptions` に追加します。
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] }
+  }
+}
+```
+
+`tsconfig.app.json` の `compilerOptions` にも同じ `baseUrl` / `paths` を追加します。
+
+**4) `@types/node` を入れて `vite.config.ts` を更新**
+
+```bash
+pnpm add -D @types/node
+```
+
+```ts
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+**5) shadcn/ui を初期化**
 
 ```bash
 pnpm dlx shadcn@latest init
@@ -61,26 +121,26 @@ pnpm dlx shadcn@latest init
 
 > [!NOTE]
 > 公式 docs には `pnpm dlx shadcn@latest init -t vite` で新規 Vite project を作る手順もあります。
-> ただし pnpm では `ERR_PNPM_ADDING_TO_ROOT` で止まる場合があるため、この README では公式の
-> **Existing Project** 手順を推奨しています。`ignore-workspace-root-check=true` は不要です。
+> ただし pnpm では `ERR_PNPM_ADDING_TO_ROOT` で止まる場合があるため、この README では上記の
+> **Existing Project** 手順を推奨します（`ignore-workspace-root-check=true` は不要です）。
 
-### 2. コンポーネントを追加
+### ステップ 2. コンポーネントを追加する
 
-各コンポーネントは `theme` に依存しているため、**1つ追加するだけで**
-トークン CSS・`cn()`・必要な npm 依存も一緒に入ります。
+各コンポーネントは `theme` に依存しているため、**1つ追加するだけで**トークン CSS・`cn()`・
+必要な npm 依存も一緒に入ります。
 
 ```bash
 # 単体で追加
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 
-# まとめて追加（セットは後述）
+# セットで追加（内容は「セット」の節を参照）
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 
-# 全コンポーネントをまとめて追加
+# 全コンポーネントを追加
 pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
-### 3. テーマ CSS を読み込む
+### ステップ 3. テーマ CSS を読み込む
 
 グローバル CSS（例 `src/index.css` / `app/globals.css`）で一度だけ import します。
 
@@ -89,57 +149,9 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-component
 @import "@/styles/digital-agency.css";
 ```
 
-これだけで完了です。`.npmrc` の追記や `clsx` / `tailwind-merge` の手動 install は不要です。
+これで完了です。`.npmrc` の追記や `clsx` / `tailwind-merge` の手動 install は不要です。
 
-## コンポーネント一覧 / Components
-
-全 **41 コンポーネント**。`add` するときの名前は各コード（`yukiharada1228/shadcn-digital-agency-jp/<name>`）です。
-
-### 基本 / Basics
-
-`button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`
-
-### フォーム / Form
-
-`input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload`
-
-### バッジ・通知 / Badges & notifications
-
-`status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`
-
-### ナビゲーション / Navigation
-
-`breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector`
-
-### オーバーレイ / Overlay
-
-`dialog` · `drawer`
-
-### データ表示 / Data display
-
-`table` · `carousel`
-
-> 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
-
-### セット / Bundles
-
-よく使う組み合わせをまとめて入れられます。
-
-| セット           | 内容                                                                                                                                                                                 |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                         |
-| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。      |
-| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                        |
-| `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトで `@/components/ui/*` から使う前提の install 確認用 bundle です。 |
-
-```bash
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
-```
-
-> [!NOTE]
-> GitHub registry の `#branch` / `#tag` / `#commit` ref は `registryDependencies` に継承されません。
-> 通常は ref なしのコマンドを使ってください。
+---
 
 ## 使い方 / Usage
 
@@ -166,6 +178,47 @@ export function Example() {
 
 Radix 化・shadcn 化に伴う API / DOM の差分は
 [`docs/compatibility.md`](./docs/compatibility.md) に明文化しています。
+
+---
+
+## コンポーネント一覧 / Components
+
+全 **41 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+
+| カテゴリ                              | コンポーネント                                                                                                                                              |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **基本** / Basics                     | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                 |
+| **フォーム** / Form                   | `input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` |
+| **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                            |
+| **ナビゲーション** / Navigation       | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector`      |
+| **オーバーレイ** / Overlay            | `dialog` · `drawer`                                                                                                                                          |
+| **データ表示** / Data display         | `table` · `carousel`                                                                                                                                         |
+
+> 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
+
+---
+
+## セット（Bundles）
+
+よく使う組み合わせをまとめて追加できます。
+
+| セット           | 内容                                                                                                                                                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                   |
+| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。 |
+| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                 |
+| `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
+
+```bash
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
+pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
+```
+
+> [!NOTE]
+> GitHub registry の `#branch` / `#tag` / `#commit` ref は `registryDependencies` に継承されません。
+> 通常は ref なしのコマンドを使ってください。
+
+---
 
 ## 開発 / Development
 
@@ -195,6 +248,8 @@ pnpm license:check      # 著作権表示 / attribution の検証
 ```bash
 pnpm demo   # http://127.0.0.1:5173/
 ```
+
+---
 
 ## ライセンス / License
 
