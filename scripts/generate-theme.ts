@@ -173,7 +173,7 @@ function main() {
       readFileSync(tokensPath, "utf8") !== tokensOut
     if (stale) {
       console.error(
-        "Theme files are out of date. Run `pnpm generate:theme` and commit the result."
+        "Theme files are out of date. Run `npm run generate:theme` and commit the result."
       )
       process.exit(1)
     }

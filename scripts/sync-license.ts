@@ -78,7 +78,7 @@ function main() {
     }
     if (current !== next) {
       console.error(
-        "THIRD_PARTY_LICENSES.md is out of date. Run `pnpm license:sync` and commit the result."
+        "THIRD_PARTY_LICENSES.md is out of date. Run `npm run license:sync` and commit the result."
       )
       process.exit(1)
     }

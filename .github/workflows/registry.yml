@@ -18,17 +18,15 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: npm
 
-      - run: pnpm install --frozen-lockfile
+      - run: npm ci
 
       - name: Generate registry.json
-        run: pnpm registry:generate
+        run: npm run registry:generate
 
       - name: Fail if registry.json changed
         run: git diff --exit-code registry.json

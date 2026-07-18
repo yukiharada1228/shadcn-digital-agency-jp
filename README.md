@@ -52,77 +52,21 @@
 
 ## 使いはじめる（3ステップ） / Getting started
 
-### ステップ 1. shadcn/ui を導入する（未実施の場合）
+### ステップ 1. Vite プロジェクトを新規作成する
 
-まだ shadcn/ui を入れていない場合は、
-[shadcn/ui の Vite 公式手順](https://ui.shadcn.com/docs/installation/vite) に沿って導入します。
-以下は公式手順そのままです（既存プロジェクトがある場合はプロジェクト作成を飛ばしてください）。
-
-**1) Vite プロジェクトを作成**（React + TypeScript テンプレートを選択）
+[shadcn/ui の Vite 公式手順](https://ui.shadcn.com/docs/installation/vite#scaffold-with-create) に沿って、
+`init` コマンドで新しい Vite プロジェクトを作成します。表示される質問に答えて、プロジェクト名、
+ベースカラー、プリセットなどを設定してください。
 
 ```bash
-pnpm create vite@latest
+npx shadcn@latest init -t vite
 ```
 
-**2) Tailwind CSS を導入**
+作成されたプロジェクトのディレクトリへ移動します。
 
 ```bash
-pnpm add tailwindcss @tailwindcss/vite
+cd my-app
 ```
-
-`src/index.css` の中身を次の 1 行に置き換えます。
-
-```css
-@import "tailwindcss";
-```
-
-**3) TypeScript のパスを設定**
-
-`tsconfig.json` の `compilerOptions` に追加します。
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": { "@/*": ["./src/*"] }
-  }
-}
-```
-
-`tsconfig.app.json` の `compilerOptions` にも同じ `baseUrl` / `paths` を追加します。
-
-**4) `@types/node` を入れて `vite.config.ts` を更新**
-
-```bash
-pnpm add -D @types/node
-```
-
-```ts
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-})
-```
-
-**5) shadcn/ui を初期化**
-
-```bash
-pnpm dlx shadcn@latest init
-```
-
-> [!NOTE]
-> 公式 docs には `pnpm dlx shadcn@latest init -t vite` で新規 Vite project を作る手順もあります。
-> ただし pnpm では `ERR_PNPM_ADDING_TO_ROOT` で止まる場合があるため、この README では上記の
-> **Existing Project** 手順を推奨します（`ignore-workspace-root-check=true` は不要です）。
 
 ### ステップ 2. コンポーネントを追加する
 
@@ -131,13 +75,13 @@ pnpm dlx shadcn@latest init
 
 ```bash
 # 単体で追加
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
+npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
 
 # セットで追加（内容は「セット」の節を参照）
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
+npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
 
 # 全コンポーネントを追加
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
+npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 ### ステップ 3. テーマ CSS を読み込む
@@ -210,8 +154,8 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 | `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
 
 ```bash
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
-pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
+npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
+npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 ```
 
 > [!NOTE]
@@ -222,20 +166,20 @@ pnpm dlx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-component
 
 ## 開発 / Development
 
-このリポジトリは upstream を Git submodule として含みます。
+このリポジトリは upstream を Git submodule として含み、開発用パッケージマネージャーには npm を使用します。
 
 ```bash
 git clone --recurse-submodules https://github.com/yukiharada1228/shadcn-digital-agency-jp.git
 cd shadcn-digital-agency-jp
 # 既に clone 済みなら: git submodule update --init --recursive
 
-pnpm install
-pnpm generate:theme     # トークンから digital-agency.css を生成
-pnpm registry:generate  # registry.json を生成
-pnpm typecheck
-pnpm test               # unit + a11y (vitest)
-pnpm test:visual        # Playwright visual regression
-pnpm license:check      # 著作権表示 / attribution の検証
+npm install
+npm run generate:theme     # トークンから digital-agency.css を生成
+npm run registry:generate  # registry.json を生成
+npm run typecheck
+npm test                   # unit + a11y (vitest)
+npm run test:visual        # Playwright visual regression
+npm run license:check      # 著作権表示 / attribution の検証
 ```
 
 `upstream/` 配下は read-only です。実装は常に `src/components/ui/` に置きます。
@@ -246,7 +190,7 @@ pnpm license:check      # 著作権表示 / attribution の検証
 `all-components` と同じで、`shadcn add` 後の消費者プロジェクトと同じ `@/components/ui/*` import で動きます。
 
 ```bash
-pnpm demo   # http://127.0.0.1:5173/
+npm run demo   # http://127.0.0.1:5173/
 ```
 
 ---

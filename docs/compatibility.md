@@ -69,7 +69,7 @@ test under `tests/parity` that asserts both:
 - the upstream-compatible props that remain supported
 - the local DOM contract that intentionally differs from upstream
 
-Visual regression is maintained separately from unit tests. `pnpm test:visual`
+Visual regression is maintained separately from unit tests. `npm run test:visual`
 uses Playwright against `visual.html`, whose fixtures mirror selected upstream
-Storybook story IDs. Use `pnpm test:visual:update` when the intended visual
+Storybook story IDs. Use `npm run test:visual:update` when the intended visual
 baseline changes.

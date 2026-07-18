@@ -16,7 +16,7 @@
   "license": "MIT",
   "author": "yukiharada1228",
   "type": "module",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "npm@11.7.0",
   "scripts": {
     "demo": "vite --host 127.0.0.1",
     "demo:build": "vite build",
@@ -30,7 +30,7 @@
     "test:browser-a11y": "playwright test -c playwright.visual.config.ts tests/visual/accessibility.visual.spec.ts",
     "test:visual": "playwright test -c playwright.visual.config.ts",
     "test:visual:update": "playwright test -c playwright.visual.config.ts --update-snapshots",
-    "build": "pnpm typecheck && pnpm demo:build",
+    "build": "npm run typecheck && npm run demo:build",
     "generate:theme": "tsx scripts/generate-theme.ts",
     "check:theme": "tsx scripts/generate-theme.ts --check",
     "check:upstream": "tsx scripts/check-upstream.ts",

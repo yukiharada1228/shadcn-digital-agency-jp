@@ -13,44 +13,42 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: npm
 
-      - run: pnpm install --frozen-lockfile
+      - run: npm ci
 
       - name: Verify upstream submodule
-        run: pnpm check:upstream
+        run: npm run check:upstream
 
       - name: Lint
-        run: pnpm lint
+        run: npm run lint
 
       - name: Format check
-        run: pnpm format:check
+        run: npm run format:check
 
       - name: Typecheck
-        run: pnpm typecheck
+        run: npm run typecheck
 
       - name: Demo build
-        run: pnpm demo:build
+        run: npm run demo:build
 
       - name: Unit + a11y tests
-        run: pnpm test
+        run: npm test
 
       - name: Install Playwright Chromium
-        run: pnpm exec playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Browser a11y tests
-        run: pnpm test:browser-a11y
+        run: npm run test:browser-a11y
 
       - name: Theme is up to date
-        run: pnpm check:theme
+        run: npm run check:theme
 
       - name: Registry is up to date
-        run: pnpm registry:test
+        run: npm run registry:test
 
       - name: License / attribution check
-        run: pnpm license:check
+        run: npm run license:check

@@ -31,7 +31,7 @@ if (existsSync(join(ROOT, "THIRD_PARTY_LICENSES.md"))) {
   const expectedTpl = buildLicense()
   req(
     tpl === expectedTpl,
-    "THIRD_PARTY_LICENSES.md is out of date. Run `pnpm license:sync`."
+    "THIRD_PARTY_LICENSES.md is out of date. Run `npm run license:sync`."
   )
 }
 

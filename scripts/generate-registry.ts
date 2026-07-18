@@ -50,7 +50,7 @@ function main() {
     }
     if (current !== next) {
       console.error(
-        "registry.json is out of date. Run `pnpm registry:generate` and commit the result."
+        "registry.json is out of date. Run `npm run registry:generate` and commit the result."
       )
       process.exit(1)
     }
