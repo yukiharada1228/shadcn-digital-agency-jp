@@ -5,6 +5,10 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   check-upstream:
     runs-on: ubuntu-latest
@@ -22,6 +26,7 @@ jobs:
       - run: npm ci
 
       - name: Report upstream diff
+        id: diff
         run: npm run diff:upstream | tee upstream-report.txt
 
       - name: Upload report
@@ -29,3 +34,73 @@ jobs:
         with:
           name: upstream-report
           path: upstream-report.txt
+
+      - name: Ensure upstream label
+        if: steps.diff.outputs.outdated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create upstream \
+            --description "Upstream design-system sync needed" \
+            --color "0E8A16" \
+            --force
+
+      - name: Create or update sync issue
+        if: steps.diff.outputs.outdated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT: ${{ steps.diff.outputs.current }}
+          LATEST: ${{ steps.diff.outputs.latest }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          SHORT_CURRENT="${CURRENT:0:7}"
+          SHORT_LATEST="${LATEST:0:7}"
+          TITLE="Upstream sync: digital-go-jp/design-system-example-components-react (${SHORT_CURRENT} → ${SHORT_LATEST})"
+
+          BODY_FILE=$(mktemp)
+          {
+            echo "## Upstream update detected"
+            echo
+            echo "Pinned submodule commit is behind the latest upstream default branch."
+            echo
+            echo "| | SHA |"
+            echo "|---|---|"
+            echo "| Current (pinned) | \`${CURRENT}\` |"
+            echo "| Latest | [\`${LATEST}\`](https://github.com/digital-go-jp/design-system-example-components-react/commit/${LATEST}) |"
+            echo
+            echo "Workflow run: ${RUN_URL}"
+            echo
+            echo "## Diff report"
+            echo
+            echo '```'
+            cat upstream-report.txt
+            echo '```'
+            echo
+            echo "## Next steps"
+            echo
+            echo "- [ ] Update the upstream submodule to \`${LATEST}\`"
+            echo "- [ ] Review affected local components / registry items"
+            echo "- [ ] Run the listed parity / a11y / visual tests"
+            echo "- [ ] Check whether \`THIRD_PARTY_LICENSES.md\` needs updates"
+            echo "- [ ] Open a PR and close this issue"
+          } > "$BODY_FILE"
+
+          EXISTING=$(
+            gh issue list \
+              --label upstream \
+              --state open \
+              --json number,title \
+              --jq '.[] | select(.title | startswith("Upstream sync: digital-go-jp/design-system-example-components-react")) | .number' \
+            | head -n 1
+          )
+
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --title "$TITLE" --body-file "$BODY_FILE"
+            gh issue comment "$EXISTING" --body "Upstream sync check re-ran and refreshed this issue. Run: ${RUN_URL}"
+            echo "Updated issue #${EXISTING}"
+          else
+            URL=$(gh issue create --title "$TITLE" --label upstream --body-file "$BODY_FILE")
+            echo "Created issue: ${URL}"
+          fi

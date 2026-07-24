@@ -5,9 +5,14 @@
  *
  * Implements FR-013 / CI-006 / 10.6. Requires the upstream submodule to be
  * checked out (git submodule update --init --recursive).
+ *
+ * When GITHUB_OUTPUT is set (GitHub Actions), writes:
+ *   outdated=true|false
+ *   current=<sha>
+ *   latest=<sha>
  */
 import { execSync } from "node:child_process"
-import { existsSync, readFileSync } from "node:fs"
+import { appendFileSync, existsSync, readFileSync } from "node:fs"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -35,6 +40,12 @@ function git(args: string, cwd = SUBMODULE): string {
   return execSync(`git ${args}`, { cwd, encoding: "utf8" }).trim()
 }
 
+function setOutput(name: string, value: string) {
+  const out = process.env.GITHUB_OUTPUT
+  if (!out) return
+  appendFileSync(out, `${name}=${value}\n`)
+}
+
 function main() {
   if (!existsSync(SUBMODULE)) {
     console.error(
@@ -55,10 +66,16 @@ function main() {
   console.log(`Current upstream:\n${current}\n`)
   console.log(`Latest upstream:\n${latest}\n`)
 
+  setOutput("current", current)
+  setOutput("latest", latest)
+
   if (current === latest) {
     console.log("Upstream is up to date. Nothing to sync.")
+    setOutput("outdated", "false")
     return
   }
+
+  setOutput("outdated", "true")
 
   const changed = git(`diff --name-only ${current} ${latest}`)
     .split("\n")
