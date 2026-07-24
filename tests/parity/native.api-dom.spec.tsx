@@ -26,13 +26,13 @@ describe("Native component API/DOM parity", () => {
   it("Input and Textarea preserve upstream native element contracts", () => {
     render(
       <>
-        <Input aria-disabled blockSize="md" isError placeholder="input" />
-        <Textarea aria-disabled isError placeholder="textarea" />
+        <Input aria-disabled aria-label="input" blockSize="md" isError />
+        <Textarea aria-disabled aria-label="textarea" isError />
       </>
     )
 
-    const input = screen.getByPlaceholderText("input")
-    const textarea = screen.getByPlaceholderText("textarea")
+    const input = screen.getByLabelText("input")
+    const textarea = screen.getByLabelText("textarea")
 
     expect(input.tagName).toBe("INPUT")
     expect(input).toHaveAttribute("data-slot", "input")

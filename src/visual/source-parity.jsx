@@ -1208,11 +1208,11 @@ function UpstreamListFixture() {
           <UpstreamList marker="number" spacing="4">
             <li>
               <span>1. </span>
-              <span>番号付きリストの最初の項目</span>
+              番号付きリストの最初の項目
             </li>
             <li>
               <span>2. </span>
-              <span>番号付きリストの二番目の項目</span>
+              番号付きリストの二番目の項目
             </li>
           </UpstreamList>
         </li>
@@ -1231,11 +1231,11 @@ function OursListFixture() {
           <List marker="number" spacing="4">
             <li>
               <span>1. </span>
-              <span>番号付きリストの最初の項目</span>
+              番号付きリストの最初の項目
             </li>
             <li>
               <span>2. </span>
-              <span>番号付きリストの二番目の項目</span>
+              番号付きリストの二番目の項目
             </li>
           </List>
         </li>
