@@ -5,57 +5,48 @@ import { Input } from "@/components/ui/input"
 
 describe("Input", () => {
   it("renders an input element with data-slot", () => {
-    render(<Input placeholder="name" />)
-    const input = screen.getByPlaceholderText("name")
+    render(<Input aria-label="name" />)
+    const input = screen.getByLabelText("name")
     expect(input).toBeInTheDocument()
     expect(input.tagName).toBe("INPUT")
     expect(input).toHaveAttribute("data-slot", "input")
   })
 
   it("reflects a passed className", () => {
-    render(<Input placeholder="cls" className="custom-class" />)
-    expect(screen.getByPlaceholderText("cls")).toHaveClass("custom-class")
+    render(<Input aria-label="cls" className="custom-class" />)
+    expect(screen.getByLabelText("cls")).toHaveClass("custom-class")
   })
 
   it("forwards ref to the input element", () => {
     const ref = React.createRef<HTMLInputElement>()
-    render(<Input ref={ref} placeholder="ref" />)
+    render(<Input ref={ref} aria-label="ref" />)
     expect(ref.current).toBeInstanceOf(HTMLInputElement)
   })
 
   it("defaults data-size to lg", () => {
-    render(<Input placeholder="default" />)
-    expect(screen.getByPlaceholderText("default")).toHaveAttribute(
-      "data-size",
-      "lg"
-    )
+    render(<Input aria-label="default" />)
+    expect(screen.getByLabelText("default")).toHaveAttribute("data-size", "lg")
   })
 
   it("reflects the blockSize prop via data-size", () => {
-    render(<Input placeholder="sized" blockSize="sm" />)
-    expect(screen.getByPlaceholderText("sized")).toHaveAttribute(
-      "data-size",
-      "sm"
-    )
+    render(<Input aria-label="sized" blockSize="sm" />)
+    expect(screen.getByLabelText("sized")).toHaveAttribute("data-size", "sm")
   })
 
   it("sets aria-invalid when isError is true", () => {
-    render(<Input placeholder="err" isError />)
-    expect(screen.getByPlaceholderText("err")).toHaveAttribute(
-      "aria-invalid",
-      "true"
-    )
+    render(<Input aria-label="err" isError />)
+    expect(screen.getByLabelText("err")).toHaveAttribute("aria-invalid", "true")
   })
 
   it("forces readOnly when aria-disabled is set", () => {
-    render(<Input placeholder="dis" aria-disabled />)
-    const input = screen.getByPlaceholderText("dis") as HTMLInputElement
+    render(<Input aria-label="dis" aria-disabled />)
+    const input = screen.getByLabelText("dis") as HTMLInputElement
     expect(input.readOnly).toBe(true)
   })
 
   it("does not force readOnly when aria-disabled is false", () => {
-    render(<Input placeholder="enabled" aria-disabled="false" />)
-    const input = screen.getByPlaceholderText("enabled") as HTMLInputElement
+    render(<Input aria-label="enabled" aria-disabled="false" />)
+    const input = screen.getByLabelText("enabled") as HTMLInputElement
     expect(input.readOnly).toBe(false)
   })
 })

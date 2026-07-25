@@ -24,9 +24,10 @@ export const inputVariants = cva(
   }
 )
 
-export type InputProps = React.ComponentProps<"input"> &
+export type InputProps = Omit<React.ComponentProps<"input">, "placeholder"> &
   VariantProps<typeof inputVariants> & {
     isError?: boolean
+    placeholder?: never
   }
 
 const isAriaDisabled = (value: unknown) => value === true || value === "true"

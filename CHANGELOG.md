@@ -3,6 +3,20 @@
 All notable changes to this project are documented here. Each release records the
 upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
+## Unreleased
+
+- Synced upstream: digital-go-jp/design-system-example-components-react@88110f7
+  (was `f3046eb`).
+- Components:
+  - `input`, `textarea`: forbid the `placeholder` prop (`placeholder?: never`)
+    to match the upstream accessibility guidance against placeholder text.
+  - `list`: replace the grid/subgrid numbered-marker layout with the upstream
+    padding + negative-margin approach for the `number` marker.
+- License / attribution: no changes required (upstream `LICENSE` unchanged;
+  `license:check` passes).
+- Breaking changes: `Input` / `Textarea` no longer accept `placeholder`. Provide
+  an accessible label (`<Label>` or `aria-label`) instead.
+
 ## v0.3.0
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@f3046eb

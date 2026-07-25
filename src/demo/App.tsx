@@ -785,7 +785,6 @@ export default function App() {
                 <Input
                   id="name"
                   className="w-full"
-                  placeholder="山田 太郎"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   isError={nameError}
@@ -808,12 +807,7 @@ export default function App() {
                   電話番号
                   <RequirementBadge isOptional>任意</RequirementBadge>
                 </Label>
-                <Input
-                  id="phone"
-                  className="w-full"
-                  type="tel"
-                  placeholder="03-0000-0000"
-                />
+                <Input id="phone" className="w-full" type="tel" />
                 <SupportText>
                   日中に連絡が取れる番号を入力してください。
                 </SupportText>
@@ -838,12 +832,7 @@ export default function App() {
               {/* Textarea */}
               <div className="grid gap-2">
                 <Label htmlFor="note">備考</Label>
-                <Textarea
-                  id="note"
-                  className="w-full"
-                  rows={4}
-                  placeholder="ご要望などがあればご記入ください。"
-                />
+                <Textarea id="note" className="w-full" rows={4} />
               </div>
             </div>
 

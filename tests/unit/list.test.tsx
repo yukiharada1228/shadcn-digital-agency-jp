@@ -52,7 +52,7 @@ describe("List", () => {
     )
     const ul = container.querySelector("ul")
     expect(ul).toHaveAttribute("data-marker", "number")
-    expect(ul?.className).toContain("grid-cols-[minmax(2rem,auto)_1fr]")
+    expect(ul?.className).toContain("[&>li>span:first-child]:min-w-8")
   })
 
   it("merges a passed className", () => {
