@@ -383,10 +383,15 @@ const useProgressIndicatorAnnouncer = (
   const [text, setText] = React.useState("")
 
   const valueRef = React.useRef(value)
-  valueRef.current = value
-
   const messagesRef = React.useRef(messages)
-  messagesRef.current = messages
+
+  // Keep the latest values in refs without writing during render, which the
+  // react-hooks/refs lint rule (eslint-plugin-react-hooks v7+) forbids. These
+  // refs are only read inside the announcer effect's deferred timers.
+  React.useEffect(() => {
+    valueRef.current = value
+    messagesRef.current = messages
+  })
 
   const previousActiveRef = React.useRef(false)
 
