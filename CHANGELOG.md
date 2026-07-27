@@ -5,6 +5,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.4.0
+
 - Synced upstream: digital-go-jp/design-system-example-components-react@88110f7
   (was `f3046eb`).
 - Components:
@@ -12,6 +14,10 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     to match the upstream accessibility guidance against placeholder text.
   - `list`: replace the grid/subgrid numbered-marker layout with the upstream
     padding + negative-margin approach for the `number` marker.
+- Fixes:
+  - `dialog`: ignore bubbled `cancel` events from nested file inputs so the
+    dialog no longer closes unexpectedly.
+  - `progress-indicator`: avoid ref writes during render.
 - License / attribution: no changes required (upstream `LICENSE` unchanged;
   `license:check` passes).
 - Breaking changes: `Input` / `Textarea` no longer accept `placeholder`. Provide
