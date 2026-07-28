@@ -7,6 +7,7 @@
   "dependencies": [],
   "registryDependencies": [
     "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
     "yukiharada1228/shadcn-digital-agency-jp/disclosure"
   ],
   "files": [

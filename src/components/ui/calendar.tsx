@@ -15,7 +15,7 @@ import {
   Heading as AriaHeading,
 } from "react-aria-components"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/digital-agency/cn"
 
 const Calendar = React.forwardRef<
   React.ElementRef<typeof AriaCalendar>,

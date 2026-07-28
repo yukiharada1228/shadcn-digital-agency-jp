@@ -35,18 +35,30 @@ const dependencyItemName = (dependency: string) =>
     : null
 
 describe("registry install payload", () => {
-  it("ships cn() utilities from the theme dependency", () => {
+  it("keeps the theme payload isolated from application utilities", () => {
     const theme = readItem("theme")
 
-    expect(theme.dependencies).toEqual(
+    expect(theme.dependencies).toEqual([])
+    expect(theme.files?.map((file) => file.target)).not.toContain(
+      "@lib/utils.ts"
+    )
+    expect(theme.files?.map((file) => file.path)).not.toContain(
+      "src/lib/utils.ts"
+    )
+  })
+
+  it("ships Digital Agency cn() from a collision-free library path", () => {
+    const utility = readItem("digital-agency-cn")
+
+    expect(utility.dependencies).toEqual(
       expect.arrayContaining(["clsx", "tailwind-merge"])
     )
-    expect(theme.files).toEqual(
+    expect(utility.files).toEqual(
       expect.arrayContaining([
         {
-          path: "src/lib/utils.ts",
+          path: "src/lib/digital-agency/cn.ts",
           type: "registry:lib",
-          target: "@lib/utils.ts",
+          target: "@lib/digital-agency/cn.ts",
         },
       ])
     )
@@ -68,13 +80,38 @@ describe("registry install payload", () => {
     }
   })
 
-  it("keeps install setup minimal by wiring theme into installable items", () => {
+  it("wires theme and Digital Agency cn() into installable items", () => {
     for (const item of readItems()) {
       if (item.type !== "registry:ui" && item.type !== "registry:block") {
         continue
       }
 
       expect(item.registryDependencies).toContain(`${repoAddress}theme`)
+      expect(item.registryDependencies).toContain(
+        `${repoAddress}digital-agency-cn`
+      )
+    }
+  })
+
+  it("does not distribute a generic lib/utils file from any item", () => {
+    for (const item of readItems()) {
+      for (const file of item.files ?? []) {
+        expect(file.target).not.toMatch(/^@lib\/utils(?:\.ts)?$/)
+        expect(file.path).not.toMatch(/(?:^|\/)lib\/utils\.ts$/)
+      }
+    }
+  })
+
+  it("imports the registry-owned cn() utility from its collision-free path", () => {
+    for (const item of readItems()) {
+      for (const file of item.files ?? []) {
+        if (!file.path.endsWith(".tsx") && !file.path.endsWith(".ts")) {
+          continue
+        }
+
+        const source = readFileSync(join(process.cwd(), file.path), "utf8")
+        expect(source).not.toMatch(/["']@\/lib\/utils["']/)
+      }
     }
   })
 
