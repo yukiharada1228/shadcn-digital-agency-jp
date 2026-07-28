@@ -3,7 +3,7 @@
 // See THIRD_PARTY_LICENSES.md for details.
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/digital-agency/cn"
 
 type DlProps = React.ComponentProps<"dl"> & {
   marker?: "none" | "bullet"

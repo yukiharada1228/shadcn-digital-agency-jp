@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "digital-agency-cn",
+  "type": "registry:lib",
+  "title": "Digital Agency cn Utility (Unofficial)",
+  "description": "Unofficial Digital Agency-specific class name utility with Tailwind merge support for the design system's custom scales. Not an official デジタル庁 product.",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/lib/digital-agency/cn.ts",
+      "type": "registry:lib",
+      "target": "@lib/digital-agency/cn.ts"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

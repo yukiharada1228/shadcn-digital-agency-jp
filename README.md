@@ -70,8 +70,9 @@ cd my-app
 
 ### ステップ 2. コンポーネントを追加する
 
-各コンポーネントは `theme` に依存しているため、**1つ追加するだけで**トークン CSS・`cn()`・
-必要な npm 依存も一緒に入ります。
+各コンポーネントは `theme` と `digital-agency-cn` に依存しているため、**1つ追加するだけで**
+トークン CSS・DA 専用の `cn()`・必要な npm 依存も一緒に入ります。`cn()` は
+`lib/digital-agency/cn.ts` に配置され、既存の `lib/utils.ts` を上書きしません。
 
 ```bash
 # 単体で追加
@@ -146,12 +147,13 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 よく使う組み合わせをまとめて追加できます。
 
-| セット           | 内容                                                                                                                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `theme`          | デザイントークン CSS・`cn()`（`lib/utils.ts`）・ライセンス表示。`clsx` / `tailwind-merge` を依存として install。**全コンポーネントの土台。**                                    |
-| `core`           | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。 |
-| `form`           | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                   |
-| `all-components` | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
+| セット              | 内容                                                                                                                                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme`             | デザイントークン CSS・JSON・ライセンス表示。アプリケーションの `lib/utils.ts` には触れません。**全コンポーネントのスタイル基盤。**                                              |
+| `digital-agency-cn` | DA 固有スケール対応の `cn()` を `lib/digital-agency/cn.ts` に追加。`clsx` / `tailwind-merge` も install します。**全コンポーネントのユーティリティ基盤。**                      |
+| `core`              | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。 |
+| `form`              | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                   |
+| `all-components`    | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
 
 ```bash
 npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form

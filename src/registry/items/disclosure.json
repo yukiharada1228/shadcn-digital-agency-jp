@@ -5,7 +5,10 @@
   "title": "Disclosure (Unofficial)",
   "description": "Unofficial Disclosure inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
   "dependencies": ["class-variance-authority"],
-  "registryDependencies": ["yukiharada1228/shadcn-digital-agency-jp/theme"],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+  ],
   "files": [
     {
       "path": "src/components/ui/disclosure.tsx",

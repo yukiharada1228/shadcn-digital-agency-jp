@@ -4,7 +4,7 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/digital-agency/cn"
 
 const statusBadgeVariants = cva(
   "ml-2 inline-block rounded-lg bg-solid-gray-536 p-2 text-oln-16N-100 text-white outline-1 outline-transparent"

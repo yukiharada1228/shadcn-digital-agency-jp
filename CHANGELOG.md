@@ -5,6 +5,14 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+- Registry:
+  - Split the Digital Agency-specific `cn()` utility from `theme` into the new
+    `digital-agency-cn` registry item at `lib/digital-agency/cn.ts`.
+  - Updated every component to depend on both `theme` and
+    `digital-agency-cn`, and to import `cn()` from its registry-owned path.
+  - Stopped distributing the generic `lib/utils.ts` path so installs cannot
+    overwrite a consumer's existing utility module.
+
 ## v0.4.0
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@88110f7
