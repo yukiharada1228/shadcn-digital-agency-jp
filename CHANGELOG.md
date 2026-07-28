@@ -5,6 +5,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.5.0
+
 - Registry:
   - Split the Digital Agency-specific `cn()` utility from `theme` into the new
     `digital-agency-cn` registry item at `lib/digital-agency/cn.ts`.
@@ -12,6 +14,10 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     `digital-agency-cn`, and to import `cn()` from its registry-owned path.
   - Stopped distributing the generic `lib/utils.ts` path so installs cannot
     overwrite a consumer's existing utility module.
+- Breaking changes:
+  - The registry-owned `cn()` import path changed from `@/lib/utils` to
+    `@/lib/digital-agency/cn`. Reinstalling a component adds the new dependency
+    automatically; custom imports must be updated manually.
 
 ## v0.4.0
 
