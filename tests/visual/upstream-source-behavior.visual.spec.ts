@@ -146,6 +146,52 @@ test.describe("Upstream source behavior parity", () => {
     expect(stylesBySource.ours).toEqual(stylesBySource.upstream)
   })
 
+  test("step navigation renders the same treatment per step state", async ({
+    page,
+  }) => {
+    const states = ["completed", "editing", "error", "skipped", "reached"]
+
+    const stylesBySource: Record<Source, Record<string, unknown>> = {
+      upstream: {},
+      ours: {},
+    }
+
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-step-navigation-horizontal", source)
+
+      for (const state of states) {
+        stylesBySource[source][state] = await page
+          .getByTestId(`step-number-${state}`)
+          .evaluate((element) => {
+            const style = getComputedStyle(element)
+            return {
+              backgroundColor: style.backgroundColor,
+              borderColor: style.borderTopColor,
+              borderStyle: style.borderTopStyle,
+              color: style.color,
+            }
+          })
+      }
+    }
+
+    // 到達済みは solid-gray-800 の塗り、エラーは error-1 の文字色、
+    // 完了は solid-gray-50 の塗り、スキップは破線。
+    expect(stylesBySource.upstream.reached).toMatchObject({
+      backgroundColor: "rgb(51, 51, 51)",
+      color: "rgb(255, 255, 255)",
+    })
+    expect(stylesBySource.upstream.completed).toMatchObject({
+      backgroundColor: "rgb(242, 242, 242)",
+    })
+    expect(stylesBySource.upstream.error).toMatchObject({
+      color: "rgb(236, 0, 0)",
+    })
+    expect(stylesBySource.upstream.skipped).toMatchObject({
+      borderStyle: "dashed",
+    })
+    expect(stylesBySource.ours).toEqual(stylesBySource.upstream)
+  })
+
   test("selecting an option produces the same visible selection", async ({
     page,
   }) => {

@@ -127,14 +127,14 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 ## コンポーネント一覧 / Components
 
-全 **41 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+全 **42 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
 
 | カテゴリ                                  | コンポーネント                                                                                                                                                                                      |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **基本** / Basics                         | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                                                        |
 | **フォーム** / Form                       | `input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` |
 | **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                   |
-| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector`                                             |
+| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation`                         |
 | **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                 |
 | **データ表示** / Data display             | `table` · `carousel`                                                                                                                                                                                |
 
