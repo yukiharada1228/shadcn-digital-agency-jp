@@ -60,6 +60,19 @@ wrapper exports so registry demos can compose calendar navigation without
 importing `react-aria-components` directly. The visual contract remains the
 upstream grid, header, and cell token classes.
 
+## Out of Scope: Upstream Example Collections
+
+Upstream ships some entries under `src/components/` that have no shared
+component, only Storybook example compositions. `Card` is the first of these:
+its `index.ts` is an empty `export {}` and its `component-spec.md` states that
+no `Card` primitive is to be built. Such entries are not ported, because a
+registry item exists to distribute a component and there is nothing to
+distribute. They are also not listed in `components-map.json`.
+
+The same rule applies to future upstream additions of the same shape. Porting
+one anyway would mean inventing a primitive upstream deliberately declined to
+define, which is an API divergence with no upstream contract to test against.
+
 ## Test Requirements
 
 For every ported component, `components-map.json` must point to at least one
