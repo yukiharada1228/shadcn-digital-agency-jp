@@ -10,7 +10,7 @@ import { cn } from "@/lib/digital-agency/cn"
 export type RadioGroupItemSize = "lg" | "md" | "sm"
 
 export const radioGroupItemVariants = cva(
-  "group/radio inline-flex shrink-0 items-center justify-center appearance-none rounded-full bg-transparent outline-none hover:bg-solid-gray-420 focus-visible:bg-transparent aria-disabled:pointer-events-none aria-disabled:hover:bg-transparent data-[size=sm]:size-6 data-[size=md]:size-8 data-[size=lg]:size-11",
+  "group/radio inline-flex shrink-0 items-center justify-center appearance-none rounded-full bg-transparent outline-none hover:bg-solid-gray-420 focus-visible:bg-transparent disabled:pointer-events-none disabled:hover:bg-transparent aria-disabled:pointer-events-none aria-disabled:hover:bg-transparent data-[size=sm]:size-6 data-[size=md]:size-8 data-[size=lg]:size-11",
   {
     variants: {
       size: {
@@ -37,7 +37,9 @@ const radioGroupItemCircleClass = cn(
   "group-data-[error]/radio:border-error-1 group-hover/radio:group-data-[error]/radio:border-red-1000",
   "group-data-[state=checked]/radio:group-data-[error]/radio:border-error-1",
   "group-aria-disabled/radio:!border-solid-gray-300 group-aria-disabled/radio:!bg-solid-gray-50",
-  "forced-colors:!border-[ButtonText] group-data-[state=checked]/radio:forced-colors:!border-[Highlight] group-aria-disabled/radio:forced-colors:!border-[GrayText]"
+  // native `disabled` gets the same treatment as `aria-disabled` (upstream 22cda0d)
+  "group-disabled/radio:!border-solid-gray-300 group-disabled/radio:!bg-solid-gray-50",
+  "forced-colors:!border-[ButtonText] group-data-[state=checked]/radio:forced-colors:!border-[Highlight] group-aria-disabled/radio:forced-colors:!border-[GrayText] group-disabled/radio:forced-colors:!border-[GrayText]"
 )
 
 const RadioGroup = React.forwardRef<
@@ -76,7 +78,7 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <span className={radioGroupItemCircleClass}>
-        <RadioGroupPrimitive.Indicator className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight]" />
+        <RadioGroupPrimitive.Indicator className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 group-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight] group-aria-disabled/radio:forced-colors:!bg-[GrayText] group-disabled/radio:forced-colors:!bg-[GrayText]" />
       </span>
     </RadioGroupPrimitive.Item>
   )

@@ -5,6 +5,23 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+- Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
+  (was `88110f7`).
+- Components:
+  - `checkbox`, `radio-group`: apply the disabled treatment to the native
+    `disabled` state as well, not only `aria-disabled` (the Radix roots render
+    a `<button disabled>`), including the forced-colors fallbacks.
+  - `button`: add `gap-x-1` / `max-w-full` to the base style and drop
+    `whitespace-nowrap`, matching upstream's centered, content-sized button.
+  - `status-badge`: use the DADS `rounded-8` token instead of `rounded-lg`.
+- Tests:
+  - Source-parity fixtures now cover disabled (and disabled + checked)
+    checkbox / radio states.
+  - New upstream-vs-ours behavior test asserting the computed disabled
+    border/background of both components.
+- Not ported: upstream's new `SearchBox`, `StepNavigation`, `ResourceList`, and
+  `Card` example components.
+
 ## v0.5.0
 
 - Registry:
