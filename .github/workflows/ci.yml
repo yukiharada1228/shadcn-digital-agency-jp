@@ -44,6 +44,12 @@ jobs:
       - name: Browser a11y tests
         run: npm run test:browser-a11y
 
+      # upstream と自前実装を同じブラウザで描き比べる spec のみ。ストア済み
+      # スナップショット（storybook-parity）は macOS で撮ったもので、Linux では
+      # フォント描画が異なるため CI からは除外している。
+      - name: Upstream source parity tests
+        run: npm run test:visual:parity
+
       - name: Theme is up to date
         run: npm run check:theme
 

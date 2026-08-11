@@ -39,7 +39,9 @@ const radioGroupItemCircleClass = cn(
   "group-aria-disabled/radio:!border-solid-gray-300 group-aria-disabled/radio:!bg-solid-gray-50",
   // native `disabled` gets the same treatment as `aria-disabled` (upstream 22cda0d)
   "group-disabled/radio:!border-solid-gray-300 group-disabled/radio:!bg-solid-gray-50",
-  "forced-colors:!border-[ButtonText] group-data-[state=checked]/radio:forced-colors:!border-[Highlight] group-aria-disabled/radio:forced-colors:!border-[GrayText] group-disabled/radio:forced-colors:!border-[GrayText]"
+  "forced-colors:!border-[ButtonText] group-data-[state=checked]/radio:forced-colors:!border-[Highlight] group-aria-disabled/radio:forced-colors:!border-[GrayText] group-disabled/radio:forced-colors:!border-[GrayText]",
+  // 選択済み + 無効では枠線も GrayText にする（checked 側のルールと詳細度が並ぶため）。
+  "group-data-[state=checked]/radio:group-disabled/radio:forced-colors:!border-[GrayText] group-data-[state=checked]/radio:group-aria-disabled/radio:forced-colors:!border-[GrayText]"
 )
 
 const RadioGroup = React.forwardRef<

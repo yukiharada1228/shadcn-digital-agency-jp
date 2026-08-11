@@ -53,7 +53,11 @@ const checkboxBoxClass = cn(
   // native `disabled` gets the same treatment as `aria-disabled` (upstream 22cda0d)
   "group-disabled/checkbox:!border-solid-gray-300 group-disabled/checkbox:!bg-solid-gray-50",
   "group-data-[state=checked]/checkbox:group-disabled/checkbox:!bg-solid-gray-300 group-data-[state=indeterminate]/checkbox:group-disabled/checkbox:!bg-solid-gray-300",
-  "forced-colors:!border-[ButtonText] group-data-[state=checked]/checkbox:forced-colors:!bg-[Highlight] group-data-[state=checked]/checkbox:forced-colors:!border-[Highlight] group-data-[state=indeterminate]/checkbox:forced-colors:!bg-[Highlight] group-data-[state=indeterminate]/checkbox:forced-colors:!border-[Highlight] group-aria-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=checked]/checkbox:group-aria-disabled/checkbox:forced-colors:!bg-[GrayText] group-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=checked]/checkbox:group-disabled/checkbox:forced-colors:!bg-[GrayText]"
+  "forced-colors:!border-[ButtonText] group-data-[state=checked]/checkbox:forced-colors:!bg-[Highlight] group-data-[state=checked]/checkbox:forced-colors:!border-[Highlight] group-data-[state=indeterminate]/checkbox:forced-colors:!bg-[Highlight] group-data-[state=indeterminate]/checkbox:forced-colors:!border-[Highlight] group-aria-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=checked]/checkbox:group-aria-disabled/checkbox:forced-colors:!bg-[GrayText] group-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=checked]/checkbox:group-disabled/checkbox:forced-colors:!bg-[GrayText]",
+  // 選択済み + 無効では枠線も GrayText にする。checked 側のルールと詳細度が並ぶため、
+  // 組み合わせたセレクタで明示的に上書きしないと Highlight が残る。
+  "group-data-[state=checked]/checkbox:group-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=indeterminate]/checkbox:group-disabled/checkbox:forced-colors:!border-[GrayText]",
+  "group-data-[state=checked]/checkbox:group-aria-disabled/checkbox:forced-colors:!border-[GrayText] group-data-[state=indeterminate]/checkbox:group-aria-disabled/checkbox:forced-colors:!border-[GrayText]"
 )
 
 export type CheckboxProps = Omit<
