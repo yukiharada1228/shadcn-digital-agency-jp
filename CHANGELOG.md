@@ -19,8 +19,9 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     checkbox / radio states.
   - New upstream-vs-ours behavior test asserting the computed disabled
     border/background of both components.
-- Not ported: upstream's new `SearchBox`, `StepNavigation`, `ResourceList`, and
-  `Card` example components.
+- Not ported: upstream's new `SearchBox`, `StepNavigation`, and `ResourceList`
+  (tracked separately). `Card` is out of scope by policy — see
+  "Out of Scope: Upstream Example Collections" in `docs/compatibility.md`.
 
 ## v0.5.0
 
