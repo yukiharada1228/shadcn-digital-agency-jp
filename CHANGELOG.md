@@ -11,6 +11,15 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
   `StepNavigationList` / `Step` / `StepHeader` / `Number` / `StateIndicator` /
   `Title` / `Description`. Supports both orientations, both sizes, the five
   step states, and `asChild` on the root and the step header.
+- Upstream sync tooling:
+  - Added the 20 missing `components-map.json` entries. Only 22 of the 42 ported
+    components were mapped, and `scripts/map-upstream-changes.ts` silently
+    reports unmapped components as unaffected, so upstream changes to them were
+    never surfaced by `npm run diff:upstream` or the sync workflow.
+  - `mapChanges()` now matches on directory boundaries: a change under
+    `src/components/Table` no longer also resolves to `Tab` (`tabs`).
+  - New `tests/unit/components-map.test.ts` enforces map coverage and path
+    validity so a new component cannot be added without an entry.
 - Components:
   - `checkbox`, `radio-group`: apply the disabled treatment to the native
     `disabled` state as well, not only `aria-disabled` (the Radix roots render
