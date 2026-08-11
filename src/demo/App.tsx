@@ -1306,39 +1306,45 @@ export default function App() {
             {/* StepNavigation */}
             <div>
               <p className="mb-3 font-bold">StepNavigation</p>
-              <StepNavigation asChild>
-                <nav aria-label="転入届の手順">
-                  <p className="sr-only">
-                    全4ステップ中、2ステップ目まで到達済み
-                  </p>
-                  <StepNavigationList>
-                    {demoSteps.map((step, index) => (
-                      <StepNavigationStep
-                        aria-current={
-                          step.state === "editing" ? "step" : undefined
-                        }
-                        first={index === 0}
-                        key={step.title}
-                        last={index === demoSteps.length - 1}
-                        state={step.state}
-                      >
-                        <StepNavigationStepHeader>
-                          <StepNavigationNumber>
-                            {index + 1}
-                            <StepNavigationStateIndicator state={step.state} />
-                          </StepNavigationNumber>
-                          <StepNavigationTitle>
-                            {step.title}
-                          </StepNavigationTitle>
-                        </StepNavigationStepHeader>
-                        <StepNavigationDescription>
-                          {step.description}
-                        </StepNavigationDescription>
-                      </StepNavigationStep>
-                    ))}
-                  </StepNavigationList>
-                </nav>
-              </StepNavigation>
+              {/* コネクタ線は z-index:-10 なので、不透明な背景を持つ祖先があると
+                  隠れる（upstream と同じ挙動）。stacking context を作って防ぐ。 */}
+              <div className="isolate">
+                <StepNavigation asChild>
+                  <nav aria-label="転入届の手順">
+                    <p className="sr-only">
+                      全4ステップ中、2ステップ目まで到達済み
+                    </p>
+                    <StepNavigationList>
+                      {demoSteps.map((step, index) => (
+                        <StepNavigationStep
+                          aria-current={
+                            step.state === "editing" ? "step" : undefined
+                          }
+                          first={index === 0}
+                          key={step.title}
+                          last={index === demoSteps.length - 1}
+                          state={step.state}
+                        >
+                          <StepNavigationStepHeader>
+                            <StepNavigationNumber>
+                              {index + 1}
+                              <StepNavigationStateIndicator
+                                state={step.state}
+                              />
+                            </StepNavigationNumber>
+                            <StepNavigationTitle>
+                              {step.title}
+                            </StepNavigationTitle>
+                          </StepNavigationStepHeader>
+                          <StepNavigationDescription>
+                            {step.description}
+                          </StepNavigationDescription>
+                        </StepNavigationStep>
+                      ))}
+                    </StepNavigationList>
+                  </nav>
+                </StepNavigation>
+              </div>
             </div>
 
             {/* Tabs */}

@@ -140,6 +140,14 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 > 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
 
+> `step-navigation` のステップ間のコネクタ線は `z-index: -10` で描かれます（upstream と同じ）。不透明な背景を持つ祖先要素があると線が隠れるため、背景付きのコンテナに入れる場合は stacking context を作ってください。
+>
+> ```jsx
+> <div className="isolate">
+>   <StepNavigation …>…</StepNavigation>
+> </div>
+> ```
+
 > `search-box` は `styles/digital-agency-search-box.css` も一緒に追加されます。`appearance: base-select` 対応ブラウザでドロップダウンの外観を DADS に合わせるための**任意インポート**で、グローバル CSS に読み込むと有効になります。読み込まなくても SearchBox は動作します（upstream も同じ扱い）。
 >
 > ```css

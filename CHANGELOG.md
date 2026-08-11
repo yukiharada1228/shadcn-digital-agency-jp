@@ -39,6 +39,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     `whitespace-nowrap`, matching upstream's centered, content-sized button.
   - `status-badge`: use the DADS `rounded-8` token instead of `rounded-lg`.
 - Tests:
+  - New demo smoke spec: the real demo screen renders with no console errors,
+    and the ported components work there (not just in the parity fixtures).
   - `checkbox`, `radio-group`: a checked + disabled control kept the
     `Highlight` border in forced-colors mode instead of `GrayText`, because the
     checked rule outranks the disabled one. Found by the new forced-colors
