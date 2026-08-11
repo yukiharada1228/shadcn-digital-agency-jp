@@ -5,6 +5,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.6.0
+
 - Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
   (was `88110f7`).
 - New component: `resource-list` (upstream `ResourceList`), with `Body` /
