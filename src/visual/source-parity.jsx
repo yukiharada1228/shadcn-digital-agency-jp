@@ -607,15 +607,24 @@ function UpstreamCheckboxFixture() {
         <UpstreamCheckbox>選択肢1</UpstreamCheckbox>
         <UpstreamCheckbox defaultChecked>選択肢2</UpstreamCheckbox>
         <UpstreamCheckbox isError>選択肢3</UpstreamCheckbox>
+        <UpstreamCheckbox disabled>選択肢4</UpstreamCheckbox>
+        <UpstreamCheckbox defaultChecked disabled>
+          選択肢5
+        </UpstreamCheckbox>
       </div>
     </fieldset>
   )
 }
 
-function OursCheckboxRow({ checked, error, label }) {
+function OursCheckboxRow({ checked, disabled, error, label }) {
   return (
     <div className="flex w-fit items-start gap-1 py-2">
-      <Checkbox aria-label={label} defaultChecked={checked} isError={error} />
+      <Checkbox
+        aria-label={label}
+        defaultChecked={checked}
+        disabled={disabled}
+        isError={error}
+      />
       <span className="pt-px text-dns-16N-130 text-solid-gray-800">
         {label}
       </span>
@@ -634,6 +643,8 @@ function OursCheckboxFixture() {
         <OursCheckboxRow label="選択肢1" />
         <OursCheckboxRow checked label="選択肢2" />
         <OursCheckboxRow error label="選択肢3" />
+        <OursCheckboxRow disabled label="選択肢4" />
+        <OursCheckboxRow checked disabled label="選択肢5" />
       </div>
     </fieldset>
   )
@@ -1396,8 +1407,34 @@ function UpstreamRadioFixture() {
         <UpstreamRadio name="source-parity-radio" isError>
           選択肢3
         </UpstreamRadio>
+        <UpstreamRadio disabled name="source-parity-radio">
+          選択肢4
+        </UpstreamRadio>
+        <UpstreamRadio
+          defaultChecked
+          disabled
+          name="source-parity-radio-disabled"
+        >
+          選択肢5
+        </UpstreamRadio>
       </div>
     </fieldset>
+  )
+}
+
+function OursRadioRow({ disabled, error, label, value }) {
+  return (
+    <div className="flex w-fit items-start gap-1 py-2">
+      <RadioGroupItem
+        aria-label={label}
+        disabled={disabled}
+        isError={error}
+        value={value}
+      />
+      <span className="pt-px text-dns-16N-130 text-solid-gray-800">
+        {label}
+      </span>
+    </div>
   )
 }
 
@@ -1408,20 +1445,28 @@ function OursRadioFixture() {
         ラベル<RequirementBadge>※必須</RequirementBadge>
       </Legend>
       <SupportText className="mt-2">サポートテキスト</SupportText>
-      <RadioGroup className="mt-2 gap-2" defaultValue="2">
-        {[
-          ["1", "選択肢1", false],
-          ["2", "選択肢2", false],
-          ["3", "選択肢3", true],
-        ].map(([value, label, error]) => (
-          <div className="flex w-fit items-start gap-1 py-2" key={value}>
-            <RadioGroupItem aria-label={label} isError={error} value={value} />
-            <span className="pt-px text-dns-16N-130 text-solid-gray-800">
-              {label}
-            </span>
-          </div>
-        ))}
-      </RadioGroup>
+      <div className="mt-2 flex flex-col gap-2">
+        <RadioGroup className="gap-2" defaultValue="2">
+          {[
+            ["1", "選択肢1", false, false],
+            ["2", "選択肢2", false, false],
+            ["3", "選択肢3", true, false],
+            ["4", "選択肢4", false, true],
+          ].map(([value, label, error, disabled]) => (
+            <OursRadioRow
+              disabled={disabled}
+              error={error}
+              key={value}
+              label={label}
+              value={value}
+            />
+          ))}
+        </RadioGroup>
+        {/* 選択済みかつ disabled は別グループにする（上のグループは選択肢2が選択済みのため） */}
+        <RadioGroup className="gap-2" defaultValue="5">
+          <OursRadioRow disabled label="選択肢5" value="5" />
+        </RadioGroup>
+      </div>
     </fieldset>
   )
 }

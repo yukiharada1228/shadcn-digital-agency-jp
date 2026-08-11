@@ -64,6 +64,88 @@ test.describe("Upstream source behavior parity", () => {
     }
   })
 
+  test("disabled checkbox and radio use the upstream disabled treatment", async ({
+    page,
+  }) => {
+    // Upstream renders the visible box as the <input> itself; our Radix ports
+    // render it as the first <span> inside the root.
+    const boxStyles = (
+      locator: ReturnType<Page["getByRole"]>,
+      source: Source
+    ) =>
+      locator.evaluate((element, currentSource) => {
+        const box =
+          currentSource === "upstream" ? element : element.querySelector("span")
+
+        if (!box) throw new Error("visible box not found")
+
+        const style = getComputedStyle(box)
+        return {
+          backgroundColor: style.backgroundColor,
+          borderColor: style.borderTopColor,
+        }
+      }, source)
+
+    const stylesBySource: Record<Source, unknown> = {
+      upstream: undefined,
+      ours: undefined,
+    }
+
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-checkbox", source)
+      const checkboxOff = page.getByRole("checkbox", { name: "選択肢4" })
+      const checkboxOn = page.getByRole("checkbox", { name: "選択肢5" })
+      await expect(checkboxOff).toBeDisabled()
+      await expect(checkboxOn).toBeDisabled()
+      await expect(checkboxOn).toBeChecked()
+
+      const checkbox = {
+        unchecked: await boxStyles(checkboxOff, source),
+        checked: await boxStyles(checkboxOn, source),
+      }
+
+      await gotoSource(page, "source-parity-radio", source)
+      const radioOff = page.getByRole("radio", { name: "選択肢4" })
+      const radioOn = page.getByRole("radio", { name: "選択肢5" })
+      await expect(radioOff).toBeDisabled()
+      await expect(radioOn).toBeDisabled()
+      await expect(radioOn).toBeChecked()
+
+      stylesBySource[source] = {
+        checkbox,
+        radio: {
+          unchecked: await boxStyles(radioOff, source),
+          checked: await boxStyles(radioOn, source),
+        },
+      }
+    }
+
+    // solid-gray-50 background with a solid-gray-300 border, per upstream.
+    expect(stylesBySource.upstream).toEqual({
+      checkbox: {
+        unchecked: {
+          backgroundColor: "rgb(242, 242, 242)",
+          borderColor: "rgb(179, 179, 179)",
+        },
+        checked: {
+          backgroundColor: "rgb(179, 179, 179)",
+          borderColor: "rgb(179, 179, 179)",
+        },
+      },
+      radio: {
+        unchecked: {
+          backgroundColor: "rgb(242, 242, 242)",
+          borderColor: "rgb(179, 179, 179)",
+        },
+        checked: {
+          backgroundColor: "rgb(242, 242, 242)",
+          borderColor: "rgb(179, 179, 179)",
+        },
+      },
+    })
+    expect(stylesBySource.ours).toEqual(stylesBySource.upstream)
+  })
+
   test("selecting an option produces the same visible selection", async ({
     page,
   }) => {

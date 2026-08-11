@@ -65,6 +65,24 @@ describe("RadioGroup", () => {
     expect(screen.getByRole("radio")).toHaveAttribute("data-error", "true")
   })
 
+  it("does not select a disabled item and carries the disabled styling hooks", () => {
+    const onValueChange = vi.fn()
+    render(
+      <RadioGroup aria-label="options" onValueChange={onValueChange}>
+        <RadioGroupItem value="a" />
+        <RadioGroupItem value="b" disabled />
+      </RadioGroup>
+    )
+    const items = screen.getAllByRole("radio")
+    expect(items[1]).toBeDisabled()
+    fireEvent.click(items[1])
+    expect(onValueChange).not.toHaveBeenCalled()
+    expect(items[1]).toHaveAttribute("data-state", "unchecked")
+    expect(items[1].querySelector("span")?.className).toContain(
+      "group-disabled/radio:!bg-solid-gray-50"
+    )
+  })
+
   it("selects an item and calls onValueChange", () => {
     const onValueChange = vi.fn()
     render(

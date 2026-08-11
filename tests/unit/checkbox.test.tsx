@@ -47,6 +47,25 @@ describe("Checkbox", () => {
     )
   })
 
+  it("does not toggle when disabled and carries the disabled styling hooks", () => {
+    const onCheckedChange = vi.fn()
+    render(
+      <Checkbox
+        aria-label="disabled"
+        disabled
+        onCheckedChange={onCheckedChange}
+      />
+    )
+    const checkbox = screen.getByRole("checkbox", { name: "disabled" })
+    expect(checkbox).toBeDisabled()
+    fireEvent.click(checkbox)
+    expect(onCheckedChange).not.toHaveBeenCalled()
+    expect(checkbox).toHaveAttribute("data-state", "unchecked")
+    expect(checkbox.querySelector("span")?.className).toContain(
+      "group-disabled/checkbox:!bg-solid-gray-50"
+    )
+  })
+
   it("toggles checked state and calls onCheckedChange", () => {
     const onCheckedChange = vi.fn()
     render(<Checkbox aria-label="toggle" onCheckedChange={onCheckedChange} />)
