@@ -707,7 +707,7 @@ export default function App() {
         {/* ページ見出し */}
         <div>
           <Heading size="36" hasChip rule="4">
-            <HeadingShoulder>全 41 コンポーネント</HeadingShoulder>
+            <HeadingShoulder>全 44 コンポーネント</HeadingShoulder>
             <HeadingTitle level="h1">
               デジタル庁デザインシステム風コンポーネント サンプル
             </HeadingTitle>
