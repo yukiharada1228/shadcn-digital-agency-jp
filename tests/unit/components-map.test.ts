@@ -100,9 +100,11 @@ describe("mapChanges", () => {
     ])
   })
 
-  it("reports nothing for an unported upstream component", () => {
+  it("reports nothing for an upstream entry that is out of scope", () => {
+    // Card は共有コンポーネントを持たない作例集で、方針として移植しない。
+    // docs/compatibility.md の "Out of Scope: Upstream Example Collections" を参照。
     expect(
-      mapChanges(["src/components/SearchBox/SearchBox.tsx"]).components
+      mapChanges(["src/components/Card/Card.stories.tsx"]).components
     ).toEqual([])
   })
 })

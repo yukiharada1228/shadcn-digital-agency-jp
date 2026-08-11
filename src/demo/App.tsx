@@ -160,6 +160,13 @@ import {
 } from "@/components/ui/separated-date-picker"
 import { StatusBadge } from "@/components/ui/status-badge"
 import {
+  SearchBox,
+  SearchBoxFields,
+  SearchBoxInput,
+  SearchBoxSelect,
+  SearchBoxSubmit,
+} from "@/components/ui/search-box"
+import {
   StepNavigation,
   StepNavigationDescription,
   StepNavigationList,
@@ -731,6 +738,28 @@ export default function App() {
             </div>
 
             <Divider />
+
+            {/* SearchBox */}
+            <div>
+              <p className="mb-3 font-bold">SearchBox</p>
+              <SearchBox className="max-w-2xl">
+                <SearchBoxFields>
+                  <SearchBoxSelect
+                    defaultValue=""
+                    label="検索対象"
+                    name="scope"
+                  >
+                    <option value="">すべて</option>
+                    <option value="procedures">手続き</option>
+                    <option value="faq">よくある質問</option>
+                  </SearchBoxSelect>
+                  <SearchBoxInput label="検索" name="q" type="search" />
+                </SearchBoxFields>
+                <SearchBoxSubmit size="lg" type="submit">
+                  検索
+                </SearchBoxSubmit>
+              </SearchBox>
+            </div>
 
             {/* Heading バリエーション */}
             <div className="grid gap-4">

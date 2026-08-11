@@ -158,6 +158,15 @@ import {
   TabPanel as UpstreamTabPanel,
 } from "../../upstream/design-system-example-components-react/src/components/Tab/Tab"
 import {
+  SearchBox as UpstreamSearchBox,
+  SearchBoxDetail as UpstreamSearchBoxDetail,
+  SearchBoxDetailActions as UpstreamSearchBoxDetailActions,
+  SearchBoxFields as UpstreamSearchBoxFields,
+  SearchBoxInput as UpstreamSearchBoxInput,
+  SearchBoxSelect as UpstreamSearchBoxSelect,
+  SearchBoxSubmit as UpstreamSearchBoxSubmit,
+} from "../../upstream/design-system-example-components-react/src/components/SearchBox"
+import {
   StepNavigation as UpstreamStepNavigation,
   StepNavigationDescription as UpstreamStepNavigationDescription,
   StepNavigationList as UpstreamStepNavigationList,
@@ -326,6 +335,15 @@ import {
   SeparatedDatePickerYear,
 } from "@/components/ui/separated-date-picker"
 import { StatusBadge } from "@/components/ui/status-badge"
+import {
+  SearchBox,
+  SearchBoxDetail,
+  SearchBoxDetailActions,
+  SearchBoxFields,
+  SearchBoxInput,
+  SearchBoxSelect,
+  SearchBoxSubmit,
+} from "@/components/ui/search-box"
 import {
   StepNavigation,
   StepNavigationDescription,
@@ -1646,6 +1664,83 @@ function OursUtilityLinkFixture() {
   )
 }
 
+const searchBoxOptions = [
+  ["", "すべて"],
+  ["images", "画像"],
+  ["files", "ファイル"],
+  ["map", "地図"],
+]
+
+// upstream と自前実装で同じ JSX を通すため、部品セットだけ差し替える。
+function SearchBoxFixtureBody({ parts }) {
+  const { Root, Fields, Select, Input, Submit, Detail, DetailActions } = parts
+
+  return (
+    <div className="grid w-[40rem] gap-8">
+      {["lg", "md", "sm"].map((size) => (
+        <Root key={size} size={size}>
+          <Fields>
+            <Select label="検索対象" name={`scope-${size}`}>
+              {searchBoxOptions.map(([value, label]) => (
+                <option key={label} value={value}>
+                  {label}
+                </option>
+              ))}
+            </Select>
+            <Input label="検索" name={`q-${size}`} type="search" />
+          </Fields>
+          <Submit size={size} type="submit">
+            検索
+          </Submit>
+        </Root>
+      ))}
+      <Root size="lg">
+        <Fields>
+          <Input label="検索" name="q-detail" type="search" />
+        </Fields>
+        <Submit size="lg" type="submit">
+          検索
+        </Submit>
+        <Detail summary="詳細条件を指定する">
+          <DetailActions>
+            <Submit size="lg" type="submit">
+              この条件で検索
+            </Submit>
+          </DetailActions>
+        </Detail>
+      </Root>
+    </div>
+  )
+}
+
+const upstreamSearchBoxParts = {
+  Root: UpstreamSearchBox,
+  Fields: UpstreamSearchBoxFields,
+  Select: UpstreamSearchBoxSelect,
+  Input: UpstreamSearchBoxInput,
+  Submit: UpstreamSearchBoxSubmit,
+  Detail: UpstreamSearchBoxDetail,
+  DetailActions: UpstreamSearchBoxDetailActions,
+}
+
+const oursSearchBoxParts = {
+  Root: SearchBox,
+  Fields: SearchBoxFields,
+  Select: SearchBoxSelect,
+  Input: SearchBoxInput,
+  Submit: SearchBoxSubmit,
+  Detail: SearchBoxDetail,
+  DetailActions: SearchBoxDetailActions,
+}
+
+function UpstreamSearchBoxFixture() {
+  return <SearchBoxFixtureBody parts={upstreamSearchBoxParts} />
+}
+
+function OursSearchBoxFixture() {
+  return <SearchBoxFixtureBody parts={oursSearchBoxParts} />
+}
+
 const stepNavigationSteps = [
   { title: "申請内容の入力", state: "completed", description: "氏名と住所" },
   { title: "本人確認", state: "editing", description: "書類の撮影" },
@@ -2732,6 +2827,11 @@ export const sourceParityStories = {
     title: "Source parity/Textarea",
     upstream: <UpstreamTextareaFixture />,
     ours: <OursTextareaFixture />,
+  },
+  "source-parity-search-box": {
+    title: "Source parity/SearchBox",
+    upstream: <UpstreamSearchBoxFixture />,
+    ours: <OursSearchBoxFixture />,
   },
   "source-parity-step-navigation-horizontal": {
     title: "Source parity/StepNavigation (horizontal)",

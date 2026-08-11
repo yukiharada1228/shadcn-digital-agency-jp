@@ -72,6 +72,7 @@
         "yukiharada1228/shadcn-digital-agency-jp/progress-indicator",
         "yukiharada1228/shadcn-digital-agency-jp/radio-group",
         "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
+        "yukiharada1228/shadcn-digital-agency-jp/search-box",
         "yukiharada1228/shadcn-digital-agency-jp/select",
         "yukiharada1228/shadcn-digital-agency-jp/separated-date-picker",
         "yukiharada1228/shadcn-digital-agency-jp/status-badge",
@@ -987,6 +988,36 @@
           "path": "src/components/ui/requirement-badge.tsx",
           "type": "registry:ui",
           "target": "@ui/requirement-badge.tsx"
+        },
+        {
+          "path": "THIRD_PARTY_LICENSES.md",
+          "type": "registry:file",
+          "target": "~/THIRD_PARTY_LICENSES.md"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "search-box",
+      "type": "registry:ui",
+      "title": "SearchBox (Unofficial)",
+      "description": "Unofficial SearchBox inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+      "dependencies": [],
+      "registryDependencies": [
+        "yukiharada1228/shadcn-digital-agency-jp/theme",
+        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
+        "yukiharada1228/shadcn-digital-agency-jp/button"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/search-box.tsx",
+          "type": "registry:ui",
+          "target": "@ui/search-box.tsx"
+        },
+        {
+          "path": "src/styles/digital-agency-search-box.css",
+          "type": "registry:file",
+          "target": "styles/digital-agency-search-box.css"
         },
         {
           "path": "THIRD_PARTY_LICENSES.md",

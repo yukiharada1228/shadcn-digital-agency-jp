@@ -7,6 +7,11 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
   (was `88110f7`).
+- New component: `search-box` (upstream `SearchBox`), with `SearchBoxFields` /
+  `SearchBoxSelect` / `SearchBoxInput` / `SearchBoxSubmit` / `SearchBoxDetail` /
+  `SearchBoxDetailActions`. Ships `styles/digital-agency-search-box.css` as an
+  optional import for `appearance: base-select` browsers, mirroring upstream's
+  own progressive-enhancement split.
 - New component: `step-navigation` (upstream `StepNavigation`), with
   `StepNavigationList` / `Step` / `StepHeader` / `Number` / `StateIndicator` /
   `Title` / `Description`. Supports both orientations, both sizes, the five
@@ -28,12 +33,14 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     `whitespace-nowrap`, matching upstream's centered, content-sized button.
   - `status-badge`: use the DADS `rounded-8` token instead of `rounded-lg`.
 - Tests:
+  - The upstream-vs-ours pixel comparator now flags a per-channel difference
+    above 12 instead of 51. At 51 a wrong background (`#f2f2f2` vs `#ffffff`)
+    counted as zero differing pixels; all 47 parity stories pass at 12.
   - Source-parity fixtures now cover disabled (and disabled + checked)
     checkbox / radio states.
   - New upstream-vs-ours behavior test asserting the computed disabled
     border/background of both components.
-- Not ported: upstream's new `SearchBox` and `ResourceList` (tracked
-  separately). `Card` is out of scope by policy — see
+- Not ported: upstream's new `ResourceList` (tracked separately). `Card` is out of scope by policy — see
   "Out of Scope: Upstream Example Collections" in `docs/compatibility.md`.
 
 ## v0.5.0

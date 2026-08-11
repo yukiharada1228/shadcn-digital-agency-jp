@@ -1,3 +1,5 @@
 /* Global styles for local app and test entrypoints. */
 @import "tailwindcss";
 @import "@/styles/digital-agency.css";
+/* search-box の任意インポート CSS（upstream の Story と同じ条件にするため） */
+@import "@/styles/digital-agency-search-box.css";
