@@ -7,6 +7,10 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
   (was `88110f7`).
+- New component: `step-navigation` (upstream `StepNavigation`), with
+  `StepNavigationList` / `Step` / `StepHeader` / `Number` / `StateIndicator` /
+  `Title` / `Description`. Supports both orientations, both sizes, the five
+  step states, and `asChild` on the root and the step header.
 - Components:
   - `checkbox`, `radio-group`: apply the disabled treatment to the native
     `disabled` state as well, not only `aria-disabled` (the Radix roots render
@@ -19,8 +23,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     checkbox / radio states.
   - New upstream-vs-ours behavior test asserting the computed disabled
     border/background of both components.
-- Not ported: upstream's new `SearchBox`, `StepNavigation`, and `ResourceList`
-  (tracked separately). `Card` is out of scope by policy — see
+- Not ported: upstream's new `SearchBox` and `ResourceList` (tracked
+  separately). `Card` is out of scope by policy — see
   "Out of Scope: Upstream Example Collections" in `docs/compatibility.md`.
 
 ## v0.5.0

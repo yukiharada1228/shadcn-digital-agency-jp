@@ -157,6 +157,16 @@ import {
   TabList as UpstreamTabList,
   TabPanel as UpstreamTabPanel,
 } from "../../upstream/design-system-example-components-react/src/components/Tab/Tab"
+import {
+  StepNavigation as UpstreamStepNavigation,
+  StepNavigationDescription as UpstreamStepNavigationDescription,
+  StepNavigationList as UpstreamStepNavigationList,
+  StepNavigationNumber as UpstreamStepNavigationNumber,
+  StepNavigationStateIndicator as UpstreamStepNavigationStateIndicator,
+  StepNavigationStep as UpstreamStepNavigationStep,
+  StepNavigationStepHeader as UpstreamStepNavigationStepHeader,
+  StepNavigationTitle as UpstreamStepNavigationTitle,
+} from "../../upstream/design-system-example-components-react/src/components/StepNavigation"
 import { Textarea as UpstreamTextarea } from "../../upstream/design-system-example-components-react/src/components/Textarea"
 import { UtilityLink as UpstreamUtilityLink } from "../../upstream/design-system-example-components-react/src/components/UtilityLink"
 
@@ -316,6 +326,16 @@ import {
   SeparatedDatePickerYear,
 } from "@/components/ui/separated-date-picker"
 import { StatusBadge } from "@/components/ui/status-badge"
+import {
+  StepNavigation,
+  StepNavigationDescription,
+  StepNavigationList,
+  StepNavigationNumber,
+  StepNavigationStateIndicator,
+  StepNavigationStep,
+  StepNavigationStepHeader,
+  StepNavigationTitle,
+} from "@/components/ui/step-navigation"
 import { SupportText } from "@/components/ui/support-text"
 import { Tab, TabItem, TabList, TabPanel } from "@/components/ui/tabs"
 import {
@@ -1626,6 +1646,129 @@ function OursUtilityLinkFixture() {
   )
 }
 
+const stepNavigationSteps = [
+  { title: "申請内容の入力", state: "completed", description: "氏名と住所" },
+  { title: "本人確認", state: "editing", description: "書類の撮影" },
+  { title: "支払い", state: "error", description: "手数料の納付" },
+  { title: "任意アンケート", state: "skipped", description: "回答は任意" },
+  { title: "内容の確認", state: "reached", description: "送信前の確認" },
+]
+
+// upstream と自前実装で同じ JSX を通すため、部品セットだけ差し替える。
+function StepNavigationFixtureBody({ interactive, orientation, parts }) {
+  const {
+    Root,
+    List,
+    Step,
+    Header,
+    Number: StepNumber,
+    StateIndicator,
+    Title,
+    Description,
+  } = parts
+
+  return (
+    <Root
+      orientation={orientation}
+      size="normal"
+      style={{ "--step-width": "170", "--step-min-width": "170" }}
+    >
+      <List>
+        {stepNavigationSteps.map((step, index) => {
+          const header = (
+            <>
+              <StepNumber data-testid={`step-number-${step.state}`}>
+                {index + 1}
+                <StateIndicator state={step.state} />
+              </StepNumber>
+              <Title>{step.title}</Title>
+            </>
+          )
+
+          return (
+            <Step
+              aria-current={step.state === "editing" ? "step" : undefined}
+              first={index === 0}
+              key={step.title}
+              last={index === stepNavigationSteps.length - 1}
+              state={step.state}
+            >
+              <Header asChild={interactive}>
+                {interactive ? (
+                  <a href={`#step-${index + 1}`}>{header}</a>
+                ) : (
+                  header
+                )}
+              </Header>
+              <Description>{step.description}</Description>
+            </Step>
+          )
+        })}
+      </List>
+    </Root>
+  )
+}
+
+const upstreamStepNavigationParts = {
+  Root: UpstreamStepNavigation,
+  List: UpstreamStepNavigationList,
+  Step: UpstreamStepNavigationStep,
+  Header: UpstreamStepNavigationStepHeader,
+  Number: UpstreamStepNavigationNumber,
+  StateIndicator: UpstreamStepNavigationStateIndicator,
+  Title: UpstreamStepNavigationTitle,
+  Description: UpstreamStepNavigationDescription,
+}
+
+const oursStepNavigationParts = {
+  Root: StepNavigation,
+  List: StepNavigationList,
+  Step: StepNavigationStep,
+  Header: StepNavigationStepHeader,
+  Number: StepNavigationNumber,
+  StateIndicator: StepNavigationStateIndicator,
+  Title: StepNavigationTitle,
+  Description: StepNavigationDescription,
+}
+
+function UpstreamStepNavigationHorizontalFixture() {
+  return (
+    <StepNavigationFixtureBody
+      interactive
+      orientation="horizontal"
+      parts={upstreamStepNavigationParts}
+    />
+  )
+}
+
+function OursStepNavigationHorizontalFixture() {
+  return (
+    <StepNavigationFixtureBody
+      interactive
+      orientation="horizontal"
+      parts={oursStepNavigationParts}
+    />
+  )
+}
+
+function UpstreamStepNavigationVerticalFixture() {
+  return (
+    <StepNavigationFixtureBody
+      orientation="vertical"
+      parts={upstreamStepNavigationParts}
+    />
+  )
+}
+
+function OursStepNavigationVerticalFixture() {
+  return (
+    <StepNavigationFixtureBody
+      orientation="vertical"
+      parts={oursStepNavigationParts}
+    />
+  )
+}
+
 function UpstreamTabsStatic({ position }) {
   const tabList = (
     <UpstreamTabList>
@@ -2589,6 +2732,16 @@ export const sourceParityStories = {
     title: "Source parity/Textarea",
     upstream: <UpstreamTextareaFixture />,
     ours: <OursTextareaFixture />,
+  },
+  "source-parity-step-navigation-horizontal": {
+    title: "Source parity/StepNavigation (horizontal)",
+    upstream: <UpstreamStepNavigationHorizontalFixture />,
+    ours: <OursStepNavigationHorizontalFixture />,
+  },
+  "source-parity-step-navigation-vertical": {
+    title: "Source parity/StepNavigation (vertical)",
+    upstream: <UpstreamStepNavigationVerticalFixture />,
+    ours: <OursStepNavigationVerticalFixture />,
   },
   "source-parity-utility-link": {
     title: "Source parity/UtilityLink",

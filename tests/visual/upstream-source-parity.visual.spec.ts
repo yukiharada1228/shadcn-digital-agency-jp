@@ -52,6 +52,17 @@ const stories: StoryConfig[] = [
   { id: "source-parity-select" },
   { id: "source-parity-separated-date-picker" },
   { id: "source-parity-status-badge" },
+  // 状態ごとの色差は小さく、既定の 1% 許容では拾えないため厳しめにする。
+  {
+    id: "source-parity-step-navigation-horizontal",
+    maxDiffPixelRatio: 0.0005,
+    viewport: { width: 1000, height: 500 },
+  },
+  {
+    id: "source-parity-step-navigation-vertical",
+    maxDiffPixelRatio: 0.0005,
+    viewport: { width: 900, height: 900 },
+  },
   { id: "source-parity-support-text" },
   { id: "source-parity-tabs-static-top" },
   { id: "source-parity-tabs-static-left" },

@@ -159,6 +159,17 @@ import {
   SeparatedDatePickerYear,
 } from "@/components/ui/separated-date-picker"
 import { StatusBadge } from "@/components/ui/status-badge"
+import {
+  StepNavigation,
+  StepNavigationDescription,
+  StepNavigationList,
+  StepNavigationNumber,
+  StepNavigationStateIndicator,
+  StepNavigationStep,
+  StepNavigationStepHeader,
+  type StepNavigationStepState,
+  StepNavigationTitle,
+} from "@/components/ui/step-navigation"
 import { SupportText } from "@/components/ui/support-text"
 import {
   Table,
@@ -224,6 +235,29 @@ const carouselSlides: CarouselSlide[] = [
 
 const menuItemClass =
   "flex w-full items-center min-h-11 px-4 py-2.5 text-left text-dns-16N-130 text-solid-gray-800 hover:bg-solid-gray-50 hover:underline focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-black focus-visible:bg-yellow-300"
+
+const demoSteps: {
+  title: string
+  description: string
+  state?: StepNavigationStepState
+}[] = [
+  {
+    title: "申請内容の入力",
+    description: "氏名・住所などを入力します。",
+    state: "completed",
+  },
+  {
+    title: "本人確認",
+    description: "マイナンバーカードで確認します。",
+    state: "editing",
+  },
+  {
+    title: "任意アンケート",
+    description: "回答は任意です。",
+    state: "skipped",
+  },
+  { title: "内容の確認と送信", description: "入力内容を確認します。" },
+]
 
 const sectionNavItems = [
   { id: "basics", label: "基本" },
@@ -1217,6 +1251,44 @@ export default function App() {
         {/* ===== ナビゲーション ===== */}
         <Section id="nav" title="ナビゲーション / Navigation">
           <div className="grid gap-8">
+            {/* StepNavigation */}
+            <div>
+              <p className="mb-3 font-bold">StepNavigation</p>
+              <StepNavigation asChild>
+                <nav aria-label="転入届の手順">
+                  <p className="sr-only">
+                    全4ステップ中、2ステップ目まで到達済み
+                  </p>
+                  <StepNavigationList>
+                    {demoSteps.map((step, index) => (
+                      <StepNavigationStep
+                        aria-current={
+                          step.state === "editing" ? "step" : undefined
+                        }
+                        first={index === 0}
+                        key={step.title}
+                        last={index === demoSteps.length - 1}
+                        state={step.state}
+                      >
+                        <StepNavigationStepHeader>
+                          <StepNavigationNumber>
+                            {index + 1}
+                            <StepNavigationStateIndicator state={step.state} />
+                          </StepNavigationNumber>
+                          <StepNavigationTitle>
+                            {step.title}
+                          </StepNavigationTitle>
+                        </StepNavigationStepHeader>
+                        <StepNavigationDescription>
+                          {step.description}
+                        </StepNavigationDescription>
+                      </StepNavigationStep>
+                    ))}
+                  </StepNavigationList>
+                </nav>
+              </StepNavigation>
+            </div>
+
             {/* Tabs */}
             <div>
               <p className="mb-3 font-bold">Tabs</p>

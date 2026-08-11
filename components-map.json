@@ -298,5 +298,19 @@
       "tests/parity/native.api-dom.spec.tsx"
     ],
     "status": "ported"
+  },
+  "StepNavigation": {
+    "upstreamPath": "src/components/StepNavigation",
+    "localFiles": [
+      "src/components/ui/step-navigation.tsx",
+      "src/registry/items/step-navigation.json"
+    ],
+    "registryItem": "step-navigation",
+    "parityTests": [
+      "tests/unit/step-navigation.test.tsx",
+      "tests/a11y/step-navigation.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }
