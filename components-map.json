@@ -312,5 +312,290 @@
       "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"
+  },
+  "Accordion": {
+    "upstreamPath": "src/components/Accordion",
+    "localFiles": [
+      "src/components/ui/accordion.tsx",
+      "src/registry/items/accordion.json"
+    ],
+    "registryItem": "accordion",
+    "parityTests": [
+      "tests/unit/accordion.test.tsx",
+      "tests/a11y/accordion.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Breadcrumbs": {
+    "upstreamPath": "src/components/Breadcrumbs",
+    "localFiles": [
+      "src/components/ui/breadcrumbs.tsx",
+      "src/registry/items/breadcrumbs.json"
+    ],
+    "registryItem": "breadcrumbs",
+    "parityTests": [
+      "tests/unit/breadcrumbs.test.tsx",
+      "tests/a11y/breadcrumbs.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Carousel": {
+    "upstreamPath": "src/components/Carousel",
+    "localFiles": [
+      "src/components/ui/carousel.tsx",
+      "src/registry/items/carousel.json"
+    ],
+    "registryItem": "carousel",
+    "parityTests": [
+      "tests/unit/carousel.test.tsx",
+      "tests/a11y/carousel.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "DatePicker": {
+    "upstreamPath": "src/components/DatePicker",
+    "localFiles": [
+      "src/components/ui/date-picker.tsx",
+      "src/registry/items/date-picker.json"
+    ],
+    "registryItem": "date-picker",
+    "parityTests": [
+      "tests/unit/date-picker.test.tsx",
+      "tests/a11y/date-picker.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "ModalDialog": {
+    "upstreamPath": "src/components/ModalDialog",
+    "localFiles": [
+      "src/components/ui/dialog.tsx",
+      "src/registry/items/dialog.json"
+    ],
+    "registryItem": "dialog",
+    "parityTests": [
+      "tests/unit/dialog.test.tsx",
+      "tests/a11y/dialog.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Disclosure": {
+    "upstreamPath": "src/components/Disclosure",
+    "localFiles": [
+      "src/components/ui/disclosure.tsx",
+      "src/registry/items/disclosure.json"
+    ],
+    "registryItem": "disclosure",
+    "parityTests": [
+      "tests/unit/disclosure.test.tsx",
+      "tests/a11y/disclosure.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Drawer": {
+    "upstreamPath": "src/components/Drawer",
+    "localFiles": [
+      "src/components/ui/drawer.tsx",
+      "src/registry/items/drawer.json"
+    ],
+    "registryItem": "drawer",
+    "parityTests": [
+      "tests/unit/drawer.test.tsx",
+      "tests/a11y/drawer.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "EmergencyBanner": {
+    "upstreamPath": "src/components/EmergencyBanner",
+    "localFiles": [
+      "src/components/ui/emergency-banner.tsx",
+      "src/registry/items/emergency-banner.json"
+    ],
+    "registryItem": "emergency-banner",
+    "parityTests": [
+      "tests/unit/emergency-banner.test.tsx",
+      "tests/a11y/emergency-banner.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "FileUpload": {
+    "upstreamPath": "src/components/FileUpload",
+    "localFiles": [
+      "src/components/ui/file-upload.tsx",
+      "src/registry/items/file-upload.json"
+    ],
+    "registryItem": "file-upload",
+    "parityTests": [
+      "tests/unit/file-upload.test.tsx",
+      "tests/a11y/file-upload.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "HamburgerMenuButton": {
+    "upstreamPath": "src/components/HamburgerMenuButton",
+    "localFiles": [
+      "src/components/ui/hamburger-menu-button.tsx",
+      "src/registry/items/hamburger-menu-button.json"
+    ],
+    "registryItem": "hamburger-menu-button",
+    "parityTests": [
+      "tests/unit/hamburger-menu-button.test.tsx",
+      "tests/a11y/hamburger-menu-button.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "HorizontalMenu": {
+    "upstreamPath": "src/components/HorizontalMenu",
+    "localFiles": [
+      "src/components/ui/horizontal-menu.tsx",
+      "src/registry/items/horizontal-menu.json"
+    ],
+    "registryItem": "horizontal-menu",
+    "parityTests": [
+      "tests/unit/horizontal-menu.test.tsx",
+      "tests/a11y/horizontal-menu.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "LanguageSelector": {
+    "upstreamPath": "src/components/LanguageSelector",
+    "localFiles": [
+      "src/components/ui/language-selector.tsx",
+      "src/registry/items/language-selector.json"
+    ],
+    "registryItem": "language-selector",
+    "parityTests": [
+      "tests/unit/language-selector.test.tsx",
+      "tests/a11y/language-selector.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Legend": {
+    "upstreamPath": "src/components/Legend",
+    "localFiles": [
+      "src/components/ui/legend.tsx",
+      "src/registry/items/legend.json"
+    ],
+    "registryItem": "legend",
+    "parityTests": [
+      "tests/unit/legend.test.tsx",
+      "tests/a11y/legend.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "MenuList": {
+    "upstreamPath": "src/components/MenuList",
+    "localFiles": [
+      "src/components/ui/menu-list.tsx",
+      "src/registry/items/menu-list.json"
+    ],
+    "registryItem": "menu-list",
+    "parityTests": [
+      "tests/unit/menu-list.test.tsx",
+      "tests/a11y/menu-list.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "MenuListBox": {
+    "upstreamPath": "src/components/MenuListBox",
+    "localFiles": [
+      "src/components/ui/menu-list-box.tsx",
+      "src/registry/items/menu-list-box.json"
+    ],
+    "registryItem": "menu-list-box",
+    "parityTests": [
+      "tests/unit/menu-list-box.test.tsx",
+      "tests/a11y/menu-list-box.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "NotificationBanner": {
+    "upstreamPath": "src/components/NotificationBanner",
+    "localFiles": [
+      "src/components/ui/notification-banner.tsx",
+      "src/registry/items/notification-banner.json"
+    ],
+    "registryItem": "notification-banner",
+    "parityTests": [
+      "tests/unit/notification-banner.test.tsx",
+      "tests/a11y/notification-banner.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "ProgressIndicator": {
+    "upstreamPath": "src/components/ProgressIndicator",
+    "localFiles": [
+      "src/components/ui/progress-indicator.tsx",
+      "src/registry/items/progress-indicator.json"
+    ],
+    "registryItem": "progress-indicator",
+    "parityTests": [
+      "tests/unit/progress-indicator.test.tsx",
+      "tests/a11y/progress-indicator.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "SeparatedDatePicker": {
+    "upstreamPath": "src/components/SeparatedDatePicker",
+    "localFiles": [
+      "src/components/ui/separated-date-picker.tsx",
+      "src/registry/items/separated-date-picker.json"
+    ],
+    "registryItem": "separated-date-picker",
+    "parityTests": [
+      "tests/unit/separated-date-picker.test.tsx",
+      "tests/a11y/separated-date-picker.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Table": {
+    "upstreamPath": "src/components/Table",
+    "localFiles": [
+      "src/components/ui/table.tsx",
+      "src/registry/items/table.json"
+    ],
+    "registryItem": "table",
+    "parityTests": [
+      "tests/unit/table.test.tsx",
+      "tests/a11y/table.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "Tab": {
+    "upstreamPath": "src/components/Tab",
+    "localFiles": [
+      "src/components/ui/tabs.tsx",
+      "src/registry/items/tabs.json"
+    ],
+    "registryItem": "tabs",
+    "parityTests": [
+      "tests/unit/tabs.test.tsx",
+      "tests/a11y/tabs.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }

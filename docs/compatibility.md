@@ -75,6 +75,13 @@ define, which is an API divergence with no upstream contract to test against.
 
 ## Test Requirements
 
+Every ported component must have an entry in `components-map.json`, because
+`scripts/map-upstream-changes.ts` resolves upstream changes to local files
+through that map alone — an unmapped component is silently reported as
+unaffected by the upstream sync tooling. `tests/unit/components-map.test.ts`
+enforces the coverage, so adding a `registry:ui` item without a map entry fails
+CI.
+
 For every ported component, `components-map.json` must point to at least one
 unit or parity test. Components with intentional API/DOM divergence must have a
 test under `tests/parity` that asserts both:

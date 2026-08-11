@@ -22,8 +22,12 @@ type Entry = {
 
 export function mapChanges(changedFiles: string[]) {
   const map: Record<string, Entry> = JSON.parse(readFileSync(MAP, "utf8"))
+  // ディレクトリ境界で比較する。単純な startsWith だと
+  // `src/components/Table/...` が `src/components/Tab` にも一致してしまう。
   const affected = Object.entries(map).filter(([, m]) =>
-    changedFiles.some((f) => f.startsWith(m.upstreamPath))
+    changedFiles.some(
+      (f) => f === m.upstreamPath || f.startsWith(`${m.upstreamPath}/`)
+    )
   )
   return {
     components: affected.map(([name]) => name),
