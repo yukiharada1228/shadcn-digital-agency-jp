@@ -707,7 +707,7 @@ export default function App() {
         {/* ページ見出し */}
         <div>
           <Heading size="36" hasChip rule="4">
-            <HeadingShoulder>全 41 コンポーネント</HeadingShoulder>
+            <HeadingShoulder>全 44 コンポーネント</HeadingShoulder>
             <HeadingTitle level="h1">
               デジタル庁デザインシステム風コンポーネント サンプル
             </HeadingTitle>
@@ -763,25 +763,29 @@ export default function App() {
             <Divider />
 
             {/* SearchBox */}
-            <div>
+            {/* select + input + 送信ボタンの最小幅の合計が約 440px あるため、
+                狭い画面ではウィジェット内で横スクロールさせる。 */}
+            <div className="min-w-0">
               <p className="mb-3 font-bold">SearchBox</p>
-              <SearchBox className="max-w-2xl">
-                <SearchBoxFields>
-                  <SearchBoxSelect
-                    defaultValue=""
-                    label="検索対象"
-                    name="scope"
-                  >
-                    <option value="">すべて</option>
-                    <option value="procedures">手続き</option>
-                    <option value="faq">よくある質問</option>
-                  </SearchBoxSelect>
-                  <SearchBoxInput label="検索" name="q" type="search" />
-                </SearchBoxFields>
-                <SearchBoxSubmit size="lg" type="submit">
-                  検索
-                </SearchBoxSubmit>
-              </SearchBox>
+              <div className="overflow-x-auto">
+                <SearchBox className="max-w-2xl">
+                  <SearchBoxFields>
+                    <SearchBoxSelect
+                      defaultValue=""
+                      label="検索対象"
+                      name="scope"
+                    >
+                      <option value="">すべて</option>
+                      <option value="procedures">手続き</option>
+                      <option value="faq">よくある質問</option>
+                    </SearchBoxSelect>
+                    <SearchBoxInput label="検索" name="q" type="search" />
+                  </SearchBoxFields>
+                  <SearchBoxSubmit size="lg" type="submit">
+                    検索
+                  </SearchBoxSubmit>
+                </SearchBox>
+              </div>
             </div>
 
             {/* Heading バリエーション */}
@@ -1304,11 +1308,14 @@ export default function App() {
         <Section id="nav" title="ナビゲーション / Navigation">
           <div className="grid gap-8">
             {/* StepNavigation */}
-            <div>
+            {/* 横向きは 1 ステップ 320px 固定なので、min-w-0 を付けないとグリッド
+                アイテムが内容幅まで広がり、ページ全体が横にはみ出す。root の
+                overflow-x-auto はこれを付けて初めて効く。 */}
+            <div className="min-w-0">
               <p className="mb-3 font-bold">StepNavigation</p>
               {/* コネクタ線は z-index:-10 なので、不透明な背景を持つ祖先があると
                   隠れる（upstream と同じ挙動）。stacking context を作って防ぐ。 */}
-              <div className="isolate">
+              <div className="isolate min-w-0">
                 <StepNavigation asChild>
                   <nav aria-label="転入届の手順">
                     <p className="sr-only">

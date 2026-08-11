@@ -40,6 +40,25 @@ test.describe("Demo app smoke", () => {
     expect(problems).toEqual([])
   })
 
+  // 追加したセクションがページ全体を横に押し広げていないこと。
+  // StepNavigation の横向きは 1 ステップ 320px 固定、SearchBox は最小幅が
+  // 約 440px あるため、囲い方を間違えるとページごとはみ出す。
+  for (const width of [1440, 390]) {
+    test(`does not overflow horizontally at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 })
+      await page.goto("/")
+      await expect(
+        page.getByRole("heading", { level: 1 }).first()
+      ).toBeVisible()
+
+      const size = await page.evaluate(() => ({
+        document: document.documentElement.scrollWidth,
+        viewport: window.innerWidth,
+      }))
+      expect(size.document).toBeLessThanOrEqual(size.viewport)
+    })
+  }
+
   test("keeps a stacking context around the step navigation", async ({
     page,
   }) => {
