@@ -597,5 +597,20 @@
       "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"
+  },
+  "SearchBox": {
+    "upstreamPath": "src/components/SearchBox",
+    "localFiles": [
+      "src/components/ui/search-box.tsx",
+      "src/styles/digital-agency-search-box.css",
+      "src/registry/items/search-box.json"
+    ],
+    "registryItem": "search-box",
+    "parityTests": [
+      "tests/unit/search-box.test.tsx",
+      "tests/a11y/search-box.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }

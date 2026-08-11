@@ -51,6 +51,11 @@ const stories: StoryConfig[] = [
   { id: "source-parity-requirement-badge" },
   { id: "source-parity-select" },
   { id: "source-parity-separated-date-picker" },
+  {
+    id: "source-parity-search-box",
+    maxDiffPixelRatio: 0.0005,
+    viewport: { width: 800, height: 700 },
+  },
   { id: "source-parity-status-badge" },
   // 状態ごとの色差は小さく、既定の 1% 許容では拾えないため厳しめにする。
   {
@@ -216,7 +221,7 @@ function decodePng(buffer: Buffer): DecodedPng {
   return { data: rgba, height, width }
 }
 
-function comparePngs(expected: Buffer, actual: Buffer, channelThreshold = 51) {
+function comparePngs(expected: Buffer, actual: Buffer, channelThreshold = 12) {
   const expectedPng = decodePng(expected)
   const actualPng = decodePng(actual)
 

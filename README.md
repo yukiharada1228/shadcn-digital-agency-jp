@@ -127,18 +127,24 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 ## コンポーネント一覧 / Components
 
-全 **42 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+全 **43 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
 
-| カテゴリ                                  | コンポーネント                                                                                                                                                                                      |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **基本** / Basics                         | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                                                        |
-| **フォーム** / Form                       | `input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` |
-| **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                   |
-| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation`                         |
-| **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                 |
-| **データ表示** / Data display             | `table` · `carousel`                                                                                                                                                                                |
+| カテゴリ                                  | コンポーネント                                                                                                                                                                                                     |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **基本** / Basics                         | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                                                                       |
+| **フォーム** / Form                       | `input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` · `search-box` |
+| **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                                  |
+| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation`                                        |
+| **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                                |
+| **データ表示** / Data display             | `table` · `carousel`                                                                                                                                                                                               |
 
 > 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
+
+> `search-box` は `styles/digital-agency-search-box.css` も一緒に追加されます。`appearance: base-select` 対応ブラウザでドロップダウンの外観を DADS に合わせるための**任意インポート**で、グローバル CSS に読み込むと有効になります。読み込まなくても SearchBox は動作します（upstream も同じ扱い）。
+>
+> ```css
+> @import "@/styles/digital-agency-search-box.css";
+> ```
 
 ---
 
