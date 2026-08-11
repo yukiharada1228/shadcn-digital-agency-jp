@@ -612,5 +612,21 @@
       "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"
+  },
+  "ResourceList": {
+    "upstreamPath": "src/components/ResourceList",
+    "localFiles": [
+      "src/components/ui/resource-list.tsx",
+      "src/registry/items/resource-list.json"
+    ],
+    "registryItem": "resource-list",
+    "parityTests": [
+      "tests/unit/resource-list.test.tsx",
+      "tests/a11y/resource-list.a11y.spec.tsx",
+      "tests/parity/resource-list.api-dom.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts",
+      "tests/visual/upstream-source-behavior.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }

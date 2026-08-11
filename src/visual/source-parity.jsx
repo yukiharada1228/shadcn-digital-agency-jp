@@ -158,6 +158,18 @@ import {
   TabPanel as UpstreamTabPanel,
 } from "../../upstream/design-system-example-components-react/src/components/Tab/Tab"
 import {
+  ResourceList as UpstreamResourceList,
+  ResourceListAction as UpstreamResourceListAction,
+  ResourceListActionButton as UpstreamResourceListActionButton,
+  ResourceListBody as UpstreamResourceListBody,
+  ResourceListContents as UpstreamResourceListContents,
+  ResourceListControl as UpstreamResourceListControl,
+  ResourceListLabel as UpstreamResourceListLabel,
+  ResourceListSub as UpstreamResourceListSub,
+  ResourceListSupport as UpstreamResourceListSupport,
+  ResourceListTitle as UpstreamResourceListTitle,
+} from "../../upstream/design-system-example-components-react/src/components/ResourceList"
+import {
   SearchBox as UpstreamSearchBox,
   SearchBoxDetail as UpstreamSearchBoxDetail,
   SearchBoxDetailActions as UpstreamSearchBoxDetailActions,
@@ -335,6 +347,18 @@ import {
   SeparatedDatePickerYear,
 } from "@/components/ui/separated-date-picker"
 import { StatusBadge } from "@/components/ui/status-badge"
+import {
+  ResourceList,
+  ResourceListAction,
+  ResourceListActionButton,
+  ResourceListBody,
+  ResourceListContents,
+  ResourceListControl,
+  ResourceListLabel,
+  ResourceListSub,
+  ResourceListSupport,
+  ResourceListTitle,
+} from "@/components/ui/resource-list"
 import {
   SearchBox,
   SearchBoxDetail,
@@ -1664,6 +1688,136 @@ function OursUtilityLinkFixture() {
   )
 }
 
+const menuIconCircles = (
+  <>
+    <circle cx="12" cy="4.5" r="1.5" />
+    <circle cx="12" cy="12" r="1.5" />
+    <circle cx="12" cy="19.5" r="1.5" />
+  </>
+)
+
+const resourceListRows = [
+  { checked: false, disabled: false, variant: "frame" },
+  { checked: true, disabled: false, variant: "frame" },
+  { checked: false, disabled: true, variant: "frame" },
+  { checked: false, disabled: false, variant: "list" },
+]
+
+// upstream はネイティブ input、こちらは Radix。行の見た目が一致することを見る。
+function ResourceListFixtureBody({ parts }) {
+  const {
+    Root,
+    Body,
+    Control,
+    Contents,
+    Title,
+    Label,
+    Support,
+    Sub,
+    Action,
+    ActionButton,
+    control: renderControl,
+    title: renderTitle,
+  } = parts
+
+  return (
+    <ul className="grid w-[36rem] gap-4">
+      {resourceListRows.map((row, index) => (
+        <li key={index}>
+          <Root interaction="whole" variant={row.variant}>
+            <Body>
+              <Control>{renderControl(row, index)}</Control>
+              <Contents>
+                <Title as="p">{renderTitle(row, index)}</Title>
+                <Label>
+                  <p>ラベル</p>
+                </Label>
+                <Support>
+                  <p>サポートテキスト</p>
+                </Support>
+              </Contents>
+              <Sub>
+                <p>サブラベル</p>
+              </Sub>
+            </Body>
+            <Action>
+              <ActionButton>
+                <svg
+                  aria-label="メニュー"
+                  fill="currentcolor"
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                >
+                  {menuIconCircles}
+                </svg>
+              </ActionButton>
+            </Action>
+          </Root>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+const upstreamResourceListParts = {
+  Root: UpstreamResourceList,
+  Body: UpstreamResourceListBody,
+  Control: UpstreamResourceListControl,
+  Contents: UpstreamResourceListContents,
+  Title: UpstreamResourceListTitle,
+  Label: UpstreamResourceListLabel,
+  Support: UpstreamResourceListSupport,
+  Sub: UpstreamResourceListSub,
+  Action: UpstreamResourceListAction,
+  ActionButton: UpstreamResourceListActionButton,
+  control: (row, index) => (
+    <UpstreamCheckbox
+      aria-label={`選択 ${index + 1}`}
+      defaultChecked={row.checked}
+      disabled={row.disabled}
+      id={`resource-list-upstream-${index}`}
+      size="md"
+    />
+  ),
+  // upstream の行全体クリックはタイトル内の `<label for>` が担う。
+  title: (row, index) => (
+    <label htmlFor={`resource-list-upstream-${index}`}>リストタイトル</label>
+  ),
+}
+
+const oursResourceListParts = {
+  Root: ResourceList,
+  Body: ResourceListBody,
+  Control: ResourceListControl,
+  Contents: ResourceListContents,
+  Title: ResourceListTitle,
+  Label: ResourceListLabel,
+  Support: ResourceListSupport,
+  Sub: ResourceListSub,
+  Action: ResourceListAction,
+  ActionButton: ResourceListActionButton,
+  control: (row, index) => (
+    <Checkbox
+      aria-label={`選択 ${index + 1}`}
+      defaultChecked={row.checked}
+      disabled={row.disabled}
+      size="md"
+    />
+  ),
+  // こちらは Control の ::before オーバーレイが行全体を覆うため、タイトルは素のテキスト。
+  title: () => "リストタイトル",
+}
+
+function UpstreamResourceListFixture() {
+  return <ResourceListFixtureBody parts={upstreamResourceListParts} />
+}
+
+function OursResourceListFixture() {
+  return <ResourceListFixtureBody parts={oursResourceListParts} />
+}
+
 const searchBoxOptions = [
   ["", "すべて"],
   ["images", "画像"],
@@ -2827,6 +2981,11 @@ export const sourceParityStories = {
     title: "Source parity/Textarea",
     upstream: <UpstreamTextareaFixture />,
     ours: <OursTextareaFixture />,
+  },
+  "source-parity-resource-list": {
+    title: "Source parity/ResourceList",
+    upstream: <UpstreamResourceListFixture />,
+    ours: <OursResourceListFixture />,
   },
   "source-parity-search-box": {
     title: "Source parity/SearchBox",

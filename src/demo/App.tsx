@@ -143,6 +143,16 @@ import {
   ProgressIndicatorStatic,
 } from "@/components/ui/progress-indicator"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import {
+  ResourceList,
+  ResourceListAction,
+  ResourceListActionButton,
+  ResourceListBody,
+  ResourceListContents,
+  ResourceListControl,
+  ResourceListSupport,
+  ResourceListTitle,
+} from "@/components/ui/resource-list"
 import { RequirementBadge } from "@/components/ui/requirement-badge"
 import {
   Select,
@@ -264,6 +274,19 @@ const demoSteps: {
     state: "skipped",
   },
   { title: "内容の確認と送信", description: "入力内容を確認します。" },
+]
+
+const demoResources = [
+  {
+    id: "moving-in",
+    title: "転入届",
+    support: "引越し後 14 日以内に提出してください。",
+  },
+  {
+    id: "my-number",
+    title: "マイナンバーカードの申請",
+    support: "オンラインで申請できます。",
+  },
 ]
 
 const sectionNavItems = [
@@ -1476,6 +1499,52 @@ export default function App() {
         {/* ===== データ表示 ===== */}
         <Section id="data" title="データ表示 / Data display">
           <div className="grid gap-10">
+            {/* ResourceList */}
+            <div>
+              <p className="mb-3 font-bold">ResourceList</p>
+              <ul className="grid max-w-2xl gap-4">
+                {demoResources.map((resource) => (
+                  <li key={resource.id}>
+                    <ResourceList interaction="whole" variant="frame">
+                      <ResourceListBody>
+                        <ResourceListControl>
+                          <Checkbox
+                            aria-label={`${resource.title}を選択`}
+                            size="md"
+                          />
+                        </ResourceListControl>
+                        <ResourceListContents>
+                          <ResourceListTitle as="h3">
+                            {resource.title}
+                          </ResourceListTitle>
+                          <ResourceListSupport>
+                            <p>{resource.support}</p>
+                          </ResourceListSupport>
+                        </ResourceListContents>
+                      </ResourceListBody>
+                      <ResourceListAction>
+                        <ResourceListActionButton
+                          aria-label={`${resource.title}のメニュー`}
+                        >
+                          <svg
+                            aria-hidden={true}
+                            fill="currentcolor"
+                            height={24}
+                            viewBox="0 0 24 24"
+                            width={24}
+                          >
+                            <circle cx="12" cy="4.5" r="1.5" />
+                            <circle cx="12" cy="12" r="1.5" />
+                            <circle cx="12" cy="19.5" r="1.5" />
+                          </svg>
+                        </ResourceListActionButton>
+                      </ResourceListAction>
+                    </ResourceList>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Table */}
             <div className="overflow-x-auto">
               <Table>

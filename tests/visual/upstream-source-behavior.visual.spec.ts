@@ -192,6 +192,37 @@ test.describe("Upstream source behavior parity", () => {
     expect(stylesBySource.ours).toEqual(stylesBySource.upstream)
   })
 
+  test("resource list whole-row click toggles the control in both", async ({
+    page,
+  }) => {
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-resource-list", source)
+
+      // 行のどこをクリックしても選択が切り替わる。upstream はタイトル内の
+      // `<label for>`、こちらはコントロール自身の ::before オーバーレイが担う。
+      const firstRow = page.getByRole("listitem").first()
+      const checkbox = firstRow.getByRole("checkbox", { name: "選択 1" })
+      await expect(checkbox).not.toBeChecked()
+      await firstRow.click()
+      await expect(checkbox).toBeChecked()
+      await firstRow.click()
+      await expect(checkbox).not.toBeChecked()
+
+      // 無効な行はクリックしても変化しない。
+      const disabledRow = page.getByRole("listitem").nth(2)
+      const disabledCheckbox = disabledRow.getByRole("checkbox", {
+        name: "選択 3",
+      })
+      await expect(disabledCheckbox).toBeDisabled()
+      await disabledRow.click({ force: true })
+      await expect(disabledCheckbox).not.toBeChecked()
+
+      // 行末のアクションボタンはオーバーレイに覆われず、独立して押せる。
+      await firstRow.getByRole("button", { name: "メニュー" }).click()
+      await expect(checkbox).not.toBeChecked()
+    }
+  })
+
   test("selecting an option produces the same visible selection", async ({
     page,
   }) => {

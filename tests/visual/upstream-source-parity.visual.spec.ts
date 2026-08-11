@@ -49,6 +49,11 @@ const stories: StoryConfig[] = [
   { id: "source-parity-progress-indicator" },
   { id: "source-parity-radio" },
   { id: "source-parity-requirement-badge" },
+  {
+    id: "source-parity-resource-list",
+    maxDiffPixelRatio: 0.0005,
+    viewport: { width: 700, height: 800 },
+  },
   { id: "source-parity-select" },
   { id: "source-parity-separated-date-picker" },
   {

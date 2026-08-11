@@ -45,6 +45,18 @@ Radix `RadioGroup` / `RadioGroupItem` model. `RadioGroupItem` preserves the
 visual props `size`, `isError`, and `aria-disabled`, but the upstream direct
 `Radio` component and `children` label API are not compatibility targets.
 
+`ResourceList` keeps the upstream composition and DOM, but its selection model
+is rebuilt on the Radix controls. Upstream reads the selected row with
+`:has(:checked)` and makes the row clickable with a `<label for>` inside the
+title; neither works against a Radix `<button role="checkbox">`. This project
+instead selects on `:has([data-state=checked]:enabled)` and renders
+`ResourceListControl` as a `div` whose control child carries a `::before`
+overlay — positioned against the control by default, and against the whole row
+when the list has `interaction="whole"`. Consumers therefore put plain text in
+`ResourceListTitle` rather than a `<label for>`. The disabled treatment is
+unchanged, because `:disabled` matches the Radix button. `aria-disabled` is
+supported alongside it.
+
 ## Other Intentional API Reshaping
 
 `Image` is split for shadcn-style composition. Upstream exports `Image` as the
