@@ -38,6 +38,15 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
   - `button`: add `gap-x-1` / `max-w-full` to the base style and drop
     `whitespace-nowrap`, matching upstream's centered, content-sized button.
   - `status-badge`: use the DADS `rounded-8` token instead of `rounded-lg`.
+- Demo:
+  - The demo page showed the stale component count (41) in its hero; it is 44.
+  - The new sections pushed the whole page sideways: the horizontal step
+    navigation is 320px per step and its grid item defaulted to
+    `min-width: auto`, and the search box has a ~440px minimum. Fixed with
+    `min-w-0` and a scroll container, and the smoke spec now asserts the
+    document never exceeds the viewport width at 1440px and 390px.
+  - Wrap the step navigation in a stacking context so its connector lines stay
+    visible on a background (they are drawn at `z-index: -10`, as upstream).
 - Tests:
   - Keyboard spec for the later ports (`search-box`, `step-navigation`,
     `resource-list`): focus order, visible focus indicators, `Space` on the

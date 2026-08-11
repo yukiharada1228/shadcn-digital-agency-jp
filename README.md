@@ -35,7 +35,7 @@
   `bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
 - **shadcn/ui の慣習に準拠**
   `cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` / compound component。
-- **upstream の全 41 コンポーネントを実装済み**
+- **upstream の全 44 コンポーネントを実装済み**
   upstream は Git submodule として read-only 参照し、parity テストで追随します。
 
 ---
