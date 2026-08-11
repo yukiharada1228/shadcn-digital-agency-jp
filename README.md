@@ -127,7 +127,7 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 ## コンポーネント一覧 / Components
 
-全 **43 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+全 **44 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
 
 | カテゴリ                                  | コンポーネント                                                                                                                                                                                                     |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -136,7 +136,7 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 | **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                                  |
 | **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation`                                        |
 | **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                                |
-| **データ表示** / Data display             | `table` · `carousel`                                                                                                                                                                                               |
+| **データ表示** / Data display             | `table` · `carousel` · `resource-list`                                                                                                                                                                             |
 
 > 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
 

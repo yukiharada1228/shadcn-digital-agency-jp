@@ -7,6 +7,12 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
   (was `88110f7`).
+- New component: `resource-list` (upstream `ResourceList`), with `Body` /
+  `Control` / `Contents` / `Title` / `Label` / `Support` / `Sub` / `Action` /
+  `ActionButton`. The selected-row styling and the whole-row click target are
+  rebuilt on the Radix controls (`:has([data-state=checked]:enabled)` and a
+  `::before` overlay instead of `:has(:checked)` and `<label for>`); see
+  `docs/compatibility.md`.
 - New component: `search-box` (upstream `SearchBox`), with `SearchBoxFields` /
   `SearchBoxSelect` / `SearchBoxInput` / `SearchBoxSubmit` / `SearchBoxDetail` /
   `SearchBoxDetailActions`. Ships `styles/digital-agency-search-box.css` as an
@@ -40,7 +46,7 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     checkbox / radio states.
   - New upstream-vs-ours behavior test asserting the computed disabled
     border/background of both components.
-- Not ported: upstream's new `ResourceList` (tracked separately). `Card` is out of scope by policy — see
+- `Card` is out of scope by policy — see
   "Out of Scope: Upstream Example Collections" in `docs/compatibility.md`.
 
 ## v0.5.0
