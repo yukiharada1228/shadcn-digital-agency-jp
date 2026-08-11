@@ -220,7 +220,78 @@ test.describe("Upstream source behavior parity", () => {
       // 行末のアクションボタンはオーバーレイに覆われず、独立して押せる。
       await firstRow.getByRole("button", { name: "メニュー" }).click()
       await expect(checkbox).not.toBeChecked()
+
+      // ラジオの行でも同じ（こちらは RadioGroupItem の ::before が担当）。
+      const radioRow = page.getByRole("listitem").nth(4)
+      const radio = radioRow.getByRole("radio", { name: "選択 5" })
+      const otherRadio = page
+        .getByRole("listitem")
+        .nth(5)
+        .getByRole("radio", { name: "選択 6" })
+      await expect(radio).not.toBeChecked()
+      await expect(otherRadio).toBeChecked()
+      await radioRow.click()
+      await expect(radio).toBeChecked()
+      await expect(otherRadio).not.toBeChecked()
     }
+  })
+
+  test("the optional search-box stylesheet reaches the select options", async ({
+    page,
+  }) => {
+    // styles/digital-agency-search-box.css は registry item に同梱される任意
+    // インポート。`.dads-search-box__select` フックが効いているかを、option の
+    // 算出スタイルで確認する（Tailwind では書けない部分なのでここだけ CSS）。
+    await gotoSource(page, "source-parity-search-box", "ours")
+
+    // 先頭の option は選択中なので、素の option 用ルールは非選択のもので見る。
+    const option = page
+      .locator(".dads-search-box__select option:not(:checked)")
+      .first()
+    const styles = await option.evaluate((element) => {
+      const style = getComputedStyle(element)
+      return {
+        display: style.display,
+        minHeight: style.minHeight,
+        padding: `${style.paddingTop} ${style.paddingRight}`,
+        color: style.color,
+      }
+    })
+
+    expect(styles).toEqual({
+      display: "flex",
+      minHeight: "44px",
+      padding: "10px 16px",
+      color: "rgb(26, 26, 26)",
+    })
+
+    // 選択中の option は太字 + key-100 の背景。
+    const checkedStyles = await page
+      .locator(".dads-search-box__select option:checked")
+      .first()
+      .evaluate((element) => {
+        const style = getComputedStyle(element)
+        return {
+          backgroundColor: style.backgroundColor,
+          fontWeight: style.fontWeight,
+        }
+      })
+
+    expect(checkedStyles).toEqual({
+      backgroundColor: "rgb(217, 230, 255)",
+      fontWeight: "700",
+    })
+
+    // `appearance: base-select` 対応ブラウザ向けの @supports ブロック。
+    const supportsBaseSelect = await page.evaluate(() =>
+      CSS.supports("appearance", "base-select")
+    )
+    const selectAppearance = await page
+      .locator(".dads-search-box__select > select")
+      .first()
+      .evaluate((element) => getComputedStyle(element).appearance)
+
+    expect(selectAppearance).toBe(supportsBaseSelect ? "base-select" : "none")
   })
 
   test("selecting an option produces the same visible selection", async ({

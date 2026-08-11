@@ -1697,10 +1697,12 @@ const menuIconCircles = (
 )
 
 const resourceListRows = [
-  { checked: false, disabled: false, variant: "frame" },
-  { checked: true, disabled: false, variant: "frame" },
-  { checked: false, disabled: true, variant: "frame" },
-  { checked: false, disabled: false, variant: "list" },
+  { checked: false, disabled: false, kind: "checkbox", variant: "frame" },
+  { checked: true, disabled: false, kind: "checkbox", variant: "frame" },
+  { checked: false, disabled: true, kind: "checkbox", variant: "frame" },
+  { checked: false, disabled: false, kind: "checkbox", variant: "list" },
+  { checked: false, disabled: false, kind: "radio", variant: "frame" },
+  { checked: true, disabled: false, kind: "radio", variant: "frame" },
 ]
 
 // upstream はネイティブ input、こちらは Radix。行の見た目が一致することを見る。
@@ -1718,46 +1720,49 @@ function ResourceListFixtureBody({ parts }) {
     ActionButton,
     control: renderControl,
     title: renderTitle,
+    Wrapper,
   } = parts
 
   return (
-    <ul className="grid w-[36rem] gap-4">
-      {resourceListRows.map((row, index) => (
-        <li key={index}>
-          <Root interaction="whole" variant={row.variant}>
-            <Body>
-              <Control>{renderControl(row, index)}</Control>
-              <Contents>
-                <Title as="p">{renderTitle(row, index)}</Title>
-                <Label>
-                  <p>ラベル</p>
-                </Label>
-                <Support>
-                  <p>サポートテキスト</p>
-                </Support>
-              </Contents>
-              <Sub>
-                <p>サブラベル</p>
-              </Sub>
-            </Body>
-            <Action>
-              <ActionButton>
-                <svg
-                  aria-label="メニュー"
-                  fill="currentcolor"
-                  height={24}
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width={24}
-                >
-                  {menuIconCircles}
-                </svg>
-              </ActionButton>
-            </Action>
-          </Root>
-        </li>
-      ))}
-    </ul>
+    <Wrapper>
+      <ul className="grid w-[36rem] gap-4">
+        {resourceListRows.map((row, index) => (
+          <li key={index}>
+            <Root interaction="whole" variant={row.variant}>
+              <Body>
+                <Control>{renderControl(row, index)}</Control>
+                <Contents>
+                  <Title as="p">{renderTitle(row, index)}</Title>
+                  <Label>
+                    <p>ラベル</p>
+                  </Label>
+                  <Support>
+                    <p>サポートテキスト</p>
+                  </Support>
+                </Contents>
+                <Sub>
+                  <p>サブラベル</p>
+                </Sub>
+              </Body>
+              <Action>
+                <ActionButton>
+                  <svg
+                    aria-label="メニュー"
+                    fill="currentcolor"
+                    height={24}
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width={24}
+                  >
+                    {menuIconCircles}
+                  </svg>
+                </ActionButton>
+              </Action>
+            </Root>
+          </li>
+        ))}
+      </ul>
+    </Wrapper>
   )
 }
 
@@ -1772,15 +1777,27 @@ const upstreamResourceListParts = {
   Sub: UpstreamResourceListSub,
   Action: UpstreamResourceListAction,
   ActionButton: UpstreamResourceListActionButton,
-  control: (row, index) => (
-    <UpstreamCheckbox
-      aria-label={`選択 ${index + 1}`}
-      defaultChecked={row.checked}
-      disabled={row.disabled}
-      id={`resource-list-upstream-${index}`}
-      size="md"
-    />
-  ),
+  // radio はグループ名だけで足りるので、ラッパーはレイアウトに影響しない div。
+  Wrapper: ({ children }) => <div className="contents">{children}</div>,
+  control: (row, index) =>
+    row.kind === "radio" ? (
+      <UpstreamRadio
+        aria-label={`選択 ${index + 1}`}
+        defaultChecked={row.checked}
+        disabled={row.disabled}
+        id={`resource-list-upstream-${index}`}
+        name="resource-list-upstream-radio"
+        size="md"
+      />
+    ) : (
+      <UpstreamCheckbox
+        aria-label={`選択 ${index + 1}`}
+        defaultChecked={row.checked}
+        disabled={row.disabled}
+        id={`resource-list-upstream-${index}`}
+        size="md"
+      />
+    ),
   // upstream の行全体クリックはタイトル内の `<label for>` が担う。
   title: (row, index) => (
     <label htmlFor={`resource-list-upstream-${index}`}>リストタイトル</label>
@@ -1798,14 +1815,29 @@ const oursResourceListParts = {
   Sub: ResourceListSub,
   Action: ResourceListAction,
   ActionButton: ResourceListActionButton,
-  control: (row, index) => (
-    <Checkbox
-      aria-label={`選択 ${index + 1}`}
-      defaultChecked={row.checked}
-      disabled={row.disabled}
-      size="md"
-    />
+  // RadioGroupItem は RadioGroup の中でしか使えないため、`display: contents` の
+  // ラッパーで全体を包んでレイアウトへの影響をなくす。
+  Wrapper: ({ children }) => (
+    <RadioGroup className="contents" defaultValue="resource-list-ours-5">
+      {children}
+    </RadioGroup>
   ),
+  control: (row, index) =>
+    row.kind === "radio" ? (
+      <RadioGroupItem
+        aria-label={`選択 ${index + 1}`}
+        disabled={row.disabled}
+        size="md"
+        value={`resource-list-ours-${index}`}
+      />
+    ) : (
+      <Checkbox
+        aria-label={`選択 ${index + 1}`}
+        defaultChecked={row.checked}
+        disabled={row.disabled}
+        size="md"
+      />
+    ),
   // こちらは Control の ::before オーバーレイが行全体を覆うため、タイトルは素のテキスト。
   title: () => "リストタイトル",
 }

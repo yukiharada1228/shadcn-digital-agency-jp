@@ -39,6 +39,21 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
     `whitespace-nowrap`, matching upstream's centered, content-sized button.
   - `status-badge`: use the DADS `rounded-8` token instead of `rounded-lg`.
 - Tests:
+  - `checkbox`, `radio-group`: a checked + disabled control kept the
+    `Highlight` border in forced-colors mode instead of `GrayText`, because the
+    checked rule outranks the disabled one. Found by the new forced-colors
+    parity suite.
+  - New forced-colors parity suite comparing upstream and ours with
+    `forced-colors: active`. Note `test.use({ forcedColors })` does not reach
+    the media query in this setup, so the suite calls `page.emulateMedia()` and
+    asserts the emulation is actually active.
+  - CI now runs the upstream-vs-ours parity specs (`npm run
+test:visual:parity`). Previously only the browser a11y spec ran, so none of
+    the source-parity comparisons were enforced.
+  - ResourceList fixtures cover radio rows, and the whole-row click test now
+    covers the radio path.
+  - New test asserting the optional `search-box` stylesheet actually reaches the
+    select options.
   - The upstream-vs-ours pixel comparator now flags a per-channel difference
     above 12 instead of 51. At 51 a wrong background (`#f2f2f2` vs `#ffffff`)
     counted as zero differing pixels; all 47 parity stories pass at 12.
