@@ -55,6 +55,21 @@ describe("List", () => {
     expect(ul?.className).toContain("[&>li>span:first-child]:min-w-8")
   })
 
+  it("drives the item padding from --list-spacing, not Tailwind's --spacing", () => {
+    // Upstream 2166f11 renamed the custom property: `--spacing` is Tailwind v4's
+    // own spacing scale variable, so overriding it rescaled every spacing
+    // utility used inside a list.
+    const { container } = render(
+      <List spacing="12">
+        <li>item</li>
+      </List>
+    )
+    const className = container.querySelector("ul")?.className ?? ""
+    expect(className).toContain("[&>li]:py-[var(--list-spacing,0px)]")
+    expect(className).toContain("data-[spacing='12']:[--list-spacing:0.75rem]")
+    expect(className).not.toMatch(/--spacing[,:)\]]/)
+  })
+
   it("merges a passed className", () => {
     const { container } = render(
       <List spacing="4" className="custom-class">

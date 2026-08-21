@@ -315,6 +315,22 @@ test.describe("Upstream source behavior parity", () => {
     })
   })
 
+  test("list spacing does not rescale Tailwind spacing utilities", async ({
+    page,
+  }) => {
+    // The list spacing custom property must not shadow Tailwind v4's own
+    // `--spacing`, otherwise `p-4` inside a spacing='12' list resolves to
+    // calc(0.75rem * 4) = 48px instead of 16px (upstream 2166f11).
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-list", source)
+      const probe = page.getByTestId("list-spacing-probe")
+      await expect(probe).toHaveCSS("padding-top", "16px")
+      await expect(probe).toHaveCSS("padding-left", "16px")
+      // The list's own item padding still comes from the spacing prop.
+      await expect(probe.locator("xpath=..")).toHaveCSS("padding-top", "12px")
+    }
+  })
+
   test("dialog close request closes the modal", async ({ page }) => {
     for (const source of sources) {
       await gotoSource(page, "source-parity-dialog-basic-open", source)

@@ -5,6 +5,20 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+- Synced upstream: digital-go-jp/design-system-example-components-react@2166f11
+  (was `22cda0d`).
+- `breadcrumbs`: the trail is no longer a list. `BreadcrumbList` renders a `<p>`
+  and `BreadcrumbItem` renders a `<span>` (upstream dropped `ol`/`li` so screen
+  readers announce the trail as running text). The props of both now extend
+  `<p>` / `<span>`, and their refs are `HTMLParagraphElement` /
+  `HTMLSpanElement`. Breaking for consumers that styled or queried `ol`/`li`.
+- `list`: renamed the spacing custom property from `--spacing` to
+  `--list-spacing`. `--spacing` is Tailwind v4's own spacing scale variable, so
+  the old name rescaled every spacing utility used inside a list — `p-4` inside
+  a `spacing="12"` list resolved to 48px instead of 16px.
+  `tests/visual/upstream-source-behavior.visual.spec.ts` now asserts this in the
+  browser for both sources.
+
 ## v0.6.0
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@22cda0d
