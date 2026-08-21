@@ -64,58 +64,87 @@ describe("BreadcrumbsLabel", () => {
 })
 
 describe("BreadcrumbList", () => {
-  it("renders an ol with data-slot and inline class", () => {
+  it("renders a p with data-slot and inline class", () => {
     const { container } = render(
       <BreadcrumbList>
-        <li>item</li>
+        <span>item</span>
       </BreadcrumbList>
     )
-    const ol = container.querySelector("ol")
-    expect(ol).toHaveAttribute("data-slot", "breadcrumb-list")
-    expect(ol?.className).toContain("inline")
+    const p = container.querySelector("p")
+    expect(p).toHaveAttribute("data-slot", "breadcrumb-list")
+    expect(p?.className).toContain("inline")
   })
 
   it("forwards ref and merges className", () => {
-    const ref = React.createRef<HTMLOListElement>()
+    const ref = React.createRef<HTMLParagraphElement>()
     const { container } = render(
       <BreadcrumbList ref={ref} className="custom-class">
-        <li>item</li>
+        <span>item</span>
       </BreadcrumbList>
     )
-    expect(ref.current).toBeInstanceOf(HTMLOListElement)
-    expect(container.querySelector("ol")?.className).toContain("custom-class")
+    expect(ref.current).toBeInstanceOf(HTMLParagraphElement)
+    expect(container.querySelector("p")?.className).toContain("custom-class")
   })
 })
 
 describe("BreadcrumbItem", () => {
   it("renders a non-current item with a separator svg and no aria-current", () => {
     const { container } = render(<BreadcrumbItem>ホーム</BreadcrumbItem>)
-    const li = container.querySelector("li")
-    expect(li).toHaveAttribute("data-slot", "breadcrumb-item")
-    expect(li).not.toHaveAttribute("aria-current")
+    const item = container.querySelector('[data-slot="breadcrumb-item"]')
+    expect(item?.tagName).toBe("SPAN")
+    expect(item).not.toHaveAttribute("aria-current")
     expect(container.querySelector("svg")).not.toBeNull()
-    expect(li?.className).toContain("break-words")
+    expect(item?.className).toContain("break-words")
   })
 
   it("renders a current item with aria-current=page and no separator", () => {
     const { container } = render(
       <BreadcrumbItem isCurrent>現在のページ</BreadcrumbItem>
     )
-    const li = container.querySelector("li")
-    expect(li).toHaveAttribute("aria-current", "page")
-    expect(li?.className).toContain("text-oln-16N-100")
+    const item = container.querySelector('[data-slot="breadcrumb-item"]')
+    expect(item?.tagName).toBe("SPAN")
+    expect(item).toHaveAttribute("aria-current", "page")
+    expect(item?.className).toContain("text-oln-16N-100")
     expect(container.querySelector("svg")).toBeNull()
   })
 
   it("forwards ref and merges className", () => {
-    const ref = React.createRef<HTMLLIElement>()
+    const ref = React.createRef<HTMLSpanElement>()
     const { container } = render(
       <BreadcrumbItem ref={ref} className="custom-class">
         ホーム
       </BreadcrumbItem>
     )
-    expect(ref.current).toBeInstanceOf(HTMLLIElement)
-    expect(container.querySelector("li")?.className).toContain("custom-class")
+    expect(ref.current).toBeInstanceOf(HTMLSpanElement)
+    expect(
+      container.querySelector('[data-slot="breadcrumb-item"]')?.className
+    ).toContain("custom-class")
+  })
+})
+
+describe("Breadcrumbs markup", () => {
+  // Upstream 2166f11 moved the trail off ol/li so screen readers announce it as
+  // running text instead of a list. See CHANGELOG / docs/compatibility.md.
+  it("renders the trail without list semantics", () => {
+    const { container } = render(
+      <Breadcrumbs aria-labelledby="breadcrumbs-label">
+        <BreadcrumbsLabel className="sr-only" id="breadcrumbs-label">
+          現在位置
+        </BreadcrumbsLabel>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#">ホーム</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrent>現在のページ</BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumbs>
+    )
+
+    expect(container.querySelector("ol")).toBeNull()
+    expect(container.querySelector("ul")).toBeNull()
+    expect(container.querySelector("li")).toBeNull()
+    expect(screen.queryByRole("list")).toBeNull()
+    expect(screen.queryAllByRole("listitem")).toHaveLength(0)
   })
 })
 

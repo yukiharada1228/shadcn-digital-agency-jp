@@ -590,7 +590,7 @@ function OursBlockquoteFixture() {
 
 function UpstreamBreadcrumbsFixture() {
   return (
-    <UpstreamBreadcrumbs aria-label="パンくずリスト">
+    <UpstreamBreadcrumbs aria-label="パンくずナビゲーション">
       <UpstreamBreadcrumbsLabel className="sr-only">
         現在位置
       </UpstreamBreadcrumbsLabel>
@@ -609,7 +609,7 @@ function UpstreamBreadcrumbsFixture() {
 
 function OursBreadcrumbsFixture() {
   return (
-    <Breadcrumbs aria-label="パンくずリスト">
+    <Breadcrumbs aria-label="パンくずナビゲーション">
       <BreadcrumbsLabel className="sr-only">現在位置</BreadcrumbsLabel>
       <BreadcrumbList>
         <BreadcrumbItem>
@@ -1290,6 +1290,13 @@ function UpstreamListFixture() {
           </UpstreamList>
         </li>
       </UpstreamList>
+      <UpstreamList spacing="12">
+        <li>
+          <span className="inline-block p-4" data-testid="list-spacing-probe">
+            余白ユーティリティ
+          </span>
+        </li>
+      </UpstreamList>
     </div>
   )
 }
@@ -1311,6 +1318,13 @@ function OursListFixture() {
               番号付きリストの二番目の項目
             </li>
           </List>
+        </li>
+      </List>
+      <List spacing="12">
+        <li>
+          <span className="inline-block p-4" data-testid="list-spacing-probe">
+            余白ユーティリティ
+          </span>
         </li>
       </List>
     </div>

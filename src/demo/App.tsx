@@ -691,7 +691,7 @@ export default function App() {
 
       <main className="mx-auto grid max-w-[1180px] gap-6 px-4 py-8 [&>*]:min-w-0">
         {/* Breadcrumbs */}
-        <Breadcrumbs aria-label="パンくずリスト">
+        <Breadcrumbs aria-label="パンくずナビゲーション">
           <BreadcrumbsLabel className="sr-only">現在位置：</BreadcrumbsLabel>
           <BreadcrumbList>
             <BreadcrumbItem>

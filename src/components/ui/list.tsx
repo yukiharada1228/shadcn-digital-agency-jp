@@ -6,10 +6,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/digital-agency/cn"
 
+// `--list-spacing` rather than `--spacing`: the latter is Tailwind v4's own
+// spacing scale variable, so overriding it rescales every spacing utility used
+// inside the list (upstream 2166f11).
 const listBaseStyle = `
-  [&>li]:py-[var(--spacing,0px)]
-  data-[spacing='4']:[--spacing:0.25rem] data-[spacing='8']:[--spacing:0.5rem] data-[spacing='12']:[--spacing:0.75rem]
-  [&_ul]:mt-[var(--spacing,0px)] [&_ul]:mb-[calc(-1*var(--spacing,0px))]
+  [&>li]:py-[var(--list-spacing,0px)]
+  data-[spacing='4']:[--list-spacing:0.25rem] data-[spacing='8']:[--list-spacing:0.5rem] data-[spacing='12']:[--list-spacing:0.75rem]
+  [&_ul]:mt-[var(--list-spacing,0px)] [&_ul]:mb-[calc(-1*var(--list-spacing,0px))]
 `
 
 const listDefaultStyle = "pl-8 list-[revert]"
