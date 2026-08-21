@@ -5,6 +5,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.7.0
+
 - Synced upstream: digital-go-jp/design-system-example-components-react@2166f11
   (was `22cda0d`).
 - `breadcrumbs`: the trail is no longer a list. `BreadcrumbList` renders a `<p>`
