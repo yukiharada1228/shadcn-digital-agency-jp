@@ -15,8 +15,15 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
   ported here, so no impact). Confirmed via a full local run — typecheck,
   lint, format, unit/a11y (610 tests), visual parity (92 tests), and browser
   a11y all pass unchanged.
-- Not ported: upstream's new `Switch` and `PageNavigation` components (tracked
-  separately in #41 and #42).
+- New component: `switch` (upstream `Switch`), with `SwitchOnOff` (single
+  `role="switch"` button) and `SwitchMode` (two-option `role="switch"` toggle
+  taking `leftLabel` / `rightLabel` / `value` / `onChange`). Both are
+  non-controlled, presentation-only components — the caller owns
+  `aria-checked` / `value` and passes `onClick` / `onChange`, matching
+  upstream's own design. `aria-disabled` is intentionally not supported (typed
+  out of `SwitchOnOffProps`), matching upstream.
+- Not ported: upstream's new `PageNavigation` component (tracked separately in
+  #42).
 
 ## v0.7.0
 

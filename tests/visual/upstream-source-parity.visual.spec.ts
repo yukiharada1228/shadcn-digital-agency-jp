@@ -102,6 +102,8 @@ const stories: StoryConfig[] = [
   { id: "source-parity-calendar-grid" },
   { id: "source-parity-date-picker-errored" },
   { id: "source-parity-textarea" },
+  { id: "source-parity-switch-on-off" },
+  { id: "source-parity-switch-mode" },
   { id: "source-parity-utility-link" },
 ]
 

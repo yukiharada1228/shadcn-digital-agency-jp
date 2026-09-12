@@ -188,6 +188,7 @@ import {
   StepNavigationTitle,
 } from "@/components/ui/step-navigation"
 import { SupportText } from "@/components/ui/support-text"
+import { SwitchMode, SwitchOnOff } from "@/components/ui/switch"
 import {
   Table,
   TableBody,
@@ -367,6 +368,8 @@ export default function App() {
   })
 
   // インタラクティブ UI 状態
+  const [emailNotify, setEmailNotify] = useState(true)
+  const [displayMode, setDisplayMode] = useState("ライト")
   const [carouselIndex, setCarouselIndex] = useState(0)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [lang, setLang] = useState("日本語")
@@ -1352,6 +1355,27 @@ export default function App() {
                   </nav>
                 </StepNavigation>
               </div>
+            </div>
+
+            {/* Switch */}
+            <div className="grid gap-4">
+              <p className="mb-1 font-bold">Switch</p>
+              <label className="flex w-fit items-center gap-2">
+                <SwitchOnOff
+                  aria-checked={emailNotify}
+                  onClick={() => setEmailNotify((prev) => !prev)}
+                />
+                メールで通知する
+              </label>
+              <fieldset className="flex flex-col items-start gap-2">
+                <Legend>表示モード</Legend>
+                <SwitchMode
+                  leftLabel="ライト"
+                  onChange={setDisplayMode}
+                  rightLabel="ダーク"
+                  value={displayMode}
+                />
+              </fieldset>
             </div>
 
             {/* Tabs */}
