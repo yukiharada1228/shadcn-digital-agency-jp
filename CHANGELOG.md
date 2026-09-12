@@ -5,6 +5,19 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+- Synced upstream: digital-go-jp/design-system-example-components-react@68b452e
+  (was `2166f11`). No API or behavior change for any of the 44 ported
+  components: upstream's commits in this range only touch Storybook docs pages
+  (a DADS-site link added to nearly every `.stories.tsx`/`.mdx`), two
+  story-only example tweaks (`Table`'s `SelectableTable` highlight CSS,
+  `ModalDialog`'s `FixedWidth` placeholder copy), its own devDependency bumps,
+  and the removal of the legacy `v1/Dialog` / `v1/Pagination` examples (never
+  ported here, so no impact). Confirmed via a full local run — typecheck,
+  lint, format, unit/a11y (610 tests), visual parity (92 tests), and browser
+  a11y all pass unchanged.
+- Not ported: upstream's new `Switch` and `PageNavigation` components (tracked
+  separately in #41 and #42).
+
 ## v0.7.0
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@2166f11
