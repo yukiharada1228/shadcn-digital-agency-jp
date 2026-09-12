@@ -134,6 +134,12 @@ import {
   NotificationBannerClose as UpstreamNotificationBannerClose,
 } from "../../upstream/design-system-example-components-react/src/components/NotificationBanner"
 import {
+  PageNavigation as UpstreamPageNavigation,
+  PageNavigationArrowButton as UpstreamPageNavigationArrowButton,
+  PageNavigationButton as UpstreamPageNavigationButton,
+  PageNavigationCounter as UpstreamPageNavigationCounter,
+} from "../../upstream/design-system-example-components-react/src/components/PageNavigation"
+import {
   ProgressIndicator as UpstreamProgressIndicator,
   ProgressIndicatorLinear as UpstreamProgressIndicatorLinear,
   ProgressIndicatorSpinner as UpstreamProgressIndicatorSpinner,
@@ -329,6 +335,12 @@ import {
   NotificationBannerClose,
 } from "@/components/ui/notification-banner"
 import {
+  PageNavigation,
+  PageNavigationArrowButton,
+  PageNavigationButton,
+  PageNavigationCounter,
+} from "@/components/ui/page-navigation"
+import {
   ProgressIndicator,
   ProgressIndicatorLinear,
   ProgressIndicatorSpinner,
@@ -504,6 +516,37 @@ function ChevronIcon() {
       className="mt-1 shrink-0 size-4 group-aria-expanded/horizontal-menu-item:rotate-180"
     >
       <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" />
+    </svg>
+  )
+}
+
+function PageNavigationPrevIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="shrink-0"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="m7.9 12 8-8-1.4-1.4L5.1 12l9.4 9.4 1.4-1.4z"
+        fill="currentcolor"
+      />
+    </svg>
+  )
+}
+
+function PageNavigationNextIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="shrink-0"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path d="M9 2.6 7.6 4l8 8-8 8L9 21.4l9.4-9.4z" fill="currentcolor" />
     </svg>
   )
 }
@@ -1430,6 +1473,138 @@ function OursNotificationBannerFixture() {
         </NotificationBannerBody>
       </NotificationBanner>
     </div>
+  )
+}
+
+function UpstreamPageNavigationTextFixture() {
+  return (
+    <UpstreamPageNavigation aria-label="ページ">
+      <UpstreamPageNavigationButton
+        control="prev"
+        size="md"
+        type="button"
+        variant="text"
+      >
+        <PageNavigationPrevIcon />
+        前のページ
+      </UpstreamPageNavigationButton>
+      <UpstreamPageNavigationCounter>5 / 9</UpstreamPageNavigationCounter>
+      <UpstreamPageNavigationButton
+        control="next"
+        size="md"
+        type="button"
+        variant="text"
+      >
+        次のページ
+        <PageNavigationNextIcon />
+      </UpstreamPageNavigationButton>
+    </UpstreamPageNavigation>
+  )
+}
+
+function OursPageNavigationTextFixture() {
+  return (
+    <PageNavigation aria-label="ページ">
+      <PageNavigationButton
+        control="prev"
+        size="md"
+        type="button"
+        variant="text"
+      >
+        <PageNavigationPrevIcon />
+        前のページ
+      </PageNavigationButton>
+      <PageNavigationCounter>5 / 9</PageNavigationCounter>
+      <PageNavigationButton
+        control="next"
+        size="md"
+        type="button"
+        variant="text"
+      >
+        次のページ
+        <PageNavigationNextIcon />
+      </PageNavigationButton>
+    </PageNavigation>
+  )
+}
+
+function UpstreamPageNavigationOutlinedFixture() {
+  return (
+    <UpstreamPageNavigation aria-label="ページ">
+      <UpstreamPageNavigationButton
+        control="prev"
+        size="lg"
+        type="button"
+        variant="outline"
+      >
+        <PageNavigationPrevIcon />
+        前のページ
+      </UpstreamPageNavigationButton>
+      <UpstreamPageNavigationCounter>5 / 9</UpstreamPageNavigationCounter>
+      <UpstreamPageNavigationButton
+        control="next"
+        size="lg"
+        type="button"
+        variant="outline"
+      >
+        次のページ
+        <PageNavigationNextIcon />
+      </UpstreamPageNavigationButton>
+    </UpstreamPageNavigation>
+  )
+}
+
+function OursPageNavigationOutlinedFixture() {
+  return (
+    <PageNavigation aria-label="ページ">
+      <PageNavigationButton
+        control="prev"
+        size="lg"
+        type="button"
+        variant="outline"
+      >
+        <PageNavigationPrevIcon />
+        前のページ
+      </PageNavigationButton>
+      <PageNavigationCounter>5 / 9</PageNavigationCounter>
+      <PageNavigationButton
+        control="next"
+        size="lg"
+        type="button"
+        variant="outline"
+      >
+        次のページ
+        <PageNavigationNextIcon />
+      </PageNavigationButton>
+    </PageNavigation>
+  )
+}
+
+function UpstreamPageNavigationArrowFixture() {
+  return (
+    <UpstreamPageNavigation aria-label="ページ">
+      <UpstreamPageNavigationArrowButton label="前のページ" size="lg">
+        <PageNavigationPrevIcon />
+      </UpstreamPageNavigationArrowButton>
+      <UpstreamPageNavigationCounter>5 / 9</UpstreamPageNavigationCounter>
+      <UpstreamPageNavigationArrowButton label="次のページ" size="lg">
+        <PageNavigationNextIcon />
+      </UpstreamPageNavigationArrowButton>
+    </UpstreamPageNavigation>
+  )
+}
+
+function OursPageNavigationArrowFixture() {
+  return (
+    <PageNavigation aria-label="ページ">
+      <PageNavigationArrowButton label="前のページ" size="lg">
+        <PageNavigationPrevIcon />
+      </PageNavigationArrowButton>
+      <PageNavigationCounter>5 / 9</PageNavigationCounter>
+      <PageNavigationArrowButton label="次のページ" size="lg">
+        <PageNavigationNextIcon />
+      </PageNavigationArrowButton>
+    </PageNavigation>
   )
 }
 
@@ -3039,6 +3214,21 @@ export const sourceParityStories = {
     title: "Source parity/NotificationBanner",
     upstream: <UpstreamNotificationBannerFixture />,
     ours: <OursNotificationBannerFixture />,
+  },
+  "source-parity-page-navigation-text": {
+    title: "Source parity/PageNavigation text",
+    upstream: <UpstreamPageNavigationTextFixture />,
+    ours: <OursPageNavigationTextFixture />,
+  },
+  "source-parity-page-navigation-outlined": {
+    title: "Source parity/PageNavigation outlined",
+    upstream: <UpstreamPageNavigationOutlinedFixture />,
+    ours: <OursPageNavigationOutlinedFixture />,
+  },
+  "source-parity-page-navigation-arrow": {
+    title: "Source parity/PageNavigation arrow",
+    upstream: <UpstreamPageNavigationArrowFixture />,
+    ours: <OursPageNavigationArrowFixture />,
   },
   "source-parity-progress-indicator": {
     title: "Source parity/ProgressIndicator",

@@ -22,8 +22,14 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
   `aria-checked` / `value` and passes `onClick` / `onChange`, matching
   upstream's own design. `aria-disabled` is intentionally not supported (typed
   out of `SwitchOnOffProps`), matching upstream.
-- Not ported: upstream's new `PageNavigation` component (tracked separately in
-  #42).
+- New component: `page-navigation` (upstream `PageNavigation`), with
+  `PageNavigationCounter`, `PageNavigationButton`, and
+  `PageNavigationArrowButton`. `PageNavigationButton` wraps the existing
+  `Button` (text/outline variants) and adds `data-control="prev"|"next"` plus
+  a variant-specific padding override, matching upstream's own choice to reuse
+  its `Button` here. `PageNavigationArrowButton` is the circular arrow variant
+  and requires a `label` prop (rendered as an `sr-only` span) unless `asChild`
+  is used, so an icon-only button can't ship without an accessible name.
 
 ## v0.7.0
 
