@@ -642,5 +642,19 @@
       "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"
+  },
+  "PageNavigation": {
+    "upstreamPath": "src/components/PageNavigation",
+    "localFiles": [
+      "src/components/ui/page-navigation.tsx",
+      "src/registry/items/page-navigation.json"
+    ],
+    "registryItem": "page-navigation",
+    "parityTests": [
+      "tests/unit/page-navigation.test.tsx",
+      "tests/a11y/page-navigation.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }

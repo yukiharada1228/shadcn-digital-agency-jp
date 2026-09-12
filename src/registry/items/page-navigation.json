@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-navigation",
+  "type": "registry:ui",
+  "title": "PageNavigation (Unofficial)",
+  "description": "Unofficial PageNavigation inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": ["@radix-ui/react-slot"],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
+    "yukiharada1228/shadcn-digital-agency-jp/button"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/page-navigation.tsx",
+      "type": "registry:ui",
+      "target": "@ui/page-navigation.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}

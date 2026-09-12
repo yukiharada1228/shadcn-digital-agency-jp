@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react"
-import { Bell, Search } from "lucide-react"
+import { Bell, ChevronLeft, ChevronRight, Search } from "lucide-react"
 
 import {
   Accordion,
@@ -187,6 +187,11 @@ import {
   type StepNavigationStepState,
   StepNavigationTitle,
 } from "@/components/ui/step-navigation"
+import {
+  PageNavigation,
+  PageNavigationButton,
+  PageNavigationCounter,
+} from "@/components/ui/page-navigation"
 import { SupportText } from "@/components/ui/support-text"
 import { SwitchMode, SwitchOnOff } from "@/components/ui/switch"
 import {
@@ -370,6 +375,7 @@ export default function App() {
   // インタラクティブ UI 状態
   const [emailNotify, setEmailNotify] = useState(true)
   const [displayMode, setDisplayMode] = useState("ライト")
+  const [tablePage, setTablePage] = useState(2)
   const [carouselIndex, setCarouselIndex] = useState(0)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [lang, setLang] = useState("日本語")
@@ -1611,6 +1617,38 @@ export default function App() {
                   ))}
                 </TableBody>
               </Table>
+            </div>
+
+            {/* PageNavigation */}
+            <div>
+              <p className="mb-3 font-bold">PageNavigation</p>
+              <PageNavigation aria-label="申請状況一覧のページ">
+                {tablePage > 1 && (
+                  <PageNavigationButton
+                    control="prev"
+                    onClick={() => setTablePage((page) => page - 1)}
+                    size="md"
+                    type="button"
+                    variant="text"
+                  >
+                    <ChevronLeft aria-hidden="true" size={20} />
+                    前のページ
+                  </PageNavigationButton>
+                )}
+                <PageNavigationCounter>{tablePage} / 5</PageNavigationCounter>
+                {tablePage < 5 && (
+                  <PageNavigationButton
+                    control="next"
+                    onClick={() => setTablePage((page) => page + 1)}
+                    size="md"
+                    type="button"
+                    variant="text"
+                  >
+                    次のページ
+                    <ChevronRight aria-hidden="true" size={20} />
+                  </PageNavigationButton>
+                )}
+              </PageNavigation>
             </div>
 
             {/* Carousel */}
