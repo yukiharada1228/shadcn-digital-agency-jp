@@ -188,6 +188,10 @@ import {
   StepNavigationStepHeader as UpstreamStepNavigationStepHeader,
   StepNavigationTitle as UpstreamStepNavigationTitle,
 } from "../../upstream/design-system-example-components-react/src/components/StepNavigation"
+import {
+  SwitchMode as UpstreamSwitchMode,
+  SwitchOnOff as UpstreamSwitchOnOff,
+} from "../../upstream/design-system-example-components-react/src/components/Switch"
 import { Textarea as UpstreamTextarea } from "../../upstream/design-system-example-components-react/src/components/Textarea"
 import { UtilityLink as UpstreamUtilityLink } from "../../upstream/design-system-example-components-react/src/components/UtilityLink"
 
@@ -379,6 +383,7 @@ import {
   StepNavigationTitle,
 } from "@/components/ui/step-navigation"
 import { SupportText } from "@/components/ui/support-text"
+import { SwitchMode, SwitchOnOff } from "@/components/ui/switch"
 import { Tab, TabItem, TabList, TabPanel } from "@/components/ui/tabs"
 import {
   Table,
@@ -1648,6 +1653,118 @@ function UpstreamSupportTextFixture() {
 
 function OursSupportTextFixture() {
   return <SupportText>サポートテキスト</SupportText>
+}
+
+function UpstreamSwitchOnOffFixture() {
+  return (
+    <fieldset>
+      <UpstreamLegend>
+        通知<UpstreamRequirementBadge>※必須</UpstreamRequirementBadge>
+      </UpstreamLegend>
+      <UpstreamSupportText className="mt-2">
+        サポートテキスト
+      </UpstreamSupportText>
+      <div className="mt-2 flex flex-col items-start gap-2">
+        <label className="flex w-fit items-center gap-2">
+          <UpstreamSwitchOnOff aria-checked={false} />
+          オフ
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <UpstreamSwitchOnOff aria-checked />
+          オン
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <UpstreamSwitchOnOff aria-checked={false} disabled />
+          オフ（無効）
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <UpstreamSwitchOnOff aria-checked disabled />
+          オン（無効）
+        </label>
+      </div>
+    </fieldset>
+  )
+}
+
+function OursSwitchOnOffFixture() {
+  return (
+    <fieldset>
+      <Legend>
+        通知<RequirementBadge>※必須</RequirementBadge>
+      </Legend>
+      <SupportText className="mt-2">サポートテキスト</SupportText>
+      <div className="mt-2 flex flex-col items-start gap-2">
+        <label className="flex w-fit items-center gap-2">
+          <SwitchOnOff aria-checked={false} />
+          オフ
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <SwitchOnOff aria-checked />
+          オン
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <SwitchOnOff aria-checked={false} disabled />
+          オフ（無効）
+        </label>
+        <label className="flex w-fit items-center gap-2">
+          <SwitchOnOff aria-checked disabled />
+          オン（無効）
+        </label>
+      </div>
+    </fieldset>
+  )
+}
+
+function UpstreamSwitchModeFixture() {
+  return (
+    <div className="flex flex-col items-start gap-4">
+      <UpstreamSwitchMode
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード1"
+      />
+      <UpstreamSwitchMode
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード2"
+      />
+      <UpstreamSwitchMode
+        disabled
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード1"
+      />
+    </div>
+  )
+}
+
+function OursSwitchModeFixture() {
+  return (
+    <div className="flex flex-col items-start gap-4">
+      <SwitchMode
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード1"
+      />
+      <SwitchMode
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード2"
+      />
+      <SwitchMode
+        disabled
+        leftLabel="モード1"
+        onChange={() => {}}
+        rightLabel="モード2"
+        value="モード1"
+      />
+    </div>
+  )
 }
 
 function UpstreamTextareaFixture() {
@@ -3027,6 +3144,16 @@ export const sourceParityStories = {
     title: "Source parity/Textarea",
     upstream: <UpstreamTextareaFixture />,
     ours: <OursTextareaFixture />,
+  },
+  "source-parity-switch-on-off": {
+    title: "Source parity/Switch on-off",
+    upstream: <UpstreamSwitchOnOffFixture />,
+    ours: <OursSwitchOnOffFixture />,
+  },
+  "source-parity-switch-mode": {
+    title: "Source parity/Switch mode",
+    upstream: <UpstreamSwitchModeFixture />,
+    ours: <OursSwitchModeFixture />,
   },
   "source-parity-resource-list": {
     title: "Source parity/ResourceList",

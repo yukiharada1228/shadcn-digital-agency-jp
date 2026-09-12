@@ -628,5 +628,19 @@
       "tests/visual/upstream-source-behavior.visual.spec.ts"
     ],
     "status": "ported"
+  },
+  "Switch": {
+    "upstreamPath": "src/components/Switch",
+    "localFiles": [
+      "src/components/ui/switch.tsx",
+      "src/registry/items/switch.json"
+    ],
+    "registryItem": "switch",
+    "parityTests": [
+      "tests/unit/switch.test.tsx",
+      "tests/a11y/switch.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
   }
 }

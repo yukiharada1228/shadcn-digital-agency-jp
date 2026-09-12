@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch (Unofficial)",
+  "description": "Unofficial Switch inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
+  "dependencies": [],
+  "registryDependencies": [
+    "yukiharada1228/shadcn-digital-agency-jp/theme",
+    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/switch.tsx",
+      "type": "registry:ui",
+      "target": "@ui/switch.tsx"
+    },
+    {
+      "path": "THIRD_PARTY_LICENSES.md",
+      "type": "registry:file",
+      "target": "~/THIRD_PARTY_LICENSES.md"
+    }
+  ]
+}
