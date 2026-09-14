@@ -24,13 +24,33 @@ describe("ProgressIndicator", () => {
   })
 
   it("renders nothing when active is false", () => {
-    render(
+    const { container } = render(
       <ProgressIndicator type="stacked" active={false} aria-label="読み込み中">
         <ProgressIndicatorSpinner />
       </ProgressIndicator>
     )
     expect(screen.queryByRole("progressbar")).not.toBeInTheDocument()
+    expect(container).toBeEmptyDOMElement()
   })
+
+  it.each([undefined, 42])(
+    "keeps animation CSS out of the progressbar text (value: %s)",
+    (value) => {
+      const label = value === undefined ? "読み込み中" : "42% 読み込みました"
+      const { container } = render(
+        <ProgressIndicator type="stacked" value={value} aria-label={label}>
+          <ProgressIndicatorSpinner />
+          <span>{label}</span>
+        </ProgressIndicator>
+      )
+
+      const root = screen.getByRole("progressbar", { name: label })
+      expect(root.textContent).toBe(label)
+      expect(container.querySelector("style")).toHaveTextContent(
+        "@keyframes digital-agency-spinner-rotate"
+      )
+    }
+  )
 
   it("is indeterminate (no aria-valuenow) when value is omitted", () => {
     render(
