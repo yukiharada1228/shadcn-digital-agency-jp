@@ -395,7 +395,21 @@ export default function App() {
   const menu = useMenuListBox({
     onMenuItemSelect: (d) => setPickedAction(d.selectedValue),
   })
-  const upload = useFileUpload({
+  const {
+    files,
+    hasError,
+    isMultiple,
+    inputRef,
+    selectButtonRef,
+    removeFile,
+    handleInputChange,
+    handleSelectButtonClick,
+    isDragOver,
+    handleDragEnter,
+    handleDragOver,
+    handleDragLeave,
+    handleDrop,
+  } = useFileUpload({
     maxFiles: 3,
     accept: ".pdf,.png,.jpg",
     maxFileSize: "5MB",
@@ -1106,30 +1120,30 @@ export default function App() {
                 本人確認書類のアップロード
                 <RequirementBadge>必須</RequirementBadge>
               </p>
-              <FileUpload maxFiles={3} hasError={upload.hasError} droppable>
+              <FileUpload maxFiles={3} hasError={hasError} droppable>
                 <FileUploadInput
-                  ref={upload.inputRef}
-                  multiple={upload.isMultiple}
+                  ref={inputRef}
+                  multiple={isMultiple}
                   accept=".pdf,.png,.jpg"
-                  onChange={upload.handleInputChange}
+                  onChange={handleInputChange}
                   aria-describedby="fu-support"
                 />
                 <FileUploadDropArea
-                  isDragOver={upload.isDragOver}
-                  onDragEnter={upload.handleDragEnter}
-                  onDragOver={upload.handleDragOver}
-                  onDragLeave={upload.handleDragLeave}
-                  onDrop={upload.handleDrop}
+                  isDragOver={isDragOver}
+                  onDragEnter={handleDragEnter}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
                 >
                   <div className="flex flex-col items-center gap-3 text-center">
                     <p className="m-0">
                       ここにファイルをドラッグ＆ドロップ、または
                     </p>
                     <Button
-                      ref={upload.selectButtonRef}
+                      ref={selectButtonRef}
                       type="button"
                       variant="outline"
-                      onClick={upload.handleSelectButtonClick}
+                      onClick={handleSelectButtonClick}
                     >
                       ファイルを選択
                     </Button>
@@ -1138,9 +1152,9 @@ export default function App() {
                     </SupportText>
                   </div>
                 </FileUploadDropArea>
-                {upload.files.length > 0 && (
+                {files.length > 0 && (
                   <FileUploadFileList>
-                    {upload.files.map((f, index) => (
+                    {files.map((f, index) => (
                       <FileUploadFileItem
                         key={f.id}
                         hasError={Boolean(f.errors?.length)}
@@ -1156,7 +1170,7 @@ export default function App() {
                           type="button"
                           variant="text"
                           size="sm"
-                          onClick={() => upload.removeFile(f.id, index)}
+                          onClick={() => removeFile(f.id, index)}
                         >
                           削除
                         </Button>

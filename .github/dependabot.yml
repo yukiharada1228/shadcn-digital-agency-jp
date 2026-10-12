@@ -19,6 +19,14 @@ updates:
         patterns:
           - "vite"
           - "@vitejs/plugin-react"
+      # ESLint and its plugins must agree on supported peer dependency versions.
+      eslint-toolchain:
+        patterns:
+          - "eslint"
+          - "@eslint/js"
+          - "eslint-plugin-react-hooks"
+          - "typescript-eslint"
+          - "globals"
       # Other major updates remain separate for individual review.
       npm-minor-and-patch:
         patterns:

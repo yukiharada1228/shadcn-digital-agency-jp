@@ -42,7 +42,7 @@ function main() {
   const next = build()
 
   if (check) {
-    let current = ""
+    let current: string
     try {
       current = readFileSync(OUTPUT, "utf8")
     } catch {
