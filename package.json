@@ -60,7 +60,7 @@
   "devDependencies": {
     "@digital-go-jp/design-tokens": "^2.0.1",
     "@digital-go-jp/tailwind-theme-plugin": "^1.0.0",
-    "@eslint/js": "^9.17.0",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.0",
     "@tailwindcss/vite": "^4.3.2",
     "@testing-library/dom": "^10.4.2",
