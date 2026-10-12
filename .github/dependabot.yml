@@ -13,8 +13,13 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-    # Major updates remain separate so breaking changes can be reviewed individually.
     groups:
+      # React plugin major releases can require a matching Vite major release.
+      vite-toolchain:
+        patterns:
+          - "vite"
+          - "@vitejs/plugin-react"
+      # Other major updates remain separate for individual review.
       npm-minor-and-patch:
         patterns:
           - "*"

@@ -162,7 +162,8 @@ describe("StepNavigation", () => {
         </StepNavigationList>
       </StepNavigation>
     )
-    const link = screen.getByRole("link", { name: "ステップ 1 申請内容の入力" })
+    // Tailwind CSS is not loaded here, so inline spans form a continuous name.
+    const link = screen.getByRole("link", { name: "ステップ1申請内容の入力" })
     expect(link).toHaveAttribute("data-interactive", "")
     expect(link).toHaveAttribute("data-slot", "step-navigation-step-header")
   })
