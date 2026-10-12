@@ -70,7 +70,7 @@ function main() {
   const next = buildLicense()
 
   if (check) {
-    let current = ""
+    let current: string
     try {
       current = readFileSync(OUTPUT, "utf8")
     } catch {

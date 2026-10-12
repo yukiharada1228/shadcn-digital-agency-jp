@@ -40,6 +40,30 @@ test.describe("Demo app smoke", () => {
     expect(problems).toEqual([])
   })
 
+  test("selects and removes an upload while restoring button focus", async ({
+    page,
+  }) => {
+    await page.goto("/")
+    const selectButton = page.getByRole("button", { name: "ファイルを選択" })
+    const chooserPromise = page.waitForEvent("filechooser")
+    await selectButton.click()
+    const chooser = await chooserPromise
+    expect(chooser.isMultiple()).toBe(true)
+    await chooser.setFiles({
+      name: "identity.pdf",
+      mimeType: "application/pdf",
+      buffer: Buffer.from("test document"),
+    })
+
+    const item = page.locator('[data-slot="file-upload-file-item"]')
+    await expect(item).toHaveCount(1)
+    await expect(item).toContainText("identity.pdf")
+    await expect(selectButton).toBeFocused()
+    await item.getByRole("button", { name: "削除" }).click()
+    await expect(item).toHaveCount(0)
+    await expect(selectButton).toBeFocused()
+  })
+
   // 追加したセクションがページ全体を横に押し広げていないこと。
   // StepNavigation の横向きは 1 ステップ 320px 固定、SearchBox は最小幅が
   // 約 440px あるため、囲い方を間違えるとページごとはみ出す。
