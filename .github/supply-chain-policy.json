@@ -1,0 +1,4 @@
+{
+  "npm_lockfiles": ["package-lock.json"],
+  "reviewed_install_script_packages": ["esbuild", "fsevents"]
+}

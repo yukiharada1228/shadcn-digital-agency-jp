@@ -124,3 +124,20 @@ GitHubへの実反映・Codex連携は別途設定後に確認する。
 参考： [Codexの認証と利用枠](https://developers.openai.com/codex/auth)、
 [Codex GitHub連携と修正依頼](https://developers.openai.com/codex/integrations/github)、
 [GitHubのDependabot自動化](https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automate-dependabot-with-actions)。
+
+## サプライチェーン対策
+
+`CI Success` と `Supply Chain Security` の両方を GitHub Actions の必須チェックにします。検査の失敗・タイムアウト時はマージしません。
+
+- Dependency Review と OSV で、この変更が導入する既知の脆弱性を検査します。既存の未修正問題まで解消済みと判定する検査ではありません。
+- lockfile の配布元を npm / PyPI の公式レジストリに限定し、整合性ハッシュと同一バージョンの改変を確認します。新しい npm バージョンには SHA-512 を要求します。
+- `npm ci --ignore-scripts` の後に `npm audit signatures` で署名・提供されている provenance を検証します。署名は配布元と完全性を確認するもので、パッケージに悪意がないことの証明ではありません。
+- 新しくインストールスクリプトを持つパッケージを追加する場合は `.github/supply-chain-policy.json` のレビューが必要です。このポリシー変更は自動マージ対象になりません。掲載済みパッケージのインストールスクリプトも実行しません。
+- 通常の npm / uv 更新は公開後 7 日の cooldown を設けます。Dependabot のセキュリティ更新は cooldown の対象外です。修正リリースと GitHub の脆弱性情報が利用可能になった後に PR が作られ、必須検査が成功したパッチのみ自動マージされます。公開直後の適用時刻は保証しません。
+- Action は完全なコミット SHA に固定し、checkout の資格情報を残しません。依存コードの実行に書き込み権限や本番資格情報を渡さない構成を維持します。
+
+未知の悪意ある更新・正規アカウントの乗っ取り・実行時の不正動作を完全に検出できるものではありません。疑わしい PR には `no-automerge` を付け、`DEPENDENCY_AUTOMERGE_ENABLED=false` で全体を止めてください。すでに予約済みの auto-merge は別途解除してください。
+
+セキュリティ検査が失敗したときは、Codex に検査の無効化・署名検証のスキップ・無条件の例外追加を依頼しません。原因と公開された修正を確認し、ポリシーの変更は人がレビューします。API キーは不要で、既存の ChatGPT サブスクによる修正依頼方式は変わりません。
+
+参考: [GitHub Dependency Review](https://github.com/actions/dependency-review-action)、[npm の署名検証](https://docs.npmjs.com/verifying-registry-signatures/)、[Dependabot cooldown](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown)。

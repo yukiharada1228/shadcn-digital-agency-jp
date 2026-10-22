@@ -9,19 +9,54 @@ permissions:
   contents: read
 
 jobs:
+  supply-chain:
+    name: Supply Chain Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Review newly introduced vulnerabilities
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: low
+          fail-on-scopes: runtime,development,unknown
+          license-check: false
+          comment-summary-in-pr: never
+          retry-on-snapshot-warnings: true
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Check lockfile sources, integrity and vulnerability delta
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python .github/scripts/supply-chain.py --base "$BASE_SHA"
+      # Verify registry signatures before any package code executes in this job.
+      - run: npm ci --ignore-scripts
+      - run: npm audit signatures
+
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           submodules: recursive
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - name: Verify upstream submodule
         run: npm run check:upstream
@@ -74,11 +109,12 @@ jobs:
         with:
           node-version: 22
       - run: node --test .github/scripts/*.test.cjs
+      - run: python3 -m unittest discover -s .github/scripts -p 'test_*.py'
 
   ci-success:
     name: CI Success
     if: ${{ always() }}
-    needs: [ci, workflow-security]
+    needs: [ci, workflow-security, supply-chain]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

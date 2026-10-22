@@ -7,36 +7,57 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
   check-upstream:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      outdated: ${{ steps.diff.outputs.outdated }}
+      current: ${{ steps.diff.outputs.current }}
+      latest: ${{ steps.diff.outputs.latest }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           submodules: recursive
           fetch-depth: 0
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - name: Report upstream diff
         id: diff
         run: npm run diff:upstream | tee upstream-report.txt
 
       - name: Upload report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: upstream-report
           path: upstream-report.txt
 
+  report:
+    needs: check-upstream
+    if: needs.check-upstream.outputs.outdated == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    env:
+      GH_REPO: ${{ github.repository }}
+    steps:
+      # Treat the build's report as data; no checkout or package execution.
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: upstream-report
+      - name: Bound report size
+        run: test "$(wc -c < upstream-report.txt)" -le 50000
       - name: Ensure upstream label
-        if: steps.diff.outputs.outdated == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -46,14 +67,14 @@ jobs:
             --force
 
       - name: Create or update sync issue
-        if: steps.diff.outputs.outdated == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          CURRENT: ${{ steps.diff.outputs.current }}
-          LATEST: ${{ steps.diff.outputs.latest }}
+          CURRENT: ${{ needs.check-upstream.outputs.current }}
+          LATEST: ${{ needs.check-upstream.outputs.latest }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
+          [[ "$CURRENT" =~ ^[a-f0-9]{40}$ && "$LATEST" =~ ^[a-f0-9]{40}$ ]] || exit 1
 
           SHORT_CURRENT="${CURRENT:0:7}"
           SHORT_LATEST="${LATEST:0:7}"
