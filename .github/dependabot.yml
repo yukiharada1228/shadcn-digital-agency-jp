@@ -37,12 +37,16 @@ updates:
           - "typescript-eslint"
           - "globals"
       # Other major updates remain separate for individual review.
-      npm-minor-and-patch:
+      npm-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+      npm-minor:
         patterns:
           - "*"
         update-types:
           - "minor"
-          - "patch"
 
   - package-ecosystem: "github-actions"
     directory: "/"
