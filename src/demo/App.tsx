@@ -107,6 +107,7 @@ import {
   ImageFigure,
 } from "@/components/ui/image"
 import { Input } from "@/components/ui/input"
+import { FormControlLabel } from "@/components/ui/form-control-label"
 import { Label } from "@/components/ui/label"
 import {
   LanguageSelector,
@@ -730,7 +731,7 @@ export default function App() {
         {/* ページ見出し */}
         <div>
           <Heading size="36" hasChip rule="4">
-            <HeadingShoulder>全 44 コンポーネント</HeadingShoulder>
+            <HeadingShoulder>全 47 コンポーネント</HeadingShoulder>
             <HeadingTitle level="h1">
               デジタル庁デザインシステム風コンポーネント サンプル
             </HeadingTitle>
@@ -890,7 +891,7 @@ export default function App() {
           >
             <div className="grid min-w-0 gap-5 md:grid-cols-2 [&>*]:min-w-0">
               {/* Input + Label + RequirementBadge + SupportText */}
-              <div className="grid gap-2">
+              <FormControlLabel>
                 <Label htmlFor="name">
                   氏名
                   <RequirementBadge>必須</RequirementBadge>
@@ -912,10 +913,10 @@ export default function App() {
                     戸籍上の氏名を入力してください。
                   </SupportText>
                 )}
-              </div>
+              </FormControlLabel>
 
               {/* Input（任意） */}
-              <div className="grid gap-2">
+              <FormControlLabel>
                 <Label htmlFor="phone">
                   電話番号
                   <RequirementBadge isOptional>任意</RequirementBadge>
@@ -924,10 +925,10 @@ export default function App() {
                 <SupportText>
                   日中に連絡が取れる番号を入力してください。
                 </SupportText>
-              </div>
+              </FormControlLabel>
 
               {/* Select */}
-              <div className="grid gap-2">
+              <FormControlLabel>
                 <Label htmlFor="pref">都道府県</Label>
                 <Select value={pref} onValueChange={setPref}>
                   <SelectTrigger id="pref" className="w-full">
@@ -940,13 +941,13 @@ export default function App() {
                     <SelectItem value="fukuoka">福岡県</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
+              </FormControlLabel>
 
               {/* Textarea */}
-              <div className="grid gap-2">
+              <FormControlLabel>
                 <Label htmlFor="note">備考</Label>
                 <Textarea id="note" className="w-full" rows={4} />
-              </div>
+              </FormControlLabel>
             </div>
 
             {/* RadioGroup + Legend */}

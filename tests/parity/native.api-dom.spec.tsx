@@ -42,6 +42,7 @@ describe("Native component API/DOM parity", () => {
     expect(input.className).toContain("border-solid-gray-600")
 
     expect(textarea.tagName).toBe("TEXTAREA")
+    expect(textarea.parentElement?.tagName).toBe("SPAN")
     expect(textarea).toHaveAttribute("data-slot", "textarea")
     expect(textarea).toHaveAttribute("aria-invalid", "true")
     expect(textarea).toHaveAttribute("readonly")

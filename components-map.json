@@ -44,7 +44,7 @@
     "status": "ported"
   },
   "Label": {
-    "upstreamPath": "src/components/Label",
+    "upstreamPath": "src/components/FormControlLabel",
     "localFiles": [
       "src/components/ui/label.tsx",
       "src/registry/items/label.json"
@@ -244,7 +244,7 @@
     "status": "ported"
   },
   "SupportText": {
-    "upstreamPath": "src/components/SupportText",
+    "upstreamPath": "src/components/FormControlLabel",
     "localFiles": [
       "src/components/ui/support-text.tsx",
       "src/registry/items/support-text.json"
@@ -258,7 +258,7 @@
     "status": "ported"
   },
   "RequirementBadge": {
-    "upstreamPath": "src/components/RequirementBadge",
+    "upstreamPath": "src/components/FormControlLabel",
     "localFiles": [
       "src/components/ui/requirement-badge.tsx",
       "src/registry/items/requirement-badge.json"
@@ -272,7 +272,7 @@
     "status": "ported"
   },
   "StatusBadge": {
-    "upstreamPath": "src/components/StatusBadge",
+    "upstreamPath": "src/components/FormControlLabel",
     "localFiles": [
       "src/components/ui/status-badge.tsx",
       "src/registry/items/status-badge.json"
@@ -486,7 +486,7 @@
     "status": "ported"
   },
   "Legend": {
-    "upstreamPath": "src/components/Legend",
+    "upstreamPath": "src/components/FormControlLabel",
     "localFiles": [
       "src/components/ui/legend.tsx",
       "src/registry/items/legend.json"
@@ -653,6 +653,20 @@
     "parityTests": [
       "tests/unit/page-navigation.test.tsx",
       "tests/a11y/page-navigation.a11y.spec.tsx",
+      "tests/visual/upstream-source-parity.visual.spec.ts"
+    ],
+    "status": "ported"
+  },
+  "FormControlLabel": {
+    "upstreamPath": "src/components/FormControlLabel",
+    "localFiles": [
+      "src/components/ui/form-control-label.tsx",
+      "src/registry/items/form-control-label.json"
+    ],
+    "registryItem": "form-control-label",
+    "parityTests": [
+      "tests/unit/form-control-label.test.tsx",
+      "tests/a11y/form-control-label.a11y.spec.tsx",
       "tests/visual/upstream-source-parity.visual.spec.ts"
     ],
     "status": "ported"

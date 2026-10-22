@@ -82,6 +82,21 @@ describe("components-map.json", () => {
 })
 
 describe("mapChanges", () => {
+  it("tracks every registry item consolidated under FormControlLabel", () => {
+    expect(
+      mapChanges([
+        "src/components/FormControlLabel/FormControlLabel.tsx",
+      ]).registryItems.sort()
+    ).toEqual([
+      "form-control-label",
+      "label",
+      "legend",
+      "requirement-badge",
+      "status-badge",
+      "support-text",
+    ])
+  })
+
   it("resolves a changed upstream file to its local files and tests", () => {
     const result = mapChanges(["src/components/Accordion/Accordion.tsx"])
     expect(result.components).toEqual(["Accordion"])

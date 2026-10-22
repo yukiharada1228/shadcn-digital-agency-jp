@@ -35,7 +35,7 @@
   `bg-key-900` や `text-std-17B-170` のようなユーティリティが使えます。
 - **shadcn/ui の慣習に準拠**
   `cn()` / `cva` / `asChild`（`@radix-ui/react-slot`）/ `data-slot` / compound component。
-- **upstream の全 46 コンポーネントを実装済み**
+- **upstream の全 47 コンポーネントを実装済み**
   upstream は Git submodule として read-only 参照し、parity テストで追随します。
 
 ---
@@ -127,16 +127,16 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 ## コンポーネント一覧 / Components
 
-全 **46 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+全 **47 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
 
-| カテゴリ                                  | コンポーネント                                                                                                                                                                                                                |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **基本** / Basics                         | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                                                                                  |
-| **フォーム** / Form                       | `input` · `textarea` · `label` · `select` · `checkbox` · `radio-group` · `switch` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` · `search-box` |
-| **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                                             |
-| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation` · `page-navigation`                               |
-| **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                                           |
-| **データ表示** / Data display             | `table` · `carousel` · `resource-list`                                                                                                                                                                                        |
+| カテゴリ                                  | コンポーネント                                                                                                                                                                                                                                       |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **基本** / Basics                         | `button` · `link` · `utility-link` · `heading` · `divider` · `list` · `description-list` · `blockquote` · `image` · `legend`                                                                                                                         |
+| **フォーム** / Form                       | `input` · `textarea` · `form-control-label` · `label` · `select` · `checkbox` · `radio-group` · `switch` · `requirement-badge` · `support-text` · `error-text` · `calendar` · `date-picker` · `separated-date-picker` · `file-upload` · `search-box` |
+| **バッジ・通知** / Badges & notifications | `status-badge` · `chip-label` · `notification-banner` · `emergency-banner` · `progress-indicator`                                                                                                                                                    |
+| **ナビゲーション** / Navigation           | `breadcrumbs` · `tabs` · `accordion` · `disclosure` · `horizontal-menu` · `hamburger-menu-button` · `menu-list` · `menu-list-box` · `language-selector` · `step-navigation` · `page-navigation`                                                      |
+| **オーバーレイ** / Overlay                | `dialog` · `drawer`                                                                                                                                                                                                                                  |
+| **データ表示** / Data display             | `table` · `carousel` · `resource-list`                                                                                                                                                                                                               |
 
 > 命名メモ: upstream の `ModalDialog` → `dialog`、`Radio` → `radio-group`、`Tab` → `tabs` に対応しています。
 
@@ -165,7 +165,7 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 | `theme`             | デザイントークン CSS・JSON・ライセンス表示。**全コンポーネントのスタイル基盤。**                                                                                                |
 | `digital-agency-cn` | DA 固有スケール対応の `cn()` を `lib/digital-agency/cn.ts` に追加。`clsx` / `tailwind-merge` も install します。**全コンポーネントのユーティリティ基盤。**                      |
 | `core`              | 軽量な基本 UI（`button` `input` `textarea` `label` `divider` `link` `utility-link` `heading` `list` `blockquote` `description-list` `image`）。重いオーバーレイ等は含みません。 |
-| `form`              | フォーム系（`checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                                                   |
+| `form`              | フォーム系（`form-control-label` `checkbox` `radio-group` `select` `error-text` `support-text` `requirement-badge` `status-badge` `chip-label`）。                              |
 | `all-components`    | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
 
 ```bash

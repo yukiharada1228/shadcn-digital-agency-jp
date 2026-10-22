@@ -26,12 +26,15 @@ explicitly split into the levels below.
 shadcn-friendly `solid` alias and default `variant="solid"` / `size="md"`.
 The upstream variant name `solid-fill` remains supported.
 
-`Select` is intentionally not a native `<select>`. Upstream uses a wrapped
+`Select` is intentionally not a native `<select>`. Upstream uses a
 native select element; this project exposes a Radix Select compound API:
 `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, and `SelectItem`.
 The supported upstream-compatible props are on `SelectTrigger`: `blockSize`,
 `isError`, `aria-disabled`, and normal ARIA attributes. Native `<option>`
-children are not a compatibility target.
+children are not a compatibility target. The trigger defaults to content width;
+use `className="w-full"` to stretch it. Radix sizes this from the selected value,
+whereas a native select may reserve space for its widest option. The trigger
+keeps an SVG arrow so it remains visible in forced-colors mode.
 
 `Checkbox` is intentionally not an `<input type="checkbox">`. It is a Radix
 Checkbox root that renders as an interactive element with `role="checkbox"`.
@@ -71,6 +74,32 @@ wrappers for those primitives. `CalendarButton` and `CalendarHeading` are local
 wrapper exports so registry demos can compose calendar navigation without
 importing `react-aria-components` directly. The visual contract remains the
 upstream grid, header, and cell token classes.
+
+## October 2026 Upstream Sync
+
+The pinned upstream is `e637c6820a8ceb5b1c28719e3260afdab89c2b57`.
+Upstream now targets React 19 and accepts `ref` as a regular prop. This registry
+continues to support React 18 and 19, retaining `forwardRef` for existing
+components. The ref targets and interactions remain unchanged.
+
+Upstream consolidated `Label`, `Legend`, `RequirementBadge`, `StatusBadge`, and
+`SupportText` into `FormControlLabel`. Their existing registry items and imports
+remain available. The new `form-control-label` item provides the wrapper with
+`as="div"` (default) or `as="fieldset"` and `size="sm"|"md"|"lg"`. Compose it
+with the separately installed label, legend, badge, and input components; the
+`form` and `all-components` bundles include the wrapper.
+
+`Textarea` now has an outer `span` to expose its first-line baseline, matching
+upstream's Safari fix. Props, `className`, and refs still target the native
+`textarea`; selectors that rely on it being a direct child need to account for
+the wrapper. `DatePicker` uses the same zero-width-space baseline technique.
+
+For `Checkbox` and `RadioGroupItem` label composition, use `items-baseline` on
+the enclosing flex row. The size-dependent offset matches upstream's controls;
+label text, wrapping, and label associations remain the consumer's responsibility.
+
+The upstream license and copyright notice are unchanged; the existing
+`THIRD_PARTY_LICENSES.md` remains applicable to the new wrapper as well.
 
 ## Out of Scope: Upstream Example Collections
 
