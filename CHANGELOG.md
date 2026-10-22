@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.1
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- ci: automate versioning and releases after successful checks (#80) ([70e1c53](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/70e1c530c617604b43c7af0d9d5d79e20195268b))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.0...v0.8.1) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.1/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.0
 
 - Synced upstream: digital-go-jp/design-system-example-components-react@e637c68
