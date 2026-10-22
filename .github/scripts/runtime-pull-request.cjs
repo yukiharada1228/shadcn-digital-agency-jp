@@ -1,4 +1,4 @@
-const { Buffer } = require("node:buffer")
+const { Buffer: NodeBuffer } = require("node:buffer")
 
 const FILES = new Set([
   ".github/runtime-versions.json",
@@ -27,7 +27,7 @@ function validate(plan) {
       ([name, content]) =>
         !FILES.has(name) ||
         typeof content !== "string" ||
-        Buffer.byteLength(content) > 200_000
+        NodeBuffer.byteLength(content) > 200_000
     ) ||
     plan.changed !== Object.keys(plan.files).length > 0
   ) {
@@ -116,7 +116,7 @@ async function publish({ github, context, core, plan, bot }) {
             ref: old,
           })
           return (
-            Buffer.from(data.content, "base64").toString("utf8") === content
+            NodeBuffer.from(data.content, "base64").toString("utf8") === content
           )
         } catch (error) {
           if (error.status === 404) return false
