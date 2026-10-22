@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.3
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- ci: automate security audits and dependency stall monitoring (#84) ([f63a863](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/f63a86343f354c52d4a09684d8bf17e8ef8c121f))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.2...v0.8.3) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.3/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.2
 
 main の CI 成功後に自動公開する patch リリースです。
