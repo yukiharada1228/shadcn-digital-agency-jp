@@ -1,0 +1,61 @@
+name: Automatic Release
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  # Recover missed events and transient GitHub API failures without a local runner.
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: automatic-release-main
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: >-
+      github.repository == 'yukiharada1228/shadcn-digital-agency-jp' &&
+      github.ref == 'refs/heads/main' &&
+      vars.RELEASE_AUTOMATION_ENABLED != 'false' && vars.PATCH_BOT_APP_ID != '' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.head_repository.full_name == github.repository &&
+        (github.event.workflow_run.head_branch == 'main' ||
+         github.event.workflow_run.head_branch == 'automation/release')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Never execute a triggering PR's code or install its dependencies here.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+      - name: Create repository-scoped release bot token
+        id: app
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ vars.PATCH_BOT_APP_ID }}
+          private-key: ${{ secrets.PATCH_BOT_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-administration: read
+      - name: Reconcile release PR, tag and GitHub Release
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          READ_TOKEN: ${{ github.token }}
+          BOT_LOGIN: ${{ steps.app.outputs.app-slug }}[bot]
+        with:
+          github-token: ${{ steps.app.outputs.token }}
+          script: |
+            const { runRelease } = require('./.github/scripts/release-automation.cjs');
+            const readGithub = new github.constructor({ auth: process.env.READ_TOKEN });
+            const result = await runRelease({ github, readGithub, context, botLogin: process.env.BOT_LOGIN });
+            core.info(JSON.stringify(result));
+            await core.summary.addHeading('Automatic release').addRaw(JSON.stringify(result, null, 2)).write();
