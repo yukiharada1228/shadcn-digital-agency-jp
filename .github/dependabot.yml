@@ -3,6 +3,8 @@ version: 2
 updates:
   # The upstream submodule is managed by the Upstream Sync workflow.
   - package-ecosystem: "npm"
+    cooldown:
+      default-days: 7
     directory: "/"
     schedule:
       interval: "weekly"

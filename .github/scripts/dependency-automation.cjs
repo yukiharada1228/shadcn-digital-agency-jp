@@ -62,14 +62,18 @@ function patchMetadata(metadata) {
 
 function requireProtection(protection) {
   const checks = protection.required_status_checks
+  const required = ["CI Success", "Supply Chain Security"]
   if (
     !checks?.strict ||
-    !checks.checks?.some(
-      (check) => check.context === "CI Success" && check.app_id === 15368
+    required.some(
+      (name) =>
+        !checks.checks?.some(
+          (check) => check.context === name && check.app_id === 15368
+        )
     )
   ) {
     throw new Error(
-      "Auto-merge requires strict branch protection with GitHub Actions CI Success."
+      "Auto-merge requires strict branch protection with GitHub Actions CI Success and Supply Chain Security."
     )
   }
 }
@@ -189,7 +193,7 @@ async function requestRepair({ github, context, runId }) {
 
 // All CI jobs, including matrix jobs, must succeed before GitHub can merge.
 function requireCiSuccess(results) {
-  const expected = ["ci", "workflow-security"]
+  const expected = ["ci", "workflow-security", "supply-chain"]
   if (
     !results ||
     Object.keys(results).length !== expected.length ||
