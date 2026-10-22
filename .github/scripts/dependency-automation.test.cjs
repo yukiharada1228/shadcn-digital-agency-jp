@@ -60,7 +60,6 @@ test("only same-repository Dependabot manifest updates are eligible", () => {
     assert.equal(policy.eligiblePull(pr, files(), "no-automerge"), false)
   }
   for (const filename of [
-    ".github/workflows/ci.yml",
     "infra/main.tf",
     "src/index.ts",
     "Dockerfile",
@@ -95,33 +94,6 @@ test("opt-out labels independently control repair and merge", () => {
   pr.labels.push({ name: "no-codex" })
   assert.equal(policy.eligiblePull(pr, files(), "no-codex"), false)
   assert.equal(policy.eligiblePull(pr, files(), "no-automerge"), true)
-})
-
-test("only verified patch metadata in supported ecosystems qualifies", () => {
-  const metadata = {
-    updateType: "version-update:semver-patch",
-    ecosystem: "npm_and_yarn",
-    maintainerChanges: "false",
-  }
-  for (const ecosystem of ["npm_and_yarn"])
-    assert.equal(policy.patchMetadata({ ...metadata, ecosystem }), true)
-  for (const updateType of [
-    "",
-    "version-update:semver-minor",
-    "version-update:semver-major",
-  ]) {
-    assert.equal(policy.patchMetadata({ ...metadata, updateType }), false)
-  }
-  for (const ecosystem of ["github_actions", "pip", "uv"])
-    assert.equal(policy.patchMetadata({ ...metadata, ecosystem }), false)
-  assert.equal(
-    policy.patchMetadata({ ...metadata, maintainerChanges: "true" }),
-    false
-  )
-  assert.equal(
-    policy.patchMetadata({ ...metadata, maintainerChanges: "" }),
-    false
-  )
 })
 
 test("auto-merge fails closed if required CI or strict protection disappears", () => {

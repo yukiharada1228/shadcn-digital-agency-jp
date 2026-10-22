@@ -5,6 +5,58 @@ const BOT = "dependabot[bot]"
 const REQUEST_MARKER = "<!-- shadcn-digital-agency-jp-codex-repair-request -->"
 const manifests = new Set(["package.json", "package-lock.json"])
 
+// Scope each verified ecosystem to its own dependency files.
+const ecosystemFiles = {
+  npm_and_yarn: ["package.json", "package-lock.json"],
+}
+const workflowFile = /^\.github\/workflows\/[a-zA-Z0-9_-]+\.ya?ml$/
+
+function dependencyFile(file, ecosystem) {
+  return (
+    file.status === "modified" &&
+    (ecosystem === "github_actions"
+      ? workflowFile.test(file.filename)
+      : ecosystemFiles[ecosystem]?.includes(file.filename) === true)
+  )
+}
+
+function actionPinsOnly(files) {
+  return files.every((file) => {
+    if (!file.patch) return false
+    const pins = { "-": [], "+": [] }
+    for (const line of file.patch.split("\n")) {
+      if (!["-", "+"].includes(line[0])) continue
+      const match = line
+        .slice(1)
+        .match(
+          /^(\s*(?:-\s*)?uses:\s*)([a-zA-Z0-9_.-]+\/[a-zA-Z0-9_./-]+)@[a-f0-9]{40}(?:\s*#.*)?\s*$/
+        )
+      if (!match) return false
+      pins[line[0]].push(match[1] + match[2])
+    }
+    return (
+      pins["-"].length > 0 &&
+      JSON.stringify(pins["-"]) === JSON.stringify(pins["+"])
+    )
+  })
+}
+
+function terraformVersionsOnly(files) {
+  return files.every((file) => {
+    if (file.filename.endsWith("/.terraform.lock.hcl")) return true
+    if (!file.patch) return false
+    const changed = file.patch
+      .split("\n")
+      .filter((line) => ["-", "+"].includes(line[0]))
+    return (
+      changed.length > 0 &&
+      changed.every((line) =>
+        /^\s*version\s*=\s*"[^"\r\n]+"\s*(?:#.*)?$/.test(line.slice(1))
+      )
+    )
+  })
+}
+
 function isRepairRequest(comment) {
   return (
     comment.user?.login === "github-actions[bot]" &&
@@ -12,9 +64,10 @@ function isRepairRequest(comment) {
   )
 }
 
-function eligiblePull(pr, files, optOut, comments = []) {
+function eligiblePull(pr, files, optOut, comments = [], state = "open") {
+  const merge = optOut === "no-automerge"
   return (
-    pr.state === "open" &&
+    pr.state === state &&
     !pr.draft &&
     pr.user?.login === BOT &&
     pr.head?.repo?.full_name === REPOSITORY &&
@@ -23,12 +76,30 @@ function eligiblePull(pr, files, optOut, comments = []) {
     pr.head.ref.startsWith("dependabot/") &&
     /^[a-f0-9]{40}$/.test(pr.head.sha) &&
     !pr.labels.some((label) => label.name === optOut) &&
-    (optOut !== "no-automerge" || !comments.some(isRepairRequest)) &&
+    (!merge || !comments.some(isRepairRequest)) &&
     files.length > 0 &&
-    files.length <= 2 &&
-    files.every(
-      (file) => file.status === "modified" && manifests.has(file.filename)
+    files.length <= (merge ? 50 : 2) &&
+    files.every((file) =>
+      merge
+        ? ["github_actions", ...Object.keys(ecosystemFiles)].some((ecosystem) =>
+            dependencyFile(file, ecosystem)
+          )
+        : file.status === "modified" && manifests.has(file.filename)
     )
+  )
+}
+
+function autoMergeMetadata(metadata, files) {
+  return (
+    ["version-update:semver-patch", "version-update:semver-minor"].includes(
+      metadata.updateType
+    ) &&
+    metadata.maintainerChanges === "false" &&
+    files.length > 0 &&
+    files.length <= 50 &&
+    files.every((file) => dependencyFile(file, metadata.ecosystem)) &&
+    (metadata.ecosystem !== "github_actions" || actionPinsOnly(files)) &&
+    (metadata.ecosystem !== "terraform" || terraformVersionsOnly(files))
   )
 }
 
@@ -52,17 +123,10 @@ async function getPull({ github, context, number }) {
   return { pr, files, comments }
 }
 
-function patchMetadata(metadata) {
-  return (
-    metadata.updateType === "version-update:semver-patch" &&
-    metadata.ecosystem === "npm_and_yarn" &&
-    metadata.maintainerChanges === "false"
-  )
-}
-
-function requireProtection(protection) {
+function requireProtection(protection, ecosystem) {
   const checks = protection.required_status_checks
   const required = ["CI Success", "Supply Chain Security"]
+  if (ecosystem === "terraform") required.push("Terraform Plan")
   if (
     !checks?.strict ||
     required.some(
@@ -207,7 +271,7 @@ module.exports = {
   requireCiSuccess,
   eligiblePull,
   getPull,
-  patchMetadata,
+  autoMergeMetadata,
   requireProtection,
   repairCandidate,
   isRepairRequest,
