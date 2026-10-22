@@ -103,6 +103,18 @@ function autoMergeMetadata(metadata, files) {
   )
 }
 
+function verifiedDependencyCommits(commits, sha) {
+  return (
+    commits.length > 0 &&
+    commits.at(-1).sha === sha &&
+    commits.every(
+      (commit) =>
+        commit.author?.login === BOT &&
+        commit.commit?.verification?.verified === true
+    )
+  )
+}
+
 async function getPull({ github, context, number }) {
   if (`${context.repo.owner}/${context.repo.repo}` !== REPOSITORY)
     throw new Error("Unexpected repository.")
@@ -268,6 +280,7 @@ function requireCiSuccess(results) {
 }
 
 module.exports = {
+  verifiedDependencyCommits,
   requireCiSuccess,
   eligiblePull,
   getPull,
