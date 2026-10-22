@@ -5,6 +5,8 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.0
+
 - Synced upstream: digital-go-jp/design-system-example-components-react@e637c68
   (was `68b452e`, upstream release `v20261021`).
 - Added `form-control-label` to the registry, form bundle, and all-components
@@ -43,6 +45,11 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
   its `Button` here. `PageNavigationArrowButton` is the circular arrow variant
   and requires a `label` prop (rendered as an `sr-only` span) unless `asChild`
   is used, so an icon-only button can't ship without an accessible name.
+- `progress-indicator`: keep animation CSS outside the progressbar content so
+  its text content contains only the user-facing content.
+- Updated dependencies and development tooling, including TypeScript 6 support.
+  Added dependency update automation with lockfile integrity, registry signature,
+  vulnerability, and workflow security checks.
 
 ## v0.7.0
 
