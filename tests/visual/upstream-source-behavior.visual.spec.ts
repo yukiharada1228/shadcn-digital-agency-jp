@@ -29,6 +29,46 @@ async function selectedSelectText(page: Page, source: Source) {
 }
 
 test.describe("Upstream source behavior parity", () => {
+  test("checkbox selection does not move its multiline label at any size", async ({
+    page,
+  }) => {
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-baseline-controls", source)
+      for (const checkbox of await page.getByRole("checkbox").all()) {
+        const label = checkbox
+          .locator("xpath=ancestor::label")
+          .locator(":scope > span")
+          .last()
+        const before = await label.boundingBox()
+        await checkbox.click()
+        await expect(checkbox).not.toBeChecked()
+        expect(await label.boundingBox()).toEqual(before)
+        await checkbox.press("Space")
+        await expect(checkbox).toBeChecked()
+        expect(await label.boundingBox()).toEqual(before)
+      }
+    }
+  })
+
+  test("select defaults to content width and accepts a full-width override", async ({
+    page,
+  }) => {
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-select", source)
+      const select = page.getByRole("combobox", { name: "選択肢" })
+      const defaultWidth = await select.evaluate(
+        (element) => element.getBoundingClientRect().width
+      )
+      expect(defaultWidth).toBeLessThan(320)
+      await select.evaluate((element) => element.classList.add("w-full"))
+      expect(
+        await select.evaluate(
+          (element) => element.getBoundingClientRect().width
+        )
+      ).toBe(320)
+    }
+  })
+
   for (const id of ["source-parity-accordion", "source-parity-disclosure"]) {
     test(`${id} toggles open state`, async ({ page }) => {
       for (const source of sources) {

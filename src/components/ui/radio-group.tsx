@@ -9,8 +9,9 @@ import { cn } from "@/lib/digital-agency/cn"
 
 export type RadioGroupItemSize = "lg" | "md" | "sm"
 
+// Ignore Radix's hidden form input when deciding whether a label sibling exists.
 export const radioGroupItemVariants = cva(
-  "group/radio inline-flex shrink-0 items-center justify-center appearance-none rounded-full bg-transparent outline-none hover:bg-solid-gray-420 focus-visible:bg-transparent disabled:pointer-events-none disabled:hover:bg-transparent aria-disabled:pointer-events-none aria-disabled:hover:bg-transparent data-[size=sm]:size-6 data-[size=md]:size-8 data-[size=lg]:size-11",
+  "group/radio inline-flex shrink-0 items-center justify-center appearance-none rounded-full bg-transparent outline-none hover:bg-solid-gray-420 focus-visible:bg-transparent disabled:pointer-events-none disabled:hover:bg-transparent aria-disabled:pointer-events-none aria-disabled:hover:bg-transparent [&:not(:only-child):not(:first-child:has(+input[aria-hidden=true]:last-child))]:relative [&:not(:only-child):not(:first-child:has(+input[aria-hidden=true]:last-child))]:top-(--baseline-offset) [&:not(:only-child):not(:first-child:has(+input[aria-hidden=true]:last-child))]:-mt-(--baseline-offset) [&:not(:only-child):not(:first-child:has(+input[aria-hidden=true]:last-child))]:mb-(--baseline-offset) data-[size=sm]:[--baseline-offset:calc(3/16*1rem)] data-[size=md]:[--baseline-offset:calc(6/16*1rem)] data-[size=lg]:[--baseline-offset:calc(11/16*1rem)] data-[size=sm]:size-6 data-[size=md]:size-8 data-[size=lg]:size-11",
   {
     variants: {
       size: {
@@ -26,7 +27,7 @@ export const radioGroupItemVariants = cva(
 )
 
 const radioGroupItemCircleClass = cn(
-  "flex items-center justify-center rounded-full border border-solid-gray-600 bg-white",
+  "relative flex items-center justify-center rounded-full border border-solid-gray-600 bg-white",
   "size-[83.333%]",
   "group-hover/radio:border-black",
   "group-focus-visible/radio:outline group-focus-visible/radio:outline-4 group-focus-visible/radio:outline-black group-focus-visible/radio:outline-offset-[calc(2/16*1rem)] group-focus-visible/radio:ring-[calc(2/16*1rem)] group-focus-visible/radio:ring-yellow-300",
@@ -80,7 +81,7 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <span className={radioGroupItemCircleClass}>
-        <RadioGroupPrimitive.Indicator className="size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 group-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight] group-aria-disabled/radio:forced-colors:!bg-[GrayText] group-disabled/radio:forced-colors:!bg-[GrayText]" />
+        <RadioGroupPrimitive.Indicator className="absolute size-full bg-key-900 [clip-path:circle(calc(5/16*100%))] group-data-[error]/radio:bg-error-1 group-aria-disabled/radio:!bg-solid-gray-300 group-disabled/radio:!bg-solid-gray-300 forced-colors:!bg-[Highlight] group-aria-disabled/radio:forced-colors:!bg-[GrayText] group-disabled/radio:forced-colors:!bg-[GrayText]" />
       </span>
     </RadioGroupPrimitive.Item>
   )

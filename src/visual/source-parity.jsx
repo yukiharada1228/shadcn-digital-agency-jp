@@ -1,3 +1,12 @@
+import {
+  FormControlLabel as UpstreamFormControlLabel,
+  Label as UpstreamLabel,
+  Legend as UpstreamLegend,
+  RequirementBadge as UpstreamRequirementBadge,
+  StatusBadge as UpstreamStatusBadge,
+  SupportText as UpstreamSupportText,
+} from "../../upstream/design-system-example-components-react/src/components/FormControlLabel"
+import { FormControlLabel } from "@/components/ui/form-control-label"
 import { parseDate } from "@internationalized/date"
 import { useEffect, useId, useRef, useState } from "react"
 import {
@@ -93,7 +102,6 @@ import {
   ImageCaption as UpstreamImageCaption,
 } from "../../upstream/design-system-example-components-react/src/components/Image"
 import { Input as UpstreamInput } from "../../upstream/design-system-example-components-react/src/components/Input"
-import { Label as UpstreamLabel } from "../../upstream/design-system-example-components-react/src/components/Label"
 import {
   LanguageSelector as UpstreamLanguageSelector,
   LanguageSelectorArrowIcon as UpstreamLanguageSelectorArrowIcon,
@@ -102,7 +110,6 @@ import {
   LanguageSelectorMenu as UpstreamLanguageSelectorMenu,
   LanguageSelectorMenuItem as UpstreamLanguageSelectorMenuItem,
 } from "../../upstream/design-system-example-components-react/src/components/LanguageSelector"
-import { Legend as UpstreamLegend } from "../../upstream/design-system-example-components-react/src/components/Legend/Legend"
 import { Link as UpstreamLink } from "../../upstream/design-system-example-components-react/src/components/Link"
 import { List as UpstreamList } from "../../upstream/design-system-example-components-react/src/components/List"
 import {
@@ -146,7 +153,6 @@ import {
   ProgressIndicatorStatic as UpstreamProgressIndicatorStatic,
 } from "../../upstream/design-system-example-components-react/src/components/ProgressIndicator"
 import { Radio as UpstreamRadio } from "../../upstream/design-system-example-components-react/src/components/Radio"
-import { RequirementBadge as UpstreamRequirementBadge } from "../../upstream/design-system-example-components-react/src/components/RequirementBadge/RequirementBadge"
 import { Select as UpstreamSelect } from "../../upstream/design-system-example-components-react/src/components/Select"
 import {
   SeparatedDatePicker as UpstreamSeparatedDatePicker,
@@ -155,8 +161,6 @@ import {
   SeparatedDatePickerMonth as UpstreamSeparatedDatePickerMonth,
   SeparatedDatePickerYear as UpstreamSeparatedDatePickerYear,
 } from "../../upstream/design-system-example-components-react/src/components/SeparatedDatePicker"
-import { StatusBadge as UpstreamStatusBadge } from "../../upstream/design-system-example-components-react/src/components/StatusBadge"
-import { SupportText as UpstreamSupportText } from "../../upstream/design-system-example-components-react/src/components/SupportText/SupportText"
 import {
   Tab as UpstreamTab,
   TabItem as UpstreamTabItem,
@@ -728,16 +732,14 @@ function UpstreamCheckboxFixture() {
 
 function OursCheckboxRow({ checked, disabled, error, label }) {
   return (
-    <div className="flex w-fit items-start gap-1 py-2">
+    <div className="flex w-fit items-baseline gap-1 py-2">
       <Checkbox
         aria-label={label}
         defaultChecked={checked}
         disabled={disabled}
         isError={error}
       />
-      <span className="pt-px text-dns-16N-130 text-solid-gray-800">
-        {label}
-      </span>
+      <span className="text-dns-16N-130 text-solid-gray-800">{label}</span>
     </div>
   )
 }
@@ -1182,6 +1184,168 @@ function OursInputFixture() {
         defaultValue="入力テキスト"
         id="source-parity-input"
       />
+    </div>
+  )
+}
+
+function FormControlLabelFixture({ source, horizontal = false }) {
+  const Field =
+    source === "upstream" ? UpstreamFormControlLabel : FormControlLabel
+  const FieldLabel = source === "upstream" ? UpstreamLabel : Label
+  const FieldLegend = source === "upstream" ? UpstreamLegend : Legend
+  const Badge =
+    source === "upstream" ? UpstreamRequirementBadge : RequirementBadge
+  const Status = source === "upstream" ? UpstreamStatusBadge : StatusBadge
+  const Support = source === "upstream" ? UpstreamSupportText : SupportText
+  const TextInput = source === "upstream" ? UpstreamInput : Input
+  const Multiline = source === "upstream" ? UpstreamTextarea : Textarea
+  const DateInput = source === "upstream" ? UpstreamDatePicker : DatePicker
+  const Year = source === "upstream" ? UpstreamDatePickerYear : DatePickerYear
+  const Month =
+    source === "upstream" ? UpstreamDatePickerMonth : DatePickerMonth
+  const Day = source === "upstream" ? UpstreamDatePickerDate : DatePickerDate
+
+  return (
+    <div className="grid gap-8 w-[36rem] max-w-full">
+      {["sm", "md", "lg"].map((size) => (
+        <Field
+          key={size}
+          size={size}
+          className={
+            horizontal
+              ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+              : undefined
+          }
+        >
+          <FieldLabel size={size} htmlFor={`field-${size}`}>
+            氏名<Badge>※必須</Badge>
+            <Status>確認済み</Status>
+          </FieldLabel>
+          <div className="grid gap-2">
+            <Support id={`support-${size}`}>
+              戸籍上の氏名を入力してください。
+            </Support>
+            <TextInput
+              id={`field-${size}`}
+              aria-describedby={`support-${size}`}
+              blockSize={size}
+              className="w-full"
+            />
+          </div>
+        </Field>
+      ))}
+      <Field as="fieldset" size="sm">
+        <FieldLegend>
+          連絡先<Badge isOptional>任意</Badge>
+        </FieldLegend>
+        <Support id="contact-support">
+          連絡可能な電話番号を入力してください。
+        </Support>
+        <TextInput
+          aria-label="電話番号"
+          aria-describedby="contact-support"
+          type="tel"
+        />
+      </Field>
+      <Field
+        className={
+          horizontal
+            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+            : undefined
+        }
+      >
+        <FieldLabel htmlFor="field-note">
+          備考<Badge isOptional>任意</Badge>
+        </FieldLabel>
+        <Multiline
+          id="field-note"
+          rows={2}
+          defaultValue="1行目\n2行目"
+          className="w-full"
+        />
+      </Field>
+      <Field
+        className={
+          horizontal
+            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+            : undefined
+        }
+      >
+        <span id="field-date-label">生年月日</span>
+        <DateInput role="group" aria-labelledby="field-date-label">
+          {({ yearRef, monthRef, dateRef, ...props }) => (
+            <>
+              <Year
+                aria-label="年"
+                ref={yearRef}
+                defaultValue="2026"
+                {...props}
+              />
+              <Month
+                aria-label="月"
+                ref={monthRef}
+                defaultValue="10"
+                {...props}
+              />
+              <Day aria-label="日" ref={dateRef} defaultValue="21" {...props} />
+            </>
+          )}
+        </DateInput>
+      </Field>
+    </div>
+  )
+}
+
+function BaselineControlsFixture({ source }) {
+  const upstream = source === "upstream"
+  return (
+    <div className="grid gap-4">
+      {["sm", "md", "lg"].map((size) => (
+        <div key={size} className="grid gap-2">
+          {upstream ? (
+            <UpstreamCheckbox size={size} defaultChecked>
+              複数行の選択肢
+              <br />
+              チェックボックス
+            </UpstreamCheckbox>
+          ) : (
+            <label
+              className={`flex w-fit items-baseline py-2 ${size === "sm" ? "gap-1" : "gap-2"}`}
+            >
+              <Checkbox size={size} defaultChecked />
+              <span
+                className={`text-solid-gray-800 ${size === "lg" ? "text-dns-17N-130" : "text-dns-16N-130"}`}
+              >
+                複数行の選択肢
+                <br />
+                チェックボックス
+              </span>
+            </label>
+          )}
+          {upstream ? (
+            <UpstreamRadio size={size} name={`baseline-${size}`} defaultChecked>
+              複数行の選択肢
+              <br />
+              ラジオボタン
+            </UpstreamRadio>
+          ) : (
+            <RadioGroup defaultValue="one">
+              <label
+                className={`flex w-fit items-baseline py-2 ${size === "sm" ? "gap-1" : size === "md" ? "gap-2" : "gap-3"}`}
+              >
+                <RadioGroupItem size={size} value="one" />
+                <span
+                  className={`text-solid-gray-800 ${size === "lg" ? "text-dns-17N-130" : "text-dns-16N-130"}`}
+                >
+                  複数行の選択肢
+                  <br />
+                  ラジオボタン
+                </span>
+              </label>
+            </RadioGroup>
+          )}
+        </div>
+      ))}
     </div>
   )
 }
@@ -1680,16 +1844,14 @@ function UpstreamRadioFixture() {
 
 function OursRadioRow({ disabled, error, label, value }) {
   return (
-    <div className="flex w-fit items-start gap-1 py-2">
+    <div className="flex w-fit items-baseline gap-1 py-2">
       <RadioGroupItem
         aria-label={label}
         disabled={disabled}
         isError={error}
         value={value}
       />
-      <span className="pt-px text-dns-16N-130 text-solid-gray-800">
-        {label}
-      </span>
+      <span className="text-dns-16N-130 text-solid-gray-800">{label}</span>
     </div>
   )
 }
@@ -2030,45 +2192,47 @@ function ResourceListFixtureBody({ parts }) {
   } = parts
 
   return (
-    <Wrapper>
-      <ul className="grid w-[36rem] gap-4">
-        {resourceListRows.map((row, index) => (
-          <li key={index}>
-            <Root interaction="whole" variant={row.variant}>
-              <Body>
-                <Control>{renderControl(row, index)}</Control>
-                <Contents>
-                  <Title as="p">{renderTitle(row, index)}</Title>
-                  <Label>
-                    <p>ラベル</p>
-                  </Label>
-                  <Support>
-                    <p>サポートテキスト</p>
-                  </Support>
-                </Contents>
-                <Sub>
-                  <p>サブラベル</p>
-                </Sub>
-              </Body>
-              <Action>
-                <ActionButton>
-                  <svg
-                    aria-label="メニュー"
-                    fill="currentcolor"
-                    height={24}
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width={24}
-                  >
-                    {menuIconCircles}
-                  </svg>
-                </ActionButton>
-              </Action>
-            </Root>
-          </li>
-        ))}
-      </ul>
-    </Wrapper>
+    <form>
+      <Wrapper>
+        <ul className="grid w-[36rem] gap-4">
+          {resourceListRows.map((row, index) => (
+            <li key={index}>
+              <Root interaction="whole" variant={row.variant}>
+                <Body>
+                  <Control>{renderControl(row, index)}</Control>
+                  <Contents>
+                    <Title as="p">{renderTitle(row, index)}</Title>
+                    <Label>
+                      <p>ラベル</p>
+                    </Label>
+                    <Support>
+                      <p>サポートテキスト</p>
+                    </Support>
+                  </Contents>
+                  <Sub>
+                    <p>サブラベル</p>
+                  </Sub>
+                </Body>
+                <Action>
+                  <ActionButton>
+                    <svg
+                      aria-label="メニュー"
+                      fill="currentcolor"
+                      height={24}
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width={24}
+                    >
+                      {menuIconCircles}
+                    </svg>
+                  </ActionButton>
+                </Action>
+              </Root>
+            </li>
+          ))}
+        </ul>
+      </Wrapper>
+    </form>
   )
 }
 
@@ -3179,6 +3343,21 @@ export const sourceParityStories = {
     title: "Source parity/Input",
     upstream: <UpstreamInputFixture />,
     ours: <OursInputFixture />,
+  },
+  "source-parity-form-control-label": {
+    title: "フォームコントロールラベル",
+    upstream: <FormControlLabelFixture source="upstream" />,
+    ours: <FormControlLabelFixture source="ours" />,
+  },
+  "source-parity-form-control-label-horizontal": {
+    title: "横並びのフォーム",
+    upstream: <FormControlLabelFixture source="upstream" horizontal />,
+    ours: <FormControlLabelFixture source="ours" horizontal />,
+  },
+  "source-parity-baseline-controls": {
+    title: "選択肢のベースライン",
+    upstream: <BaselineControlsFixture source="upstream" />,
+    ours: <BaselineControlsFixture source="ours" />,
   },
   "source-parity-label": {
     title: "Source parity/Label",

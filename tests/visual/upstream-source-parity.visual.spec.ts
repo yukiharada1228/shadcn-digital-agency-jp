@@ -35,6 +35,17 @@ const stories: StoryConfig[] = [
   { id: "source-parity-image", viewport: { width: 900, height: 850 } },
   { id: "source-parity-input" },
   { id: "source-parity-label" },
+  {
+    id: "source-parity-form-control-label",
+    viewport: { width: 900, height: 1100 },
+    maxDiffPixelRatio: 0.001,
+  },
+  {
+    id: "source-parity-form-control-label-horizontal",
+    viewport: { width: 900, height: 1100 },
+    maxDiffPixelRatio: 0.001,
+  },
+  { id: "source-parity-baseline-controls", maxDiffPixelRatio: 0.001 },
   { id: "source-parity-language-selector" },
   { id: "source-parity-legend" },
   { id: "source-parity-link" },

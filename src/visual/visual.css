@@ -1,1 +1,20 @@
 @import "@/styles/globals.css";
+
+/* Upstream uses Tailwind v3's custom-property shorthand. The comparison page
+   runs Tailwind v4, so spell out these declarations for the upstream fixture. */
+@layer utilities {
+  [data-source="upstream"]
+    [class~="[&:not(:only-child)]:top-[--baseline-offset]"]:not(:only-child) {
+    top: var(--baseline-offset);
+  }
+
+  [data-source="upstream"]
+    [class~="[&:not(:only-child)]:-mt-[--baseline-offset]"]:not(:only-child) {
+    margin-top: calc(-1 * var(--baseline-offset));
+  }
+
+  [data-source="upstream"]
+    [class~="[&:not(:only-child)]:mb-[--baseline-offset]"]:not(:only-child) {
+    margin-bottom: var(--baseline-offset);
+  }
+}

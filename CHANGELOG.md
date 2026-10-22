@@ -5,6 +5,19 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+- Synced upstream: digital-go-jp/design-system-example-components-react@e637c68
+  (was `68b452e`, upstream release `v20261021`).
+- Added `form-control-label` to the registry, form bundle, and all-components
+  demo. Updated the upstream change map for its five consolidated subcomponents
+  while preserving their standalone registry imports.
+- Matched upstream label/badge spacing, checkbox/radio baseline alignment,
+  textarea/date-picker first-line baselines, content-width select trigger, and
+  image caption color and bottom spacing. `Textarea` now renders a wrapper span;
+  see `docs/compatibility.md` for DOM and sizing migration notes.
+- Retained React 18/19 ref support. Upstream's remaining component changes are
+  React 19 ref/type refactors; NotificationBanner changes only adjust the
+  upstream stories' custom button classes. License and copyright are unchanged.
+
 - Synced upstream: digital-go-jp/design-system-example-components-react@68b452e
   (was `2166f11`). No API or behavior change for any of the 44 ported
   components: upstream's commits in this range only touch Storybook docs pages
