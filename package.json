@@ -16,7 +16,7 @@
   "license": "MIT",
   "author": "yukiharada1228",
   "type": "module",
-  "packageManager": "npm@11.7.0",
+  "packageManager": "npm@12.2.1",
   "scripts": {
     "demo": "vite --host 127.0.0.1",
     "demo:build": "vite build",

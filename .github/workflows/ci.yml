@@ -31,10 +31,16 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 22
+          node-version-file: .node-version
+      - uses: ./.github/actions/setup-package-manager
+        with:
+          manager: npm
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.12"
+          python-version-file: .python-version
+      - uses: ./.github/actions/setup-package-manager
+        with:
+          manager: pip
       - name: Check lockfile sources, integrity and vulnerability delta
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
@@ -53,9 +59,12 @@ jobs:
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: npm
 
+      - uses: ./.github/actions/setup-package-manager
+        with:
+          manager: npm
       - run: npm ci --ignore-scripts
 
       - name: Verify upstream submodule
@@ -107,9 +116,14 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 22
+          node-version-file: .node-version
+      - uses: ./.github/actions/setup-package-manager
+        with:
+          manager: npm
       - run: node --test .github/scripts/*.test.cjs
       - run: python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+      - name: Require consistent interpreter and package manager pins
+        run: python3 .github/scripts/runtime-versions.py check
 
   ci-success:
     name: CI Success

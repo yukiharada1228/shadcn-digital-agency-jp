@@ -8,3 +8,5 @@ test-results/
 .eslintcache
 .vitest/
 .claude/
+__pycache__/
+runtime-plan.json
