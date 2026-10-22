@@ -205,6 +205,13 @@ Dependabotのpatch更新を全CI成功後に自動マージし、CI失敗時はP
 ChatGPTサブスクのCodexへ修正を依頼できます。APIキー・PCの常時起動は不要です。
 自動マージの有効化とGitHub連携は [設定手順](.github/dependency-automation.md) を参照してください。
 
+### リリースの自動化
+
+main の CI 成功後、バージョン採番・更新 PR・検証・マージ・タグ・GitHub Release を
+自動で処理します。新機能は minor、修正や保守変更は patch、破壊的変更は 0.x では
+minor、1.0 以降では major になります。リリース操作や PC の常時起動は不要です。
+詳しい判定ルールと運用方法は [自動リリース](.github/release-automation.md) を参照してください。
+
 ### Demo
 
 作業ツリー上の `src/components/ui/*` をブラウザで確認する画面です。内容は registry block の
