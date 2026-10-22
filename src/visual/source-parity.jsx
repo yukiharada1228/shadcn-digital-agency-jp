@@ -1213,7 +1213,7 @@ function FormControlLabelFixture({ source, horizontal = false }) {
           size={size}
           className={
             horizontal
-              ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+              ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4 [&>label]:self-baseline"
               : undefined
           }
         >
@@ -1222,15 +1222,15 @@ function FormControlLabelFixture({ source, horizontal = false }) {
             <Status>確認済み</Status>
           </FieldLabel>
           <div className="grid gap-2">
-            <Support id={`support-${size}`}>
-              戸籍上の氏名を入力してください。
-            </Support>
             <TextInput
               id={`field-${size}`}
               aria-describedby={`support-${size}`}
               blockSize={size}
               className="w-full"
             />
+            <Support id={`support-${size}`}>
+              戸籍上の氏名を入力してください。
+            </Support>
           </div>
         </Field>
       ))}
@@ -1250,7 +1250,7 @@ function FormControlLabelFixture({ source, horizontal = false }) {
       <Field
         className={
           horizontal
-            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4 [&>label]:self-baseline"
             : undefined
         }
       >
@@ -1267,7 +1267,7 @@ function FormControlLabelFixture({ source, horizontal = false }) {
       <Field
         className={
           horizontal
-            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4"
+            ? "grid grid-cols-[10rem_1fr] items-baseline gap-x-4 [&>label]:self-baseline"
             : undefined
         }
       >
