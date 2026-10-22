@@ -199,6 +199,12 @@ npm run license:check      # 著作権表示 / attribution の検証
 
 `upstream/` 配下は read-only です。実装は常に `src/components/ui/` に置きます。
 
+### 依存関係の更新自動化
+
+Dependabotのpatch更新を全CI成功後に自動マージし、CI失敗時はPRの案内から
+ChatGPTサブスクのCodexへ修正を依頼できます。APIキー・PCの常時起動は不要です。
+自動マージの有効化とGitHub連携は [設定手順](.github/dependency-automation.md) を参照してください。
+
 ### Demo
 
 作業ツリー上の `src/components/ui/*` をブラウザで確認する画面です。内容は registry block の
