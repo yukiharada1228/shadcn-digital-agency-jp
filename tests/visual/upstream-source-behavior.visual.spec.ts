@@ -29,6 +29,21 @@ async function selectedSelectText(page: Page, source: Source) {
 }
 
 test.describe("Upstream source behavior parity", () => {
+  test("radio row dimensions match upstream at every size", async ({
+    page,
+  }) => {
+    const dimensions = []
+    for (const source of sources) {
+      await gotoSource(page, "source-parity-baseline-controls", source)
+      const rows = []
+      for (const radio of await page.getByRole("radio").all()) {
+        rows.push(await radio.locator("xpath=ancestor::label").boundingBox())
+      }
+      dimensions.push(rows)
+    }
+    expect(dimensions[1]).toEqual(dimensions[0])
+  })
+
   test("checkbox selection does not move its multiline label at any size", async ({
     page,
   }) => {

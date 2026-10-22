@@ -28,7 +28,7 @@ export const radioGroupItemVariants = cva(
 
 const radioGroupItemCircleClass = cn(
   "relative flex items-center justify-center rounded-full border border-solid-gray-600 bg-white",
-  "size-[83.333%]",
+  "size-[calc(5/6*100%)]",
   "group-hover/radio:border-black",
   "group-focus-visible/radio:outline group-focus-visible/radio:outline-4 group-focus-visible/radio:outline-black group-focus-visible/radio:outline-offset-[calc(2/16*1rem)] group-focus-visible/radio:ring-[calc(2/16*1rem)] group-focus-visible/radio:ring-yellow-300",
   "group-data-[state=checked]/radio:border-key-900 group-hover/radio:group-data-[state=checked]/radio:border-key-1100",
