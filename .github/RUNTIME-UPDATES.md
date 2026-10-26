@@ -1,18 +1,17 @@
-# ランタイムとパッケージマネージャーの更新
+# Runtime Updates
 
-`.github/runtime-versions.json` を唯一の管理元にします。Node.js、Python、npm、pip、uv の版と配布物のハッシュを記録し、`.node-version`、`.nvmrc`、`.python-version`、`package.json` の `packageManager`、該当する Dockerfile を生成します。CI・ビルド・デプロイはこの指定を使います。
+`.github/runtime-versions.json` を唯一の管理元にします。Node.js と npm の版、npm 配布物の SHA-512 を記録し、`.node-version`、`.nvmrc`、`package.json` の `packageManager` を生成します。保守スクリプトも Node.js 標準 API で実行し、追加パッケージのインストールは不要です。
 
-Runtime Updates は毎日09:13 JSTと手動実行で、公式のリリース情報を確認して更新PRを作ります。既存の `PATCH_BOT_APP_ID` / `PATCH_BOT_PRIVATE_KEY` を再利用し、このリポジトリの contents / pull-requests 権限だけを要求します。App tokenを使うため通常のPR CIが実行されます。本番の資格情報は使いません。手動実行の既定値はdry runです。
+現在の系列の修正更新と、新しい系列への更新は別 PR です。Node.js は現在のメジャー内の最新版、および現在より新しい LTS を対象にします。npm は現在のメジャー内の最新版と次の安定メジャーを分離します。プレリリースとダウングレードは対象外です。
 
-現在の系列の修正更新と、新しい系列への更新は別PRです。Node.jsは現在のメジャー内の最新版、および現在より新しいLTSを対象にします。Python、npm、pipは現在の系列の最新版と次の安定系列を分離します。1.0未満のuvはminorを系列として扱います。プレリリースとダウングレードは対象外です。Dockerの同じタグが再構築された場合もdigestを更新します。
-
-更新PRは自動マージしません。未提供のPythonビルド、コンテナ、wheel、互換性エラーは失敗として表示します。新系列の失敗は現在系列のセキュリティ修正を止めません。人が修正した更新PRや同名の管理外ブランチを上書きしません。mainが途中で変わった場合は次回実行で再確認します。
+更新 PR は自動マージしません。互換性エラーは通常の CI で検出し、人が確認します。人が修正した更新 PR や同名の管理外ブランチを上書きしません。main が途中で変わった場合は次回実行で再確認します。
 
 ```sh
-python3 .github/scripts/runtime-versions.py check
-python3 .github/scripts/runtime-versions.py sync
-python3 .github/scripts/runtime-versions.py plan --runtime node --output runtime-plan.json
-python3 .github/scripts/runtime-versions.py plan --runtime python --upgrade --output runtime-plan.json
+node .github/scripts/runtime-versions.cjs check
+node .github/scripts/runtime-versions.cjs sync
+node .github/scripts/runtime-versions.cjs plan --runtime node --output runtime-plan.json
+node .github/scripts/runtime-versions.cjs plan --runtime npm --upgrade --output runtime-plan.json
+node --test .github/scripts/*.test.cjs
 ```
 
-`plan`は読み取り専用で、変更案をJSONへ出力します。Node.jsの配布情報はnodejs.org、Pythonはpython.org、npmはnpm registry、pipはPyPI、uvとstandalone Pythonは公式GitHub Releasesを参照します。npm/pip/uvのインストール前に、レビュー済みmanifestのハッシュを検証します。uvはLinux/macOSのamd64/arm64に対応します。npmのインストールスクリプト、uvのsource build、未検証のpip bootstrapスクリプトは実行しません。
+`plan` は変更案を JSON に出力し、管理対象ファイルを変更しません。Node.js の配布情報は nodejs.org、npm は npm registry を参照します。npm のインストール前に、レビュー済み manifest の URL と SHA-512 を検証し、配布物を展開して利用します。ハッシュが一致しない配布物は実行しません。

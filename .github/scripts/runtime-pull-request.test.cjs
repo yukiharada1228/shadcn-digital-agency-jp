@@ -29,7 +29,13 @@ test("runtime PRs cannot write workflows, application code, credentials, or arbi
     candidate.files[path] = "untrusted"
     assert.throws(() => validate(candidate))
   }
-  for (const runtime of ["node;echo bad", "python\nother"]) {
+  for (const runtime of [
+    "node;echo bad",
+    "python\nother",
+    "python",
+    "pip",
+    "uv",
+  ]) {
     assert.throws(() => validate({ ...plan(), runtime }))
   }
 })

@@ -4,20 +4,13 @@ const FILES = new Set([
   ".github/runtime-versions.json",
   ".node-version",
   ".nvmrc",
-  ".python-version",
   "package.json",
-  "apps/api/Dockerfile.local",
-  "apps/web/Dockerfile",
-  "apps/web/Dockerfile.dev",
-  "apps/worker/Dockerfile",
-  "apps/worker/Dockerfile.local",
-  "apps/worker/Dockerfile.modal",
 ])
 
 function validate(plan) {
   if (
     !plan ||
-    !["node", "python", "npm", "pip", "uv"].includes(plan.runtime) ||
+    !["node", "npm"].includes(plan.runtime) ||
     !["current", "next"].includes(plan.channel) ||
     !/^\d+\.\d+\.\d+$/.test(plan.version) ||
     !plan.files ||
@@ -146,10 +139,7 @@ async function publish({ github, context, core, plan, bot }) {
   })
   const name = {
     node: "Node.js",
-    python: "Python",
     npm: "npm",
-    pip: "pip",
-    uv: "uv",
   }[plan.runtime]
   const title = `chore(runtime): update ${name} to ${plan.version}`
   const { data: commit } = await github.rest.git.createCommit({
@@ -181,10 +171,10 @@ async function publish({ github, context, core, plan, bot }) {
     })
   }
   const body = [
-    "Interpreter pins, CI version files, and applicable container images are updated together from the canonical runtime manifest.",
+    "Node.js/npm pins and CI version files are updated together from the canonical runtime manifest.",
     plan.channel === "next"
-      ? "This proposes a new interpreter release line. Missing wheels, provider support, or compatibility failures must be resolved before merging. Current-line security updates have a separate PR."
-      : "This tracks the current interpreter release line, including security fixes and rebuilt base-image digests.",
+      ? "This proposes a new interpreter release line. Compatibility failures must be resolved before merging. Current-line security updates have a separate PR."
+      : "This tracks the current interpreter release line, including security fixes.",
     "The normal CI must test the proposed runtime. Runtime PRs require human review and never enable auto-merge.",
   ].join("\n\n")
   const result = existing
