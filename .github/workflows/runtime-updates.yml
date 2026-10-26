@@ -21,23 +21,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runtime: [node, python, npm, pip, uv]
+        runtime: [node, npm]
         channel: [current, next]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.workflow_sha }}
           persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          python-version-file: .python-version
-      - uses: ./.github/actions/setup-package-manager
-        with:
-          manager: pip
-      - uses: ./.github/actions/setup-package-manager
-        with:
-          manager: pip
-      - name: Discover official interpreter releases and immutable images
+          node-version-file: .node-version
+      - name: Discover official Node.js and npm releases
         id: plan
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -46,15 +40,14 @@ jobs:
         run: |
           args=()
           if [ "$CHANNEL" = next ]; then args+=(--upgrade); fi
-          python .github/scripts/runtime-versions.py plan --runtime "$RUNTIME" "${args[@]}" --output runtime-plan.json
+          node .github/scripts/runtime-versions.cjs plan --runtime "$RUNTIME" "${args[@]}" --output runtime-plan.json
       - name: Describe the proposed update
         run: |
-          python - <<'PY'
-          import json, os
-          plan = json.load(open('runtime-plan.json'))
-          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
-              output.write(f"{plan['runtime']} ({plan['channel']}): {plan['version']} — {len(plan['files'])} changed files\n")
-          PY
+          node <<'JS'
+          const fs = require('node:fs');
+          const plan = JSON.parse(fs.readFileSync('runtime-plan.json', 'utf8'));
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${plan.runtime} (${plan.channel}): ${plan.version} — ${Object.keys(plan.files).length} changed files\n`);
+          JS
       - name: Create repository-scoped runtime update token
         if: steps.plan.outputs.changed == 'true' && (github.event_name == 'schedule' || !inputs.dry_run)
         id: app

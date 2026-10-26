@@ -16,4 +16,4 @@
 滞留検査はPRを変更しません。重大更新の手動レビュー待ちも通知対象です。
 人が作成した同名Issueは変更しません。GitHubのIssue通知設定に従って通知されます。
 
-Runtime Updates は毎日09:13 JSTにNode.js・Python・npm・pip・uvの更新PRを準備します。配布物のハッシュ確認、系列別PR、実行環境での検証は [RUNTIME-UPDATES.md](RUNTIME-UPDATES.md) を参照してください。
+Runtime Updates は毎日09:13 JSTにNode.js・npmの更新PRを準備します。配布物のハッシュ確認、系列別PR、実行環境での検証は [RUNTIME-UPDATES.md](RUNTIME-UPDATES.md) を参照してください。
