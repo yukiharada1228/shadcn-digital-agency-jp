@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.6
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore: migrate maintenance tooling from Python to Node.js (#91) ([865b27e](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/865b27e879f4a6342c35226372d0b20e7bb86620))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.5...v0.8.6) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.6/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.5
 
 main の CI 成功後に自動公開する patch リリースです。
