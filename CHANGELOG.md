@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.5
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore(deps): bump actions/setup-python (#89) ([88cb463](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/88cb46322de5025938efd89f5eb121f91423b3b2))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.4...v0.8.5) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.5/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.4
 
 main の CI 成功後に自動公開する patch リリースです。
