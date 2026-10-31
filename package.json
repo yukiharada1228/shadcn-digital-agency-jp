@@ -17,6 +17,9 @@
   "author": "yukiharada1228",
   "type": "module",
   "packageManager": "npm@12.2.1",
+  "overrides": {
+    "minimatch": "^11.0.1"
+  },
   "scripts": {
     "demo": "vite --host 127.0.0.1",
     "demo:build": "vite build",
