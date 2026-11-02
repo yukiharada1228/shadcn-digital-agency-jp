@@ -5,6 +5,19 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.8
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore(deps-dev): bump vite (#97) ([eb8ec2f](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/eb8ec2feee98fa796ca7de7d4e2435adac3bc63f))
+- chore(deps-dev): bump typescript-eslint (#98) ([5317230](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/53172303f6b270c780d7a527f1df5d7d2b221618))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.7...v0.8.8) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.8/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.7
 
 main の CI 成功後に自動公開する patch リリースです。
