@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.11
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore(deps-dev): bump @digital-go-jp/tailwind-theme-plugin from 1.0.1 to 2.0.0 (#100) ([aa37183](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/aa37183e2ddf097fff03ff219530490bce11284e))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.10...v0.8.11) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.11/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.10
 
 main の CI 成功後に自動公開する patch リリースです。
