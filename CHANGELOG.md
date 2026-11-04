@@ -5,6 +5,18 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.10
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore(runtime): update Node.js to 26.13.0 (#96) ([5d6a917](https://github.com/yukiharada1228/shadcn-digital-agency-jp/commit/5d6a9171d376ba96997fbc3abb423456f387b213))
+
+[全変更](https://github.com/yukiharada1228/shadcn-digital-agency-jp/compare/v0.8.9...v0.8.10) · [互換性](https://github.com/yukiharada1228/shadcn-digital-agency-jp/blob/v0.8.10/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.9
 
 main の CI 成功後に自動公開する patch リリースです。
