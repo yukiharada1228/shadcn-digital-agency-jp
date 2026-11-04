@@ -51,7 +51,11 @@ function loadTheme(): Theme {
   const plugin = typeof mod === "function" ? mod : (mod.default ?? mod)
   const cfg = (plugin as { config?: unknown }).config ?? plugin
   const theme = (cfg as { theme?: { extend?: Theme } }).theme
-  return (theme?.extend ?? theme ?? {}) as Theme
+  return {
+    ...(theme?.extend ?? theme ?? {}),
+    // v2 removed these upstream tokens; our components still use desktop:.
+    screens: { desktop: "48em", "desktop-admin": "62em" },
+  } as Theme
 }
 
 function css(theme: Theme): string {
