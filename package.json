@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@digital-go-jp/design-tokens": "^2.1.0",
-    "@digital-go-jp/tailwind-theme-plugin": "^1.0.0",
+    "@digital-go-jp/tailwind-theme-plugin": "^2.0.0",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.1",
     "@tailwindcss/vite": "^4.3.2",
