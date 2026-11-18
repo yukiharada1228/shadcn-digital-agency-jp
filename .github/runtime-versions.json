@@ -1,10 +1,10 @@
 {
   "node": "26.13.1",
-  "npm": "12.2.2",
+  "npm": "12.2.3",
   "tool_downloads": {
     "npm": {
-      "url": "https://registry.npmjs.org/npm/-/npm-12.2.2.tgz",
-      "integrity": "sha512-KglgbZyacf7jH+FHuNRqVuCzQi8VhI2a7J87Ix43FsPTuZoGWmIXXGdZtBUOA79vwL+IJREqURVzupA7PsQTcA=="
+      "url": "https://registry.npmjs.org/npm/-/npm-12.2.3.tgz",
+      "integrity": "sha512-ovmNRRe76Jvcp1E6iOePQ6H9Zr4XMOrqgfaeGNhtRvP3XSl2Lo/a9C1N5/jRlLLrsqCem/omgGdZHpZ5a6yn1Q=="
     }
   }
 }
