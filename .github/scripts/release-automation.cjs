@@ -1,5 +1,5 @@
 // Loaded only from github.workflow_sha by the privileged release workflow.
-const { requireProtection } = require("./dependency-automation.cjs")
+const { requireProtection, enqueue } = require("./release-queue.cjs")
 
 const REPOSITORY = "videoq-jp/shadcn-digital-agency-jp"
 const BRANCH = "automation/release"
@@ -303,9 +303,7 @@ async function runRelease({ github, readGithub = github, context, botLogin }) {
   const head = await mainHead()
   if (!(await successfulCi(head, "push", "main")))
     return { status: "waiting-for-main-ci", actions }
-  requireProtection(
-    (await write.repos.getBranchProtection({ ...repo, branch: "main" })).data
-  )
+  await requireProtection({ github, context })
   const stateText = await content(head, STATE, true)
   if (stateText) {
     const state = JSON.parse(stateText)
@@ -487,18 +485,8 @@ async function runRelease({ github, readGithub = github, context, botLogin }) {
     throw new Error("Release PR changed before merge.")
   await verifyCommit(releaseHead, plan)
   if ((await mainHead()) !== head) return { status: "main-moved", actions }
-  // GitHub enforces strict branch protection; sha additionally prevents head races.
-  const { data: merged } = await write.pulls.merge({
-    ...repo,
-    pull_number: pr.number,
-    sha: releaseHead,
-    merge_method: "squash",
-    commit_title: plan.title,
-    commit_message: "Automatically generated release metadata.",
-  })
-  if (!merged.merged)
-    throw new Error(`Release PR was not merged: ${merged.message}`)
-  actions.push(`merged PR #${pr.number}`)
+  await enqueue({ github, context, pr: current })
+  actions.push(`queued PR #${pr.number}`)
   return { status: "waiting-for-release-ci", actions }
 }
 

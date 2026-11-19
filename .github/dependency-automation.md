@@ -1,147 +1,88 @@
-# 依存関係の自動更新・修正
+# Dependency update automation
 
-minor／patch更新はGitHubで自動マージし、CIが失敗した場合はGitHub連携のCodexへ修正を依頼する。
-修正にはChatGPTログインのCodex利用枠を使う。OpenAI APIキーの登録、認証ファイルの転送、
-PCの常時起動、ローカルの定期タスクは不要。
+`dependency-queue.yml` (Dependency Automation) is the only entry point for update automation.
+It verifies PRs, permits repairs, and decides on automatic queueing. Execution order and
+integration checks and merges against latest main are handled by GitHub Merge Queue.
+Library tests, builds, package validation and automation security checks run in one `ci.yml` run.
+Release publication keeps its own workflow and permissions.
 
-**自動化するのはminor／patch更新のマージと修正依頼の案内まで。Codexによる修正の開始には、
-GitHub連携を設定した本人がPRにコメントを投稿する。** Botのコメントが本人のサブスク枠で
-Codexを自動起動できるとは仮定しない。
+| File                           | Responsibility                                                                                                                    |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `runtime-updates.yml`          | Daily discovery of official releases, or regeneration of a specified runtime. Creates consistent update PRs and published records |
+| `dependency-queue.yml`         | Verifies Dependabot and managed runtime PRs, checks CI results, permits repairs, and queues to the standard queue                 |
+| `claude-dependency-worker.yml` | Repairs permitted CI failures, verifies and applies patches on a separate runner, and handles manual authentication tests         |
 
 ```mermaid
 flowchart TD
-  A[Dependabotが更新PRを作成] --> B[既存CI]
-  B -->|成功・minor／patchのみ| C[GitHub Appで自動マージ]
-  C --> D[mainのCI]
-  B -->|失敗| E[PRへ失敗情報と修正依頼案内を投稿]
-  E --> F[本人がPRでCodexへ修正を依頼]
-  F --> G[サブスク枠のCodexクラウドで修正]
-  G --> H[通常のCI・人がレビューしてマージ]
+  D[Dependabot] --> P[Update PR]
+  R[Runtime Updates] --> P
+  P --> V[Normal PR CI]
+  V -->|success| C[Dependency Automation verifies origin and head]
+  C --> Q[GitHub Merge Queue]
+  Q --> G[Integration CI with latest main]
+  G -->|success| M[GitHub merges]
+  G -->|failure| F[Reproduce in normal CI for that PR only]
+  F --> V
+  V -->|repairable failure| A[Permitted Claude Worker]
+  A -->|applies a verified patch| P
 ```
 
-## CodexのGitHub連携を設定する
+## Operation
 
-1. サブスク契約のChatGPTアカウントでログインする。
-2. [CodexのGitHub連携設定](https://chatgpt.com/settings/code-review)から
-   `videoq-jp/shadcn-digital-agency-jp` を接続し、リポジトリへのアクセスを許可する。
-   この設定はGitHub Appのpatch自動マージ設定とは別。
-3. クラウド環境にこのリポジトリを設定する。Node 22・npm・Chromiumを準備し、
-   upstream submoduleを固定済みコミットで初期化する。テスト手順は [修正指示](codex/repair-dependencies.md) を参照。
-4. CI失敗時の案内が出たら、本人のGitHubアカウントからPRコメントに次を投稿する。
+See [DEPENDENCY-QUEUE.md](DEPENDENCY-QUEUE.md) for queue state and enable/stop steps, and
+[RUNTIME-UPDATES.md](RUNTIME-UPDATES.md) for runtime update targets.
+Following main and queue processing are event-driven only; there is no scheduled polling.
+Runtime Updates' daily run exists to find new releases.
 
-```text
-@codex fix the CI failures. Read .github/codex/repair-dependencies.md, preserve the dependency update and security fixes, make the smallest fix, rerun the affected checks, and report the results. Do not merge the PR.
-```
+- `DEPENDENCY_AUTOMERGE_ENABLED=true` enables the controller.
+- `RUNTIME_AUTOMERGE_ENABLED=false` sends runtime PRs to manual review.
+- `CLAUDE_DEPENDENCY_REPAIR_ENABLED=true` permits repairing eligible CI failures.
+- `no-automerge` stops automatic processing of a PR. `no-rebase` stops Dependabot following main.
+- `no-runtime-update` also stops regenerating runtime PRs.
+- `no-claude` or the existing `no-codex` stops Claude repairs.
+- Automatic guidance comments from old workflows are not a reason to stop. Decisions use the current signature, diff, and exclusion labels.
 
-案内コメントには実際の失敗run・attempt・コミットSHAを含めた依頼文を用意する。
-Codexが反応したら、GitHub連携から起動したクラウドタスクで修正を確認する。
-ブランチへの書き込み権限がない場合は、修正PRまたはpatchとして受け取る。
+A failed head stays waiting for a repair while other PRs proceed. A new commit makes it a candidate again.
+Worker completion events trigger a new decision. The same head can retry after a completed worker, within each mode's limit of eight attempts.
+After the final attempt, reaching a mode's limit posts the reason and run log to the PR once.
+Check Actions logs for failures along the way; the same error's guidance comment is not posted every time.
+Security scans that did not succeed and CI failures outside app repair also post the reason and CI link once on the current head.
+The controller checks the CI to repair from its latest run. Manual retries do not reset the repair limit.
 
-利用可能な機能と残りの利用枠は契約プラン・ワークスペース設定に従う。
-自動レビューも設定できるが、それだけでCI修正が自動開始するわけではない。
-GitHub連携は現時点の公式ドキュメントではCodex Cloud (Legacy)の環境を使用する。
+## Claude authentication
 
-## CI失敗時の案内
+Store the value issued by `claude setup-token` in the Actions secret `CLAUDE_CODE_OAUTH_TOKEN`.
+Do not paste the token into PRs, logs, or chat. To check authentication, run the Claude Dependency Repair Worker
+from main with `authentication_test=true`. It needs no PR number and changes no PR.
+Claude usage, authentication errors, and worker failures appear on the PR or in Actions logs.
+To stop a queued PR, remove it in GitHub's queue view.
 
-`.github/workflows/codex-dependency-repair.yml` は `CI` の失敗後に動く。
-mainの信頼済みスクリプトだけを読み込み、PRのコードやモデルは実行しない。
+## Verification and permissions
 
-- ワークフローID、リポジトリ、PRの現在のhead、最新CI run/attemptをAPIで照合する。
-- 対象はルートのnpm依存関係ファイルだけを変更するDependabot PR。minor/major更新の失敗も対象。
-- fork PR、通常の開発PR、古いSHA、解決済みのCI、閉じたPR、`no-codex` ラベル付きPRは除外する。
-- PRごとに案内コメントを1つ保持する。同じ失敗の再実行では重複投稿せず、新しい失敗では更新する。
-- 案内前に自動マージ予約を解除する。信頼済みBotの案内コメントが残るPRは以降も自動マージ対象外。
-  修正の確認後は手動でマージする。
-- Botの案内にはCodexを起動するメンションを含めず、本人が投稿する方法を示す。
+- Claude repairs cover same-repository Dependabot major/minor/patch PRs and verified managed runtime PRs to main.
+  Both current and next runtime lines can receive CI repairs and conflict resolution. Only current lines can automerge; new runtime lines, forks and unverified commits added by people do not automerge.
+- Dependabot owns package and GitHub Actions dependency pins; runtime discovery owns only local/CI version files and verified tool-download metadata. See [RUNTIME-UPDATES.md](RUNTIME-UPDATES.md).
+- The original Dependabot signature, update type, and permitted changed files are verified through the API.
+  Even when a GitHub rebase does not carry the signature, the original signed diff and follow-up record are compared every time.
+- main's required CI, enforcement for administrators, and the standard Merge Queue stay in place. After PR CI completes, the PR is
+  queued by its current head SHA, and GitHub rechecks the required checks on a commit merged with latest main before merging.
+- CI repair and conflict resolution use the same isolated worker, each up to eight attempts per PR; the same head can retry after a run completes.
+  Reservations and run records prevent duplicate runs. Old records from the two-attempt limit remain, and the new scope counts as policy v2.
+  Claude does not start unless Supply Chain Security and Automation Policy succeeded.
+- Claude's job uses a read-only GitHub token. It receives neither the controller's private key nor a write token.
+  A separate runner verifies library source, build configuration, tests, and generated types from a fresh checkout, within 32 files and 2000 changed lines.
+  Normal CI repairs preserve dependency manifests and lockfiles. Conflict resolution takes in the approved main and also merges manifests and lockfiles.
+  It keeps the requested direct dependency update and main's other direct dependencies, creating a commit whose parents are the original head and the approved main.
+  Changes to CI, protection rules, credentials, and infrastructure are not permitted.
+- The worker reverifies the actual controller run ID on main, the target CI (for CI repairs), the current head, main's SHA for conflict resolution, and the permission record.
+  A PR target event never starts the model directly; it hands off to a run on main. Reuse of the same permission is rejected.
+- Patches are applied by a GitHub App and return to normal CI. Claude itself is not trusted to push or merge.
+  The controller queues by the current head, and GitHub performs the final merge.
 
-このワークフローはmainへ反映すると有効になり、標準の `GITHUB_TOKEN` だけを使う。
-追加のGitHub AppやOpenAIのSecretは不要。停止する場合はActions Variable
-`CODEX_REPAIR_REQUESTS_ENABLED` を `false` にする。
-
-手動で案内を再評価する場合はActions → **Codex Dependency Repair Request** →
-Run workflowでbranchを `main` にし、`run_id` に失敗したCI runの数値IDを指定する。
-この操作もCodex本体を実行するものではない。
-
-## minor／patch更新の自動マージ
-
-自動マージは初期状態では無効。対象条件は以下。
-
-- 同一リポジトリ内のDependabot作成・`dependabot/` ブランチ・main向けPR。
-- npm・GitHub Actionsのminor／patch更新。グループにmajorが混ざれば対象外。
-- 更新種別に対応する既存ファイルだけを変更し、最大50ファイル。npmはルートのmanifestとlockfile、GitHub Actionsは同じActionの完全SHA参照の更新だけを許可する。
-- Dependabot公式Actionの更新種別確認を通過し、maintainer変更表示がない。全PRコミットが署名検証済みDependabotコミットで、手動追記やmainの手動マージを含まない。
-- `no-automerge` ラベルも、信頼済みBotのCodex修正依頼案内もない。
-- mainの必須チェックがGitHub Actionsの `CI Success` で、strict（最新mainへの追従必須）が有効。
-
-`gh pr merge --auto --squash --match-head-commit` で予約し、GitHubが必須チェックと
-ブランチ保護を満たした時点でマージする。最新mainを取り込めていなければ待機する。
-major更新、submodule、ソース変更、Codex修正はレビュー対象。Docker・Terraformは現在このリポジトリに管理対象ファイルがない。
-
-有効化手順：
-
-1. この変更をmainへマージする。
-2. リポジトリ専用GitHub Appを作成・インストールする。Webhookは不要。
-   Repository permissions: **Contents: Read and write**、**Pull requests: Read and write**、
-   **Administration: Read-only**（ブランチ保護の確認用）、**Workflows: Read and write**（GitHub Actions更新のマージ用）、標準のMetadata Read-only。
-   mainの保護をバイパスする権限は付けない。
-3. [Actions secrets / variables](https://github.com/videoq-jp/shadcn-digital-agency-jp/settings/secrets/actions)に以下を登録する。
-
-| 種類     | 名前                           | 値                              |
-| -------- | ------------------------------ | ------------------------------- |
-| Variable | `PATCH_BOT_APP_ID`             | GitHub AppのApp ID              |
-| Secret   | `PATCH_BOT_PRIVATE_KEY`        | GitHub Appから生成したPEM秘密鍵 |
-| Variable | `DEPENDENCY_AUTOMERGE_ENABLED` | 有効化時に `true`               |
-
-4. [General settings](https://github.com/videoq-jp/shadcn-digital-agency-jp/settings)で **Allow auto-merge** と squash mergeを有効にする。
-5. mainに**従来のブランチ保護ルール**を作成する（Settings → Branches → Add classic branch protection rule）。
-   **Require status checks to pass before merging** と **Require branches to be up to date before merging** を有効にし、
-   GitHub Actionsの **CI Success** を必須チェックにする。CIを1回実行すると候補に表示される。
-   このワークフローはclassic protection APIのstrict/checksを検証するため、Rulesetだけでは有効化できない。
-   `CI Success` は既存の `ci`（ブラウザ・アクセシビリティ・生成物・ライセンス検証を含む）と `workflow-security`の全成功を要求し、失敗・キャンセル・スキップがあれば失敗する。
-   既存の必須チェックやレビュー条件を設定済みの場合は維持する。保護がない場合は自動マージしない。
-6. 既存PRはラベル変更または対象ワークフローの再実行で再評価する。
-
-GitHub Appはマージ後に通常のmain push CIを起動するために使う。
-Codexのサブスク認証には使わず、Codexの修正依頼案内にも不要。
-
-## 停止
-
-- `no-automerge` ラベルでPRの自動マージ予約を解除する。`no-codex` は修正依頼の案内を止める。
-- 全体の自動マージを止める場合は `DEPENDENCY_AUTOMERGE_ENABLED=false` とし、予約済み分も
-  `gh pr merge PR番号 --disable-auto` で解除する。
-- ローカルのログイン情報や `auth.json` をGitHubへ登録しない。
-
-## 検証
+Verification commands:
 
 ```sh
 node --test .github/scripts/*.test.cjs
-actionlint .github/workflows/ci.yml .github/workflows/dependency-automerge.yml .github/workflows/codex-dependency-repair.yml
+python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+actionlint .github/workflows/*.yml
 ```
-
-ローカルでは対象判定、重複防止、古いrun拒否、自動マージ解除、API実行が含まれないことを検証する。
-GitHubへの実反映・Codex連携は別途設定後に確認する。
-
-参考： [Codexの認証と利用枠](https://developers.openai.com/codex/auth)、
-[Codex GitHub連携と修正依頼](https://developers.openai.com/codex/integrations/github)、
-[GitHubのDependabot自動化](https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/automate-dependabot-with-actions)。
-
-## サプライチェーン対策
-
-`CI Success` と `Supply Chain Security` の両方を GitHub Actions の必須チェックにします。検査の失敗・タイムアウト時はマージしません。
-
-- Dependency Review と OSV で、この変更が導入する既知の脆弱性を検査します。既存の未修正問題まで解消済みと判定する検査ではありません。
-- lockfile の配布元を npm / PyPI の公式レジストリに限定し、整合性ハッシュと同一バージョンの改変を確認します。新しい npm バージョンには SHA-512 を要求します。
-- `npm ci --ignore-scripts` の後に `npm audit signatures` で署名・提供されている provenance を検証します。署名は配布元と完全性を確認するもので、パッケージに悪意がないことの証明ではありません。
-- 新しくインストールスクリプトを持つパッケージを追加する場合は `.github/supply-chain-policy.json` のレビューが必要です。このポリシー変更は自動マージ対象になりません。掲載済みパッケージのインストールスクリプトも実行しません。
-- 通常の npm 更新は公開後 7 日の cooldown を設けます。Dependabot のセキュリティ更新は cooldown の対象外です。修正リリースと GitHub の脆弱性情報が利用可能になった後に PR が作られ、必須検査が成功したminor／patch更新のみ自動マージされます。公開直後の適用時刻は保証しません。
-- Action は完全なコミット SHA に固定し、checkout の資格情報を残しません。依存コードの実行に書き込み権限や本番資格情報を渡さない構成を維持します。
-
-未知の悪意ある更新・正規アカウントの乗っ取り・実行時の不正動作を完全に検出できるものではありません。疑わしい PR には `no-automerge` を付け、`DEPENDENCY_AUTOMERGE_ENABLED=false` で全体を止めてください。すでに予約済みの auto-merge は別途解除してください。
-
-セキュリティ検査が失敗したときは、Codex に検査の無効化・署名検証のスキップ・無条件の例外追加を依頼しません。原因と公開された修正を確認し、ポリシーの変更は人がレビューします。API キーは不要で、既存の ChatGPT サブスクによる修正依頼方式は変わりません。
-
-参考: [GitHub Dependency Review](https://github.com/actions/dependency-review-action)、[npm の署名検証](https://docs.npmjs.com/verifying-registry-signatures/)、[Dependabot cooldown](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown)。
-
-## マージ後のブランチ整理
-
-GitHubの `Automatically delete head branches` を有効にする。マージ済みPRのブランチを自動削除し、未マージPRとmainは保持する。
