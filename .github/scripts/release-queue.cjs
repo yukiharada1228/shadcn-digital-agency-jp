@@ -30,7 +30,9 @@ async function enqueue({ github, context, pr }) {
       error.errors.every(
         (e) =>
           e.type === "UNPROCESSABLE" &&
-          /required status checks have not succeeded/.test(e.message || "")
+          /required status checks (?:have not succeeded|are expected)/.test(
+            e.message || ""
+          )
       )
     )
       return false
