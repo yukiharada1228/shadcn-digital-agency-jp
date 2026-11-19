@@ -629,3 +629,48 @@ test("workflow uses trusted code, scoped tokens, serialized recovery and pinned 
   for (const action of workflow.matchAll(/uses: ([^\s]+)/g))
     assert.match(action[1], /@[a-f0-9]{40}$/)
 })
+
+test("native queue publishes the tested two-parent integration while history identifies the original metadata commit", async () => {
+  const f = fixture()
+  const merged = await f.prepareAndMerge()
+  const pr = f.pulls[0],
+    source = pr.head.sha
+  f.commits.get(merged).parents.push({ sha: source })
+  f.github.rest.repos.listCommits = async () => ({
+    data: [f.commits.get(source)],
+  })
+  f.github.rest.repos.listPullRequestsAssociatedWithCommit = async ({
+    commit_sha,
+  }) => ({ data: commit_sha === source ? [pr] : [] })
+  f.success(merged)
+  await f.run()
+  assert.equal(f.refs.get("tags/v0.8.1"), merged)
+  assert.equal(f.releases.get("v0.8.1").target_commitish, merged)
+})
+
+test("native release rejects a substituted parent and modified integration metadata", async () => {
+  for (const tamper of [
+    (f) => {
+      f.commits.get(f.merged).parents[1].sha = "f".repeat(40)
+    },
+    (f) => {
+      f.commits.get(f.merged).files["package.json"] = "{}"
+    },
+  ]) {
+    const f = fixture()
+    f.merged = await f.prepareAndMerge()
+    const source = f.pulls[0].head.sha
+    f.commits.get(f.merged).parents.push({ sha: source })
+    f.github.rest.repos.listCommits = async () => ({
+      data: [f.commits.get(source)],
+    })
+    f.github.rest.repos.listPullRequestsAssociatedWithCommit = async () => ({
+      data: [f.pulls[0]],
+    })
+    f.success(f.merged)
+    tamper(f)
+    f.mutations.length = 0
+    await assert.rejects(f.run())
+    assert.equal(f.mutations.length, 0)
+  }
+})

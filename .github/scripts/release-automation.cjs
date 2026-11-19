@@ -323,25 +323,39 @@ async function runRelease({ github, readGithub = github, context, botLogin }) {
         per_page: 1,
       })
       if (!history.length) throw new Error("Cannot locate the release commit.")
-      const candidate = history[0].sha
+      let candidate = history[0].sha
       const plan = await statePlan(candidate)
       const pulls = await readGithub.paginate(
         read.repos.listPullRequestsAssociatedWithCommit,
         { ...repo, commit_sha: candidate, per_page: 100 }
       )
-      if (
-        !pulls.some(
-          (pr) =>
-            trustedPull(pr, botLogin) &&
-            pr.merged_at &&
-            pr.merge_commit_sha === candidate &&
-            pr.title === plan.title &&
-            pr.body === plan.body
-        )
+      const releasePull = pulls.find(
+        (pr) =>
+          trustedPull(pr, botLogin) &&
+          pr.merged_at &&
+          (pr.merge_commit_sha === candidate || pr.head.sha === candidate) &&
+          pr.title === plan.title &&
+          pr.body === plan.body
       )
+      if (!releasePull)
         throw new Error(
           "Release metadata was not merged through the bot release PR."
         )
+      if (releasePull.merge_commit_sha !== candidate) {
+        const mergedSha = releasePull.merge_commit_sha
+        if (!SHA.test(mergedSha))
+          throw new Error("Invalid release integration commit.")
+        const merged = (await read.repos.getCommit({ ...repo, ref: mergedSha }))
+          .data
+        if (merged.parents.length !== 2 || merged.parents[1].sha !== candidate)
+          throw new Error("Release integration has unexpected parents.")
+        // The tested integration must be on protected main and retain every verified release file.
+        await compare(mergedSha, head)
+        for (const path of FILES)
+          if ((await content(mergedSha, path)) !== plan.files[path])
+            throw new Error(`Unexpected integrated release content: ${path}`)
+        candidate = mergedSha
+      }
       if (!(await successfulCi(candidate, "push", "main")))
         return { status: "waiting-for-release-ci", actions }
       if ((await mainHead()) !== head) return { status: "main-moved", actions }
