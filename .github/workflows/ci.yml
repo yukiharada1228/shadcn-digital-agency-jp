@@ -39,7 +39,7 @@ jobs:
           manager: npm
       - name: Check lockfile sources, integrity and vulnerability delta
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
         run: node .github/scripts/supply-chain.cjs --base "$BASE_SHA"
       # Verify registry signatures before any package code executes in this job.
       - run: npm ci --ignore-scripts
