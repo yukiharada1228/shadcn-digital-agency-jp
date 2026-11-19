@@ -5,6 +5,24 @@ upstream commit it tracks (see §10.10 / §17.3 of the requirements).
 
 ## Unreleased
 
+## v0.8.21
+
+main の CI 成功後に自動公開する patch リリースです。
+
+Upstream: [`e637c6820a8ceb5b1c28719e3260afdab89c2b57`](https://github.com/digital-go-jp/design-system-example-components-react/commit/e637c6820a8ceb5b1c28719e3260afdab89c2b57)
+
+### 変更内容
+
+- chore(deps-dev): bump the vite-toolchain group across 1 directory with 2 updates ([243c4b8](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/243c4b8d2d6d8abe136e0b16845662d5fa9f9a5e))
+- chore(deps-dev): bump @tsconfig/node22 ([3f91b5b](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/3f91b5b3fe1e18fff7252717748a4f3e350a6d1f))
+- chore(deps-dev): bump the npm-minor group across 1 directory with 2 updates ([fba35f6](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/fba35f6a3143666c18121aa8999bce08bafe07c1))
+- chore(runtime): update npm to 12.2.3 ([8e71288](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/8e71288eed8dfdf3e9cdda9fa020231d4d9b470b))
+- fix(ci): wait for pending release checks before queueing ([bc0dda6](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/bc0dda63ed7708d4d1f20c9afc2a0368fdb484e6))
+- fix(ci): verify native merge queue release integration ([e11d4dc](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/e11d4dc78c5fad3a083e00f3f500d6a29e32d263))
+- chore(deps-dev): bump typescript-eslint ([45b009e](https://github.com/videoq-jp/shadcn-digital-agency-jp/commit/45b009e23d81713755fdcb0950322e6d8b467919))
+
+[全変更](https://github.com/videoq-jp/shadcn-digital-agency-jp/compare/v0.8.20...v0.8.21) · [互換性](https://github.com/videoq-jp/shadcn-digital-agency-jp/blob/v0.8.21/docs/compatibility.md) · [公開デモ](https://shadcn-digital-agency-jp.pages.dev/)
+
 ## v0.8.20
 
 main の CI 成功後に自動公開する patch リリースです。
