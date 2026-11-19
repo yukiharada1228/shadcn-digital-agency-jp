@@ -45,6 +45,20 @@ test("pending required checks wait without bypassing the queue", async () => {
   assert.equal(await enqueue({ ...f, context, pr }), false)
   assert.equal(f.calls.length, 1)
 })
+test("required checks that have not started wait for normal CI", async () => {
+  const f = fixture({
+    error: {
+      errors: [
+        {
+          type: "UNPROCESSABLE",
+          message: "Pull request 2 of 2 required status checks are expected.",
+        },
+      ],
+    },
+  })
+  assert.equal(await enqueue({ ...f, context, pr }), false)
+  assert.equal(f.calls.length, 1)
+})
 test("permissions, changed heads, mixed errors and transport failures remain fatal", async () => {
   for (const error of [
     new Error("network unavailable"),
