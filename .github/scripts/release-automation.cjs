@@ -485,7 +485,8 @@ async function runRelease({ github, readGithub = github, context, botLogin }) {
     throw new Error("Release PR changed before merge.")
   await verifyCommit(releaseHead, plan)
   if ((await mainHead()) !== head) return { status: "main-moved", actions }
-  await enqueue({ github, context, pr: current })
+  if (!(await enqueue({ github, context, pr: current })))
+    return { status: "waiting-for-pr-ci", actions }
   actions.push(`queued PR #${pr.number}`)
   return { status: "waiting-for-release-ci", actions }
 }
