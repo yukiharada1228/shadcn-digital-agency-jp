@@ -285,7 +285,7 @@ function fixture() {
   const f = {
     github,
     context: {
-      repo: { owner: "yukiharada1228", repo: "shadcn-digital-agency-jp" },
+      repo: { owner: "videoq-jp", repo: "shadcn-digital-agency-jp" },
       ref: "refs/heads/main",
     },
     botLogin: BOT,

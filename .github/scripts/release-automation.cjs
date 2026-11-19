@@ -1,7 +1,7 @@
 // Loaded only from github.workflow_sha by the privileged release workflow.
 const { requireProtection } = require("./dependency-automation.cjs")
 
-const REPOSITORY = "yukiharada1228/shadcn-digital-agency-jp"
+const REPOSITORY = "videoq-jp/shadcn-digital-agency-jp"
 const BRANCH = "automation/release"
 const STATE = ".github/release-state.json"
 const FILES = ["package.json", "package-lock.json", "CHANGELOG.md", STATE]
