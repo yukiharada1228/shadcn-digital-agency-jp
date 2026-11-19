@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("node:assert/strict")
-const policy = require("./dependency-automation.cjs")
+const policy = require("./dependency-policy.cjs")
 
 const metadata = (
   ecosystem = "npm_and_yarn",
@@ -23,9 +23,32 @@ const pinPatch = (action = "actions/checkout") =>
   "b".repeat(40) +
   " # v7.0.1"
 
-test("verified minor and patch updates qualify; major and missing metadata do not", () => {
+test("local inference dependency updates use their own supported manifest and image paths", () => {
+  assert.equal(
+    policy.autoMergeMetadata(metadata("uv"), [
+      file("apps/inference/whisper/pyproject.toml"),
+      file("apps/inference/whisper/uv.lock"),
+    ]),
+    true
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("docker"), [
+      file("apps/inference/whisper/Dockerfile"),
+    ]),
+    true
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("uv"), [
+      file("apps/inference/whisper/server.py"),
+    ]),
+    false
+  )
+})
+
+test("verified major, minor and patch updates qualify; missing metadata does not", () => {
   const files = [file("package.json"), file("package-lock.json")]
   for (const type of [
+    "version-update:semver-major",
     "version-update:semver-minor",
     "version-update:semver-patch",
   ]) {
@@ -34,7 +57,7 @@ test("verified minor and patch updates qualify; major and missing metadata do no
       true
     )
   }
-  for (const type of ["", "version-update:semver-major", "semver-patch"]) {
+  for (const type of ["", "semver-patch"]) {
     assert.equal(
       policy.autoMergeMetadata(metadata("npm_and_yarn", type), files),
       false
@@ -93,6 +116,77 @@ test("GitHub Actions updates must only change the pinned SHA of the same action"
   assert.equal(
     policy.autoMergeMetadata(metadata("github_actions"), [
       file(".github/scripts/check.yml", pinPatch()),
+    ]),
+    false
+  )
+})
+
+test("Docker, Compose, Python and Terraform files stay scoped to their verified ecosystem", () => {
+  for (const [ecosystem, filename] of [
+    ["docker", "apps/api/Dockerfile"],
+    ["docker", "apps/worker/Dockerfile.onprem"],
+    ["docker", "apps/worker/Dockerfile"],
+    ["docker", "apps/worker/Dockerfile.local"],
+    ["docker", "apps/web/Dockerfile"],
+    ["docker", "apps/web/Dockerfile.dev"],
+    ["docker", "apps/api/Dockerfile.local"],
+    ["docker_compose", "docker-compose.yml"],
+    ["uv", "apps/worker/uv.lock"],
+    ["pip", "apps/worker/pyproject.toml"],
+    ["terraform", "infra/.terraform.lock.hcl"],
+    ["terraform", "infra/bootstrap/.terraform.lock.hcl"],
+  ]) {
+    assert.equal(
+      policy.autoMergeMetadata(metadata(ecosystem), [file(filename)]),
+      true,
+      ecosystem + ": " + filename
+    )
+    assert.equal(
+      policy.autoMergeMetadata(metadata("npm_and_yarn"), [file(filename)]),
+      false
+    )
+  }
+  for (const filename of [
+    ".github/deploy-tools/package.json",
+    ".github/deploy-tools/uv.lock",
+    "infra/iam.tf",
+    ".gitmodules",
+  ]) {
+    assert.equal(
+      policy.autoMergeMetadata(metadata("terraform"), [file(filename)]),
+      false
+    )
+    assert.equal(policy.autoMergeMetadata(metadata(), [file(filename)]), false)
+  }
+  const patch = '-      version = "~> 6.68"\n+      version = "~> 6.69"'
+  assert.equal(
+    policy.autoMergeMetadata(metadata("terraform"), [
+      file("infra/versions.tf", patch),
+    ]),
+    true
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("terraform"), [
+      file("infra/bootstrap/main.tf", patch),
+    ]),
+    true
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("terraform"), [
+      file("infra/versions.tf"),
+    ]),
+    false
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("terraform"), [
+      file("infra/bootstrap/main.tf", patch + "\n+  force_destroy = true"),
+    ]),
+    false
+  )
+  assert.equal(
+    policy.autoMergeMetadata(metadata("docker"), [
+      file("apps/worker/Dockerfile"),
+      file("package.json"),
     ]),
     false
   )

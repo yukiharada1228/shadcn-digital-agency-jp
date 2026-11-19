@@ -102,6 +102,7 @@ async function main() {
   const option = (name) =>
     args.includes(name) ? args[args.indexOf(name) + 1] : undefined
   let data = JSON.parse(fs.readFileSync(path.join(ROOT, MANIFEST), "utf8"))
+  const previous = structuredClone(data)
   const runtime = option("--runtime"),
     output = option("--output")
   if (command === "plan") {
@@ -144,6 +145,7 @@ async function main() {
       runtime,
       channel: args.includes("--upgrade") ? "next" : "current",
       version: data[runtime],
+      previous_version: previous[runtime],
       files: changed,
     }
     fs.writeFileSync(output, `${JSON.stringify(plan, null, 2)}\n`)

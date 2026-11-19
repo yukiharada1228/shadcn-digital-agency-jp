@@ -148,7 +148,7 @@ test("workflows execute Node scripts and configure only Node.js and npm runtimes
       path.join(__dirname, "../workflows/runtime-updates.yml"),
       "utf8"
     ),
-    /runtime: \[node, npm\]/
+    /options: \[all, node, npm\]/
   )
   assert.ok(!fs.existsSync(path.join(__dirname, "../../.python-version")))
 })

@@ -68,7 +68,7 @@ Squash merge では PR タイトルを変更種別に合わせます。リリー
 App トークンはこのリポジトリだけに限定し、Contents / Pull requests の write と Administration の read を要求します。
 CI の読み取りには read-only の `GITHUB_TOKEN` を使います。追加の API キー、ローカル常駐、個人 PAT は不要です。
 
-main の既存の strict branch protection と、GitHub Actions による `CI Success` / `Supply Chain Security` を維持します。
+main の既存の required Merge Queue protection と、GitHub Actions による `CI Success` / `Supply Chain Security` を維持します。
 自動マージは通常の REST API で実行し、管理者バイパスは使いません。
 実際の PR 作成・マージには App トークンを使うため、後続の CI イベントも発生します。
 
@@ -100,3 +100,5 @@ GitHub の仕様: [workflow_run](https://docs.github.com/en/actions/reference/wo
 [GitHub App による後続イベント](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow)、
 [PR マージ API](https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request)、
 [リリース API](https://docs.github.com/en/rest/releases/releases#create-a-release)。
+
+リリース PR も GitHub Merge Queue へ現在の head SHA を指定して投入します。必須 CI は `merge_group` でも実行し、GitHub が最新 main との統合を検証してからマージします。直接マージは行いません。GitHub App は `videoq-dependency-bot` を使用します。

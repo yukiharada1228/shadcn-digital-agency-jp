@@ -112,8 +112,9 @@ function fixture() {
         }),
         getBranchProtection: async () => ({
           data: {
+            enforce_admins: { enabled: true },
             required_status_checks: {
-              strict: true,
+              strict: false,
               checks: ["CI Success", "Supply Chain Security"].map(
                 (context) => ({ context, app_id: 15368 })
               ),
@@ -241,6 +242,7 @@ function fixture() {
         create: async ({ title, body }) => {
           mutations.push(["pr"])
           const pr = {
+            node_id: `PR_${pulls.length + 1}`,
             number: pulls.length + 1,
             title,
             body,
@@ -281,6 +283,35 @@ function fixture() {
         },
       },
     },
+  }
+  github.request = async () => ({
+    data: [
+      {
+        type: "merge_queue",
+        parameters: {
+          max_entries_to_build: 1,
+          max_entries_to_merge: 1,
+          merge_method: "MERGE",
+        },
+      },
+    ],
+  })
+  // Emulate GitHub integrating the exact queued head after its required checks.
+  const integrate = github.rest.pulls.merge
+  github.rest.pulls.merge = async () => {
+    throw new Error("Direct merge is forbidden")
+  }
+  github.graphql = async (query, args) => {
+    if (query.startsWith("query"))
+      return { repository: { pullRequest: { mergeQueueEntry: null } } }
+    assert.match(query, /enqueuePullRequest/)
+    const number = Number(args.id.replace("PR_", ""))
+    const pr = pulls[number - 1]
+    return integrate({
+      pull_number: number,
+      sha: args.sha,
+      commit_title: pr.title,
+    })
   }
   const f = {
     github,
@@ -432,7 +463,7 @@ test("failed, queued, cancelled, stale and foreign CI cannot release or merge", 
 test("branch protection, untrusted PRs and modified release content fail closed", async () => {
   const f = fixture()
   f.github.rest.repos.getBranchProtection = async () => ({ data: {} })
-  await assert.rejects(f.run(), /branch protection/)
+  await assert.rejects(f.run(), /Native automation requires/)
   assert.equal(f.mutations.length, 0)
   for (const mutation of [
     (g) => {
