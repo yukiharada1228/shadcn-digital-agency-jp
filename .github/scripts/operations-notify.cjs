@@ -1,7 +1,7 @@
 const REPOSITORIES = new Set([
   "yukiharada1228/videoq",
-  "yukiharada1228/langchainjs-postgres",
-  "yukiharada1228/shadcn-digital-agency-jp",
+  "videoq-jp/langchainjs-postgres",
+  "videoq-jp/shadcn-digital-agency-jp",
 ])
 const KINDS = new Set([
   "dependency-stalls",

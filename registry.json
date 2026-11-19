@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "shadcn-digital-agency-jp",
-  "homepage": "https://github.com/yukiharada1228/shadcn-digital-agency-jp",
+  "homepage": "https://github.com/videoq-jp/shadcn-digital-agency-jp",
   "items": [
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -11,8 +11,8 @@
       "description": "Unofficial Accordion inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -37,55 +37,55 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/accordion",
-        "yukiharada1228/shadcn-digital-agency-jp/blockquote",
-        "yukiharada1228/shadcn-digital-agency-jp/breadcrumbs",
-        "yukiharada1228/shadcn-digital-agency-jp/button",
-        "yukiharada1228/shadcn-digital-agency-jp/calendar",
-        "yukiharada1228/shadcn-digital-agency-jp/carousel",
-        "yukiharada1228/shadcn-digital-agency-jp/checkbox",
-        "yukiharada1228/shadcn-digital-agency-jp/chip-label",
-        "yukiharada1228/shadcn-digital-agency-jp/date-picker",
-        "yukiharada1228/shadcn-digital-agency-jp/dialog",
-        "yukiharada1228/shadcn-digital-agency-jp/disclosure",
-        "yukiharada1228/shadcn-digital-agency-jp/divider",
-        "yukiharada1228/shadcn-digital-agency-jp/description-list",
-        "yukiharada1228/shadcn-digital-agency-jp/drawer",
-        "yukiharada1228/shadcn-digital-agency-jp/emergency-banner",
-        "yukiharada1228/shadcn-digital-agency-jp/error-text",
-        "yukiharada1228/shadcn-digital-agency-jp/file-upload",
-        "yukiharada1228/shadcn-digital-agency-jp/hamburger-menu-button",
-        "yukiharada1228/shadcn-digital-agency-jp/heading",
-        "yukiharada1228/shadcn-digital-agency-jp/horizontal-menu",
-        "yukiharada1228/shadcn-digital-agency-jp/image",
-        "yukiharada1228/shadcn-digital-agency-jp/input",
-        "yukiharada1228/shadcn-digital-agency-jp/label",
-        "yukiharada1228/shadcn-digital-agency-jp/language-selector",
-        "yukiharada1228/shadcn-digital-agency-jp/legend",
-        "yukiharada1228/shadcn-digital-agency-jp/link",
-        "yukiharada1228/shadcn-digital-agency-jp/list",
-        "yukiharada1228/shadcn-digital-agency-jp/menu-list",
-        "yukiharada1228/shadcn-digital-agency-jp/menu-list-box",
-        "yukiharada1228/shadcn-digital-agency-jp/notification-banner",
-        "yukiharada1228/shadcn-digital-agency-jp/page-navigation",
-        "yukiharada1228/shadcn-digital-agency-jp/progress-indicator",
-        "yukiharada1228/shadcn-digital-agency-jp/radio-group",
-        "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
-        "yukiharada1228/shadcn-digital-agency-jp/resource-list",
-        "yukiharada1228/shadcn-digital-agency-jp/search-box",
-        "yukiharada1228/shadcn-digital-agency-jp/select",
-        "yukiharada1228/shadcn-digital-agency-jp/separated-date-picker",
-        "yukiharada1228/shadcn-digital-agency-jp/status-badge",
-        "yukiharada1228/shadcn-digital-agency-jp/step-navigation",
-        "yukiharada1228/shadcn-digital-agency-jp/support-text",
-        "yukiharada1228/shadcn-digital-agency-jp/switch",
-        "yukiharada1228/shadcn-digital-agency-jp/table",
-        "yukiharada1228/shadcn-digital-agency-jp/tabs",
-        "yukiharada1228/shadcn-digital-agency-jp/textarea",
-        "yukiharada1228/shadcn-digital-agency-jp/utility-link",
-        "yukiharada1228/shadcn-digital-agency-jp/form-control-label"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/accordion",
+        "videoq-jp/shadcn-digital-agency-jp/blockquote",
+        "videoq-jp/shadcn-digital-agency-jp/breadcrumbs",
+        "videoq-jp/shadcn-digital-agency-jp/button",
+        "videoq-jp/shadcn-digital-agency-jp/calendar",
+        "videoq-jp/shadcn-digital-agency-jp/carousel",
+        "videoq-jp/shadcn-digital-agency-jp/checkbox",
+        "videoq-jp/shadcn-digital-agency-jp/chip-label",
+        "videoq-jp/shadcn-digital-agency-jp/date-picker",
+        "videoq-jp/shadcn-digital-agency-jp/dialog",
+        "videoq-jp/shadcn-digital-agency-jp/disclosure",
+        "videoq-jp/shadcn-digital-agency-jp/divider",
+        "videoq-jp/shadcn-digital-agency-jp/description-list",
+        "videoq-jp/shadcn-digital-agency-jp/drawer",
+        "videoq-jp/shadcn-digital-agency-jp/emergency-banner",
+        "videoq-jp/shadcn-digital-agency-jp/error-text",
+        "videoq-jp/shadcn-digital-agency-jp/file-upload",
+        "videoq-jp/shadcn-digital-agency-jp/hamburger-menu-button",
+        "videoq-jp/shadcn-digital-agency-jp/heading",
+        "videoq-jp/shadcn-digital-agency-jp/horizontal-menu",
+        "videoq-jp/shadcn-digital-agency-jp/image",
+        "videoq-jp/shadcn-digital-agency-jp/input",
+        "videoq-jp/shadcn-digital-agency-jp/label",
+        "videoq-jp/shadcn-digital-agency-jp/language-selector",
+        "videoq-jp/shadcn-digital-agency-jp/legend",
+        "videoq-jp/shadcn-digital-agency-jp/link",
+        "videoq-jp/shadcn-digital-agency-jp/list",
+        "videoq-jp/shadcn-digital-agency-jp/menu-list",
+        "videoq-jp/shadcn-digital-agency-jp/menu-list-box",
+        "videoq-jp/shadcn-digital-agency-jp/notification-banner",
+        "videoq-jp/shadcn-digital-agency-jp/page-navigation",
+        "videoq-jp/shadcn-digital-agency-jp/progress-indicator",
+        "videoq-jp/shadcn-digital-agency-jp/radio-group",
+        "videoq-jp/shadcn-digital-agency-jp/requirement-badge",
+        "videoq-jp/shadcn-digital-agency-jp/resource-list",
+        "videoq-jp/shadcn-digital-agency-jp/search-box",
+        "videoq-jp/shadcn-digital-agency-jp/select",
+        "videoq-jp/shadcn-digital-agency-jp/separated-date-picker",
+        "videoq-jp/shadcn-digital-agency-jp/status-badge",
+        "videoq-jp/shadcn-digital-agency-jp/step-navigation",
+        "videoq-jp/shadcn-digital-agency-jp/support-text",
+        "videoq-jp/shadcn-digital-agency-jp/switch",
+        "videoq-jp/shadcn-digital-agency-jp/table",
+        "videoq-jp/shadcn-digital-agency-jp/tabs",
+        "videoq-jp/shadcn-digital-agency-jp/textarea",
+        "videoq-jp/shadcn-digital-agency-jp/utility-link",
+        "videoq-jp/shadcn-digital-agency-jp/form-control-label"
       ],
       "files": [
         {
@@ -108,8 +108,8 @@
       "description": "Unofficial Blockquote inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -135,8 +135,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -162,8 +162,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -189,8 +189,8 @@
         "@internationalized/date"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -213,9 +213,9 @@
       "description": "Unofficial Carousel inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/disclosure"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/disclosure"
       ],
       "files": [
         {
@@ -241,8 +241,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -267,8 +267,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -291,20 +291,20 @@
       "description": "Unofficial lightweight set of basic Digital Agency Design System UI (theme + basic elements). Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/button",
-        "yukiharada1228/shadcn-digital-agency-jp/input",
-        "yukiharada1228/shadcn-digital-agency-jp/textarea",
-        "yukiharada1228/shadcn-digital-agency-jp/label",
-        "yukiharada1228/shadcn-digital-agency-jp/divider",
-        "yukiharada1228/shadcn-digital-agency-jp/link",
-        "yukiharada1228/shadcn-digital-agency-jp/utility-link",
-        "yukiharada1228/shadcn-digital-agency-jp/heading",
-        "yukiharada1228/shadcn-digital-agency-jp/list",
-        "yukiharada1228/shadcn-digital-agency-jp/blockquote",
-        "yukiharada1228/shadcn-digital-agency-jp/description-list",
-        "yukiharada1228/shadcn-digital-agency-jp/image"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/button",
+        "videoq-jp/shadcn-digital-agency-jp/input",
+        "videoq-jp/shadcn-digital-agency-jp/textarea",
+        "videoq-jp/shadcn-digital-agency-jp/label",
+        "videoq-jp/shadcn-digital-agency-jp/divider",
+        "videoq-jp/shadcn-digital-agency-jp/link",
+        "videoq-jp/shadcn-digital-agency-jp/utility-link",
+        "videoq-jp/shadcn-digital-agency-jp/heading",
+        "videoq-jp/shadcn-digital-agency-jp/list",
+        "videoq-jp/shadcn-digital-agency-jp/blockquote",
+        "videoq-jp/shadcn-digital-agency-jp/description-list",
+        "videoq-jp/shadcn-digital-agency-jp/image"
       ],
       "files": [
         {
@@ -322,8 +322,8 @@
       "description": "Unofficial DatePicker inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -346,8 +346,8 @@
       "description": "Unofficial description list inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -372,8 +372,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -422,8 +422,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -448,8 +448,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -474,9 +474,9 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/hamburger-menu-button"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/hamburger-menu-button"
       ],
       "files": [
         {
@@ -501,8 +501,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -525,8 +525,8 @@
       "description": "Unofficial ErrorText inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -549,8 +549,8 @@
       "description": "Unofficial FileUpload inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -573,8 +573,8 @@
       "description": "Unofficial form field and fieldset layout inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -597,17 +597,17 @@
       "description": "Unofficial form + status set from the Digital Agency Design System (checkbox, radio-group, select, and form/status helpers). Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/checkbox",
-        "yukiharada1228/shadcn-digital-agency-jp/radio-group",
-        "yukiharada1228/shadcn-digital-agency-jp/select",
-        "yukiharada1228/shadcn-digital-agency-jp/error-text",
-        "yukiharada1228/shadcn-digital-agency-jp/support-text",
-        "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
-        "yukiharada1228/shadcn-digital-agency-jp/status-badge",
-        "yukiharada1228/shadcn-digital-agency-jp/chip-label",
-        "yukiharada1228/shadcn-digital-agency-jp/form-control-label"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/checkbox",
+        "videoq-jp/shadcn-digital-agency-jp/radio-group",
+        "videoq-jp/shadcn-digital-agency-jp/select",
+        "videoq-jp/shadcn-digital-agency-jp/error-text",
+        "videoq-jp/shadcn-digital-agency-jp/support-text",
+        "videoq-jp/shadcn-digital-agency-jp/requirement-badge",
+        "videoq-jp/shadcn-digital-agency-jp/status-badge",
+        "videoq-jp/shadcn-digital-agency-jp/chip-label",
+        "videoq-jp/shadcn-digital-agency-jp/form-control-label"
       ],
       "files": [
         {
@@ -627,8 +627,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -653,8 +653,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -677,8 +677,8 @@
       "description": "Unofficial Horizontal Menu inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -701,8 +701,8 @@
       "description": "Unofficial Image inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -727,8 +727,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -753,8 +753,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -777,8 +777,8 @@
       "description": "Unofficial Language Selector inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -803,8 +803,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -830,8 +830,8 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -856,8 +856,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -882,8 +882,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -908,8 +908,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -932,8 +932,8 @@
       "description": "Unofficial NotificationBanner inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -958,9 +958,9 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/button"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/button"
       ],
       "files": [
         {
@@ -983,8 +983,8 @@
       "description": "Unofficial ProgressIndicator inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1010,8 +1010,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1036,8 +1036,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1062,10 +1062,10 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/checkbox",
-        "yukiharada1228/shadcn-digital-agency-jp/radio-group"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/checkbox",
+        "videoq-jp/shadcn-digital-agency-jp/radio-group"
       ],
       "files": [
         {
@@ -1088,9 +1088,9 @@
       "description": "Unofficial SearchBox inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-        "yukiharada1228/shadcn-digital-agency-jp/button"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+        "videoq-jp/shadcn-digital-agency-jp/button"
       ],
       "files": [
         {
@@ -1122,8 +1122,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1146,8 +1146,8 @@
       "description": "Unofficial SeparatedDatePicker inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1172,8 +1172,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1198,8 +1198,8 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1222,8 +1222,8 @@
       "description": "Unofficial SupportText inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1246,8 +1246,8 @@
       "description": "Unofficial Switch inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1270,8 +1270,8 @@
       "description": "Unofficial Table inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1294,8 +1294,8 @@
       "description": "Unofficial Tabs inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1318,8 +1318,8 @@
       "description": "Unofficial Textarea inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
       "dependencies": [],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {
@@ -1370,8 +1370,8 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "yukiharada1228/shadcn-digital-agency-jp/theme",
-        "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+        "videoq-jp/shadcn-digital-agency-jp/theme",
+        "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
       ],
       "files": [
         {

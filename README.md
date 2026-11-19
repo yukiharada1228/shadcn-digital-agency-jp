@@ -75,13 +75,13 @@ cd my-app
 
 ```bash
 # 単体で追加
-npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/button
+npx shadcn@latest add videoq-jp/shadcn-digital-agency-jp/button
 
 # セットで追加（内容は「セット」の節を参照）
-npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/core
+npx shadcn@latest add videoq-jp/shadcn-digital-agency-jp/core
 
 # 全コンポーネントを追加
-npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
+npx shadcn@latest add videoq-jp/shadcn-digital-agency-jp/all-components
 ```
 
 ### ステップ 3. テーマ CSS を読み込む
@@ -127,7 +127,7 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 
 ## コンポーネント一覧 / Components
 
-全 **47 コンポーネント**。`add` するときの名前は `yukiharada1228/shadcn-digital-agency-jp/<name>` です。
+全 **47 コンポーネント**。`add` するときの名前は `videoq-jp/shadcn-digital-agency-jp/<name>` です。
 
 | カテゴリ                                  | コンポーネント                                                                                                                                                                                                                                       |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -169,8 +169,8 @@ Radix 化・shadcn 化に伴う API / DOM の差分は
 | `all-components`    | 全コンポーネントと確認用画面（`components/digital-agency-all-components.tsx`）をまとめて追加します。実プロジェクトでの install 確認用 bundle です。                             |
 
 ```bash
-npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/form
-npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
+npx shadcn@latest add videoq-jp/shadcn-digital-agency-jp/form
+npx shadcn@latest add videoq-jp/shadcn-digital-agency-jp/all-components
 ```
 
 > [!NOTE]
@@ -184,7 +184,7 @@ npx shadcn@latest add yukiharada1228/shadcn-digital-agency-jp/all-components
 このリポジトリは upstream を Git submodule として含み、開発用パッケージマネージャーには npm を使用します。
 
 ```bash
-git clone --recurse-submodules https://github.com/yukiharada1228/shadcn-digital-agency-jp.git
+git clone --recurse-submodules https://github.com/videoq-jp/shadcn-digital-agency-jp.git
 cd shadcn-digital-agency-jp
 # 既に clone 済みなら: git submodule update --init --recursive
 

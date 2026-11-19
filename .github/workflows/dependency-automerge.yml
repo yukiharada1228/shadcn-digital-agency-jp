@@ -25,7 +25,7 @@ concurrency:
 jobs:
   enable:
     if: >-
-      github.repository == 'yukiharada1228/shadcn-digital-agency-jp' &&
+      github.repository == 'videoq-jp/shadcn-digital-agency-jp' &&
       github.event.pull_request.user.login == 'dependabot[bot]' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       vars.DEPENDENCY_AUTOMERGE_ENABLED == 'true' && vars.PATCH_BOT_APP_ID != ''

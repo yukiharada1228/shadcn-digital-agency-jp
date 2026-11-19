@@ -80,7 +80,7 @@ PR のコード・依存関係・成果物を実行せず、GitHub API でデー
 
 ## 失敗・停止・復旧
 
-通常は [Automatic Release](https://github.com/yukiharada1228/shadcn-digital-agency-jp/actions/workflows/release.yml) の実行結果を確認するだけです。
+通常は [Automatic Release](https://github.com/videoq-jp/shadcn-digital-agency-jp/actions/workflows/release.yml) の実行結果を確認するだけです。
 CI が失敗した場合は通常の開発フローで原因を修正します。成功後、または定期照合で処理が再開されます。
 API の一時的なエラーで PR 作成や公開が途中まで進んでも、次回は既存のブランチ・PR・タグを再利用します。
 

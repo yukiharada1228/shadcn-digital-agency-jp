@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 
-const repoAddress = "yukiharada1228/shadcn-digital-agency-jp/"
+const repoAddress = "videoq-jp/shadcn-digital-agency-jp/"
 
 type RegistryFile = {
   path: string

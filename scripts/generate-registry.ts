@@ -17,7 +17,7 @@ const ROOT = join(__dirname, "..")
 const ITEMS_DIR = join(ROOT, "src", "registry", "items")
 const OUTPUT = join(ROOT, "registry.json")
 
-const HOMEPAGE = "https://github.com/yukiharada1228/shadcn-digital-agency-jp"
+const HOMEPAGE = "https://github.com/videoq-jp/shadcn-digital-agency-jp"
 
 function loadItems() {
   const files = readdirSync(ITEMS_DIR)

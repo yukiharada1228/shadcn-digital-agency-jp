@@ -15,7 +15,7 @@ const context = {
   ref: "refs/heads/main",
   sha: "a".repeat(40),
   eventName: "schedule",
-  repo: { owner: "yukiharada1228", repo: "videoq" },
+  repo: { owner: "videoq-jp", repo: "videoq" },
 }
 test("runtime PRs cannot write workflows, application code, credentials, or arbitrary paths", () => {
   for (const path of [

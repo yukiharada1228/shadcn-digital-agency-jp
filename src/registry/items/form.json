@@ -6,17 +6,17 @@
   "description": "Unofficial form + status set from the Digital Agency Design System (checkbox, radio-group, select, and form/status helpers). Not an official デジタル庁 product.",
   "dependencies": [],
   "registryDependencies": [
-    "yukiharada1228/shadcn-digital-agency-jp/theme",
-    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn",
-    "yukiharada1228/shadcn-digital-agency-jp/checkbox",
-    "yukiharada1228/shadcn-digital-agency-jp/radio-group",
-    "yukiharada1228/shadcn-digital-agency-jp/select",
-    "yukiharada1228/shadcn-digital-agency-jp/error-text",
-    "yukiharada1228/shadcn-digital-agency-jp/support-text",
-    "yukiharada1228/shadcn-digital-agency-jp/requirement-badge",
-    "yukiharada1228/shadcn-digital-agency-jp/status-badge",
-    "yukiharada1228/shadcn-digital-agency-jp/chip-label",
-    "yukiharada1228/shadcn-digital-agency-jp/form-control-label"
+    "videoq-jp/shadcn-digital-agency-jp/theme",
+    "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn",
+    "videoq-jp/shadcn-digital-agency-jp/checkbox",
+    "videoq-jp/shadcn-digital-agency-jp/radio-group",
+    "videoq-jp/shadcn-digital-agency-jp/select",
+    "videoq-jp/shadcn-digital-agency-jp/error-text",
+    "videoq-jp/shadcn-digital-agency-jp/support-text",
+    "videoq-jp/shadcn-digital-agency-jp/requirement-badge",
+    "videoq-jp/shadcn-digital-agency-jp/status-badge",
+    "videoq-jp/shadcn-digital-agency-jp/chip-label",
+    "videoq-jp/shadcn-digital-agency-jp/form-control-label"
   ],
   "files": [
     {

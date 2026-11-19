@@ -23,7 +23,7 @@ flowchart TD
 
 1. サブスク契約のChatGPTアカウントでログインする。
 2. [CodexのGitHub連携設定](https://chatgpt.com/settings/code-review)から
-   `yukiharada1228/shadcn-digital-agency-jp` を接続し、リポジトリへのアクセスを許可する。
+   `videoq-jp/shadcn-digital-agency-jp` を接続し、リポジトリへのアクセスを許可する。
    この設定はGitHub Appのpatch自動マージ設定とは別。
 3. クラウド環境にこのリポジトリを設定する。Node 22・npm・Chromiumを準備し、
    upstream submoduleを固定済みコミットで初期化する。テスト手順は [修正指示](codex/repair-dependencies.md) を参照。
@@ -84,7 +84,7 @@ major更新、submodule、ソース変更、Codex修正はレビュー対象。D
    Repository permissions: **Contents: Read and write**、**Pull requests: Read and write**、
    **Administration: Read-only**（ブランチ保護の確認用）、**Workflows: Read and write**（GitHub Actions更新のマージ用）、標準のMetadata Read-only。
    mainの保護をバイパスする権限は付けない。
-3. [Actions secrets / variables](https://github.com/yukiharada1228/shadcn-digital-agency-jp/settings/secrets/actions)に以下を登録する。
+3. [Actions secrets / variables](https://github.com/videoq-jp/shadcn-digital-agency-jp/settings/secrets/actions)に以下を登録する。
 
 | 種類     | 名前                           | 値                              |
 | -------- | ------------------------------ | ------------------------------- |
@@ -92,7 +92,7 @@ major更新、submodule、ソース変更、Codex修正はレビュー対象。D
 | Secret   | `PATCH_BOT_PRIVATE_KEY`        | GitHub Appから生成したPEM秘密鍵 |
 | Variable | `DEPENDENCY_AUTOMERGE_ENABLED` | 有効化時に `true`               |
 
-4. [General settings](https://github.com/yukiharada1228/shadcn-digital-agency-jp/settings)で **Allow auto-merge** と squash mergeを有効にする。
+4. [General settings](https://github.com/videoq-jp/shadcn-digital-agency-jp/settings)で **Allow auto-merge** と squash mergeを有効にする。
 5. mainに**従来のブランチ保護ルール**を作成する（Settings → Branches → Add classic branch protection rule）。
    **Require status checks to pass before merging** と **Require branches to be up to date before merging** を有効にし、
    GitHub Actionsの **CI Success** を必須チェックにする。CIを1回実行すると候補に表示される。

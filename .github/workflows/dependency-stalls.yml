@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   inspect:
-    if: github.repository == 'yukiharada1228/shadcn-digital-agency-jp' && github.ref == 'refs/heads/main'
+    if: github.repository == 'videoq-jp/shadcn-digital-agency-jp' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   propose:
-    if: github.repository_owner == 'yukiharada1228' && github.ref == 'refs/heads/main'
+    if: github.repository_owner == 'videoq-jp' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:

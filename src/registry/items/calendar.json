@@ -6,8 +6,8 @@
   "description": "Unofficial Calendar inspired by the Digital Agency Design System. Not an official デジタル庁 product.",
   "dependencies": ["react-aria-components", "@internationalized/date"],
   "registryDependencies": [
-    "yukiharada1228/shadcn-digital-agency-jp/theme",
-    "yukiharada1228/shadcn-digital-agency-jp/digital-agency-cn"
+    "videoq-jp/shadcn-digital-agency-jp/theme",
+    "videoq-jp/shadcn-digital-agency-jp/digital-agency-cn"
   ],
   "files": [
     {

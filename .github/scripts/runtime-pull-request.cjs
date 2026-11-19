@@ -36,7 +36,7 @@ async function publish({ github, context, core, plan, bot }) {
     !["videoq", "shadcn-digital-agency-jp", "langchainjs-postgres"].includes(
       context.repo.repo
     ) ||
-    context.repo.owner !== "yukiharada1228" ||
+    context.repo.owner !== "videoq-jp" ||
     !/^[a-zA-Z0-9-]+\[bot\]$/.test(bot)
   ) {
     throw new Error(

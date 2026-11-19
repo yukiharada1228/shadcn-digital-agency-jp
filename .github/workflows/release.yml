@@ -21,7 +21,7 @@ concurrency:
 jobs:
   release:
     if: >-
-      github.repository == 'yukiharada1228/shadcn-digital-agency-jp' &&
+      github.repository == 'videoq-jp/shadcn-digital-agency-jp' &&
       github.ref == 'refs/heads/main' &&
       vars.RELEASE_AUTOMATION_ENABLED != 'false' && vars.PATCH_BOT_APP_ID != '' &&
       (github.event_name != 'workflow_run' ||

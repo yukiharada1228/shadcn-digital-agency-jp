@@ -1,6 +1,6 @@
 // Privileged workflows load this module from github.workflow_sha.
 // CI may test PR code with read-only permissions.
-const REPOSITORY = "yukiharada1228/shadcn-digital-agency-jp"
+const REPOSITORY = "videoq-jp/shadcn-digital-agency-jp"
 const BOT = "dependabot[bot]"
 const REQUEST_MARKER = "<!-- shadcn-digital-agency-jp-codex-repair-request -->"
 const manifests = new Set(["package.json", "package-lock.json"])
