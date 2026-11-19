@@ -83,6 +83,5 @@ Verification commands:
 
 ```sh
 node --test .github/scripts/*.test.cjs
-python3 -m unittest discover -s .github/scripts -p 'test_*.py'
 actionlint .github/workflows/*.yml
 ```
